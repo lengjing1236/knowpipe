@@ -157,7 +157,13 @@ class MemoryStore:
         return None
 
     def add_new(self, claim, source, topic="", certainty="fact", status=STATUS_NEW,
-                relates_to=None, evidence=""):
+                relates_to=None, evidence="", persist=True):
+        """新增知识卡。
+
+        ``persist=False`` 用于一次 pipeline 的批量写入：调用方完成整批处理后
+        再显式 ``save()``，避免每张卡都重写整个 JSONL 文件。默认仍立即持久化，
+        保持 seed/review 等旧调用行为不变。
+        """
         cid = self.id_of(claim)
         existing = self._touch(cid)
         if existing:
@@ -177,12 +183,16 @@ class MemoryStore:
         }
         self.cards.append(card)
         self._index = None
-        self.save()
+        if persist:
+            self.save()
         return card
 
-    def touch_known(self, cid):
+    def touch_known(self, cid, persist=True):
         """命中已知卡：加计数，不重复入库。"""
-        return self._touch(cid)
+        card = self._touch(cid)
+        if card and persist:
+            self.save()
+        return card
 
     def update_status(self, cid, status, note=None):
         c = self.get(cid)

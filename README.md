@@ -42,6 +42,7 @@ python3 -m knowpipe process --bilibili BV1DfrdByE2H --p 1 --out report.md --brai
 # 2c) 合集批量：循环每个分P，共享记忆库去重，输出汇总报告
 python3 -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages 1-3 --out batch.md --brain auto
 python3 -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages all --out all.md --brain auto
+#    批量任务可加 --bili-resume：每完成一个P就保存检查点，中断后重跑只处理未完成的P
 #    --bili-pages 支持 '1-3,5' 或 'all'；每页逐字稿缓存到 cache/bili_transcripts/，重跑不重复ASR
 #    共享同一记忆库：后处理的P会自动过滤前面P已写入的新知识（跨P去重）
 #    某P取稿失败自动跳过，不影响其他P；最终输出一份含逐P统计的汇总报告
@@ -63,9 +64,10 @@ python3 -m knowpipe review --apply review.jsonl   # 非交互评分
 | `status` | 查看记忆库状态 |
 | `review [--apply F]` | 给 new/refined/conflict 卡评分，回写记忆库 |
 
-`process` 主要参数：`--out`（报告路径，默认 stdout）、`--title`、`--brain`（auto/openai/manual/heuristic）、`--mode`（cards=原子卡模式 / article=文章级模式，默认cards）、`--manual-dir`（manual 模式判定文件目录）、`--memory`（记忆库路径，默认 `memory/cards.jsonl`）；B站相关：`--p`（分P页码，默认1）、`--bili-pages`（合集批量范围，如 '1-3,5' 或 'all'）、`--bili-cache-dir`（逐字稿缓存目录，默认 cache/bili_transcripts）、`--bili-transcriber`（auto/subtitle/lark/whisper）、`--whisper-model`（whisper模型大小）、`--bili-workdir`（妙记产物目录，默认 ./lark_out）。文章级报告仅保留知识总结与元数据，不包含 ASR 原稿或清洗稿。
+`process` 主要参数：`--out`（报告路径，默认 stdout）、`--title`、`--brain`（auto/openai/manual/heuristic）、`--mode`（cards=原子卡模式 / article=文章级模式，默认cards）、`--manual-dir`（manual 模式判定文件目录）、`--memory`（记忆库路径，默认 `memory/cards.jsonl`）；B站相关：`--p`（分P页码，默认1）、`--bili-pages`（合集批量范围，如 '1-3,5' 或 'all'）、`--bili-resume`（合集断点续跑）、`--bili-cache-dir`（逐字稿缓存目录，默认 cache/bili_transcripts）、`--bili-transcriber`（auto/subtitle/lark/whisper）、`--whisper-model`（whisper模型大小）、`--bili-workdir`（妙记产物目录，默认 ./lark_out）。文章级报告仅保留知识总结与元数据，不包含 ASR 原稿或清洗稿。
 
 OpenAI 模式下，长文本分块抽取默认并发 4 路，并与全文摘要并行；如遇网关限流，可设置 `KNOWPIPE_DECOMPOSE_WORKERS=1`，或按需调高该值。
+LLM 请求遇到网络错误或限流时默认最多重试 2 次（指数退避），可用 `KNOWPIPE_LLM_RETRIES=0` 关闭重试。
 
 ## 大脑（Brain）三种模式
 

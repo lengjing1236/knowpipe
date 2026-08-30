@@ -12,6 +12,8 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
+import urllib.error
 import urllib.request
 
 DEFAULT_MODEL = "gpt-4o-mini"
@@ -38,18 +40,38 @@ def _write_jsonl(path, rows):
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
 
-def _post_json(url, payload, timeout=120, api_key=""):
+def _post_json(url, payload, timeout=120, api_key="", retries=None):
     headers = {"Content-Type": "application/json"}
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
-    req = urllib.request.Request(
-        url,
-        data=json.dumps(payload).encode("utf-8"),
-        headers=headers,
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8"))
+    if retries is None:
+        try:
+            retries = max(0, int(os.getenv("KNOWPIPE_LLM_RETRIES", "2")))
+        except ValueError:
+            retries = 2
+    attempts = retries + 1
+    retryable_status = {408, 409, 425, 429}
+    last_error = None
+    for attempt in range(attempts):
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers=headers,
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in retryable_status and exc.code < 500:
+                raise
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last_error = exc
+        if attempt < retries:
+            # 退避上限 8 秒，避免临时限流时瞬间重复轰炸网关。
+            time.sleep(min(8, 2 ** attempt))
+    raise last_error
 
 
 # --------------------------------------------------------------------------
@@ -243,11 +265,23 @@ class Brain:
         cards = _extract_json(out)
         if not isinstance(cards, list):
             raise BrainError("decompose 结果不是数组")
+        normalized = []
         for c in cards:
-            c.setdefault("topic", "")
-            c.setdefault("certainty", "fact")
-            c.setdefault("evidence", "")
-        return cards
+            if not isinstance(c, dict):
+                continue
+            claim = str(c.get("claim", "")).strip()
+            if not claim:
+                continue
+            certainty = c.get("certainty", "fact")
+            if certainty not in ("fact", "principle", "opinion"):
+                certainty = "fact"
+            normalized.append({
+                "claim": claim,
+                "topic": str(c.get("topic", "")).strip(),
+                "certainty": certainty,
+                "evidence": str(c.get("evidence", "")).strip()[:80],
+            })
+        return normalized
 
     def _classify_openai(self, cards, candidates_map):
         known_block = []
@@ -269,17 +303,27 @@ class Brain:
 
     @staticmethod
     def _normalize_verdicts(verdicts, n):
+        if not isinstance(verdicts, list):
+            raise BrainError("classify 结果不是数组")
         out = []
+        allowed = {"new", "known", "refine", "contradict"}
         for i in range(n):
             v = next((x for x in verdicts if x.get("index") == i), None)
             if not v:
                 raise BrainError(f"classify 结果缺少 index={i}")
+            verdict = v.get("verdict", "new")
+            if verdict not in allowed:
+                raise BrainError(f"classify verdict 无效: {verdict!r}")
+            try:
+                confidence = float(v.get("confidence", 0.5))
+            except (TypeError, ValueError):
+                confidence = 0.5
             out.append({
                 "index": i,
-                "verdict": v.get("verdict", "new"),
-                "confidence": float(v.get("confidence", 0.5)),
+                "verdict": verdict,
+                "confidence": max(0.0, min(1.0, confidence)),
                 "against_id": v.get("against_id"),
-                "reason": v.get("reason", ""),
+                "reason": str(v.get("reason", "")),
             })
         return out
 
@@ -295,7 +339,7 @@ class Brain:
 
     def _classify_manual(self, input_id, cards):
         rows = _read_jsonl(os.path.join(self.manual_dir, f"{input_id}.classify.jsonl"))
-        return [r for r in rows if "verdict" in r]
+        return self._normalize_verdicts([r for r in rows if "verdict" in r], len(cards))
 
     # ---------------------------------------------------------------
     # heuristic provider（零依赖离线兜底）

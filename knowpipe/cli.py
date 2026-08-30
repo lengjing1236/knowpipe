@@ -122,24 +122,29 @@ def run_pipeline(text, source, title, input_id, brain, store):
         })
         if v["verdict"] == "new":
             store.add_new(claim=claim, source=res["source"], topic=c.get("topic", ""),
-                          certainty=c.get("certainty", "fact"), status=store_mod.STATUS_NEW)
+                          certainty=c.get("certainty", "fact"), status=store_mod.STATUS_NEW,
+                          persist=False)
             res["new_cards"].append(item)
         elif v["verdict"] == "known":
             if against_id:
-                store.touch_known(against_id)
+                store.touch_known(against_id, persist=False)
             res["skipped"].append(item)
         elif v["verdict"] == "refine":
             store.add_new(claim=claim, source=res["source"], topic=c.get("topic", ""),
                           certainty=c.get("certainty", "fact"),
-                          status=store_mod.STATUS_REFINED, relates_to=against_id)
+                          status=store_mod.STATUS_REFINED, relates_to=against_id,
+                          persist=False)
             res["refined"].append(item)
         elif v["verdict"] == "contradict":
             store.add_new(claim=claim, source=res["source"], topic=c.get("topic", ""),
                           certainty=c.get("certainty", "fact"),
-                          status=store_mod.STATUS_CONFLICT, relates_to=against_id)
+                          status=store_mod.STATUS_CONFLICT, relates_to=against_id,
+                          persist=False)
             res["conflicted"].append(item)
         else:
             raise BrainError(f"未知 verdict: {v['verdict']}")
+    # 原子卡判定全部完成后一次落盘，避免逐卡重写整个 JSONL。
+    store.save()
     res["store_stats"] = store.stats()
     return res
 
@@ -249,6 +254,45 @@ def _parse_bili_pages(spec, all_pages):
             result.append(int(token))
     return sorted(set(p for p in result if 1 <= p <= max_page))
 
+
+def _batch_checkpoint_path(cache_dir, bvid):
+    """返回合集任务检查点路径；检查点和逐字稿一样属于本地运行时数据。"""
+    return os.path.join(cache_dir, f"{bvid}.batch.json")
+
+
+def _save_batch_checkpoint(path, bvid, requested_pages, brain_provider, page_results):
+    """原子写入合集检查点，避免中途终止留下半个 JSON。"""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    payload = {
+        "bvid": bvid,
+        "requested_pages": requested_pages,
+        "brain_provider": brain_provider,
+        "updated": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        "page_results": page_results,
+    }
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, path)
+
+
+def _load_batch_checkpoint(path, bvid, requested_pages, brain_provider):
+    """读取与本次任务参数匹配的检查点；损坏或过期时返回空结果。"""
+    try:
+        with open(path, encoding="utf-8") as f:
+            payload = json.load(f)
+    except (OSError, ValueError, TypeError):
+        return []
+    if (payload.get("bvid") != bvid
+            or payload.get("brain_provider") != brain_provider
+            or payload.get("requested_pages") != requested_pages):
+        return []
+    rows = payload.get("page_results", [])
+    if not isinstance(rows, list):
+        return []
+    # 失败页不算完成，下次 --bili-resume 会自动重试。
+    return [r for r in rows if isinstance(r, dict) and not r.get("error")]
+
 def cmd_bili_batch(args, store, brain):
     """合集批量：循环每个分P 各自进管道，共享记忆库去重，输出汇总报告。"""
     from . import bilibili as bili_mod
@@ -258,13 +302,23 @@ def cmd_bili_batch(args, store, brain):
     if not pages:
         sys.exit(f"--bili-pages '{args.bili_pages}' 解析为空（合集共 {len(info['pages'])}P）")
     cache_dir = args.bili_cache_dir or os.path.join("cache", "bili_transcripts")
+    checkpoint_path = _batch_checkpoint_path(cache_dir, args.bilibili)
+    page_results = []
+    if getattr(args, "bili_resume", False):
+        page_results = _load_batch_checkpoint(
+            checkpoint_path, args.bilibili, pages, brain.provider)
+        if page_results:
+            print(f"[batch] 从检查点恢复 {len(page_results)}P：{checkpoint_path}")
 
     print(f"[batch] {info['title']}")
     print(f"[batch] 合集共 {len(info['pages'])}P，本次处理 {len(pages)}P：{pages}")
     print(f"[batch] 逐字稿缓存：{cache_dir}（命中则跳过ASR）")
 
-    page_results = []
+    completed_pages = {r.get("page") for r in page_results}
     for idx, page in enumerate(pages, 1):
+        if page in completed_pages:
+            print(f"[batch] [{idx}/{len(pages)}] P{page} 已在检查点完成，跳过管道处理")
+            continue
         part = info["pages"][page - 1]["part"] if page <= len(info["pages"]) else f"P{page}"
         print(f"\n{'='*60}")
         print(f"[batch] [{idx}/{len(pages)}] P{page}：{part}")
@@ -280,6 +334,10 @@ def cmd_bili_batch(args, store, brain):
                                  "n_cards": 0, "new_cards": [], "refined": [],
                                  "conflicted": [], "skipped": [], "digest": "",
                                  "brain_provider": brain.provider})
+            if getattr(args, "bili_resume", False):
+                _save_batch_checkpoint(
+                    checkpoint_path, args.bilibili, pages, brain.provider,
+                    [r for r in page_results if not r.get("error")])
             continue
 
         text = bili_src["text"]
@@ -292,6 +350,10 @@ def cmd_bili_batch(args, store, brain):
         res["page"] = page
         res["part"] = part
         page_results.append(res)
+        if getattr(args, "bili_resume", False):
+            _save_batch_checkpoint(
+                checkpoint_path, args.bilibili, pages, brain.provider,
+                [r for r in page_results if not r.get("error")])
 
     # 汇总报告
     report = build_batch_report(info, page_results, store.stats())
@@ -378,6 +440,8 @@ def build_parser():
     pr.add_argument("--p", type=int, default=1, help="B站分P页码（默认1）")
     pr.add_argument("--bili-pages", default=None,
                     help="合集批量：分P范围，如 '1-3,5' 或 'all'（与 --bilibili 配合，共享记忆库去重）")
+    pr.add_argument("--bili-resume", action="store_true",
+                    help="合集批量启用断点续跑（检查点保存在 --bili-cache-dir）")
     pr.add_argument("--bili-cache-dir", default=None,
                     help="逐字稿缓存目录（默认 cache/bili_transcripts），命中则跳过ASR")
     pr.add_argument("--bili-transcriber", default="auto",
