@@ -1,5 +1,6 @@
 import os
 import tempfile
+import time
 import unittest
 from unittest import mock
 
@@ -8,6 +9,8 @@ from knowpipe.cli import _load_batch_checkpoint, _save_batch_checkpoint, run_pip
 from knowpipe.report import build_article_report
 from knowpipe.store import MemoryStore, SQLiteMemoryStore, open_store, migrate_jsonl_to_sqlite
 from knowpipe import podcast
+from knowpipe import watch
+from knowpipe.watch_store import WatchStore
 
 
 class CoreBehaviorTests(unittest.TestCase):
@@ -186,6 +189,113 @@ class CoreBehaviorTests(unittest.TestCase):
             self.assertEqual(SQLiteMemoryStore(db).stats()["total"], 0)
             store.close()
             reopened.close()
+
+    def test_watch_processes_guid_once_and_archives_report(self):
+        feed_url = "https://example.com/podcast.xml"
+        feed = {
+            "url": feed_url,
+            "title": "示例节目",
+            "episodes": [{
+                "guid": "episode-guid-1", "title": "第一集",
+                "published": "2026-08-30", "link": "", "audio_url": "",
+                "transcripts": [],
+            }],
+        }
+        with tempfile.TemporaryDirectory() as root:
+            calls = []
+            with mock.patch.object(watch.podcast, "fetch_feed", return_value=feed), \
+                    mock.patch.object(
+                        watch.podcast, "fetch_episode_item",
+                        return_value={"text": "这是节目正文。", "method": "transcript"},
+                    ) as fetch_item, \
+                    mock.patch.object(watch, "send_notifications", return_value=[]) as notify:
+                first = watch.watch_once(
+                    [feed_url], memory_path=os.path.join(root, "cards.jsonl"),
+                    state_path=os.path.join(root, "state.db"),
+                    archive_dir=os.path.join(root, "archive"), mode="article",
+                    brain=Brain("heuristic"),
+                )
+                second = watch.watch_once(
+                    [feed_url], memory_path=os.path.join(root, "cards.jsonl"),
+                    state_path=os.path.join(root, "state.db"),
+                    archive_dir=os.path.join(root, "archive"), mode="article",
+                    brain=Brain("heuristic"),
+                )
+                self.assertEqual(len(first), 1)
+                self.assertEqual(second, [])
+                self.assertEqual(fetch_item.call_count, 1)
+                self.assertEqual(notify.call_count, 1)
+                report_path = first[0]["report_path"]
+                self.assertTrue(os.path.exists(report_path))
+                with open(report_path, encoding="utf-8") as report:
+                    content = report.read()
+                self.assertIn("知识总结", content)
+                self.assertNotIn("这是节目正文。", content)
+
+    def test_watch_store_claim_is_atomic_and_success_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as root:
+            state = WatchStore(os.path.join(root, "watch.db"))
+            item = {"guid": "g1", "title": "一集", "transcripts": []}
+            state.upsert_feed("feed", "节目")
+            state.discover_episode("feed", item)
+            self.assertTrue(state.claim_episode("feed", "g1"))
+            self.assertFalse(state.claim_episode("feed", "g1", stale_after=10**9))
+            state.mark_success("feed", "g1", "/tmp/report.md")
+            self.assertFalse(state.claim_episode("feed", "g1"))
+            self.assertEqual(state.get_episode("feed", "g1")["status"], "success")
+            state.close()
+
+    def test_long_transcript_uses_hierarchical_summary(self):
+        transcript = "这是一个需要分层处理的长节目内容。" * 500
+        with mock.patch.dict(os.environ, {
+            "KNOWPIPE_SUMMARY_SINGLE_LIMIT": "1000",
+            "KNOWPIPE_SUMMARY_CHUNK_CHARS": "4000",
+        }):
+            brain = Brain("openai", api_key="test")
+            calls = []
+
+            def fake_chat(system, user, **kwargs):
+                calls.append((system, user))
+                if "总编辑" in system:
+                    return "## 主题总结\n\n## 核心要点\n\n- 关键结论"
+                return "片段编辑笔记：保留事实、限制和因果关系。"
+
+            brain._chat = fake_chat
+            article = brain.generate_article_from_transcript(transcript)
+            self.assertIn("## 核心要点", article)
+            self.assertGreater(len(calls), 2)  # 多个片段调用 + 最终总编辑
+            self.assertTrue(all(len(user) <= 4500 for _, user in calls[:-1]))
+
+    def test_whisper_audio_is_removed_after_transcription(self):
+        with tempfile.TemporaryDirectory() as root:
+            audio = os.path.join(root, "episode.mp3")
+            with open(audio, "wb") as handle:
+                handle.write(b"audio")
+            item = {"guid": "audio-1", "title": "音频集", "audio_url": "https://x/audio.mp3",
+                    "transcripts": []}
+            with mock.patch.object(podcast, "download_audio", return_value=audio), \
+                    mock.patch.object(podcast, "transcribe_local", return_value="转写内容"):
+                result = podcast.fetch_episode_item(
+                    "https://x/feed.xml", item, transcriber="whisper",
+                    transcript_cache_dir=root,
+                )
+            self.assertEqual(result["text"], "转写内容")
+            self.assertFalse(os.path.exists(audio))
+
+    def test_transcript_cache_cleanup_removes_only_expired_files(self):
+        with tempfile.TemporaryDirectory() as root:
+            old = os.path.join(root, "old.txt")
+            fresh = os.path.join(root, "fresh.txt")
+            other = os.path.join(root, "keep.json")
+            for path in (old, fresh, other):
+                with open(path, "w", encoding="utf-8") as handle:
+                    handle.write("x")
+            old_time = time.time() - 3 * 86400
+            os.utime(old, (old_time, old_time))
+            self.assertEqual(podcast.cleanup_transcript_cache(root, retention_days=1), 1)
+            self.assertFalse(os.path.exists(old))
+            self.assertTrue(os.path.exists(fresh))
+            self.assertTrue(os.path.exists(other))
 
 
 if __name__ == "__main__":

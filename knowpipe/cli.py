@@ -84,7 +84,12 @@ def run_pipeline(text, source, title, input_id, brain, store):
         print(f"[decompose] 块{ci}: {len(got)} 张卡")
     print(f"[decompose] 共 {len(cards)} 张原子卡")
 
-    candidates_map = {i: store.candidates_for(c["claim"]) for i, c in enumerate(cards)}
+    embedder = (brain.embed_texts
+                if getattr(brain, "embedding_model", "") else None)
+    candidates_map = {
+        i: store.candidates_for(c["claim"], embedder=embedder)
+        for i, c in enumerate(cards)
+    }
     verdicts = brain.classify_cards(cards, candidates_map, input_id)
     by_verdict = {}
     for v in verdicts:
@@ -472,7 +477,9 @@ def cmd_ask(args):
         brain = Brain(provider=args.brain)
     except BrainError as e:
         sys.exit(f"[brain] {e}")
-    candidates = store.candidates_for(question, top_k=args.top_k)
+    embedder = (brain.embed_texts
+                if getattr(brain, "embedding_model", "") else None)
+    candidates = store.candidates_for(question, top_k=args.top_k, embedder=embedder)
     answer = brain.answer_question(question, candidates)
     lines = [f"# 记忆库问答", "", f"**问题**：{question}", "", answer, ""]
     useful = [(card, score) for card, score in candidates if score > 0]
@@ -549,6 +556,71 @@ def cmd_migrate(args):
         sys.exit(f"迁移失败：{e}")
     print(f"已迁移 {n} 张卡 → {args.destination}")
 
+
+def _read_feed_urls(args):
+    """合并重复的 --feed 与 --feeds-file，忽略空行和 # 注释。"""
+    urls = list(getattr(args, "feed", None) or [])
+    feeds_file = getattr(args, "feeds_file", None)
+    if feeds_file:
+        try:
+            with open(feeds_file, encoding="utf-8") as handle:
+                urls.extend(
+                    line.split("#", 1)[0].strip()
+                    for line in handle
+                    if line.split("#", 1)[0].strip()
+                )
+        except OSError as exc:
+            sys.exit(f"订阅源文件读取失败：{exc}")
+    result = []
+    for url in urls:
+        if url and url not in result:
+            result.append(url)
+    if not result:
+        sys.exit("至少指定一个 --feed URL，或通过 --feeds-file 提供订阅源列表")
+    return result
+
+
+def cmd_watch(args):
+    """轮询 Podcast RSS，处理新集并归档报告；``--once`` 用于单次运行。"""
+    from .watch import watch_forever, watch_once
+
+    feeds = _read_feed_urls(args)
+    if args.interval <= 0:
+        sys.exit("--interval 必须大于 0 秒")
+    if args.limit is not None and args.limit < 1:
+        sys.exit("--limit 必须大于 0")
+    smtp = {
+        "host": args.smtp_host,
+        "port": args.smtp_port,
+        "username": args.smtp_user,
+        "password": args.smtp_password,
+        "from": args.smtp_from,
+        "to": args.smtp_to,
+        "tls": args.smtp_tls,
+    }
+    common = dict(
+        memory_path=args.memory, state_path=args.state, archive_dir=args.archive_dir,
+        mode=args.mode, brain_provider=args.brain, manual_dir=args.manual_dir,
+        transcriber=args.podcast_transcriber, transcript_url=args.podcast_transcript,
+        audio_dir=args.podcast_audio_dir, transcript_cache_dir=args.podcast_cache_dir,
+        transcript_retention_days=args.transcript_retention_days,
+        keep_audio=args.keep_audio, webhook_url=args.webhook_url, smtp=smtp,
+        limit=args.limit,
+    )
+    try:
+        if args.once:
+            results = watch_once(feeds, **common)
+            succeeded = sum(1 for r in results if not r.get("error"))
+            failed = sum(1 for r in results if r.get("error"))
+            print(f"[watch] 本轮完成：成功 {succeeded}，失败 {failed}，状态库 {args.state}")
+            return results
+        print(f"[watch] 常驻轮询：每 {args.interval} 秒检查 {len(feeds)} 个订阅源（Ctrl-C 退出）")
+        watch_forever(feeds, interval=args.interval, **common)
+    except BrainError as exc:
+        sys.exit(f"[brain] {exc}")
+    except KeyboardInterrupt:
+        print("\n[watch] 已停止")
+
 def build_parser():
     p = argparse.ArgumentParser(prog="knowpipe", description="知识精炼管道 MVP")
     p.add_argument("--memory", default=MEMORY_DEFAULT,
@@ -619,6 +691,58 @@ def build_parser():
     mg.add_argument("--source", required=True, help="源 JSONL 文件")
     mg.add_argument("--destination", required=True, help="目标 SQLite 文件（建议 .db）")
     mg.set_defaults(fn=cmd_migrate)
+
+    wt = sub.add_parser(
+        "watch", aliases=["podcast-watch"],
+        help="自动轮询 Podcast RSS，处理新集并归档报告",
+    )
+    # 全局 --memory 通常写在子命令前；这里额外允许写在 watch 后，且不覆盖全局值。
+    wt.add_argument("--memory", default=argparse.SUPPRESS,
+                    help="记忆库路径（可覆盖全局 --memory）")
+    wt.add_argument("--feed", action="append", default=None,
+                    help="Podcast RSS/Atom URL；可重复指定多个")
+    wt.add_argument("--feeds-file", default=None,
+                    help="订阅源列表文件（每行一个 URL，# 开头为注释）")
+    wt.add_argument("--state", default="state/podcast_watch.db",
+                    help="episode 状态 SQLite 路径（默认 state/podcast_watch.db）")
+    wt.add_argument("--archive-dir", default="archive/podcasts",
+                    help="报告归档目录（默认 archive/podcasts）")
+    wt.add_argument("--once", action="store_true",
+                    help="只轮询一次（适合 cron；默认常驻轮询）")
+    wt.add_argument("--interval", type=int, default=3600,
+                    help="常驻轮询间隔秒数，默认 3600（建议 1800~3600）")
+    wt.add_argument("--limit", type=int, default=None,
+                    help="每个 feed 每轮最多处理几集；不指定则处理全部未处理集")
+    wt.add_argument("--mode", default="integrated", choices=["cards", "article", "integrated"],
+                    help="处理模式，默认 integrated（长文总结+未知知识卡）")
+    wt.add_argument("--brain", default="auto",
+                    choices=["auto", "openai", "manual", "heuristic"],
+                    help="大脑 provider，默认 auto")
+    wt.add_argument("--manual-dir", default=None, help="manual provider 判定文件目录")
+    wt.add_argument("--podcast-transcript", default=None,
+                    help="覆盖所有 episode 的 transcript URL（可选）")
+    wt.add_argument("--podcast-transcriber", default="auto",
+                    choices=["auto", "transcript", "whisper"],
+                    help="文本来源：transcript→Whisper 自动降级")
+    wt.add_argument("--podcast-audio-dir", default="cache/podcast_audio",
+                    help="Podcast 音频缓存目录")
+    wt.add_argument("--podcast-cache-dir", default="cache/podcast_transcripts",
+                    help="Podcast transcript 缓存目录")
+    wt.add_argument("--transcript-retention-days", type=int, default=30,
+                    help="transcript 本地缓存保留天数，默认30；设为0清理全部过期缓存")
+    wt.add_argument("--keep-audio", action=argparse.BooleanOptionalAction, default=None,
+                    help="是否保留 Whisper 下载的音频（默认转写后立即删除）")
+    wt.add_argument("--webhook-url", default=None,
+                    help="可选手机通知 webhook（也可用 KNOWPIPE_WEBHOOK_URL）")
+    wt.add_argument("--smtp-host", default=None, help="可选 SMTP 主机")
+    wt.add_argument("--smtp-port", type=int, default=None, help="SMTP 端口，默认 587")
+    wt.add_argument("--smtp-user", default=None, help="SMTP 用户名")
+    wt.add_argument("--smtp-password", default=None, help="SMTP 密码（更建议用环境变量）")
+    wt.add_argument("--smtp-from", default=None, help="发件人地址")
+    wt.add_argument("--smtp-to", default=None, help="收件人地址，可用逗号分隔多个")
+    wt.add_argument("--smtp-tls", action=argparse.BooleanOptionalAction, default=None,
+                    help="是否启用 STARTTLS（默认启用）")
+    wt.set_defaults(fn=cmd_watch)
     return p
 
 

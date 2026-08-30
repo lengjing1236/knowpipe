@@ -110,6 +110,35 @@ ANSWER_SYSTEM = """你是个人知识库问答助手。你会收到用户的问�
 只输出回答正文，不要标题、JSON 或检索过程。"""
 
 
+HIERARCHICAL_SUMMARY_CHUNK_SYSTEM = """你是长篇 Podcast 知识整理器。下面是完整内容中的一个连续片段。
+请提取供总编辑使用的忠实结构化笔记，而不是复述逐字稿。
+要求：
+1. 覆盖片段中的事实、因果关系、定义、例子、限制条件和未解决问题；不要只挑结论。
+2. 修正明显的 ASR 术语错误，但不补造片段没有的信息。
+3. 合并重复口语，保留必要的技术细节、数字和代码标识符。
+4. 用中文输出简洁条目；不要输出开场白，不要输出完整原文或逐字稿。"""
+
+
+HIERARCHICAL_SUMMARY_MERGE_SYSTEM = """你是长篇 Podcast 总结的中间编辑。下面是多个片段笔记。
+请合并成一份覆盖完整信息的编辑提纲。
+要求：
+1. 删除重复内容，保留互补细节、例子、限制和不同观点。
+2. 按主题和因果关系排序，不要因为片段顺序而丢失信息。
+3. 标出可能矛盾或需要回看原片段的地方，但不要自行编造结论。
+4. 输出中文提纲，不要输出逐字稿。"""
+
+
+HIERARCHICAL_SUMMARY_FINAL_SYSTEM = """你是高质量 Podcast 知识文章总编辑。下面是多个编辑笔记，可能来自很长的一集节目。
+请据此写出一篇完整、准确、可复习的知识总结文章，不要输出逐字稿。
+要求：
+1. 覆盖所有重要主题，按逻辑顺序使用 ## 小标题组织。
+2. 首次出现的专业术语补充简短解释；保留关键数字、代码、例子和限制条件。
+3. 对不同观点、因果链和不确定信息明确区分，不要把推测写成事实。
+4. 删除口语、重复和元话语；不得遗漏笔记中的重要信息。
+5. 末尾必须有“## 核心要点”，列出 3-7 条最重要结论。
+6. 只输出文章正文，从第一个 ## 小标题开始，不要前言、JSON 或逐字稿。"""
+
+
 def _extract_json(text: str):
     """从模型输出里稳健地取出第一个 JSON 数组/对象。"""
     text = text.strip()
@@ -256,6 +285,72 @@ class Brain:
 8. 顶部不需要 # 一级标题（调用方会加）"""
         return self._chat(system, clean_text[:16000], temperature=0.3, max_tokens=8000).strip()
 
+    @staticmethod
+    def _summary_chunks(text, max_chars=12000, overlap=300):
+        """把长 transcript 切成有少量重叠的片段；也处理超长单段文本。"""
+        text = str(text or "").strip()
+        if not text:
+            return []
+        paragraphs = [part.strip() for part in re.split(r"\n+", text) if part.strip()]
+        normalized = "\n".join(paragraphs)
+        # ASR 往往整段没有换行，使用滑动窗口保证每块严格不超过上限。
+        max_chars = max(1, int(max_chars))
+        overlap = max(0, min(int(overlap), max_chars - 1))
+        chunks = []
+        start = 0
+        while start < len(normalized):
+            end = min(len(normalized), start + max_chars)
+            chunks.append(normalized[start:end])
+            if end >= len(normalized):
+                break
+            start = end - overlap
+        return chunks
+
+    def _generate_hierarchical_article(self, transcript):
+        """长文 map-reduce：片段笔记 → 编辑提纲 → 最终知识文章。"""
+        try:
+            chunk_chars = max(4000, int(os.getenv("KNOWPIPE_SUMMARY_CHUNK_CHARS", "12000")))
+        except ValueError:
+            chunk_chars = 12000
+        chunks = self._summary_chunks(transcript, max_chars=chunk_chars, overlap=300)
+        notes = []
+        for index, chunk in enumerate(chunks, 1):
+            user = f"片段 {index}/{len(chunks)}：\n\n{chunk}"
+            note = self._chat(
+                HIERARCHICAL_SUMMARY_CHUNK_SYSTEM, user,
+                temperature=0.15, max_tokens=3500,
+            ).strip()
+            if note:
+                notes.append(note)
+        if not notes:
+            return ""
+
+        # 笔记仍可能超过最终上下文；逐轮合并直到可交给总编辑。
+        try:
+            merge_chars = max(12000, int(os.getenv("KNOWPIPE_SUMMARY_MERGE_CHARS", "30000")))
+        except ValueError:
+            merge_chars = 30000
+        while len("\n\n".join(notes)) > merge_chars and len(notes) > 1:
+            merged = []
+            note_chunks = self._summary_chunks("\n\n".join(notes), max_chars=merge_chars, overlap=0)
+            for index, note_chunk in enumerate(note_chunks, 1):
+                merged_note = self._chat(
+                    HIERARCHICAL_SUMMARY_MERGE_SYSTEM,
+                    f"提纲组 {index}/{len(note_chunks)}：\n\n{note_chunk}",
+                    temperature=0.15, max_tokens=4500,
+                ).strip()
+                if merged_note:
+                    merged.append(merged_note)
+            if not merged or len(merged) >= len(notes):
+                break
+            notes = merged
+
+        final_notes = "\n\n".join(notes)
+        return self._chat(
+            HIERARCHICAL_SUMMARY_FINAL_SYSTEM, final_notes,
+            temperature=0.25, max_tokens=10000,
+        ).strip()
+
     def generate_article_from_transcript(self, transcript):
         """从 ASR 原稿直接生成知识文章，合并清洗与整理两次 LLM 调用。"""
         if self.provider != "openai":
@@ -268,6 +363,12 @@ class Brain:
             body = "\n\n".join(picked)
             bullets = "\n".join(f"- {s}" for s in picked[:5])
             return f"## 核心内容\n\n{body}\n\n## 核心要点\n\n{bullets}"
+        try:
+            single_limit = max(8000, int(os.getenv("KNOWPIPE_SUMMARY_SINGLE_LIMIT", "18000")))
+        except ValueError:
+            single_limit = 18000
+        if len(transcript) > single_limit:
+            return self._generate_hierarchical_article(transcript)
         system = """你是技术知识整理专家。输入是一段可能有 ASR 识别错误的技术视频逐字稿。
 请先在内部完成术语纠错、代码标识符纠正、去口误/重复、补标点和断句；然后直接输出一篇结构清晰、逻辑连贯的知识总结文章。不要输出校对过程，也不要输出逐字稿原文。
 

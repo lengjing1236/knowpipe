@@ -46,6 +46,18 @@ python3 -m knowpipe process --bilibili BV1DfrdByE2H --p 1 --out report.md --brai
 python3 -m knowpipe process --podcast https://example.com/feed.xml --episode 1 --mode article --brain openai
 #    可用 --podcast-transcript 直接指定 transcript URL；音频兜底需 pip install faster-whisper
 
+# 2e) Podcast 自动轮询：发现新 GUID → 下载/转写 → 管道 → 本地归档
+python3 -m knowpipe --memory memory/cards.db watch \
+  --feed https://example.com/feed.xml \
+  --archive-dir archive/podcasts --mode integrated --brain openai --once
+#    可重复指定多个 --feed，也可用 --feeds-file feeds.txt（每行一个 URL）
+#    --once 适合 cron；去掉 --once 则常驻运行，默认每 3600 秒检查一次
+#    状态记录在 state/podcast_watch.db，按 feed URL + episode GUID 去重；成功集不会重复调用 LLM
+#    每集报告以“日期_标题_GUID摘要.md”写入 archive/podcasts/<节目名>/，采用临时文件原子替换
+#    Whisper 音频默认转写完成即删除；transcript 默认保留30天，可用 --transcript-retention-days 调整
+#    可选手机 webhook：--webhook-url https://...（或 KNOWPIPE_WEBHOOK_URL）
+#    可选邮件：--smtp-host/--smtp-to/--smtp-from；密码建议放 KNOWPIPE_SMTP_PASSWORD
+
 # 2c) 合集批量：循环每个分P，共享记忆库去重，输出汇总报告
 python3 -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages 1-3 --out batch.md --brain auto
 python3 -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages all --out all.md --brain auto
@@ -74,6 +86,7 @@ python3 -m knowpipe --memory memory/cards.db status
 | `process --bilibili BV [--p N]` | B站 BV 号 → 逐字稿 → 进管道（单P） |
 | `process --bilibili BV --bili-pages 1-3/all` | 合集批量：循环分P，共享记忆库去重，输出汇总报告 |
 | `process --podcast FEED [--episode N]` | Podcast RSS/Atom → transcript/Whisper → 管道 |
+| `watch --feed FEED [--once]` | 定时轮询一个或多个 Podcast，按 GUID 去重、处理、归档并可选通知 |
 | `status` | 查看记忆库状态 |
 | `ask QUESTION` | 基于个人记忆库检索并回答问题 |
 | `review [--apply F]` | 给 new/refined/conflict 卡评分，回写记忆库 |
@@ -82,10 +95,48 @@ python3 -m knowpipe --memory memory/cards.db status
 `process` 主要参数：`--out`（报告路径，默认 stdout）、`--title`、`--brain`（auto/openai/manual/heuristic）、`--mode`（cards=原子卡模式 / article=文章级模式，默认cards）、`--manual-dir`（manual 模式判定文件目录）、`--memory`（记忆库路径，默认 `memory/cards.jsonl`）；B站相关：`--p`（分P页码，默认1）、`--bili-pages`（合集批量范围，如 '1-3,5' 或 'all'）、`--bili-resume`（合集断点续跑）、`--bili-cache-dir`（逐字稿缓存目录，默认 cache/bili_transcripts）、`--bili-transcriber`（auto/subtitle/lark/whisper）、`--whisper-model`（whisper模型大小）、`--bili-workdir`（妙记产物目录，默认 ./lark_out）。文章级报告仅保留知识总结与元数据，不包含 ASR 原稿或清洗稿。
 
 OpenAI 模式下，长文本分块抽取默认并发 4 路，并与全文摘要并行；如遇网关限流，可设置 `KNOWPIPE_DECOMPOSE_WORKERS=1`，或按需调高该值。
+长 Podcast（超过 `KNOWPIPE_SUMMARY_SINGLE_LIMIT`，默认 18,000 字）会自动采用“片段
+笔记 → 编辑提纲 → 总编辑成文”的分层总结，避免单次上下文截断；可用
+`KNOWPIPE_SUMMARY_CHUNK_CHARS`（默认 12,000）和 `KNOWPIPE_SUMMARY_MERGE_CHARS`
+（默认 30,000）调整分层粒度。该模式以覆盖率和忠实度优先，后台处理不设硬性速度目标。
 LLM 请求遇到网络错误或限流时默认最多重试 2 次（指数退避），可用 `KNOWPIPE_LLM_RETRIES=0` 关闭重试。
 OpenAI 响应默认按模型、提示词和输入内容缓存到 `cache/llm/`，重复处理会直接命中缓存；设置 `KNOWPIPE_LLM_CACHE=0` 可关闭，或用 `KNOWPIPE_LLM_CACHE_DIR` 更换目录。
 Podcast 参数：`--podcast` 指定 RSS/Atom feed，`--episode` 选择集数，`--podcast-transcript` 可覆盖 feed 中的 transcript URL，`--podcast-cache-dir` 缓存文字稿；`auto` 模式在没有文字稿时使用本地 Whisper。
 模式参数：`cards` 输出知识差分卡，`article` 输出长文总结，`integrated` 同时输出两者。
+
+### 自动轮询参数与通知
+
+`watch` 支持重复的 `--feed URL` 或 `--feeds-file feeds.txt`。每轮先把 feed 中的
+episode GUID 写入 SQLite 状态库，再原子声明 `processing`，处理成功后记录
+`success + report_path`；中途崩溃的 processing 任务超过 6 小时会自动重试，失败集
+下一轮也会重试。这样 RSS 排序变化、cron 重入和网络短暂失败都不会造成重复报告。
+
+默认 `--mode integrated`，同时得到高质量长文总结和“未知/深化/冲突”知识卡；也可选
+`article` 或 `cards`。`--limit N` 可限制每个 feed 每轮最多处理 N 集，避免首次运行时
+一次处理过多历史节目。
+
+本地隐私策略：Whisper 下载的音频默认在转写结束后立即删除；transcript 仅作为临时
+缓存，watch 每轮清理超过 `--transcript-retention-days`（默认 30 天）的文件。若需要
+保留音频用于复核，可显式使用 `--keep-audio`；云端 LLM 只接收处理所需文本，不会把
+完整 transcript 写入最终报告。注意：使用 `--brain openai/auto` 时，文本仍会随请求
+发送到你配置的 LLM 网关；若要求完全不出本机，请使用 `heuristic`/`manual` 或未来接入
+本地模型。
+
+通知后端默认关闭：`--webhook-url` 将 JSON（标题、摘要、报告路径）POST 到 ntfy、
+Telegram 中转或 PushPlus 等服务；配置 `--smtp-host --smtp-to --smtp-from` 可发送
+纯文本邮件。通知失败只记录在本轮结果中，不会把已经成功归档的 episode 标为失败。
+也可以用环境变量配置：`KNOWPIPE_WEBHOOK_URL`、`KNOWPIPE_SMTP_HOST`、
+`KNOWPIPE_SMTP_PORT`、`KNOWPIPE_SMTP_USER`、`KNOWPIPE_SMTP_PASSWORD`、
+`KNOWPIPE_SMTP_FROM`、`KNOWPIPE_SMTP_TO`、`KNOWPIPE_SMTP_TLS`。
+
+例如用 cron 每小时运行一次（`--once` 执行完即退出）：
+
+```cron
+0 * * * * cd /home/lengjing1236/knowpipe && mkdir -p state && \
+  python3 -m knowpipe --memory memory/cards.db watch \
+  --feeds-file feeds.txt --archive-dir archive/podcasts \
+  --mode integrated --brain auto --once >> state/watch.log 2>&1
+```
 
 ## 大脑（Brain）三种模式
 
@@ -128,13 +179,13 @@ Podcast 参数：`--podcast` 指定 RSS/Atom feed，`--episode` 选择集数，`
 支持多套命名，按优先级 fallback：
 - `OPENAI_BASE_URL` / `KNOWPIPE_OPENAI_BASE_URL` / `OPENAI_API_BASE`：API 网关地址
 - `OPENAI_API_KEY` / `KNOWPIPE_OPENAI_API_KEY`：API 密钥
-- `KNOWPIPE_LLM_MODEL` / `KNOWPIPE_OPENAI_MODEL` / `OPENAI_MODEL`：模型 ID（如 gpt-5.6-terra）
+- `KNOWPIPE_LLM_MODEL` / `KNOWPIPE_OPENAI_MODEL` / `OPENAI_MODEL`：模型 ID（如 gpt-5.6）
 
 示例（ekti.cc 中转）：
 ```bash
 export OPENAI_BASE_URL="https://chat.ekti.cc/v1"
 export OPENAI_API_KEY="sk-xxx"
-export KNOWPIPE_LLM_MODEL="gpt-5.6-terra"
+export KNOWPIPE_LLM_MODEL="gpt-5.6"
 ```
 
 `--brain auto`：检测到 API key 就用 LLM，没有则降级 heuristic（离线兜底）。

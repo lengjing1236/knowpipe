@@ -9,6 +9,8 @@ env/
 # 本地配置与系统文件
 .env
 .env.*
+feeds.txt
+feeds.local.txt
 .DS_Store
 .idea/
 .vscode/
@@ -16,6 +18,12 @@ env/
 # 运行时数据：逐字稿、下载音频、模型与中间产物
 cache/
 memory/
+state/
+archive/
+*.db-shm
+*.db-wal
+*.log
+*.tmp
 whisper_out/
 lark_out/
 *.mp3

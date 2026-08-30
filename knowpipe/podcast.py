@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -24,6 +25,11 @@ UA = (
 
 class PodcastError(Exception):
     pass
+
+
+# 常驻 watcher 可能连续转写多集；Whisper 模型初始化/加载通常比单集推理更慢，
+# 按配置复用实例，避免每一集重新读取数百 MB 模型。
+_WHISPER_MODELS = {}
 
 
 def _local_name(tag: str) -> str:
@@ -194,6 +200,40 @@ def _safe_name(value: str) -> str:
     return stem[:80] or "episode"
 
 
+def _env_flag(name: str, default: bool = False) -> bool:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return value.strip().lower() not in {"0", "false", "no", "off"}
+
+
+def cleanup_transcript_cache(cache_dir: str, retention_days: int = 30) -> int:
+    """删除超过保留期的 transcript 缓存，返回删除数量。
+
+    ``retention_days <= 0`` 表示清理目录内所有 ``.txt``；清理失败的文件会被
+    跳过，不影响 watcher 处理新集。
+    """
+    if not cache_dir or not os.path.isdir(cache_dir):
+        return 0
+    cutoff = time.time() - max(0, int(retention_days)) * 86400
+    removed = 0
+    try:
+        names = os.listdir(cache_dir)
+    except OSError:
+        return 0
+    for name in names:
+        if not name.endswith(".txt"):
+            continue
+        path = os.path.join(cache_dir, name)
+        try:
+            if os.path.isfile(path) and os.path.getmtime(path) <= cutoff:
+                os.unlink(path)
+                removed += 1
+        except OSError:
+            continue
+    return removed
+
+
 def download_audio(url: str, output_dir: str, cache_key: str, timeout: int = 60) -> str:
     """下载 episode 音频并缓存，返回本地路径。"""
     os.makedirs(output_dir, exist_ok=True)
@@ -235,22 +275,35 @@ def transcribe_local(audio_path: str) -> str:
     device = os.getenv("WHISPER_DEVICE", "cpu")
     compute_type = os.getenv("WHISPER_COMPUTE", "int8")
     language = os.getenv("PODCAST_WHISPER_LANGUAGE") or None
-    model = WhisperModel(model_size, device=device, compute_type=compute_type)
+    model_key = (model_size, device, compute_type)
+    model = _WHISPER_MODELS.get(model_key)
+    if model is None:
+        model = WhisperModel(model_size, device=device, compute_type=compute_type)
+        _WHISPER_MODELS[model_key] = model
     segments, _info = model.transcribe(audio_path, language=language, vad_filter=True)
     return "\n".join(segment.text.strip() for segment in segments if segment.text.strip())
 
 
-def fetch_episode(feed_url: str, episode: int = 1, transcriber: str = "auto",
-                  transcript_url: str | None = None,
-                  audio_dir: str = "cache/podcast_audio",
-                  transcript_cache_dir: str = "cache/podcast_transcripts") -> dict:
-    """选择第 ``episode`` 集并返回统一输入结构。"""
-    if episode < 1:
-        raise PodcastError("episode 必须从 1 开始")
-    feed = fetch_feed(feed_url)
-    if episode > len(feed["episodes"]):
-        raise PodcastError(f"Podcast 共 {len(feed['episodes'])} 集，请求 episode={episode}")
-    item = feed["episodes"][episode - 1]
+def fetch_episode_item(feed_url: str, item: dict, transcriber: str = "auto",
+                       transcript_url: str | None = None,
+                       audio_dir: str = "cache/podcast_audio",
+                       transcript_cache_dir: str = "cache/podcast_transcripts",
+                       keep_audio: bool | None = None) -> dict:
+    """获取一个已经从 feed 解析出的 episode 的文本。
+
+    ``watch`` 使用此接口按 GUID 处理节目，而不是依赖 RSS 当前排序；这样
+    插入置顶/重排历史节目不会误处理另一集。``item`` 应来自
+    :func:`fetch_feed` 的 ``episodes`` 列表。
+    """
+    if not isinstance(item, dict):
+        raise PodcastError("episode metadata 必须是对象")
+    item = dict(item)
+    item.setdefault("title", "未命名节目")
+    item.setdefault("guid", item.get("link") or item["title"])
+    item.setdefault("transcripts", [])
+    if not isinstance(item.get("transcripts"), list):
+        item["transcripts"] = []
+    item.setdefault("audio_url", "")
     cache_key = hashlib.sha1(
         f"{feed_url}\n{item['guid']}".encode("utf-8")
     ).hexdigest()[:20]
@@ -261,11 +314,11 @@ def fetch_episode(feed_url: str, episode: int = 1, transcriber: str = "auto",
         if text:
             return {
                 "title": item["title"], "text": text, "method": "cache",
-                "feed_url": feed_url, "episode": episode, "episode_meta": item,
+                "feed_url": feed_url, "episode": item.get("episode"), "episode_meta": item,
             }
     candidates = []
     if transcript_url:
-        candidates.append(transcript_url)
+        candidates.append(_absolute_url(transcript_url, feed_url))
     candidates.extend(t["url"] for t in item["transcripts"] if t.get("url"))
     if transcriber in {"auto", "transcript"}:
         for url in candidates:
@@ -279,7 +332,7 @@ def fetch_episode(feed_url: str, episode: int = 1, transcriber: str = "auto",
                     cached.write(text)
                 return {
                     "title": item["title"], "text": text, "method": "transcript",
-                    "feed_url": feed_url, "episode": episode, "episode_meta": item,
+                    "feed_url": feed_url, "episode": item.get("episode"), "episode_meta": item,
                 }
         if transcriber == "transcript":
             raise PodcastError("该 episode 没有可读取的 transcript")
@@ -288,13 +341,66 @@ def fetch_episode(feed_url: str, episode: int = 1, transcriber: str = "auto",
         if not item["audio_url"]:
             raise PodcastError("该 episode 没有音频 enclosure，无法使用 Whisper")
         audio_path = download_audio(item["audio_url"], audio_dir, cache_key)
-        text = transcribe_local(audio_path)
+        try:
+            text = transcribe_local(audio_path)
+        finally:
+            # 音频通常比 transcript 大两个数量级；默认转写完成即删除。
+            retain = (_env_flag("KNOWPIPE_PODCAST_KEEP_AUDIO", False)
+                      if keep_audio is None else bool(keep_audio))
+            if not retain:
+                try:
+                    os.unlink(audio_path)
+                except OSError:
+                    pass
         if text.strip():
             os.makedirs(transcript_cache_dir, exist_ok=True)
             with open(cache_path, "w", encoding="utf-8") as cached:
                 cached.write(text)
             return {
                 "title": item["title"], "text": text, "method": "whisper",
-                "feed_url": feed_url, "episode": episode, "episode_meta": item,
+                "feed_url": feed_url, "episode": item.get("episode"), "episode_meta": item,
             }
-    raise PodcastError(f"episode {episode} 未得到可用文本")
+    raise PodcastError(f"episode {item.get('guid') or item.get('title')} 未得到可用文本")
+
+
+def fetch_episode_by_guid(feed_url: str, guid: str, transcriber: str = "auto",
+                          transcript_url: str | None = None,
+                          audio_dir: str = "cache/podcast_audio",
+                          transcript_cache_dir: str = "cache/podcast_transcripts",
+                          keep_audio: bool | None = None) -> dict:
+    """按稳定的 episode GUID 获取一集文本。
+
+    RSS 的排序可能随时间变化，因此自动轮询应使用 GUID，而非 ``episode=1``
+    之类的位置编号。找不到 GUID 时抛出 :class:`PodcastError`。
+    """
+    feed = fetch_feed(feed_url)
+    wanted = str(guid).strip()
+    for item in feed["episodes"]:
+        if str(item.get("guid", "")).strip() == wanted:
+            return fetch_episode_item(
+                feed_url, item, transcriber=transcriber,
+                transcript_url=transcript_url, audio_dir=audio_dir,
+                transcript_cache_dir=transcript_cache_dir, keep_audio=keep_audio,
+            )
+    raise PodcastError(f"feed 中找不到 episode GUID: {guid}")
+
+
+def fetch_episode(feed_url: str, episode: int = 1, transcriber: str = "auto",
+                  transcript_url: str | None = None,
+                  audio_dir: str = "cache/podcast_audio",
+                  transcript_cache_dir: str = "cache/podcast_transcripts",
+                  keep_audio: bool | None = None) -> dict:
+    """按 feed 中的序号选择 episode（兼容手动 CLI 用法）。"""
+    if episode < 1:
+        raise PodcastError("episode 必须从 1 开始")
+    feed = fetch_feed(feed_url)
+    if episode > len(feed["episodes"]):
+        raise PodcastError(f"Podcast 共 {len(feed['episodes'])} 集，请求 episode={episode}")
+    result = fetch_episode_item(
+        feed_url, feed["episodes"][episode - 1], transcriber=transcriber,
+        transcript_url=transcript_url, audio_dir=audio_dir,
+        transcript_cache_dir=transcript_cache_dir, keep_audio=keep_audio,
+    )
+    # 保持旧 API 返回的序号字段，同时不把内部序号混进 episode_meta。
+    result["episode"] = episode
+    return result

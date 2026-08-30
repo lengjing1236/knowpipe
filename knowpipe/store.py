@@ -30,6 +30,21 @@ def _term_freqs(tokens) -> dict:
     return d
 
 
+def _vector_cosine(a, b):
+    """计算两个 dense embedding 的余弦相似度；维度不一致时返回 0。"""
+    if not isinstance(a, (list, tuple)) or not isinstance(b, (list, tuple)):
+        return 0.0
+    if not a or len(a) != len(b):
+        return 0.0
+    try:
+        dot = sum(float(x) * float(y) for x, y in zip(a, b))
+        na = math.sqrt(sum(float(x) ** 2 for x in a))
+        nb = math.sqrt(sum(float(y) ** 2 for y in b))
+    except (TypeError, ValueError):
+        return 0.0
+    return dot / (na * nb) if na and nb else 0.0
+
+
 class Index:
     def __init__(self):
         self._docs = []          # (text, meta)
@@ -95,6 +110,7 @@ class MemoryStore:
         self.path = path
         self.cards = []
         self._index = None
+        self._semantic_vectors = {}
         self._load()
 
     def _load(self):
@@ -130,7 +146,7 @@ class MemoryStore:
     def by_status(self, status):
         return [c for c in self.cards if c.get("status") == status]
 
-    def candidates_for(self, text, top_k=4):
+    def candidates_for(self, text, top_k=4, embedder=None):
         """返回 [(memory_card_meta, score), ...]，score 为相似度。"""
         # 索引在一次 pipeline 中会被数十/数百张卡重复查询；缓存后避免每张卡
         # 都重新扫描并构建整个记忆库。新增卡时在 add_new 中失效，保证结果正确。
@@ -138,7 +154,37 @@ class MemoryStore:
             self._index = Index()
             for c in self.cards:
                 self._index.add(c["claim"], c)
-        return self._index.query(text, top_k=top_k)
+        lexical = self._index.query(text, top_k=max(top_k * 4, top_k))
+        if not embedder or not self.cards:
+            return lexical[:top_k]
+
+        # embedding 是可选增强；接口、模型或网络异常时保留 TF-IDF 结果。
+        try:
+            missing = [card for card in self.cards if card["id"] not in self._semantic_vectors]
+            vectors = embedder([text] + [card["claim"] for card in missing])
+            if not vectors or vectors[0] is None:
+                return lexical[:top_k]
+            query_vector = vectors[0]
+            for card, vector in zip(missing, vectors[1:]):
+                if vector is not None:
+                    self._semantic_vectors[card["id"]] = vector
+            lexical_scores = {card["id"]: score for card, score in lexical}
+            ranked = []
+            for card in self.cards:
+                vector = self._semantic_vectors.get(card["id"])
+                if vector is None:
+                    continue
+                semantic = _vector_cosine(query_vector, vector)
+                lexical_score = lexical_scores.get(card["id"], 0.0)
+                score = 0.35 * lexical_score + 0.65 * max(0.0, semantic)
+                if score > 0:
+                    ranked.append((card, score))
+            if ranked:
+                ranked.sort(key=lambda item: item[1], reverse=True)
+                return ranked[:top_k]
+        except Exception:  # noqa: BLE001 - 检索增强失败不应阻断主流程
+            pass
+        return lexical[:top_k]
 
     def stats(self):
         counts = collections.Counter(c.get("status", "?") for c in self.cards)
@@ -215,6 +261,7 @@ class MemoryStore:
         if len(self.cards) == before:
             return False
         self._index = None
+        self._semantic_vectors.pop(cid, None)
         self.save()
         return True
 
@@ -237,6 +284,7 @@ class SQLiteMemoryStore(MemoryStore):
         self.path = path
         self.cards = []
         self._index = None
+        self._semantic_vectors = {}
         parent = os.path.dirname(os.path.abspath(path))
         os.makedirs(parent, exist_ok=True)
         self._conn = sqlite3.connect(path, timeout=30, check_same_thread=False)
