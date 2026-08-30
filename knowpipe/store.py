@@ -7,6 +7,7 @@ import json
 import math
 import os
 import re
+import sqlite3
 import time
 
 # --------------------------------------------------------------------------
@@ -167,6 +168,8 @@ class MemoryStore:
         cid = self.id_of(claim)
         existing = self._touch(cid)
         if existing:
+            if persist:
+                self.save()
             return existing
         card = {
             "id": cid,
@@ -204,3 +207,169 @@ class MemoryStore:
             c["review_note"] = note
         self.save()
         return c
+
+    def delete(self, cid):
+        """删除一张卡并持久化。"""
+        before = len(self.cards)
+        self.cards = [card for card in self.cards if card.get("id") != cid]
+        if len(self.cards) == before:
+            return False
+        self._index = None
+        self.save()
+        return True
+
+
+class SQLiteMemoryStore(MemoryStore):
+    """SQLite-backed memory store with the same public API as ``MemoryStore``.
+
+    JSONL remains the default for backwards compatibility.  SQLite is useful for
+    a personal library that is growing or being queried while another command is
+    running: writes are transactional and the database can be indexed safely.
+    """
+
+    _COLUMNS = (
+        "id", "claim", "source", "topic", "certainty", "status",
+        "relates_to", "seen_count", "evidence", "created", "last_seen",
+        "review_note",
+    )
+
+    def __init__(self, path: str):
+        self.path = path
+        self.cards = []
+        self._index = None
+        parent = os.path.dirname(os.path.abspath(path))
+        os.makedirs(parent, exist_ok=True)
+        self._conn = sqlite3.connect(path, timeout=30, check_same_thread=False)
+        self._conn.row_factory = sqlite3.Row
+        self._conn.execute("PRAGMA busy_timeout=30000")
+        self._conn.execute("PRAGMA journal_mode=WAL")
+        self._ensure_schema()
+        self._load()
+
+    def _ensure_schema(self):
+        self._conn.executescript(
+            """
+            CREATE TABLE IF NOT EXISTS cards (
+                id TEXT PRIMARY KEY,
+                claim TEXT NOT NULL,
+                source TEXT NOT NULL DEFAULT '',
+                topic TEXT NOT NULL DEFAULT '',
+                certainty TEXT NOT NULL DEFAULT 'fact',
+                status TEXT NOT NULL DEFAULT 'new',
+                relates_to TEXT,
+                seen_count INTEGER NOT NULL DEFAULT 1,
+                evidence TEXT NOT NULL DEFAULT '',
+                created TEXT NOT NULL,
+                last_seen TEXT NOT NULL,
+                review_note TEXT
+            );
+            CREATE INDEX IF NOT EXISTS idx_cards_status ON cards(status);
+            CREATE INDEX IF NOT EXISTS idx_cards_topic ON cards(topic);
+            """
+        )
+        self._conn.commit()
+
+    def _load(self):
+        rows = self._conn.execute(
+            "SELECT id, claim, source, topic, certainty, status, relates_to, "
+            "seen_count, evidence, created, last_seen, review_note "
+            "FROM cards ORDER BY rowid"
+        ).fetchall()
+        self.cards = []
+        for row in rows:
+            card = dict(row)
+            if card.get("review_note") is None:
+                card.pop("review_note", None)
+            self.cards.append(card)
+
+    def save(self):
+        """同步当前 cards 快照，整个操作在一个 SQLite 事务中完成。"""
+        with self._conn:
+            sql = """
+                INSERT INTO cards
+                (id, claim, source, topic, certainty, status, relates_to,
+                 seen_count, evidence, created, last_seen, review_note)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON CONFLICT(id) DO UPDATE SET
+                  claim=excluded.claim,
+                  source=excluded.source,
+                  topic=excluded.topic,
+                  certainty=excluded.certainty,
+                  status=excluded.status,
+                  relates_to=excluded.relates_to,
+                  seen_count=excluded.seen_count,
+                  evidence=excluded.evidence,
+                  created=excluded.created,
+                  last_seen=excluded.last_seen,
+                  review_note=excluded.review_note
+            """
+            for c in self.cards:
+                self._conn.execute(sql, tuple(c.get(k) for k in self._COLUMNS))
+
+    def delete(self, cid):
+        """删除一张 SQLite 卡；不重写其它进程可能新增的卡片。"""
+        if not any(card.get("id") == cid for card in self.cards):
+            return False
+        with self._conn:
+            self._conn.execute("DELETE FROM cards WHERE id = ?", (cid,))
+        self.cards = [card for card in self.cards if card.get("id") != cid]
+        self._index = None
+        return True
+
+    def close(self):
+        if getattr(self, "_conn", None) is not None:
+            self._conn.close()
+            self._conn = None
+
+    def __del__(self):  # pragma: no cover - interpreter shutdown path
+        try:
+            self.close()
+        except Exception:
+            pass
+
+
+def open_store(path: str):
+    """按文件扩展名选择记忆后端。
+
+    ``*.db``, ``*.sqlite`` 和 ``*.sqlite3`` 使用 SQLite；其它路径继续使用
+    JSONL。这样已有 ``memory/cards.jsonl`` 无需迁移即可继续工作。
+    """
+    suffix = os.path.splitext(path)[1].lower()
+    if suffix in {".db", ".sqlite", ".sqlite3"}:
+        return SQLiteMemoryStore(path)
+    return MemoryStore(path)
+
+
+def migrate_jsonl_to_sqlite(source: str, destination: str) -> int:
+    """把现有 JSONL 记忆库迁移到 SQLite，返回迁移卡片数量。"""
+    if os.path.abspath(source) == os.path.abspath(destination):
+        raise ValueError("源文件与 SQLite 目标路径不能相同")
+    source_store = MemoryStore(source)
+    destination_store = SQLiteMemoryStore(destination)
+    # 兼容 seed JSONL：这类文件通常只有 claim/topic/certainty，没有运行时字段。
+    normalized = []
+    for raw in source_store.cards:
+        claim = str(raw.get("claim", "")).strip()
+        if not claim:
+            continue
+        card = dict(raw)
+        card.setdefault("id", MemoryStore.id_of(claim))
+        card.setdefault("source", "import")
+        card.setdefault("topic", "")
+        card.setdefault("certainty", "fact")
+        card.setdefault("status", STATUS_NEW)
+        card.setdefault("relates_to", None)
+        card.setdefault("seen_count", 1)
+        card.setdefault("evidence", "")
+        created = card.setdefault("created", now_iso())
+        card.setdefault("last_seen", created)
+        normalized.append(card)
+    # 迁移语义是“目标库与源库一致”，因此显式清理目标库中的旧卡；普通
+    # SQLiteMemoryStore.save() 则不会删除其它进程新增的卡片。
+    with destination_store._conn:
+        destination_store._conn.execute("DELETE FROM cards")
+    destination_store.cards = normalized
+    destination_store._index = None
+    destination_store.save()
+    destination_store.close()
+    return len(normalized)

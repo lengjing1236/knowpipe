@@ -213,6 +213,11 @@ def build_batch_report(info, page_results, store_stats):
         if r.get("digest"):
             d = r["digest"].replace("\n", " ")[:200]
             L.append(f"- 摘要：> {d}")
+        if r.get("article"):
+            L.append("")
+            L.append("#### 长文总结")
+            L.append("")
+            L.append(r["article"])
         L.append("")
 
     L.append("## 6. 记忆库状态")
@@ -241,7 +246,8 @@ def build_article_report(title, source, raw_text, *args):
     L.append(f"- **来源**：{source}")
     L.append(f"- **处理时间**：{time.strftime('%Y-%m-%d %H:%M:%S')}")
     L.append(f"- **大脑**：{brain_provider}（文章级模式：ASR 清洗 + 知识总结）")
-    L.append(f"- **输入长度**：{len(raw_text)} 字")
+    input_length = raw_text if isinstance(raw_text, int) else len(raw_text)
+    L.append(f"- **输入长度**：{input_length} 字")
     L.append("")
     L.append("---")
     L.append("")
@@ -249,4 +255,19 @@ def build_article_report(title, source, raw_text, *args):
     L.append("")
     L.append(article)
     L.append("")
+    return "\n".join(L)
+
+
+def build_integrated_report(res, article):
+    """合并长文总结与知识差分报告，不包含 ASR 原稿。"""
+    article_part = build_article_report(
+        res["title"], res["source"], res.get("input_chars", 0),
+        article, res["brain_provider"]
+    )
+    L = [article_part, "", "---", "", "## 未知知识卡与记忆差分", ""]
+    cards_part = build_report(res)
+    # 去掉卡片报告自己的一级标题和重复元数据，保留从“结果一览”开始的内容。
+    marker = "## 结果一览"
+    tail = cards_part[cards_part.find(marker):] if marker in cards_part else cards_part
+    L.append(tail)
     return "\n".join(L)

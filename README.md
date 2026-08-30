@@ -28,6 +28,9 @@ python3 -m knowpipe process --bilibili BV1ST4y1m7No --p 1 --mode article --out r
 #    --mode article：一次 LLM 调用完成术语纠错与知识总结（不输出逐字稿）
 #    文章含：按逻辑分段、专业名词补解释、断裂逻辑补串联、核心要点总结
 
+# 2b++) 综合模式：一次输入同时输出长文总结和未知/深化/冲突知识卡
+python3 -m knowpipe process --bilibili BV1ST4y1m7No --p 1 --mode integrated --out report.md --brain openai
+
 # 2b) B站：给出 BV 号 → 自动取逐字稿 → 进管道
 python3 -m knowpipe process --bilibili BV1DfrdByE2H --p 1 --out report.md --brain auto
 #    --bilibili 优先取官方字幕；无字幕时自动降级：飞书妙记（开发环境）→ 本地whisper（需装依赖）
@@ -38,6 +41,10 @@ python3 -m knowpipe process --bilibili BV1DfrdByE2H --p 1 --out report.md --brai
 #   sudo apt install ffmpeg        # WSL/Ubuntu；macOS: brew install ffmpeg
 #   首次运行会自动下载 whisper 模型（small约500MB，medium约1.5GB）
 #   之后 --bilibili BV 一条命令即可，无需任何云服务
+
+# 2d) Podcast：RSS/Atom feed → transcript 优先 → 无稿时本地 Whisper
+python3 -m knowpipe process --podcast https://example.com/feed.xml --episode 1 --mode article --brain openai
+#    可用 --podcast-transcript 直接指定 transcript URL；音频兜底需 pip install faster-whisper
 
 # 2c) 合集批量：循环每个分P，共享记忆库去重，输出汇总报告
 python3 -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages 1-3 --out batch.md --brain auto
@@ -51,6 +58,11 @@ python3 -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages all --out all.m
 python3 -m knowpipe status
 python3 -m knowpipe review        # 交互评分：k=早已知  l=学到新东西  s=跳过  x=删除
 python3 -m knowpipe review --apply review.jsonl   # 非交互评分
+python3 -m knowpipe --memory memory/cards.db ask "事件循环如何恢复任务？"
+
+# 记忆库较大时可迁移到 SQLite（命令行其它用法保持不变）
+python3 -m knowpipe migrate --source memory/cards.jsonl --destination memory/cards.db
+python3 -m knowpipe --memory memory/cards.db status
 ```
 
 ## 命令
@@ -61,13 +73,19 @@ python3 -m knowpipe review --apply review.jsonl   # 非交互评分
 | `process --url/--text/--text-file/--file ...` | 摄入并处理，输出新知识报告 |
 | `process --bilibili BV [--p N]` | B站 BV 号 → 逐字稿 → 进管道（单P） |
 | `process --bilibili BV --bili-pages 1-3/all` | 合集批量：循环分P，共享记忆库去重，输出汇总报告 |
+| `process --podcast FEED [--episode N]` | Podcast RSS/Atom → transcript/Whisper → 管道 |
 | `status` | 查看记忆库状态 |
+| `ask QUESTION` | 基于个人记忆库检索并回答问题 |
 | `review [--apply F]` | 给 new/refined/conflict 卡评分，回写记忆库 |
+| `migrate --source X --destination Y` | 将 JSONL 记忆库迁移为 SQLite |
 
 `process` 主要参数：`--out`（报告路径，默认 stdout）、`--title`、`--brain`（auto/openai/manual/heuristic）、`--mode`（cards=原子卡模式 / article=文章级模式，默认cards）、`--manual-dir`（manual 模式判定文件目录）、`--memory`（记忆库路径，默认 `memory/cards.jsonl`）；B站相关：`--p`（分P页码，默认1）、`--bili-pages`（合集批量范围，如 '1-3,5' 或 'all'）、`--bili-resume`（合集断点续跑）、`--bili-cache-dir`（逐字稿缓存目录，默认 cache/bili_transcripts）、`--bili-transcriber`（auto/subtitle/lark/whisper）、`--whisper-model`（whisper模型大小）、`--bili-workdir`（妙记产物目录，默认 ./lark_out）。文章级报告仅保留知识总结与元数据，不包含 ASR 原稿或清洗稿。
 
 OpenAI 模式下，长文本分块抽取默认并发 4 路，并与全文摘要并行；如遇网关限流，可设置 `KNOWPIPE_DECOMPOSE_WORKERS=1`，或按需调高该值。
 LLM 请求遇到网络错误或限流时默认最多重试 2 次（指数退避），可用 `KNOWPIPE_LLM_RETRIES=0` 关闭重试。
+OpenAI 响应默认按模型、提示词和输入内容缓存到 `cache/llm/`，重复处理会直接命中缓存；设置 `KNOWPIPE_LLM_CACHE=0` 可关闭，或用 `KNOWPIPE_LLM_CACHE_DIR` 更换目录。
+Podcast 参数：`--podcast` 指定 RSS/Atom feed，`--episode` 选择集数，`--podcast-transcript` 可覆盖 feed 中的 transcript URL，`--podcast-cache-dir` 缓存文字稿；`auto` 模式在没有文字稿时使用本地 Whisper。
+模式参数：`cards` 输出知识差分卡，`article` 输出长文总结，`integrated` 同时输出两者。
 
 ## 大脑（Brain）三种模式
 
@@ -78,7 +96,7 @@ LLM 请求遇到网络错误或限流时默认最多重试 2 次（指数退避�
 | `manual` | 从 `--manual-dir/<input_id>.{decompose.jsonl,classify.jsonl,summary.txt}` 读取预生成判定。用于"用别的大脑（如本 Agent）先想好判定，再跑管道"的演示 / 复现 |
 | `heuristic` | 零依赖启发式（句子切分 + TF-IDF 相似度阈值），开箱即跑，质量较低，适合没 key 时兜底 |
 
-记忆库是 `memory/cards.jsonl`（JSONL，原子卡带状态机 + 溯源 + 关联 id）。重复摄入相同内容幂等（不会重复入库）。
+记忆库默认是 `memory/cards.jsonl`（JSONL，原子卡带状态机 + 溯源 + 关联 id）；将 `--memory` 指向 `.db/.sqlite/.sqlite3` 文件即可使用事务式 SQLite 后端。重复摄入相同内容幂等（不会重复入库）。
 
 ## 与你的原始设想的对应
 

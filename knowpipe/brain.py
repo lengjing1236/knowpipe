@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import re
 import time
@@ -103,6 +104,11 @@ CLASSIFY_SYSTEM = """你是"个人知识差分器"。用户的个人记忆库里
 
 SUMMARIZE_SYSTEM = """用 3~5 句话概括这段内容的核心要点，覆盖最重要的信息；用自己的话，中文表达（术语可保留英文）。只输出概括文本，不要标题和编号。"""
 
+ANSWER_SYSTEM = """你是个人知识库问答助手。你会收到用户的问题和从其个人记忆库中召回的候选知识卡。
+请严格基于候选卡回答，不要假装知道候选卡之外的事实；候选信息不足时明确说“记忆库中没有足够信息”。
+回答要简洁但完整，必要时说明不同卡片之间的关系或冲突。引用依据时使用 [卡片ID]，不要编造 ID。
+只输出回答正文，不要标题、JSON 或检索过程。"""
+
 
 def _extract_json(text: str):
     """从模型输出里稳健地取出第一个 JSON 数组/对象。"""
@@ -137,6 +143,12 @@ class Brain:
                       or os.getenv("KNOWPIPE_LLM_MODEL", "")
                       or os.getenv("OPENAI_MODEL", "")
                       or DEFAULT_MODEL)
+        self.cache_dir = os.getenv(
+            "KNOWPIPE_LLM_CACHE_DIR", os.path.join("cache", "llm")
+        )
+        cache_flag = os.getenv("KNOWPIPE_LLM_CACHE", "1").strip().lower()
+        self.cache_enabled = cache_flag not in {"0", "false", "no", "off"}
+        self.embedding_model = os.getenv("KNOWPIPE_EMBEDDING_MODEL", "").strip()
         if self.provider == "auto":
             self.provider = "openai" if self.api_key else "heuristic"
         if self.provider == "manual" and not self.manual_dir:
@@ -173,6 +185,30 @@ class Brain:
                     return f.read().strip()
             return ""
         return ""
+
+    def answer_question(self, question, candidates):
+        """基于召回的个人知识卡回答问题。
+
+        ``candidates`` 为 ``[(card, score), ...]``。问答不自动访问互联网，避免把
+        “个人记忆问答”悄悄变成不可追踪的开放域搜索。
+        """
+        candidates = [(card, score) for card, score in candidates if score > 0]
+        if not candidates:
+            return "记忆库中没有足够信息回答这个问题。"
+        if self.provider != "openai":
+            lines = ["根据记忆库中最相关的知识卡："]
+            for card, score in candidates[:5]:
+                lines.append(f"- [{card['id']}] {card['claim']}")
+            return "\n".join(lines)
+        context = []
+        for card, score in candidates[:8]:
+            context.append(
+                f"[{card['id']}] 相似度={score:.3f}；主题={card.get('topic', '')}；"
+                f"状态={card.get('status', '')}；来源={card.get('source', '')}\n"
+                f"断言：{card['claim']}"
+            )
+        user = f"问题：{question.strip()}\n\n候选知识卡：\n" + "\n".join(context)
+        return self._chat(ANSWER_SYSTEM, user, temperature=0.2, max_tokens=1200).strip()
 
     # ---------------------------------------------------------------
     # 文章级模式（ASR预清洗 + 知识总结文章，不抽原子卡）
@@ -248,6 +284,11 @@ class Brain:
     # openai provider
     # ---------------------------------------------------------------
     def _chat(self, system, user, temperature=0.2, max_tokens=4000):
+        cache_path = self._chat_cache_path(system, user, temperature, max_tokens)
+        if cache_path:
+            cached = self._read_chat_cache(cache_path)
+            if cached is not None:
+                return cached
         payload = {
             "model": self.model,
             "messages": [
@@ -258,7 +299,124 @@ class Brain:
             "max_tokens": max_tokens,
         }
         resp = _post_json(self.base_url + "/chat/completions", payload, api_key=self.api_key)
-        return resp["choices"][0]["message"]["content"]
+        content = resp["choices"][0]["message"]["content"]
+        if cache_path:
+            self._write_chat_cache(cache_path, content)
+        return content
+
+    def _chat_cache_path(self, system, user, temperature, max_tokens):
+        if self.provider != "openai" or not self.cache_enabled:
+            return None
+        key_material = json.dumps(
+            {
+                "base_url": self.base_url,
+                "model": self.model,
+                "system": system,
+                "user": user,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }, ensure_ascii=False, sort_keys=True,
+        ).encode("utf-8")
+        digest = hashlib.sha256(key_material).hexdigest()
+        return os.path.join(self.cache_dir, f"{digest}.json")
+
+    @staticmethod
+    def _read_chat_cache(path):
+        try:
+            with open(path, encoding="utf-8") as f:
+                payload = json.load(f)
+            content = payload.get("content")
+            return content if isinstance(content, str) and content.strip() else None
+        except (OSError, ValueError, TypeError):
+            return None
+
+    @staticmethod
+    def _write_chat_cache(path, content):
+        try:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            tmp = path + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump({"content": content}, f, ensure_ascii=False)
+            os.replace(tmp, path)
+        except OSError:
+            # 缓存是性能优化，磁盘不可写时不应阻断主流程。
+            return
+
+    def embed_texts(self, texts):
+        """调用 OpenAI 兼容 embeddings 接口，并缓存每段文本的向量。
+
+        embedding 是可选能力：未配置 ``KNOWPIPE_EMBEDDING_MODEL`` 时返回空列表，
+        让 Store 继续使用零依赖 TF-IDF。调用方可捕获网络/模型错误并自动回退。
+        """
+        if self.provider != "openai" or not self.embedding_model:
+            return []
+        values = [str(text) for text in texts]
+        result = [None] * len(values)
+        missing = []
+        for i, text in enumerate(values):
+            cached = self._read_embedding_cache(text)
+            if cached is None:
+                missing.append((i, text))
+            else:
+                result[i] = cached
+        for start in range(0, len(missing), 64):
+            batch = missing[start:start + 64]
+            payload = {"model": self.embedding_model, "input": [text for _, text in batch]}
+            resp = _post_json(
+                self.base_url + "/embeddings", payload,
+                timeout=120, api_key=self.api_key,
+            )
+            rows = resp.get("data") if isinstance(resp, dict) else None
+            if not isinstance(rows, list) or len(rows) != len(batch):
+                raise BrainError("embedding 结果格式无效")
+            rows = sorted(rows, key=lambda row: row.get("index", 0))
+            for (original_index, text), row in zip(batch, rows):
+                vector = row.get("embedding") if isinstance(row, dict) else None
+                if not isinstance(vector, list) or not vector:
+                    raise BrainError("embedding 向量为空")
+                try:
+                    vector = [float(value) for value in vector]
+                except (TypeError, ValueError) as exc:
+                    raise BrainError("embedding 向量包含非数字值") from exc
+                result[original_index] = vector
+                self._write_embedding_cache(text, vector)
+        return result
+
+    def _embedding_cache_path(self, text):
+        if not self.cache_enabled or not self.embedding_model:
+            return None
+        material = json.dumps(
+            {"base_url": self.base_url, "model": self.embedding_model, "text": text},
+            ensure_ascii=False, sort_keys=True,
+        ).encode("utf-8")
+        digest = hashlib.sha256(material).hexdigest()
+        return os.path.join(self.cache_dir, "embeddings", f"{digest}.json")
+
+    def _read_embedding_cache(self, text):
+        path = self._embedding_cache_path(text)
+        if not path:
+            return None
+        try:
+            with open(path, encoding="utf-8") as f:
+                vector = json.load(f).get("embedding")
+            if isinstance(vector, list) and vector:
+                return [float(value) for value in vector]
+        except (OSError, ValueError, TypeError):
+            return None
+        return None
+
+    def _write_embedding_cache(self, text, vector):
+        path = self._embedding_cache_path(text)
+        if not path:
+            return
+        try:
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            tmp = path + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump({"embedding": vector}, f, ensure_ascii=False)
+            os.replace(tmp, path)
+        except OSError:
+            return
 
     def _decompose_openai(self, chunk):
         out = self._chat(DECOMPOSE_SYSTEM, chunk)

@@ -8,6 +8,7 @@
   python -m knowpipe process --url https://... --out report.md --brain auto
   python -m knowpipe process --file article.txt --brain heuristic
   python -m knowpipe process --bilibili BV1DfrdByE2H --p 1 --out r.md --brain auto
+  python -m knowpipe process --podcast https://example.com/feed.xml --episode 1
 
   # 合集批量：循环每个分P，共享记忆库去重，输出汇总报告
   python -m knowpipe process --bilibili BV1DfrdByE2H --bili-pages 1-3 --out batch.md
@@ -15,6 +16,7 @@
 
   # 查看记忆库 / 给新卡评分（反馈回路）
   python -m knowpipe status
+  python -m knowpipe ask "我的记忆库里如何解释事件循环？"
   python -m knowpipe review
 """
 from __future__ import annotations
@@ -29,7 +31,8 @@ import time
 
 from . import ingest, store as store_mod
 from .brain import Brain, BrainError
-from .report import build_report, build_batch_report, build_article_report
+from .report import (build_report, build_batch_report, build_article_report,
+                     build_integrated_report)
 
 MEMORY_DEFAULT = os.path.join("memory", "cards.jsonl")
 
@@ -97,8 +100,8 @@ def run_pipeline(text, source, title, input_id, brain, store):
     else:
         digest = brain.summarize(text, input_id)
     if not digest:
-        digest = ("（离线模式未生成概括）" + text[:300].replace("\n", " ").strip()
-                  + ("…" if len(text) > 300 else ""))
+        # 报告不应在摘要失败时回退为 ASR 原文片段；宁可明确提示未生成概括。
+        digest = "（当前大脑未生成概括）"
 
     res = {
         "title": title, "source": source,
@@ -148,8 +151,29 @@ def run_pipeline(text, source, title, input_id, brain, store):
     res["store_stats"] = store.stats()
     return res
 
+
+def run_integrated_pipeline(text, source, title, input_id, brain, store):
+    """同时生成长文总结和知识差分卡；OpenAI 模式并行执行两条支路。"""
+    article_executor = None
+    article_future = None
+    if brain.provider == "openai":
+        article_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+        article_future = article_executor.submit(
+            brain.generate_article_from_transcript, text
+        )
+    try:
+        res = run_pipeline(text, source, title, input_id, brain, store)
+        article = (article_future.result() if article_future is not None
+                   else brain.generate_article_from_transcript(text))
+    finally:
+        if article_executor is not None:
+            article_executor.shutdown(wait=True)
+    res["input_chars"] = len(text)
+    res["article"] = article
+    return res
+
 def cmd_seed(args):
-    store = store_mod.MemoryStore(args.memory)
+    store = store_mod.open_store(args.memory)
     if not os.path.exists(args.file):
         sys.exit(f"种子文件不存在: {args.file}")
     n = 0
@@ -168,16 +192,24 @@ def cmd_seed(args):
                 topic=row.get("topic", ""),
                 certainty=row.get("certainty", "fact"),
                 status=row.get("status", store_mod.STATUS_KNOWN),
+                persist=False,
             )
             n += 1
+    if n:
+        store.save()
     print(f"已播种 {n} 张卡 → {store.path}（总量 {len(store.cards)}）")
 
 def cmd_process(args):
-    store = store_mod.MemoryStore(args.memory)
+    store = store_mod.open_store(args.memory)
     try:
         brain = Brain(provider=args.brain, manual_dir=args.manual_dir)
     except BrainError as e:
         sys.exit(f"[brain] {e}")
+
+    source_args = [name for name in ("bilibili", "podcast", "url", "text", "text_file", "file")
+                   if getattr(args, name, None)]
+    if len(source_args) > 1:
+        sys.exit("输入来源参数只能指定一个：" + ", ".join(source_args))
 
     # 合集批量模式
     if args.bilibili and args.bili_pages:
@@ -197,6 +229,24 @@ def cmd_process(args):
         input_id = f"bili_{args.bilibili}_p{args.p}"
         print(f"[ingest] B站 {args.bilibili} 第{args.p}P 逐字稿 {len(text)} 字"
               f"（方式:{bili_src['method']}）")
+    elif args.podcast:
+        from . import podcast as podcast_mod
+        try:
+            podcast_src = podcast_mod.fetch_episode(
+                args.podcast, episode=args.episode,
+                transcriber=args.podcast_transcriber,
+                transcript_url=args.podcast_transcript,
+                audio_dir=args.podcast_audio_dir,
+                transcript_cache_dir=args.podcast_cache_dir,
+            )
+        except podcast_mod.PodcastError as exc:
+            sys.exit(f"[podcast] {exc}")
+        text = podcast_src["text"]
+        title = args.title or podcast_src["title"]
+        source = f"podcast:{args.podcast} E{args.episode}"
+        input_id = f"podcast_{_input_id(args.podcast)}_e{args.episode}"
+        print(f"[ingest] Podcast 第{args.episode}集 {len(text)} 字"
+              f"（方式:{podcast_src['method']}）")
     else:
         text = ingest.load_source(url=args.url, text=args.text, text_file=args.text_file,
                                   file_path=args.file)
@@ -222,6 +272,22 @@ def cmd_process(args):
         else:
             print(report)
         return {"title": title, "source": source, "article": article}
+
+    if getattr(args, "mode", "cards") == "integrated":
+        res = run_integrated_pipeline(text, source, title, input_id, brain, store)
+        article = res["article"]
+        report = build_integrated_report(res, article)
+        out_path = args.out
+        if out_path:
+            d = os.path.dirname(out_path)
+            if d:
+                os.makedirs(d, exist_ok=True)
+            with open(out_path, "w", encoding="utf-8") as f:
+                f.write(report)
+            print(f"[report] 已写入 {out_path}")
+        else:
+            print(report)
+        return res
 
     res = run_pipeline(text, source, title, input_id, brain, store)
     report = build_report(res)
@@ -260,13 +326,17 @@ def _batch_checkpoint_path(cache_dir, bvid):
     return os.path.join(cache_dir, f"{bvid}.batch.json")
 
 
-def _save_batch_checkpoint(path, bvid, requested_pages, brain_provider, page_results):
+def _save_batch_checkpoint(path, bvid, requested_pages, brain_provider, page_results,
+                           memory_path=None, mode="cards", model=None):
     """原子写入合集检查点，避免中途终止留下半个 JSON。"""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     payload = {
         "bvid": bvid,
         "requested_pages": requested_pages,
         "brain_provider": brain_provider,
+        "memory_path": os.path.abspath(memory_path) if memory_path else None,
+        "mode": mode,
+        "model": model,
         "updated": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
         "page_results": page_results,
     }
@@ -276,7 +346,8 @@ def _save_batch_checkpoint(path, bvid, requested_pages, brain_provider, page_res
     os.replace(tmp, path)
 
 
-def _load_batch_checkpoint(path, bvid, requested_pages, brain_provider):
+def _load_batch_checkpoint(path, bvid, requested_pages, brain_provider,
+                           memory_path=None, mode="cards", model=None):
     """读取与本次任务参数匹配的检查点；损坏或过期时返回空结果。"""
     try:
         with open(path, encoding="utf-8") as f:
@@ -285,7 +356,11 @@ def _load_batch_checkpoint(path, bvid, requested_pages, brain_provider):
         return []
     if (payload.get("bvid") != bvid
             or payload.get("brain_provider") != brain_provider
-            or payload.get("requested_pages") != requested_pages):
+            or payload.get("requested_pages") != requested_pages
+            or payload.get("mode", "cards") != mode
+            or (memory_path and payload.get("memory_path")
+                and payload.get("memory_path") != os.path.abspath(memory_path))
+            or (model and payload.get("model") and payload.get("model") != model)):
         return []
     rows = payload.get("page_results", [])
     if not isinstance(rows, list):
@@ -306,7 +381,9 @@ def cmd_bili_batch(args, store, brain):
     page_results = []
     if getattr(args, "bili_resume", False):
         page_results = _load_batch_checkpoint(
-            checkpoint_path, args.bilibili, pages, brain.provider)
+            checkpoint_path, args.bilibili, pages, brain.provider,
+            memory_path=args.memory, mode=getattr(args, "mode", "cards"),
+            model=getattr(brain, "model", None))
         if page_results:
             print(f"[batch] 从检查点恢复 {len(page_results)}P：{checkpoint_path}")
 
@@ -337,7 +414,9 @@ def cmd_bili_batch(args, store, brain):
             if getattr(args, "bili_resume", False):
                 _save_batch_checkpoint(
                     checkpoint_path, args.bilibili, pages, brain.provider,
-                    [r for r in page_results if not r.get("error")])
+                    [r for r in page_results if not r.get("error")],
+                    memory_path=args.memory, mode=getattr(args, "mode", "cards"),
+                    model=getattr(brain, "model", None))
             continue
 
         text = bili_src["text"]
@@ -346,14 +425,19 @@ def cmd_bili_batch(args, store, brain):
         input_id = f"bili_{args.bilibili}_p{page}"
         print(f"[ingest] B站 {args.bilibili} P{page} 逐字稿 {len(text)} 字"
               f"（方式:{bili_src['method']}）")
-        res = run_pipeline(text, source, title, input_id, brain, store)
+        if getattr(args, "mode", "cards") == "integrated":
+            res = run_integrated_pipeline(text, source, title, input_id, brain, store)
+        else:
+            res = run_pipeline(text, source, title, input_id, brain, store)
         res["page"] = page
         res["part"] = part
         page_results.append(res)
         if getattr(args, "bili_resume", False):
             _save_batch_checkpoint(
                 checkpoint_path, args.bilibili, pages, brain.provider,
-                [r for r in page_results if not r.get("error")])
+                [r for r in page_results if not r.get("error")],
+                memory_path=args.memory, mode=getattr(args, "mode", "cards"),
+                model=getattr(brain, "model", None))
 
     # 汇总报告
     report = build_batch_report(info, page_results, store.stats())
@@ -370,15 +454,46 @@ def cmd_bili_batch(args, store, brain):
     return page_results
 
 def cmd_status(args):
-    store = store_mod.MemoryStore(args.memory)
+    store = store_mod.open_store(args.memory)
     st = store.stats()
     print(f"记忆库: {st['path']}")
     print(f"总量: {st['total']}  分布: {st['by_status']}")
     for c in store.cards[:20]:
         print(f"  [{c['status']:9s}] {c['id']} {c['claim'][:60]}")
 
+
+def cmd_ask(args):
+    """检索个人记忆库并回答一个问题。"""
+    question = args.question.strip()
+    if not question:
+        sys.exit("问题不能为空")
+    store = store_mod.open_store(args.memory)
+    try:
+        brain = Brain(provider=args.brain)
+    except BrainError as e:
+        sys.exit(f"[brain] {e}")
+    candidates = store.candidates_for(question, top_k=args.top_k)
+    answer = brain.answer_question(question, candidates)
+    lines = [f"# 记忆库问答", "", f"**问题**：{question}", "", answer, ""]
+    useful = [(card, score) for card, score in candidates if score > 0]
+    if useful:
+        lines.extend(["## 检索依据", ""])
+        for card, score in useful[:args.top_k]:
+            lines.append(f"- [{card['id']}]（相似度 {score:.3f}）{card['claim']}")
+    report = "\n".join(lines) + "\n"
+    if args.out:
+        parent = os.path.dirname(args.out)
+        if parent:
+            os.makedirs(parent, exist_ok=True)
+        with open(args.out, "w", encoding="utf-8") as f:
+            f.write(report)
+        print(f"[ask] 已写入 {args.out}")
+    else:
+        print(report)
+    return {"question": question, "answer": answer, "candidates": candidates}
+
 def cmd_review(args):
-    store = store_mod.MemoryStore(args.memory)
+    store = store_mod.open_store(args.memory)
     pending = [c for c in store.cards
                if c.get("status") in (store_mod.STATUS_NEW, store_mod.STATUS_REFINED,
                                       store_mod.STATUS_CONFLICT)]
@@ -421,14 +536,23 @@ def cmd_review(args):
         elif ans == "l":
             store.update_status(c["id"], store_mod.STATUS_LEARNED)
         elif ans == "x":
-            store.cards = [x for x in store.cards if x["id"] != c["id"]]
-            store.save()
+            store.delete(c["id"])
         elif ans == "q":
             break
 
+
+def cmd_migrate(args):
+    """把旧 JSONL 记忆库迁移到 SQLite。"""
+    try:
+        n = store_mod.migrate_jsonl_to_sqlite(args.source, args.destination)
+    except (OSError, ValueError, json.JSONDecodeError, store_mod.sqlite3.Error) as e:
+        sys.exit(f"迁移失败：{e}")
+    print(f"已迁移 {n} 张卡 → {args.destination}")
+
 def build_parser():
     p = argparse.ArgumentParser(prog="knowpipe", description="知识精炼管道 MVP")
-    p.add_argument("--memory", default=MEMORY_DEFAULT, help="记忆库路径 (JSONL)")
+    p.add_argument("--memory", default=MEMORY_DEFAULT,
+                   help="记忆库路径；.db/.sqlite 使用 SQLite，其它路径使用 JSONL")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     s = sub.add_parser("seed", help="导入种子知识卡（代表你已知的内容）")
@@ -437,6 +561,17 @@ def build_parser():
 
     pr = sub.add_parser("process", help="摄入并处理内容，输出新知识报告")
     pr.add_argument("--bilibili", help="B站 BV 号（自动取逐字稿，默认第1P）")
+    pr.add_argument("--podcast", help="Podcast RSS/Atom feed URL（默认处理第1集）")
+    pr.add_argument("--episode", type=int, default=1, help="Podcast 集数（从1开始，默认1）")
+    pr.add_argument("--podcast-transcript", default=None,
+                    help="直接指定本集 transcript URL（优先于 RSS 中的 transcript）")
+    pr.add_argument("--podcast-transcriber", default="auto",
+                    choices=["auto", "transcript", "whisper"],
+                    help="Podcast 文本来源：auto=transcript→Whisper；transcript=仅文字稿；whisper=强制本地 Whisper")
+    pr.add_argument("--podcast-audio-dir", default="cache/podcast_audio",
+                    help="Podcast 音频缓存目录（默认 cache/podcast_audio）")
+    pr.add_argument("--podcast-cache-dir", default="cache/podcast_transcripts",
+                    help="Podcast transcript 缓存目录（默认 cache/podcast_transcripts）")
     pr.add_argument("--p", type=int, default=1, help="B站分P页码（默认1）")
     pr.add_argument("--bili-pages", default=None,
                     help="合集批量：分P范围，如 '1-3,5' 或 'all'（与 --bilibili 配合，共享记忆库去重）")
@@ -460,17 +595,30 @@ def build_parser():
     pr.add_argument("--brain", default="auto",
                     choices=["auto", "openai", "manual", "heuristic"],
                     help="大脑 provider")
-    pr.add_argument("--mode", default="cards", choices=["cards", "article"],
-                    help="输出模式：cards=原子知识卡+novelty判定（默认）；article=ASR清洗+知识总结文章（推荐技术视频）")
+    pr.add_argument("--mode", default="cards", choices=["cards", "article", "integrated"],
+                    help="输出模式：cards=原子知识卡；article=长文总结；integrated=长文+知识差分卡")
     pr.add_argument("--manual-dir", default=None, help="manual provider 判定文件目录")
     pr.set_defaults(fn=cmd_process)
 
     st = sub.add_parser("status", help="查看记忆库状态")
     st.set_defaults(fn=cmd_status)
 
+    aq = sub.add_parser("ask", help="基于个人记忆库回答问题")
+    aq.add_argument("question", help="要回答的问题")
+    aq.add_argument("--top-k", type=int, default=8, help="召回知识卡数量（默认8）")
+    aq.add_argument("--brain", default="auto", choices=["auto", "openai", "heuristic"],
+                    help="回答模型（默认 auto）")
+    aq.add_argument("--out", default=None, help="回答输出路径 (md，默认 stdout)")
+    aq.set_defaults(fn=cmd_ask)
+
     rv = sub.add_parser("review", help="给新知识卡评分（反馈回路）")
     rv.add_argument("--apply", default=None, help="评分 JSONL 文件（非交互）")
     rv.set_defaults(fn=cmd_review)
+
+    mg = sub.add_parser("migrate", help="将 JSONL 记忆库迁移为 SQLite")
+    mg.add_argument("--source", required=True, help="源 JSONL 文件")
+    mg.add_argument("--destination", required=True, help="目标 SQLite 文件（建议 .db）")
+    mg.set_defaults(fn=cmd_migrate)
     return p
 
 
