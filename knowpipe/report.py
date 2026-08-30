@@ -223,36 +223,30 @@ def build_batch_report(info, page_results, store_stats):
     L.append("")
     return "\n".join(L)
 
-def build_article_report(title, source, raw_text, clean_text, article, brain_provider):
-    """文章级报告：ASR原始稿 + LLM清洗稿 + 知识总结文章。不抽原子卡。"""
+def build_article_report(title, source, raw_text, *args):
+    """文章级报告：只输出知识总结，不泄露 ASR 逐字稿或中间清洗稿。
+
+    兼容旧调用签名 ``(title, source, raw, clean, article, provider)``；
+    ``clean`` 参数会被忽略，不再写入报告。
+    """
+    if len(args) == 2:
+        article, brain_provider = args
+    elif len(args) == 3:  # 旧签名
+        _clean_text, article, brain_provider = args
+    else:
+        raise TypeError("build_article_report 参数数量不正确")
     L = []
     L.append(f"# 知识整理 — {title}")
     L.append("")
     L.append(f"- **来源**：{source}")
     L.append(f"- **处理时间**：{time.strftime('%Y-%m-%d %H:%M:%S')}")
-    L.append(f"- **大脑**：{brain_provider}（文章级模式：ASR清洗 + 知识总结）")
-    L.append(f"- **原始逐字稿**：{len(raw_text)} 字 → 清洗后 {len(clean_text)} 字")
+    L.append(f"- **大脑**：{brain_provider}（文章级模式：ASR 清洗 + 知识总结）")
+    L.append(f"- **输入长度**：{len(raw_text)} 字")
     L.append("")
     L.append("---")
     L.append("")
     L.append("## 知识总结")
     L.append("")
     L.append(article)
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## 清洗后文稿（LLM 术语纠错版）")
-    L.append("")
-    L.append(clean_text)
-    L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## 附录：ASR 原始逐字稿（对比用）")
-    L.append("")
-    L.append("<details><summary>展开原始稿（含识别错误）</summary>")
-    L.append("")
-    L.append(raw_text)
-    L.append("")
-    L.append("</details>")
     L.append("")
     return "\n".join(L)

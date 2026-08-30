@@ -198,6 +198,30 @@ class Brain:
 8. 顶部不需要 # 一级标题（调用方会加）"""
         return self._chat(system, clean_text[:16000], temperature=0.3, max_tokens=8000).strip()
 
+    def generate_article_from_transcript(self, transcript):
+        """从 ASR 原稿直接生成知识文章，合并清洗与整理两次 LLM 调用。"""
+        if self.provider != "openai":
+            # 离线/manual provider 没有额外模型调用；用抽取式短摘要避免把整段
+            # ASR 原稿原样写入最终报告。
+            sentences = self._split_sentences(self.clean_transcript(transcript))
+            if not sentences:
+                return "## 核心内容\n\n（未提取到可总结的内容）"
+            picked = sentences if len(sentences) <= 5 else sentences[:3] + sentences[-2:]
+            body = "\n\n".join(picked)
+            bullets = "\n".join(f"- {s}" for s in picked[:5])
+            return f"## 核心内容\n\n{body}\n\n## 核心要点\n\n{bullets}"
+        system = """你是技术知识整理专家。输入是一段可能有 ASR 识别错误的技术视频逐字稿。
+请先在内部完成术语纠错、代码标识符纠正、去口误/重复、补标点和断句；然后直接输出一篇结构清晰、逻辑连贯的知识总结文章。不要输出校对过程，也不要输出逐字稿原文。
+
+要求：
+1. 按视频讲解的逻辑顺序组织内容，用 ## 小标题分段。
+2. 专业名词第一次出现时用括号补充简短解释（术语保留英文原文）。
+3. 对原文跳跃处补充必要的过渡句，但不得编造原文没有的结论。
+4. 保留代码示例、函数名、字节码指令等技术细节并确保准确。
+5. 文章末尾加“## 核心要点”小节，用 3-5 条 bullet 总结关键知识。
+6. 用中文写作；直接从第一个 ## 小标题开始，不要标题、前言或其它元说明。"""
+        return self._chat(system, transcript[:20000], temperature=0.25, max_tokens=8000).strip()
+
     # ---------------------------------------------------------------
     # openai provider
     # ---------------------------------------------------------------

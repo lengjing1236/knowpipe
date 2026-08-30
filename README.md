@@ -25,7 +25,7 @@ python3 -m knowpipe process --file article.txt --brain heuristic          # 零�
 
 # 2b+) 文章级模式（推荐技术视频）：ASR清洗 + 知识总结文章，不抽碎卡
 python3 -m knowpipe process --bilibili BV1ST4y1m7No --p 1 --mode article --out report.md --brain openai
-#    --mode article：LLM先做术语纠错生成干净文稿，再整理成一篇连贯的知识总结文章
+#    --mode article：一次 LLM 调用完成术语纠错与知识总结（不输出逐字稿）
 #    文章含：按逻辑分段、专业名词补解释、断裂逻辑补串联、核心要点总结
 
 # 2b) B站：给出 BV 号 → 自动取逐字稿 → 进管道
@@ -63,7 +63,9 @@ python3 -m knowpipe review --apply review.jsonl   # 非交互评分
 | `status` | 查看记忆库状态 |
 | `review [--apply F]` | 给 new/refined/conflict 卡评分，回写记忆库 |
 
-`process` 主要参数：`--out`（报告路径，默认 stdout）、`--title`、`--brain`（auto/openai/manual/heuristic）、`--mode`（cards=原子卡模式 / article=文章级模式，默认cards）、`--manual-dir`（manual 模式判定文件目录）、`--memory`（记忆库路径，默认 `memory/cards.jsonl`）；B站相关：`--p`（分P页码，默认1）、`--bili-pages`（合集批量范围，如 '1-3,5' 或 'all'）、`--bili-cache-dir`（逐字稿缓存目录，默认 cache/bili_transcripts）、`--bili-transcriber`（auto/subtitle/lark/whisper）、`--whisper-model`（whisper模型大小）、`--bili-workdir`（妙记产物目录，默认 ./lark_out）。
+`process` 主要参数：`--out`（报告路径，默认 stdout）、`--title`、`--brain`（auto/openai/manual/heuristic）、`--mode`（cards=原子卡模式 / article=文章级模式，默认cards）、`--manual-dir`（manual 模式判定文件目录）、`--memory`（记忆库路径，默认 `memory/cards.jsonl`）；B站相关：`--p`（分P页码，默认1）、`--bili-pages`（合集批量范围，如 '1-3,5' 或 'all'）、`--bili-cache-dir`（逐字稿缓存目录，默认 cache/bili_transcripts）、`--bili-transcriber`（auto/subtitle/lark/whisper）、`--whisper-model`（whisper模型大小）、`--bili-workdir`（妙记产物目录，默认 ./lark_out）。文章级报告仅保留知识总结与元数据，不包含 ASR 原稿或清洗稿。
+
+OpenAI 模式下，长文本分块抽取默认并发 4 路，并与全文摘要并行；如遇网关限流，可设置 `KNOWPIPE_DECOMPOSE_WORKERS=1`，或按需调高该值。
 
 ## 大脑（Brain）三种模式
 

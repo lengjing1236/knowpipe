@@ -34,6 +34,7 @@ class Index:
         self._docs = []          # (text, meta)
         self._vecs = []          # tf dict
         self._df = collections.Counter()
+        self._weighted = None    # 缓存稳定索引的 TF-IDF 权重
 
     def add(self, text, meta=None):
         tf = _term_freqs(_tokens(text))
@@ -41,6 +42,7 @@ class Index:
         self._vecs.append(tf)
         for t in tf:
             self._df[t] += 1
+        self._weighted = None
 
     def _tfidf(self, tf):
         n = max(1, len(self._docs))
@@ -61,9 +63,11 @@ class Index:
 
     def query(self, text, top_k=5):
         q = self._tfidf(_term_freqs(_tokens(text)))
+        if self._weighted is None:
+            self._weighted = [self._tfidf(v) for v in self._vecs]
         scored = []
-        for v, (doc_text, meta) in zip(self._vecs, self._docs):
-            scored.append((self._cosine(q, self._tfidf(v)), meta))
+        for v, (_doc_text, meta) in zip(self._weighted, self._docs):
+            scored.append((self._cosine(q, v), meta))
         scored.sort(key=lambda x: x[0], reverse=True)
         return [(meta, s) for s, meta in scored[:top_k]]
 
@@ -89,6 +93,7 @@ class MemoryStore:
     def __init__(self, path: str):
         self.path = path
         self.cards = []
+        self._index = None
         self._load()
 
     def _load(self):
@@ -126,10 +131,13 @@ class MemoryStore:
 
     def candidates_for(self, text, top_k=4):
         """返回 [(memory_card_meta, score), ...]，score 为相似度。"""
-        idx = Index()
-        for c in self.cards:
-            idx.add(c["claim"], c)
-        return idx.query(text, top_k=top_k)
+        # 索引在一次 pipeline 中会被数十/数百张卡重复查询；缓存后避免每张卡
+        # 都重新扫描并构建整个记忆库。新增卡时在 add_new 中失效，保证结果正确。
+        if self._index is None:
+            self._index = Index()
+            for c in self.cards:
+                self._index.add(c["claim"], c)
+        return self._index.query(text, top_k=top_k)
 
     def stats(self):
         counts = collections.Counter(c.get("status", "?") for c in self.cards)
@@ -168,6 +176,7 @@ class MemoryStore:
             "last_seen": now_iso(),
         }
         self.cards.append(card)
+        self._index = None
         self.save()
         return card
 

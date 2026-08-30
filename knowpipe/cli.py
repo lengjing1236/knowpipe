@@ -20,6 +20,7 @@
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import json
 import os
 import re
@@ -51,9 +52,31 @@ def run_pipeline(text, source, title, input_id, brain, store):
     chunks = ingest.chunk_text(text)
     print(f"[ingest] 清洗后 {len(text)} 字 → {len(chunks)} 块")
 
+    # 全文摘要与分块抽取/判定相互独立，提前发起可隐藏一次网络往返。
+    summary_executor = None
+    summary_future = None
+    if brain.provider == "openai":
+        summary_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+        summary_future = summary_executor.submit(brain.summarize, text, input_id)
+
+    # 分块之间互不依赖；OpenAI 模式并行请求可显著降低长视频等待时间。
+    # 通过环境变量可调节并发，设为 1 即恢复串行（适用于严格限流的网关）。
+    decompose_results = []
+    if brain.provider == "openai" and len(chunks) > 1:
+        try:
+            configured = int(os.getenv("KNOWPIPE_DECOMPOSE_WORKERS", "4"))
+            workers = max(1, min(len(chunks), configured))
+        except ValueError:
+            workers = min(len(chunks), 4)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as pool:
+            futures = [pool.submit(brain.decompose_chunk, chunk, input_id, ci)
+                       for ci, chunk in enumerate(chunks)]
+            decompose_results = [f.result() for f in futures]
+    else:
+        decompose_results = [brain.decompose_chunk(chunk, input_id, ci)
+                             for ci, chunk in enumerate(chunks)]
     cards = []
-    for ci, chunk in enumerate(chunks):
-        got = brain.decompose_chunk(chunk, input_id, ci)
+    for ci, got in enumerate(decompose_results):
         cards.extend(got)
         print(f"[decompose] 块{ci}: {len(got)} 张卡")
     print(f"[decompose] 共 {len(cards)} 张原子卡")
@@ -66,7 +89,13 @@ def run_pipeline(text, source, title, input_id, brain, store):
         by_verdict[v["verdict"]] += 1
     print(f"[classify] 判定分布: {by_verdict}")
 
-    digest = brain.summarize(text, input_id)
+    if summary_future is not None:
+        try:
+            digest = summary_future.result()
+        finally:
+            summary_executor.shutdown(wait=True)
+    else:
+        digest = brain.summarize(text, input_id)
     if not digest:
         digest = ("（离线模式未生成概括）" + text[:300].replace("\n", " ").strip()
                   + ("…" if len(text) > 300 else ""))
@@ -172,14 +201,11 @@ def cmd_process(args):
         source = args.url or args.file or args.text_file or "text"
         input_id = _input_id(args.url, args.file, args.text_file)
 
-    # 文章级模式：ASR清洗 → 知识总结文章，不抽原子卡
+    # 文章级模式：一次完成 ASR 清洗与知识总结，不抽原子卡
     if getattr(args, "mode", "cards") == "article":
-        print("[clean] LLM 术语纠错、去口误、补标点…")
-        clean_text = brain.clean_transcript(text)
-        print(f"[clean] 清洗后 {len(clean_text)} 字（原始 {len(text)} 字）")
-        print("[article] 生成知识总结文章（分段+名词解释+逻辑修复）…")
-        article = brain.generate_article(clean_text)
-        report = build_article_report(title, source, text, clean_text, article, brain.provider)
+        print("[article] 一次完成 ASR 纠错与知识总结（分段+名词解释+逻辑修复）…")
+        article = brain.generate_article_from_transcript(text)
+        report = build_article_report(title, source, text, article, brain.provider)
         out_path = args.out
         if out_path:
             d = os.path.dirname(out_path)
@@ -190,7 +216,7 @@ def cmd_process(args):
             print(f"[report] 已写入 {out_path}")
         else:
             print(report)
-        return {"title": title, "source": source, "clean_text": clean_text, "article": article}
+        return {"title": title, "source": source, "article": article}
 
     res = run_pipeline(text, source, title, input_id, brain, store)
     report = build_report(res)

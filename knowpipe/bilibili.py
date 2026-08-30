@@ -31,6 +31,7 @@ _MIXIN = [46, 47, 18, 2, 53, 8, 23, 32, 15, 50, 10, 31, 58, 3, 45, 35,
 
 _API = "https://api.bilibili.com"
 _wbi_key_cache = None
+_bvid_info_cache = {}
 
 
 class BiliError(Exception):
@@ -96,18 +97,24 @@ def resolve_bvid(bvid: str) -> dict:
     bvid = bvid.strip()
     if not re.fullmatch(r"BV[0-9A-Za-z]{10}", bvid):
         raise BiliError(f"无效 BV 号: {bvid}")
+    # 同一条命令的合集处理会反复查询元数据；进程内缓存可避免每个分P一次网络往返。
+    cached = _bvid_info_cache.get(bvid)
+    if cached is not None:
+        return cached
     d = _api(f"{_API}/x/web-interface/view", {"bvid": bvid})
     pages = [{"page": p["page"], "cid": p["cid"], "part": p.get("part", "")}
              for p in d.get("pages", [])]
     if not pages:
         pages = [{"page": 1, "cid": d["cid"], "part": ""}]
-    return {
+    info = {
         "bvid": bvid,
         "aid": d.get("aid"),
         "title": d.get("title", ""),
         "pages": pages,
         "duration": d.get("duration", 0),
     }
+    _bvid_info_cache[bvid] = info
+    return info
 
 
 # --------------------------------------------------------------------------
