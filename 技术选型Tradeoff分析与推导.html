@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>技术选型 Tradeoff 分析与推导 —— 从参考资料到我们的架构</title>
+<style>
+  :root {
+    --forest: #2f5233;
+    --sage: #7a9b76;
+    --mint: #eef5ec;
+    --gold: #c9902a;
+    --orange: #c1622d;
+    --dark: #232323;
+    --muted: #6b6b6b;
+    --paper: #fbfaf6;
+  }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", -apple-system, sans-serif;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    color: var(--dark);
+    line-height: 1.7;
+    background: var(--paper);
+  }
+  h1 { color: var(--forest); font-size: 26px; border-bottom: 3px solid var(--sage); padding-bottom: 12px; }
+  h2 { color: var(--forest); font-size: 20px; margin-top: 48px; border-left: 6px solid var(--gold); padding-left: 10px; }
+  h3 { color: var(--orange); font-size: 16px; margin-top: 28px; }
+  .subtitle { color: var(--muted); font-size: 14px; margin-top: -8px; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th, td { border: 1px solid #d9e3d6; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--mint); color: var(--forest); }
+  tr:nth-child(even) { background: #f7fbf5; }
+  .verdict {
+    background: var(--mint);
+    border: 1px solid var(--sage);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .verdict b { color: var(--forest); }
+  .chain {
+    background: #fff;
+    border: 1px solid #e2ddc9;
+    border-left: 5px solid var(--gold);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+  .warn {
+    background: #fdf2ea;
+    border: 1px solid var(--orange);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    font-size: 14px;
+  }
+  code { background: #eef0e8; padding: 2px 5px; border-radius: 4px; font-size: 13px; }
+  .final-box {
+    background: var(--forest);
+    color: #fff;
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-top: 30px;
+  }
+  .final-box h2 { color: #fff; border-left: 6px solid var(--gold); }
+  .final-box .chain { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.3); color: #f4f4f0; }
+  .final-box b { color: var(--gold); }
+  .toc { background: #fff; border: 1px solid #e2ddc9; border-radius: 8px; padding: 16px 20px; font-size: 14px; }
+  .toc a { color: var(--forest); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .step-num {
+    display: inline-block; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold); color: #fff; text-align: center; font-size: 13px; line-height: 22px;
+    margin-right: 6px;
+  }
+</style>
+</head>
+<body>
+
+<h1>技术选型 Tradeoff 分析与推导</h1>
+<p class="subtitle">从《大数据综合实践课程参考资料》列出的技术清单，推导我们为什么选择 Spark 批处理 + MongoDB 文档模型 + Flask</p>
+
+<div class="toc">
+<b>目录</b><br>
+<a href="#part0">0. 先说清楚：这份文档要回答什么问题</a><br>
+<a href="#part1">1. 大数据处理引擎：批处理 vs 流处理 —— 为什么选 Spark 批处理</a><br>
+<a href="#part2">2. 数据管理：四种存储模型 —— 为什么选 MongoDB（文档模型）</a><br>
+<a href="#part3">3. 挖掘平台：为什么选 Spark MLlib，而不是 Flink ML / Mahout / H2O</a><br>
+<a href="#part4">4. Web 框架：为什么选 Flask</a><br>
+<a href="#part5">5. 把四个决策串起来：一条完整的推导链</a><br>
+<a href="#part6">6. 汇报时怎么讲（30 秒版本）</a>
+</div>
+
+<h2 id="part0">0. 先说清楚：这份文档要回答什么问题</h2>
+<p>参考资料里列了很多技术分类：批处理引擎（Hadoop/Spark/Hive/Presto/Druid）、流处理引擎（Flink/Kafka/Spark Structured Streaming/Storm/Bytewax）、四种数据库模型（图/键值/时序/文档）、挖掘平台（Spark MLlib/FlinkML/Mahout/H2O/RapidMiner/Weka）、Web 框架（前端 React/Vue，后端 Spring Boot/Django/FastAPI/Flask/...）。</p>
+<p>这份文档不是要把每个技术都讲一遍，而是要回答一个问题：<b>面对这么多选项，什么样的项目特征，会把选择"逼"向 Spark + MongoDB + Flask 这一组合？</b> 方法是：先看清楚每一类里各选项的核心 tradeoff 维度是什么，再对照我们项目本身的数据特征（这是关键——不是我们"喜欢" Spark，而是我们的数据和任务性质决定了批处理更合适），最后给出结论。</p>
+
+<h2 id="part1">1. 大数据处理引擎：批处理 vs 流处理</h2>
+<p class="subtitle">参考资料 3.1／3.2 节列出的清单</p>
+
+<h3>1.1 两类引擎解决的是不同的问题</h3>
+<table>
+<tr><th>维度</th><th>批处理（Batch）</th><th>流处理（Stream）</th></tr>
+<tr><td>输入假设</td><td>数据集是<b>有限的、已经落盘的</b>——你知道数据的边界在哪里</td><td>数据是<b>无限的、持续到达的</b>事件序列，处理时不知道"结束"在哪</td></tr>
+<tr><td>典型问题</td><td>"把这 1 万篇文档全部清洗、算完 TF-IDF"——一次性、可重复运行到收敛</td><td>"每来一条新日志/交易/传感器读数，立刻更新一个滑动窗口统计"</td></tr>
+<tr><td>延迟要求</td><td>分钟到小时级可接受，重视吞吐和可复现</td><td>毫秒到秒级，重视端到端延迟</td></tr>
+<tr><td>调试/复现</td><td>同一批输入反复跑，结果完全一致，方便验证和写报告</td><td>依赖到达顺序和时间窗口，调试和复现更复杂</td></tr>
+<tr><td>典型代表</td><td>Hadoop MapReduce、Spark（批模式）、Hive、Presto/Trino</td><td>Flink（原生流）、Kafka+KafkaStreams、Spark Structured Streaming（微批）、Storm、Bytewax</td></tr>
+</table>
+
+<div class="warn">
+<b>容易搞混的一点：</b> 参考资料里 Spark 出现在两处——3.1 批处理和 3.2 流处理（Structured Streaming）。这不是矛盾，而是说明 Spark 是"以批处理为核心引擎、后来扩展出微批流处理能力"的框架；而 Flink 是反过来的：原生为流设计，批处理是流的特例。这个区别本身就是一个重要的选型依据（见下）。
+</div>
+
+<h3>1.2 对照我们的数据：Stack Exchange + arXiv 是"批"，不是"流"</h3>
+<p>我们的数据来源是 Stack Exchange 的历史问答 Data Dump/API 分页采集，和 arXiv 的论文元数据 API——这两个源都是<b>已经存在、边界明确的历史数据集合</b>，我们采集回来的动作是"拉取一批、清洗一批、算一批"，不是"实时订阅一个不断产生新事件的管道"。没有用户在旁边等着看毫秒级更新的仪表盘，也没有需要在数据到达的一瞬间就完成响应的场景。</p>
+<div class="chain">
+<b>推导：</b> 流处理解决的是"数据永远在到达、必须低延迟响应"的问题。我们的问题是"给定一批已采集的文档，算出可复现的特征和推荐结果"——这正是批处理的定义场景。选流处理框架（Flink/Kafka）对我们来说是解决一个我们不存在的问题，反而会引入不必要的复杂度（消息队列、状态后端、时间窗口语义）。
+</div>
+
+<h3>1.3 顺带回答："为什么不用 Hadoop MapReduce，也不用 Hive/Presto？"</h3>
+<table>
+<tr><th>候选</th><th>为什么不是最优选择</th></tr>
+<tr><td>Hadoop MapReduce</td><td>纯磁盘 I/O 的批处理模型，每一步都要落盘，TF-IDF/相似度这类需要多轮迭代计算的任务会非常慢；Spark 是在 MapReduce 之后专门为了解决这个"迭代计算慢"的问题而设计的内存计算引擎</td></tr>
+<tr><td>Hive / Presto/Trino</td><td>本质是"SQL 查询引擎"，长于聚合查询，短于把 TF-IDF、向量相似度这类机器学习算子写成原生能力——而 Spark 自带 MLlib，SQL 和机器学习在同一套 DataFrame API 里无缝衔接，这对我们"清洗 → 特征 → 相似度 → 推荐分数"这条流水线更直接</td></tr>
+</table>
+<div class="verdict"><b>结论：</b> 批处理是正确的处理范式，Spark 是批处理里既能做数据清洗、又能做机器学习特征计算的引擎，一套 API 覆盖我们从原始文本到推荐分数的全部计算步骤。这也正是课程要求映射表里明确写的"大数据底层处理"和"数据挖掘"两项要求，都指向 Spark Core/SQL + MLlib 的原因。</div>
+
+<h2 id="part2">2. 数据管理：四种存储模型</h2>
+<p class="subtitle">参考资料 4.1～4.4 节：图模型 / 键值模型 / 时序模型 / 文档模型</p>
+
+<h3>2.1 每种模型是为一种"数据形状"设计的</h3>
+<table>
+<tr><th>模型</th><th>数据形状</th><th>核心查询模式</th><th>代表</th></tr>
+<tr><td>图模型</td><td>实体之间有大量、复杂的<b>关系</b>比实体本身更重要</td><td>"从 A 出发，经过 2 跳关系，找到所有 B"（多跳遍历）</td><td>Neo4j、JanusGraph、TigerGraph</td></tr>
+<tr><td>键值模型</td><td>数据是简单的 key → value，没有复杂结构，只关心极致读写速度</td><td>"给定 key，立刻拿到 value"（O(1) 查找，通常整份存内存/近内存）</td><td>Redis、DynamoDB、RocksDB</td></tr>
+<tr><td>时序模型</td><td>数据是<b>带时间戳的连续测量值</b>，海量、只追加、按时间窗口聚合</td><td>"过去 24 小时每 5 分钟的平均值"（时间范围聚合、降采样）</td><td>InfluxDB、TimescaleDB、Prometheus</td></tr>
+<tr><td>文档模型</td><td>每条记录是一个<b>结构不完全统一、内部字段可嵌套</b>的独立对象</td><td>"按某些字段过滤，取出整份/部分文档"（半结构化对象的存取）</td><td>MongoDB、Elasticsearch、Couchbase</td></tr>
+</table>
+
+<h3>2.2 对照我们的数据："一篇问答/论文" 天然是一份文档，不是一个图节点、一条时序点或一个纯键值</h3>
+<div class="chain">
+<b>为什么不是图模型：</b> 图模型的价值在于"关系比属性更重要"——例如社交网络里"谁关注谁"。我们的核心实体是"一篇 Stack Exchange 问答"或"一篇 arXiv 论文"，虽然存在标签、引用等弱关联，但我们的核心任务（推荐分数计算、已知/深化/新知识分类）依赖的是<b>文档内部的文本特征</b>（标题、正文、TF-IDF 向量），不是"多跳关系遍历"。用图数据库存文本内容，反而要把丰富的文档结构拆散成节点属性，查询和写入都更别扭。
+</div>
+<div class="chain">
+<b>为什么不是键值模型：</b> 键值模型只支持"按 key 精确查找"，不支持"按标签、按时间、按分数区间过滤"这类结构化查询。我们的 <code>mining_results</code>、<code>user_knowledge</code> 都需要按多个字段组合查询（比如"某用户、某主题、分数大于阈值的候选"），这已经超出了键值模型的能力范围，用 Redis/DynamoDB 存会需要额外再造一层索引逻辑。
+</div>
+<div class="chain">
+<b>为什么不是时序模型：</b> 时序数据库为"海量等间隔时间戳测量值的聚合查询"做了专门优化（列式存储、时间分区、降采样），但我们的文档没有"连续测量"的语义——一篇问答不是每 5 分钟产生一个新读数，时序数据库在这里没有用武之地。
+</div>
+<div class="chain">
+<b>为什么是文档模型：</b> 一篇 Stack Exchange 问答本身就是半结构化对象：标题、正文、标签数组、回答列表、投票分——字段结构相似但不完全统一（有的帖子有验收答案，有的没有；arXiv 论文和 SE 帖子的字段更是完全不同的形状）。文档模型天然支持"整份存、按字段过滤、结构可以随数据源不同而略有差异"，这正好匹配我们要同时管理 SE 问答和 arXiv 论文两种异构文档的需求。
+</div>
+<div class="verdict"><b>结论：</b> 我们的核心实体是"文档"，核心查询是"按字段过滤文档、更新计算结果"，不是关系遍历、极速键值查找或时间序列聚合——文档模型是唯一和数据形状直接匹配的选择。MongoDB 是文档模型里最主流、生态最成熟（有官方 Spark Connector，能直接对接 Spark 输出）的实现，这也解释了为什么课程要求映射表把"MongoDB 文档管理"列为独立的一项评分点。</div>
+
+<h3>2.3 一个诚实的备选项：Elasticsearch 呢？</h3>
+<div class="warn">
+Elasticsearch 也是文档模型，而且全文检索能力比 MongoDB 更强，这是一个合理的备选。但 ES 的设计重心是"检索排序"，不是"作为系统的主存储 + 承担业务写入事务"；而我们需要的是一个既能存原始文档、又能存 Spark 计算结果、又能存用户知识画像并支持增量更新的通用存储层，MongoDB 的读写模型和索引机制更适合这个多用途场景。如果未来需要更强的全文检索，可以把 ES 作为搭配 MongoDB 的检索层来讨论，而不是替代关系。
+</div>
+
+<h2 id="part3">3. 挖掘平台：为什么是 Spark MLlib</h2>
+<p class="subtitle">参考资料"五、大数据分析与挖掘"一节</p>
+<table>
+<tr><th>候选</th><th>tradeoff</th></tr>
+<tr><td>Spark MLlib</td><td>和我们已经选定的 Spark 处理引擎<b>共享同一套 DataFrame</b>，清洗→特征→挖掘不需要跨系统搬数据，这对我们的两周实施周期是决定性优势</td></tr>
+<tr><td>FlinkML</td><td>需要先用 Flink 作为处理引擎才有意义，而我们已经论证批处理更适合我们的数据，引入 Flink 只为了用 FlinkML 没有必要</td></tr>
+<tr><td>Mahout / H2O / RapidMiner / Weka</td><td>都是独立的挖掘平台或工具，意味着要再搭一套环境、再学一套 API，且和 Spark/MongoDB 的数据要额外转换衔接，对两人两周的项目组来说是不必要的额外成本</td></tr>
+</table>
+<div class="verdict"><b>结论：</b> 一旦确定用 Spark 做批处理，MLlib 几乎是免费获得的能力——TF-IDF、KMeans、相似度计算都是 MLlib 内置算子，不需要新增系统边界。这是"选型收敛"的一个例子：前一个决策（Spark 批处理）直接约束了下一个决策（挖掘平台）的最优解。</div>
+
+<h2 id="part4">4. Web 框架：为什么是 Flask</h2>
+<table>
+<tr><th>候选</th><th>tradeoff</th></tr>
+<tr><td>Flask</td><td>轻量级，几十行代码起步，适合"业务逻辑简单、接口数量有限"的项目——我们需要的接口是"选主题→查推荐→看理由"，规模不大</td></tr>
+<tr><td>Django</td><td>"自带电池"（ORM、Admin、Auth 全套），适合大型多人协作、需要完整后台管理的项目；对我们这种两周、两人、接口少的项目来说搭建和学习成本超过收益</td></tr>
+<tr><td>FastAPI</td><td>高性能异步框架，优势在高并发场景；我们是课程演示项目，并发量不是我们的评分维度，异步带来的复杂度（async/await、依赖注入）对当前团队是不必要的负担</td></tr>
+<tr><td>Spring Boot / Express / NestJS / Gin / Rails</td><td>都是很成熟的框架，但要么绑定 Java/Node/Go 生态，和我们已经用 Python 做 Spark/MLlib 的技术栈不一致，引入第二语言会增加团队沟通和环境搭建成本</td></tr>
+</table>
+<div class="verdict"><b>结论：</b> Flask 和 Spark/MongoDB 同为 Python 生态，语言栈统一；轻量级刚好匹配我们"接口少、逻辑简单、时间紧"的项目规模。这不是"最强"的选择，而是"和团队技术栈、项目规模、时间预算最匹配"的选择——这本身就是工程选型的核心逻辑：没有绝对最优的技术，只有和约束条件匹配的技术。</div>
+
+<h2 id="part5">5. 把四个决策串起来：一条完整的推导链</h2>
+<div class="final-box">
+<h2 style="margin-top:0">从数据特征到技术栈：完整推导</h2>
+
+<div class="chain"><span class="step-num">1</span><b>我们的数据是什么？</b> Stack Exchange 历史问答 + arXiv 论文元数据——都是已采集、边界明确的历史文本集合，不是持续到达的实时事件流。</div>
+
+<div class="chain"><span class="step-num">2</span><b>→ 处理范式：</b> 有限、可复现的批处理，不是低延迟的流处理。<b>选 Spark（批处理引擎），不选 Flink/Kafka（流处理引擎）。</b></div>
+
+<div class="chain"><span class="step-num">3</span><b>→ 挖掘平台：</b> 既然处理引擎是 Spark，TF-IDF/相似度等特征计算直接用 Spark 自带的 <b>MLlib</b>，避免引入 Mahout/H2O 等独立平台的系统边界成本。</div>
+
+<div class="chain"><span class="step-num">4</span><b>我们的核心实体是什么？</b> 每条 SE 问答 / arXiv 论文是一个字段结构相近但不完全统一、需要整份存取和按字段过滤的半结构化对象——这是"文档"，不是图节点、键值对或时序点。</div>
+
+<div class="chain"><span class="step-num">5</span><b>→ 存储模型：</b> 文档模型。<b>选 MongoDB</b>，因为它是文档模型里生态最成熟、有官方 Spark Connector、能直接承接 Spark 计算结果的实现。</div>
+
+<div class="chain"><span class="step-num">6</span><b>我们的交互需求是什么？</b> 接口少（选主题、查推荐、看理由）、团队两人、周期三周、已经用 Python 做 Spark/MLlib。</div>
+
+<div class="chain"><span class="step-num">7</span><b>→ Web 框架：</b> <b>选 Flask</b>，Python 生态统一、轻量匹配项目规模，不需要 Django 的全套后台能力，也不需要 FastAPI 追求的高并发性能。</div>
+
+<div class="chain" style="border-color:#c9902a; background: rgba(201,144,42,0.15);">
+<b>核心结论：</b> Spark + MongoDB + Flask 这套技术栈不是"因为课程要求所以选它"，而是"数据特征（批量历史文本）+ 实体形状（半结构化文档）+ 团队约束（两人三周、Python 技术栈）"共同决定的必然结果。课程要求恰好和这个必然结果吻合，这也是为什么这套要求映射表能够对应到具体技术组件——课程设计者本身也是按这个逻辑设置评分点的。
+</div>
+</div>
+
+<h2 id="part6">6. 汇报时怎么讲（30 秒版本）</h2>
+<div class="verdict">
+"我们的数据——Stack Exchange 问答和 arXiv 论文——是历史采集的批量文本，不是实时流，所以我们选批处理引擎 Spark，而不是 Flink/Kafka 这类流处理框架。每条数据在存储层面是一个字段结构相近但不完全统一的半结构化对象，这符合文档模型的定义，所以我们用 MongoDB，而不是图数据库或键值存储。Spark 自带的 MLlib 直接给了我们 TF-IDF 和相似度计算能力，不需要再接入独立的挖掘平台。业务层用 Flask，是因为它和我们的 Python/Spark 技术栈统一，也匹配我们两人三周、接口不多的项目规模。这四个选择不是孤立的偏好，而是从我们数据本身的性质一步步推出来的。"
+</div>
+
+<p class="subtitle" style="margin-top:40px; text-align:center;">
+本文档依据《大数据综合实践课程参考资料.pdf》第 3～6 节技术清单，以及《课程项目选题调研与实施方案.md》第 3 节课程要求映射整理。
+</p>
+
+</body>
+</html>
