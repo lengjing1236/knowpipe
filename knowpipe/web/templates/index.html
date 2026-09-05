@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>个性化知识发现</title>
+</head>
+<body>
+  <h1>个性化知识发现</h1>
+
+  <section id="topics-section">
+    <h2>已知主题选择</h2>
+    <ul id="topics-list"></ul>
+    <button id="save-topics">保存已知主题</button>
+  </section>
+
+  <section id="filters-section">
+    <label>来源筛选：
+      <select id="source-filter">
+        <option value="">全部</option>
+        <option value="stackexchange">Stack Exchange</option>
+        <option value="arxiv">arXiv</option>
+      </select>
+    </label>
+  </section>
+
+  <section id="recommendations-section">
+    <h2>新知识 / 深化知识推荐</h2>
+    <ul id="recommendations-list"></ul>
+  </section>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
