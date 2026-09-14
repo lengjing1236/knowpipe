@@ -39,3 +39,17 @@ report*.md
 # Agent/Codex 本地工作区元数据
 .agents/
 .codex/
+.claude/
+.specify
+
+# 课程方提供的参考资料（非本人产出，二进制大文件不入库）
+大数据综合实践课程内容说明.pdf
+大数据综合实践课程参考资料.pdf
+
+# Office 临时锁文件
+~$*.pptx
+~$*.docx
+~$*.xlsx
+
+# evidence/ 下的运行日志作为课程证据保留，不受上面的 *.log 规则忽略
+!evidence/**/*.log
