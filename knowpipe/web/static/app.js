@@ -167,6 +167,24 @@ async function showEpisode(id) {
         segment.similar_segments.forEach(s => links.append(action(`${s.segment_id + 1}（${s.score.toFixed(2)}）`, () => document.getElementById(`segment-${s.segment_id}`).scrollIntoView({behavior: 'smooth'}))));
         card.append(links);
       }
+      const related = (episode.cross_source?.items || []).filter(item => item.segment_id === segment.segment_id);
+      const reading = el('div', undefined, 'related-reading');
+      reading.append(el('h4', '延伸阅读'));
+      if (!related.length) {
+        const status = episode.cross_source?.status;
+        reading.append(el('p', status === 'pending' ? '相关文献尚未准备好。' : status === 'stale' ? '内容已更新，相关文献等待刷新。' : '暂无相关文献。', 'muted'));
+      }
+      related.forEach(item => {
+        const entry = el('article');
+        entry.append(el('strong', item.title), el('p', `关联词：${item.shared_terms.join('、')} · 文本相似度 ${item.score.toFixed(3)}（不代表事实核验）`, 'muted'));
+        entry.append(action('阅读文献', async () => {
+          const detail = await api(`/api/documents/${encodeURIComponent(item.source)}/${encodeURIComponent(item.doc_id)}`);
+          const content = dialog(detail.title || '文献详情');
+          content.append(safeLink(detail.source_url, '查看原始来源'), el('p', detail.body_text || '', 'transcript'));
+        }));
+        reading.append(entry);
+      });
+      card.append(reading);
       body.append(card);
     });
   }

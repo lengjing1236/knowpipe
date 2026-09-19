@@ -10,6 +10,7 @@ from bson import ObjectId
 from flask import Blueprint, Response, current_app, jsonify, request
 
 from ..podcasts import store
+from ..linking.job import for_episode
 from ..podcasts.network import FetchError, public_target
 from . import auth
 
@@ -76,6 +77,7 @@ def episode_detail(episode_id):
     episode = store.owned_episode(db(), auth.current_user_id(), episode_id)
     if episode is None:
         return jsonify(error='not_found'), 404
+    episode['cross_source'] = for_episode(db(), episode)
     return jsonify(serial(episode))
 
 

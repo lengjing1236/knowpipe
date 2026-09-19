@@ -17,9 +17,9 @@ Independent test：候选盲标来源隐藏，完整标签才能评价，手算�
 - [ ] T009 [US2] 真人完成标签后计算真实效果 evidence/006-scale-evaluation-linking/evaluation-results.json（外部依赖，未完成不得勾选）
 ## Phase 5: US3 跨来源关联
 Independent test：真实Spark相关文献排名、授权隔离、陈旧过滤和失败不发布。
-- [ ] T010 [US3] 编写Spark关联与API测试 tests/linking/test_job.py
-- [ ] T011 [US3] 实现联合模型、版本化结果和原子发布 knowpipe/linking/job.py
-- [ ] T012 [US3] 实现详情API与延伸阅读 knowpipe/web/routes_podcasts.py、knowpipe/web/static/app.js
+- [X] T010 [US3] 编写Spark关联与API测试 tests/linking/test_job.py
+- [X] T011 [US3] 实现联合模型、版本化结果和原子发布 knowpipe/linking/job.py
+- [X] T012 [US3] 实现详情API与延伸阅读 knowpipe/web/routes_podcasts.py、knowpipe/web/static/app.js
 - [ ] T013 [US3] 执行真实关联与浏览器/API验收 evidence/006-scale-evaluation-linking/linking-acceptance.json
 ## Phase 6: Polish
 - [ ] T014 完整回归与简明使用说明 README.md、evidence/006-scale-evaluation-linking/acceptance-record.md
