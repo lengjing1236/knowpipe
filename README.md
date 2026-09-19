@@ -1,5 +1,7 @@
 # Knowpipe
 
+[2026-09-19 Codegraph 审查与课程改进建议](docs/codegraph-course-review-2026-09-19.md)
+
 面向课程实践的多源知识发现 Web：技术文献挖掘、用户知识画像、播客订阅与文字稿分析。
 核心计算使用 **Spark**，业务数据和批次证据保存在 **MongoDB**，Web 使用 Flask。
 
