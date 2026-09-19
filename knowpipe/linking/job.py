@@ -41,7 +41,8 @@ def rank_links(spark, documents, episodes, top_k=3):
     if frame.select('kind').distinct().count()<2:
         return
     cv=CountVectorizer(inputCol='tokens',outputCol='tf',vocabSize=20000,maxDF=.95).fit(frame)
-    if not cv.vocabulary:
+    vocabulary = cv.vocabulary
+    if not vocabulary:
         return
     tf=cv.transform(frame)
     weighted=IDF(inputCol='tf',outputCol='features').fit(tf).transform(tf)
@@ -63,7 +64,7 @@ def rank_links(spark, documents, episodes, top_k=3):
         top=pairs.filter(F.col('score')>0).withColumn('rank',F.row_number().over(window)).filter(F.col('rank')<=top_k)
         for row in top.orderBy('episode_id','segment_id','rank').toLocalIterator():
             yield {'episode_id':row.episode_id,'segment_id':row.segment_id,'source':row.source,'doc_id':row.doc_id,
-                   'score':min(1.0,float(row.score)),'shared_terms':[cv.vocabulary[t.term] for t in row.terms]}
+                   'score':min(1.0,float(row.score)),'shared_terms':[vocabulary[t.term] for t in row.terms]}
     finally:
         inverted.unpersist()
 
