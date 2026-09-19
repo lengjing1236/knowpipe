@@ -6,8 +6,8 @@
 - [X] T002 检查本机真实数据库、ignored state/及依赖，确定独立实验库；记录 research.md
 ## Phase 3: US1 规模验收
 Independent test：同一冻结输入两次真实运行，主源有效≥10000，文档数一致。
-- [ ] T003 [US1] 编写快照去重/错误门槛测试 tests/mining/test_scale.py
-- [ ] T004 [US1] 实现采集快照、真实批次核对、资源统计 knowpipe/mining/scale.py；增加采集余量 knowpipe/mining/collectors/stackexchange.py
+- [X] T003 [US1] 编写快照去重/错误门槛测试 tests/mining/test_scale.py
+- [X] T004 [US1] 实现采集快照、真实批次核对、资源统计 knowpipe/mining/scale.py；增加采集余量 knowpipe/mining/collectors/stackexchange.py
 - [ ] T005 [US1] 执行真实采集和规模重跑，保存 evidence/006-scale-evaluation-linking/scale-*.json
 ## Phase 4: US2 人工效果评价
 Independent test：候选盲标来源隐藏，完整标签才能评价，手算指标一致。

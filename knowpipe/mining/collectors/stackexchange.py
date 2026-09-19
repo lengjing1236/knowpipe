@@ -17,9 +17,8 @@ PAGE_SIZE = 100  # StackExchange API 单页上限
 MAX_PAGE_WITHOUT_KEY = 25  # 不带 app key 时的分页上限（第 26 页起要求 access token）
 
 # 调研文档《课程项目选题调研与实施方案.md》第 2.1 节列出的 4 个技术问答站点，
-# 每站不带 key 最多可采 25*100=2500 条，4 站合计 10,000 条，正好对应 FR-008 的
-# 规模门槛，不需要申请 Stack Exchange app key。
-DEFAULT_SITES = ("stackoverflow", "serverfault", "superuser", "askubuntu")
+# 每站不带 key 最多可采 2500 条；额外 Unix 站点提供去重后的规模余量。
+DEFAULT_SITES = ("stackoverflow", "serverfault", "superuser", "askubuntu", "unix")
 
 
 class CollectError(Exception):
