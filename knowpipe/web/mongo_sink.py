@@ -287,7 +287,7 @@ def get_user_knowledge(db: Any, user_id: str, limit: int = 20,
     query: dict[str, Any] = {"user_id": user_id}
     if source:
         query["source"] = source
-    return list(db.user_knowledge.find(query).sort("score", -1).limit(limit))
+    return list(db.user_knowledge.find(query).sort([("score", -1), ("knowledge_id", 1)]).limit(limit))
 
 
 def write_score_batch(db: Any, entries: list[dict[str, Any]], batch_id: str) -> None:

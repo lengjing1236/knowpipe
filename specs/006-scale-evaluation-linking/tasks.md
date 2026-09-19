@@ -11,8 +11,8 @@ Independent test：同一冻结输入两次真实运行，主源有效≥10000�
 - [ ] T005 [US1] 执行真实采集和规模重跑，保存 evidence/006-scale-evaluation-linking/scale-*.json
 ## Phase 4: US2 人工效果评价
 Independent test：候选盲标来源隐藏，完整标签才能评价，手算指标一致。
-- [ ] T006 [US2] 编写标注导入和候选冻结测试 tests/evaluation/test_study.py
-- [ ] T007 [US2] 实现现有算法候选导出、HTML标注和严格导入 knowpipe/evaluation/study.py
+- [X] T006 [US2] 编写标注导入和候选冻结测试 tests/evaluation/test_study.py
+- [X] T007 [US2] 实现现有算法候选导出、HTML标注和严格导入 knowpipe/evaluation/study.py
 - [ ] T008 [US2] 真实数据准备两个学习任务候选 state/course-006/study/，记录 evidence/006-scale-evaluation-linking/evaluation-status.json
 - [ ] T009 [US2] 真人完成标签后计算真实效果 evidence/006-scale-evaluation-linking/evaluation-results.json（外部依赖，未完成不得勾选）
 ## Phase 5: US3 跨来源关联

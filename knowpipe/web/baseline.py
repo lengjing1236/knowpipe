@@ -46,7 +46,7 @@ def get_baseline_recommendations(db: Any, read_doc_ids: list[dict[str, str]], li
     query: dict[str, Any] = {}
     if source:
         query["source"] = source
-    docs = db.documents.find(query).sort("created_at", -1).limit(limit)
+    docs = db.documents.find(query).sort([("created_at", -1), ("source", 1), ("doc_id", 1)]).limit(limit)
     return [{"document": {
         "source": doc["source"], "doc_id": doc["doc_id"],
         "title": doc.get("title"), "source_url": doc.get("source_url"),

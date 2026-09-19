@@ -30,46 +30,36 @@ def build_arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def rows_for_profile(units, profile, qualities, user_id):
+    """Shared feature construction for production scoring and frozen evaluation."""
+    known_keywords = set(profile.get("known_keywords", []))
+    known_topics = {str(t) for t in profile.get("known_topics", [])}
+    read_keys = {(r.get("source"), r.get("doc_id")) for r in profile.get("read_doc_ids", [])}
+    rows = []
+    for unit in units:
+        keywords = set(unit.get("keywords") or [])
+        topic = unit.get("topic_cluster_id")
+        key = (unit.get("source"), unit.get("doc_id"))
+        rows.append({"user_id": user_id, "knowledge_id": unit["knowledge_id"],
+                     "topic_relevance": 1.0 if topic is not None and str(topic) in known_topics else 0.0,
+                     "new_keyword_ratio": len(keywords-known_keywords)/len(keywords) if keywords else 0.0,
+                     "doc_quality": 1.0 if qualities.get(key, True) else 0.3,
+                     "read_penalty": 1.0 if key in read_keys else 0.0})
+    return rows
+
+
+def current_qualities(db):
+    return {(doc["source"], doc["doc_id"]): bool(result.get("reliable", True))
+            for doc, result in mongo_sink._iter_latest_mining_results(db)}
+
+
 def _collect_rows(db: Any) -> list[dict[str, Any]]:
-    """组装 (user_id, knowledge_id) 维度的打分输入行：每个知识单元的关键词/主题簇/
-    可靠性，叠加每个已注册用户的已知关键词/已读文档信号。"""
     units = mongo_sink.get_knowledge_units(db)
-    users = list(db.users.find({}))
-    rows: list[dict[str, Any]] = []
-    for user in users:
-        user_id = user["user_id"]
-        profile = mongo_sink.get_or_create_profile(db, user_id)
-        known_keywords = set(profile.get("known_keywords", []))
-        known_topics = {str(t) for t in profile.get("known_topics", [])}
-        read_keys = {(r.get("source"), r.get("doc_id")) for r in profile.get("read_doc_ids", [])}
-
-        for unit in units:
-            doc_keywords = set(unit.get("keywords") or [])
-            topic_id = unit.get("topic_cluster_id")
-            source, doc_id = unit.get("source"), unit.get("doc_id")
-
-            topic_relevance = 1.0 if topic_id is not None and str(topic_id) in known_topics else 0.0
-            new_keyword_ratio = (len(doc_keywords - known_keywords) / len(doc_keywords)
-                                  if doc_keywords else 0.0)
-
-            reliable = True
-            if source and doc_id:
-                doc = db.documents.find_one({"source": source, "doc_id": doc_id})
-                latest_batch = ((doc or {}).get("mining") or {}).get("batch_id")
-                mr = db.mining_results.find_one({"source": source, "doc_id": doc_id, "batch_id": latest_batch})
-                if mr is not None:
-                    reliable = bool(mr.get("reliable", True))
-            doc_quality = 1.0 if reliable else 0.3
-            read_penalty = 1.0 if (source, doc_id) in read_keys else 0.0
-
-            rows.append({
-                "user_id": user_id,
-                "knowledge_id": unit["knowledge_id"],
-                "topic_relevance": topic_relevance,
-                "new_keyword_ratio": new_keyword_ratio,
-                "doc_quality": doc_quality,
-                "read_penalty": read_penalty,
-            })
+    qualities = current_qualities(db)
+    rows = []
+    for user in db.users.find({}):
+        profile = mongo_sink.get_or_create_profile(db, user["user_id"])
+        rows.extend(rows_for_profile(units, profile, qualities, user["user_id"]))
     return rows
 
 
