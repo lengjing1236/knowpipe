@@ -1,5 +1,8 @@
 # Quickstart: 个性化知识分类与 Web 展示
 
+[已验证] 2026-09-16 安全修订：所有修改请求需先用同一 cookie 会话访问 GET /api/auth/csrf，再发送 X-CSRF-Token 请求头；登录后需重新获取 token。旧示例需补充该步骤。生产/新接口契约见 Feature 003。
+
+
 **Feature**: [spec.md](spec.md) | 字段/契约细节见 [data-model.md](data-model.md)、
 [contracts/api-contract.md](contracts/api-contract.md)
 

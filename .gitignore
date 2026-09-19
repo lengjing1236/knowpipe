@@ -9,6 +9,7 @@ env/
 # 本地配置与系统文件
 .env
 .env.*
+!.env.example
 feeds.txt
 feeds.local.txt
 .DS_Store
@@ -40,7 +41,10 @@ report*.md
 .agents/
 .codex/
 .claude/
-.specify
+.specify/*
+!.specify/memory/
+.specify/memory/*
+!.specify/memory/constitution.md
 
 # 课程方提供的参考资料（非本人产出，二进制大文件不入库）
 大数据综合实践课程内容说明.pdf

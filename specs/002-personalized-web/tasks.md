@@ -228,7 +228,7 @@ Independent Test，验收步骤见 quickstart.md Step 1/2/3）。
 - [X] T043 [US2] 在 `knowpipe/web/routes_api.py` 的 `GET /api/recommendations`
       中接入 `mode=baseline` 分支：调用 T042，响应不含个性化判定字段（对应
       Contract 6），依赖 T031, T042
-- [X] T044 [US2] 按 quickstart.md Step 5 手动执行验收：在 Feature 1 全量规模
+- [ ] T044 [US2] 按 quickstart.md Step 5 手动执行验收：在 Feature 1 全量规模
       （≥10,000 条）数据上运行 `score_job.py`，确认 `batch_id` 可在 1 分钟内
       查询到运行统计；构造至少两个模拟用户画像（对应真实注册账户），人工标注
       `mode=personalized` 与 `mode=baseline` 两组结果的相关性，计算 Precision@K
