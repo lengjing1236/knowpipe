@@ -25,7 +25,7 @@ class TestPasswordHashing(unittest.TestCase):
 class TestLoginRequired(unittest.TestCase):
     def setUp(self):
         self.db = _make_db()
-        self.app = create_app(db=self.db)
+        self.app = create_app(db=self.db, config={"CSRF_ENABLED": False})
         self.client = self.app.test_client()
         mongo_sink.create_user(self.db, "u1", "alice", auth.hash_password("password123"))
 
@@ -42,7 +42,7 @@ class TestLoginRequired(unittest.TestCase):
 class TestOwnershipCheck(unittest.TestCase):
     def setUp(self):
         self.db = _make_db()
-        self.app = create_app(db=self.db)
+        self.app = create_app(db=self.db, config={"CSRF_ENABLED": False})
         self.client = self.app.test_client()
         mongo_sink.create_user(self.db, "u1", "alice", auth.hash_password("password123"))
         mongo_sink.create_user(self.db, "u2", "bob", auth.hash_password("password123"))

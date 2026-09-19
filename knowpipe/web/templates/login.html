@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="utf-8">
-  <title>登录 / 注册 — 个性化知识发现</title>
-</head>
-<body>
-  <h1>登录 / 注册</h1>
-  <form id="login-form">
-    <input type="text" id="username" placeholder="用户名" required>
-    <input type="password" id="password" placeholder="密码" required>
-    <button type="submit" data-action="login">登录</button>
-    <button type="submit" data-action="register">注册</button>
-  </form>
-  <p id="message"></p>
-  <script src="/static/app.js"></script>
-</body>
-</html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>登录 · Knowpipe</title><link rel="stylesheet" href="/static/style.css"></head>
+<body class="auth-page">
+  <main class="auth-card">
+    <a class="brand" href="/">K<span>Knowpipe</span></a>
+    <p class="eyebrow">你的知识，持续更新</p>
+    <h1>从听见，到理解。</h1>
+    <p class="muted">订阅播客，阅读文字稿，发现与你相关的新知识。</p>
+    <form id="login-form">
+      <label for="username">用户名</label><input type="text" id="username" autocomplete="username" maxlength="64" required>
+      <label for="password">密码</label><input type="password" id="password" autocomplete="current-password" minlength="8" maxlength="256" required>
+      <small>新账户密码至少 8 位。注册成功后即可登录。</small>
+      <div class="actions"><button type="submit" data-action="login">登录</button><button type="submit" data-action="register" class="secondary">创建账户</button></div>
+    </form>
+    <p id="message" role="status" aria-live="polite"></p>
+  </main><script src="/static/app.js" defer></script>
+</body></html>

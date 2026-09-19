@@ -22,11 +22,13 @@ def verify_password(raw_password: str, password_hash: str) -> bool:
 
 
 def login_user(user_id: str) -> None:
+    session.clear()
     session["user_id"] = user_id
+    session.permanent = True
 
 
 def logout_user() -> None:
-    session.pop("user_id", None)
+    session.clear()
 
 
 def current_user_id() -> str | None:

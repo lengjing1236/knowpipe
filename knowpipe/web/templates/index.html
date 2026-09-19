@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="utf-8">
-  <title>个性化知识发现</title>
-</head>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>知识工作台 · Knowpipe</title><link rel="stylesheet" href="/static/style.css"></head>
 <body>
-  <h1>个性化知识发现</h1>
-
-  <section id="topics-section">
-    <h2>已知主题选择</h2>
-    <ul id="topics-list"></ul>
-    <button id="save-topics">保存已知主题</button>
-  </section>
-
-  <section id="filters-section">
-    <label>来源筛选：
-      <select id="source-filter">
-        <option value="">全部</option>
-        <option value="stackexchange">Stack Exchange</option>
-        <option value="arxiv">arXiv</option>
-      </select>
-    </label>
-  </section>
-
-  <section id="recommendations-section">
-    <h2>新知识 / 深化知识推荐</h2>
-    <ul id="recommendations-list"></ul>
-  </section>
-
-  <script src="/static/app.js"></script>
-</body>
-</html>
+<header class="topbar"><a class="brand" href="/">K<span>Knowpipe</span></a><nav aria-label="主要导航"><a href="#podcasts-section">播客订阅</a><a href="#recommendations-section">知识发现</a><a href="#evidence-section">处理记录</a></nav><div class="account"><span id="username-label"></span><button id="logout" class="quiet">退出</button></div></header>
+<main id="workspace">
+  <div class="page-heading"><div><p class="eyebrow">KNOWLEDGE WORKSPACE</p><h1>让每次收听，留下新知。</h1><p class="muted">从订阅更新到文字稿分析，把值得理解的内容留在这里。</p></div><a href="#subscribe-form" class="button">＋ 订阅播客</a></div>
+  <p id="message" role="status" aria-live="polite"></p>
+  <section class="metrics" aria-label="真实数据统计"><div><span>技术文献</span><strong id="metric-docs">—</strong><small>已入库文档</small></div><div><span>已分析节目</span><strong id="metric-episodes">—</strong><small>文字稿处理完成</small></div><div><span>我的订阅</span><strong id="metric-feeds">—</strong><small>自动检查更新</small></div><div><span>处理状态</span><strong id="metric-batch" class="small-number">—</strong><small>最近一次批次</small></div></section>
+  <div class="workspace-grid">
+    <aside>
+      <section class="panel" id="podcasts-section"><div class="section-heading"><h2>我的播客</h2><span class="pill">RSS</span></div><p class="muted">每 5 分钟检查更新，处理完成后通知你。</p><form id="subscribe-form"><label for="feed-url">公开 RSS 地址</label><input id="feed-url" type="url" placeholder="https://example.com/feed.xml" required><button type="submit">添加订阅</button></form><ul id="subscriptions-list" class="clean-list"><li class="empty">正在加载订阅…</li></ul></section>
+      <section class="panel"><div class="section-heading"><h2>更新通知</h2><span id="notification-status" class="muted">连接中</span></div><ul id="notifications-list" class="clean-list"><li class="empty">还没有新通知</li></ul></section>
+      <section class="panel" id="topics-section"><h2>我已了解的主题</h2><p class="muted">选择熟悉的主题，让推荐区分已知内容与新知识。</p><ul id="topics-list" class="clean-list"></ul><button id="save-topics" class="secondary">保存已知主题</button></section>
+    </aside>
+    <div class="main-column">
+      <section class="panel"><div class="section-heading"><div><p class="eyebrow">LATEST EPISODES</p><h2>订阅动态</h2></div><button id="refresh-podcasts" class="quiet">刷新</button></div><div id="episodes-list" class="card-list"><p class="empty">添加一个播客，开始积累你的知识档案。</p></div></section>
+      <section class="panel" id="recommendations-section"><div class="section-heading"><div><p class="eyebrow">DISCOVER</p><h2>新知识与深化阅读</h2></div><div class="filters"><select id="source-filter" aria-label="来源"><option value="">全部来源</option><option value="stackexchange">Stack Exchange</option><option value="arxiv">arXiv</option></select><select id="mode-filter" aria-label="推荐方式"><option value="personalized">个性化</option><option value="baseline">对照基线</option></select></div></div><div id="recommendations-list" class="card-list"></div></section>
+      <section class="panel" id="evidence-section"><div class="section-heading"><div><p class="eyebrow">PROCESSING LOG</p><h2>数据与处理记录</h2></div><span class="pill">可追溯</span></div><p id="source-counts" class="muted"></p><div id="batches-list"></div><p class="footnote">数据来自实际入库记录。批次成功表示处理完成；推荐效果需要另行进行相关性评价。</p></section>
+    </div>
+  </div>
+</main>
+<dialog id="detail-dialog"><div class="section-heading"><h2 id="detail-title">详情</h2><button id="close-detail" class="quiet" aria-label="关闭详情">关闭 ×</button></div><div id="detail-body"></div></dialog>
+<footer>Knowpipe · 多源知识发现与播客文字稿分析</footer>
+<script src="/static/app.js" defer></script>
+</body></html>

@@ -3,10 +3,12 @@ from __future__ import annotations
 
 import logging
 import uuid
+from datetime import timezone
 
 from flask import Blueprint, current_app, jsonify, request
 
 from . import auth, baseline, classify, mongo_sink
+from .security import csrf_token
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +35,9 @@ def register():
     password = body.get("password")
     if not username or not password:
         return jsonify({"error": "missing_fields"}), 400
+    if not isinstance(username, str) or not isinstance(password, str) or len(username) > 64 or len(password) > 256 or not username.strip():
+        return jsonify({"error": "invalid_credentials_format"}), 400
+    username = username.strip()
     if len(password) < MIN_PASSWORD_LENGTH:
         return jsonify({"error": "password_too_short"}), 400
 
@@ -51,6 +56,9 @@ def login():
     body = request.get_json(silent=True) or {}
     username = body.get("username")
     password = body.get("password")
+    if not isinstance(username, str) or not isinstance(password, str) or not 1 <= len(username) <= 64 or len(password) > 256:
+        return jsonify({"error": "invalid_credentials_format"}), 400
+    username = username.strip()
     db = _db()
     user = mongo_sink.find_user_by_username(db, username) if username else None
     if user is None or not password or not auth.verify_password(password, user["password_hash"]):
@@ -110,7 +118,7 @@ def recommendations():
             limit = int(limit_raw)
         except ValueError:
             limit = -1
-        if limit <= 0:
+        if not 1 <= limit <= 100:
             return jsonify({"error": "invalid_limit"}), 400
 
         source = request.args.get("source")
@@ -183,7 +191,7 @@ def submit_feedback():
 
         knowledge_id = body.get("knowledge_id")
         action = body.get("action")
-        if not knowledge_id or action not in VALID_FEEDBACK_ACTIONS:
+        if not isinstance(knowledge_id, str) or not knowledge_id or len(knowledge_id) > 256 or action not in VALID_FEEDBACK_ACTIONS:
             return jsonify({"error": "invalid_action"}), 400
 
         db = _db()
@@ -204,3 +212,35 @@ def submit_feedback():
         return jsonify({"knowledge_id": knowledge_id, "action": action,
                         "created_at": entry["created_at"].isoformat()}), 200
     return _handle()
+
+
+@api_bp.get("/auth/csrf")
+def get_csrf():
+    return jsonify(csrf_token=csrf_token())
+
+
+@api_bp.get("/auth/me")
+@_login_required
+def me():
+    user = mongo_sink.find_user_by_id(_db(), auth.current_user_id())
+    profile = mongo_sink.get_or_create_profile(_db(), user["user_id"])
+    return jsonify(user_id=user["user_id"], username=user["username"],
+                   known_topics=profile.get("known_topics", []))
+
+
+@api_bp.get("/stats")
+def stats():
+    db = _db()
+    sources = {row['_id']: row['count'] for row in db.documents.aggregate([
+        {'$group': {'_id': '$source', 'count': {'$sum': 1}}}]) if row['_id']}
+    fields = {name: 1 for name in ('batch_id', 'status', 'sources', 'input_count',
+              'valid_count', 'failed_count', 'started_at', 'finished_at',
+              'spark_application_id', 'spark_master', 'segment_count')}
+    fields['_id'] = 0
+    batches = list(db.batches.find({}, fields).sort('started_at', -1).limit(5))
+    for batch in batches:
+        for name in ('started_at', 'finished_at'):
+            if hasattr(batch.get(name), 'isoformat'):
+                batch[name] = batch[name].replace(tzinfo=timezone.utc).isoformat()
+    return jsonify(documents=sum(sources.values()), sources=sources, batches=batches,
+                   podcast_episodes=db.podcast_episodes.count_documents({'status': 'ready'}))

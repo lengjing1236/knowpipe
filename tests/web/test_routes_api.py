@@ -33,7 +33,7 @@ def _seed_document(db, source, doc_id, keywords, topic_cluster_id, batch_id="b1"
 class RoutesTestCase(unittest.TestCase):
     def setUp(self):
         self.db = _make_db()
-        self.app = create_app(db=self.db)
+        self.app = create_app(db=self.db, config={"CSRF_ENABLED": False})
         self.client = self.app.test_client()
 
     def register_and_login(self, username="demo", password="demo-pass-1234"):
