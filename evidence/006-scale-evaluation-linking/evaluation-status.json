@@ -1,0 +1,25 @@
+{
+  "study_id": "cdb07c3105574cc0922c910224e4d8f6",
+  "status": "awaiting_human_labels",
+  "query_count": 2,
+  "tasks": [
+    {
+      "query_id": "spark-learning",
+      "task": "我会基础 Python 和 SQL，希望学习 Spark 的数据处理、分区、性能优化和批处理实践。请按文档对这一任务的帮助程度评分。",
+      "personalized_count": 10,
+      "baseline_count": 10,
+      "candidates": 20
+    },
+    {
+      "query_id": "linux-operations",
+      "task": "我会基础 Linux 命令，希望学习 Linux 服务部署、网络排障、权限和存储运维。请按文档对这一任务的帮助程度评分。",
+      "personalized_count": 10,
+      "baseline_count": 10,
+      "candidates": 20
+    }
+  ],
+  "profiles_are": "explicit learning scenarios, not observed human behavior",
+  "same_personalized_rankings": true,
+  "label_page": "state/course-006/study/label.html",
+  "manifest": "state/course-006/study/manifest.json"
+}

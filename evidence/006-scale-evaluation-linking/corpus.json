@@ -1,0 +1,12 @@
+{
+  "input": 10700,
+  "invalid": 0,
+  "duplicate": 8,
+  "valid": 10692,
+  "sources": {
+    "stackexchange": 10592,
+    "arxiv": 100
+  },
+  "sha256": "633215eae9603ca8c97b711eb74fdc7221cff1afeb89ca923c8fb672ac3746ee",
+  "collection_error": null
+}

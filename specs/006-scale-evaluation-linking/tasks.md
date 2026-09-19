@@ -13,7 +13,7 @@ Independent test：同一冻结输入两次真实运行，主源有效≥10000�
 Independent test：候选盲标来源隐藏，完整标签才能评价，手算指标一致。
 - [X] T006 [US2] 编写标注导入和候选冻结测试 tests/evaluation/test_study.py
 - [X] T007 [US2] 实现现有算法候选导出、HTML标注和严格导入 knowpipe/evaluation/study.py
-- [ ] T008 [US2] 真实数据准备两个学习任务候选 state/course-006/study/，记录 evidence/006-scale-evaluation-linking/evaluation-status.json
+- [X] T008 [US2] 真实数据准备两个学习任务候选 state/course-006/study/，记录 evidence/006-scale-evaluation-linking/evaluation-status.json
 - [ ] T009 [US2] 真人完成标签后计算真实效果 evidence/006-scale-evaluation-linking/evaluation-results.json（外部依赖，未完成不得勾选）
 ## Phase 5: US3 跨来源关联
 Independent test：真实Spark相关文献排名、授权隔离、陈旧过滤和失败不发布。
