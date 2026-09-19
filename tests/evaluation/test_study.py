@@ -31,3 +31,9 @@ class StudyTests(unittest.TestCase):
         self.assertNotIn('baseline',html)
         self.assertNotIn('</script><script>alert',html)
         self.assertIn('请选择',html)
+
+    def test_duplicate_queries_and_boolean_scores_rejected(self):
+        self.labels['queries'][1]=self.labels['queries'][0]
+        with self.assertRaises(ValueError): import_labels(self.manifest,self.labels)
+        self.labels['queries']=[{'query_id':q,'judgments':{'a':True,'b':0}} for q in ['q1','q2']]
+        with self.assertRaises(ValueError): import_labels(self.manifest,self.labels)

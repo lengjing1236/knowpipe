@@ -111,7 +111,8 @@ def run(db, snapshot, output, minimum=10000):
     event_dir = output.parent.resolve() / ('spark-events-'+stats.batch_id)
     event_dir.mkdir(parents=True, exist_ok=True)
     report = {'batch_id': stats.batch_id, 'snapshot_sha256':hashlib.sha256(snapshot.read_bytes()).hexdigest(),
-              'quality':quality, 'code_revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+              'quality':quality, 'parameters':{'top_k':10,'num_clusters':8,'top_similar':5,'shuffle_partitions':4},
+              'logical_cpus':os.cpu_count(), 'code_revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
               'event_log_dir':str(event_dir), 'status':'running', 'accepted':False}
     mongo_sink.ensure_indexes(db)
     mongo_sink.write_batch_stats(db, stats.to_dict())
