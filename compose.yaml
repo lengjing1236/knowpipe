@@ -1,0 +1,66 @@
+name: knowpipe
+services:
+  mongo:
+    image: mongo:7.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: knowpipe
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:?Set MONGO_PASSWORD in .env}
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "quit(db.runCommand({ping:1}).ok ? 0 : 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks: [backend]
+  web:
+    build:
+      context: .
+      target: web
+    restart: unless-stopped
+    environment: &environment
+      APP_ENV: production
+      SECRET_KEY: ${SECRET_KEY:?Set SECRET_KEY in .env}
+      PUBLIC_ORIGIN: https://${DOMAIN:?Set DOMAIN in .env}
+      TRUST_PROXY: '1'
+      MONGO_URI: mongodb://knowpipe:${MONGO_PASSWORD}@mongo:27017/knowpipe_mining?authSource=admin
+      MONGO_DB: knowpipe_mining
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks: [backend, edge]
+  worker:
+    build:
+      context: .
+      target: worker
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      SPARK_MASTER: local[2]
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks: [backend, edge]
+  caddy:
+    image: caddy:2.10-alpine
+    restart: unless-stopped
+    environment:
+      DOMAIN: ${DOMAIN}
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [web]
+    networks: [edge]
+volumes:
+  mongo_data:
+  caddy_data:
+  caddy_config:
+networks:
+  backend:
+    internal: true
+  edge:

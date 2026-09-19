@@ -1,0 +1,8 @@
+*
+!Dockerfile
+!requirements/
+!requirements/**
+!knowpipe/
+!knowpipe/**
+**/__pycache__
+**/*.pyc
