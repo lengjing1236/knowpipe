@@ -25,3 +25,12 @@ class ScaleTests(unittest.TestCase):
         db.documents.insert_one({**record(2,'arxiv'), 'mining': {'batch_id':'b'}})
         db.mining_results.insert_one({'source':'arxiv','doc_id':'2','batch_id':'b'})
         self.assertTrue(verify_counts(db, 'b', minimum=1)['accepted'])
+
+    def test_duplicate_result_rows_cannot_inflate_acceptance(self):
+        db = mongomock.MongoClient().test
+        for source in ['stackexchange','arxiv']:
+            db.documents.insert_one({**record(source,source),'mining':{'batch_id':'b'}})
+            db.mining_results.insert_one({'source':source,'doc_id':source,'batch_id':'b'})
+        self.assertTrue(verify_counts(db,'b',minimum=1)['accepted'])
+        db.mining_results.insert_one({'source':'stackexchange','doc_id':'stackexchange','batch_id':'b'})
+        self.assertFalse(verify_counts(db,'b',minimum=1)['accepted'])

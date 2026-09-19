@@ -45,11 +45,12 @@ def clean_records(raw):
 def verify_counts(db, batch_id, minimum=10000):
     current = {(r['source'], r['doc_id']) for r in db.documents.find(
         {'mining.batch_id': batch_id}, {'source':1, 'doc_id':1})}
-    mined = {(r['source'], r['doc_id']) for r in db.mining_results.find({'batch_id':batch_id})}
+    mined_rows = list(db.mining_results.find({'batch_id':batch_id}, {'source':1, 'doc_id':1}))
+    mined = {(r['source'], r['doc_id']) for r in mined_rows}
     counts = dict(Counter(source for source, _ in current & mined))
-    return {'sources': counts, 'matched_results': len(current & mined), 'minimum': minimum,
+    return {'sources': counts, 'matched_results': len(current & mined), 'result_rows':len(mined_rows), 'minimum': minimum,
             'accepted': counts.get('stackexchange', 0) >= minimum and counts.get('arxiv', 0) > 0
-                        and current == mined}
+                        and current == mined and len(mined_rows) == len(mined)}
 
 
 def process_tree_rss():
