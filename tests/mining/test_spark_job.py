@@ -133,3 +133,21 @@ class TestMainWritesBatchStatsOnFailure(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class TestExecutorSimilarity(unittest.TestCase):
+    def test_ranking_runs_in_spark_task(self):
+        from pyspark.ml.linalg import Vectors
+        from knowpipe.mining.spark_job import rank_similarity_group
+        spark = _get_spark()
+        try:
+            members = [('a', Vectors.sparse(2, {0: 1.0})), ('b', Vectors.sparse(2, {0: 1.0})), ('c', Vectors.sparse(2, {1: 1.0}))]
+            rows = spark.sparkContext.parallelize([members], 1).flatMap(rank_similarity_group).collect()
+            result = {doc_id: matches for doc_id, matches in rows}
+            self.assertEqual(result['a'][0], 'b')
+            self.assertEqual(result['c'], [])
+            with self.assertRaises(RuntimeError):
+                list(rank_similarity_group(members))
+        finally:
+            global SPARK
+            spark.stop()
+            SPARK = None

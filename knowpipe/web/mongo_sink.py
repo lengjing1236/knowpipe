@@ -6,6 +6,8 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any
 
+from pymongo.errors import DuplicateKeyError
+
 
 class UsernameTakenError(Exception):
     """用户名已存在，对应 Contract 1 的 409。"""
@@ -31,7 +33,10 @@ def create_user(db: Any, user_id: str, username: str, password_hash: str) -> dic
         "password_hash": password_hash,
         "created_at": datetime.now(timezone.utc),
     }
-    db.users.insert_one(dict(record))
+    try:
+        db.users.insert_one(dict(record))
+    except DuplicateKeyError as exc:
+        raise UsernameTakenError(username) from exc
     return record
 
 
@@ -57,8 +62,8 @@ def get_or_create_profile(db: Any, user_id: str) -> dict[str, Any]:
         "feedback_history": [],
         "updated_at": datetime.now(timezone.utc),
     }
-    db.user_profiles.insert_one(dict(profile))
-    return profile
+    db.user_profiles.update_one({"user_id": user_id}, {"$setOnInsert": profile}, upsert=True)
+    return db.user_profiles.find_one({"user_id": user_id})
 
 
 def save_known_topics(db: Any, user_id: str, known_topics: list[str],
@@ -101,15 +106,26 @@ def save_profile_known_state(db: Any, user_id: str, known_topics: list[str],
 def _iter_latest_mining_results(db: Any):
     """按 documents.mining.batch_id（Feature 1 mongo_sink 写入时始终指向最新批次）
     定位每篇文档当前有效的 mining_results 记录，避免误读历史批次。"""
+    pending = []
     for doc in db.documents.find({"mining": {"$ne": None}}):
-        mining_ref = doc.get("mining") or {}
-        batch_id = mining_ref.get("batch_id")
-        if not batch_id:
-            continue
-        mr = db.mining_results.find_one(
-            {"doc_id": doc["doc_id"], "source": doc["source"], "batch_id": batch_id})
-        if mr is not None:
-            yield doc, mr
+        if (doc.get("mining") or {}).get("batch_id"):
+            pending.append(doc)
+        if len(pending) >= 500:
+            yield from _load_result_chunk(db, pending)
+            pending = []
+    if pending:
+        yield from _load_result_chunk(db, pending)
+
+
+def _load_result_chunk(db, documents):
+    keys = [{"source": doc["source"], "doc_id": doc["doc_id"],
+             "batch_id": doc["mining"]["batch_id"]} for doc in documents]
+    results = {(row["source"], row["doc_id"], row["batch_id"]): row
+               for row in db.mining_results.find({"$or": keys})}
+    for doc in documents:
+        result = results.get((doc["source"], doc["doc_id"], doc["mining"]["batch_id"]))
+        if result is not None:
+            yield doc, result
 
 
 def get_topic_aggregations(db: Any, top_keywords_n: int = 5) -> list[dict[str, Any]]:

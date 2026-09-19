@@ -44,6 +44,8 @@ class BatchStats:
             "sources": self.sources,
             "status": self.status,
             "error_message": self.error_message,
+            **({"spark_application_id": self.spark_application_id, "spark_master": self.spark_master}
+               if hasattr(self, "spark_application_id") else {}),
         }
 
 

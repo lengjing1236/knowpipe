@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
+from functools import partial
 import re
 from typing import Any
 
@@ -22,7 +24,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_TOP_K = 10
 DEFAULT_NUM_CLUSTERS = 8
 DEFAULT_TOP_SIMILAR = 5
-# KMeans 不保证各簇大小均衡，单簇内两两相似度比较是 O(size^2) 的纯 Python driver 端循环，
+# KMeans 不保证各簇大小均衡，单簇内两两相似度比较是 O(size^2) 的Spark task 内有界循环，
 # 簇过大时会在万级规模下卡死。超过该阈值的簇在收集前先用一次额外的 Spark KMeans 拆分成
 # 更小的子组，保证任意一次两两比较的规模有上限（子组只影响相似度比较范围，不改变落库的
 # topic_cluster_id）。
@@ -141,6 +143,19 @@ def _split_into_bounded_groups(spark, members: list[tuple[str, Any]], max_size: 
     return bounded
 
 
+def rank_similarity_group(members, top_similar=DEFAULT_TOP_SIMILAR):
+    """Rank one bounded candidate group on a Spark executor, never on the driver."""
+    from pyspark import TaskContext
+    if TaskContext.get() is None:
+        raise RuntimeError('similarity ranking must run in a Spark task')
+    for doc_id, vector in members:
+        scored = [(other_id, _cosine_similarity(vector, other_vector))
+                  for other_id, other_vector in members if other_id != doc_id]
+        scored = [item for item in scored if item[1] > 0]
+        scored.sort(key=lambda item: (-item[1], item[0]))
+        yield doc_id, [other_id for other_id, _ in scored[:top_similar]]
+
+
 def run_mining(spark, valid_records: list[dict[str, Any]], top_k: int = DEFAULT_TOP_K,
                num_clusters: int = DEFAULT_NUM_CLUSTERS, top_similar: int = DEFAULT_TOP_SIMILAR,
                stats: batch_mod.BatchStats | None = None) -> dict[str, dict[str, Any]]:
@@ -203,18 +218,15 @@ def run_mining(spark, valid_records: list[dict[str, Any]], top_k: int = DEFAULT_
         }
         vectors_by_cluster.setdefault(cluster_id, []).append((row["doc_id"], vec))
 
-    # 相似度只在同一主题簇内两两比较：复用 KMeans 的分组结果，把比较范围从全量
-    # O(n^2) 收窄到簇内。但 KMeans 不保证各簇大小均衡，簇过大时单簇内两两比较仍会在
-    # 万级规模下退化为卡死的 O(size^2) driver 端循环，所以超过阈值的簇先拆成更小的
-    # 有界子组再比较——子组只影响相似度比较范围，不改变落库的 topic_cluster_id。
-    for cluster_members in vectors_by_cluster.values():
-        for members in _split_into_bounded_groups(spark, cluster_members, MAX_CLUSTER_COMPARE_SIZE):
-            for doc_id_a, vec_a in members:
-                sims = [(doc_id_b, _cosine_similarity(vec_a, vec_b))
-                        for doc_id_b, vec_b in members if doc_id_b != doc_id_a]
-                sims = [p for p in sims if p[1] > 0]
-                sims.sort(key=lambda p: -p[1])
-                results[doc_id_a]["similar_doc_ids"] = [d for d, _ in sims[:top_similar]]
+    # Candidate grouping remains bounded; pairwise cosine ranking runs in Spark tasks.
+    bounded_groups = []
+    for members in vectors_by_cluster.values():
+        bounded_groups.extend(_split_into_bounded_groups(spark, members, MAX_CLUSTER_COMPARE_SIZE))
+    partitions = max(1, min(len(bounded_groups), spark.sparkContext.defaultParallelism))
+    rankings = (spark.sparkContext.parallelize(bounded_groups, partitions)
+                .flatMap(partial(rank_similarity_group, top_similar=top_similar)).collect())
+    for doc_id, neighbors in rankings:
+        results[doc_id]['similar_doc_ids'] = neighbors
 
     return results
 
@@ -244,10 +256,12 @@ def main(argv: list[str] | None = None) -> str:
     mongo_sink.ensure_indexes(db)
 
     try:
-        spark = SparkSession.builder.master("local[*]").appName("knowpipe-mining").getOrCreate()
+        spark = SparkSession.builder.master(os.environ.get("SPARK_MASTER", "local[2]")).appName("knowpipe-mining").getOrCreate()
         try:
             mining_map = run_mining(spark, valid_records, top_k=args.top_k,
                                      num_clusters=args.num_clusters, stats=stats)
+            stats.spark_application_id = spark.sparkContext.applicationId
+            stats.spark_master = spark.sparkContext.master
         finally:
             spark.stop()
 

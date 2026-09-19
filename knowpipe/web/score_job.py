@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 from typing import Any
 
 from ..mining import batch as batch_mod
@@ -53,7 +54,9 @@ def _collect_rows(db: Any) -> list[dict[str, Any]]:
 
             reliable = True
             if source and doc_id:
-                mr = db.mining_results.find_one({"source": source, "doc_id": doc_id})
+                doc = db.documents.find_one({"source": source, "doc_id": doc_id})
+                latest_batch = ((doc or {}).get("mining") or {}).get("batch_id")
+                mr = db.mining_results.find_one({"source": source, "doc_id": doc_id, "batch_id": latest_batch})
                 if mr is not None:
                     reliable = bool(mr.get("reliable", True))
             doc_quality = 1.0 if reliable else 0.3
@@ -101,6 +104,8 @@ def run(db: Any, spark) -> tuple[str, dict[str, Any]]:
 
     rows = _collect_rows(db)
     stats.input_count = len(rows)
+    stats.spark_application_id = spark.sparkContext.applicationId
+    stats.spark_master = spark.sparkContext.master
     try:
         scored = compute_scores(spark, rows)
         mongo_sink.write_score_batch(db, scored, batch_id)
@@ -125,7 +130,7 @@ def main(argv: list[str] | None = None) -> str:
     db = client[args.mongo_db] if args.mongo_db else client.get_default_database()
     mongo_sink.ensure_indexes(db)
 
-    spark = SparkSession.builder.master("local[*]").appName("knowpipe-web-score").getOrCreate()
+    spark = SparkSession.builder.master(os.environ.get("SPARK_MASTER", "local[2]")).appName("knowpipe-web-score").getOrCreate()
     try:
         batch_id, _ = run(db, spark)
     finally:
