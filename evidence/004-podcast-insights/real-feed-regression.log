@@ -1,0 +1,21 @@
+test_expired_lease_recovers_processing_and_does_not_duplicate_notifications (tests.podcasts.test_pipeline.NotificationContractTests) ... ok
+test_sse_resume_and_read_are_user_scoped (tests.podcasts.test_pipeline.NotificationContractTests) ... ok
+test_api_ownership_and_manual_transcript (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_failed_processing_is_recorded_and_can_be_retried (tests.podcasts.test_pipeline.PodcastPipelineTests) ... Podcast batch 20260916-1e8a3a9b failed: RuntimeError
+ok
+test_lease_excludes_competing_worker (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_poll_process_retry_and_notification_idempotency (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_repoll_only_adds_new_episodes_and_updates_existing_transcripts (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_cap_duplicate_and_release (tests.podcasts.test_pipeline.SubscriptionQuotaTests) ... ok
+test_entity_expansion_rejected (tests.podcasts.test_feeds.FeedTests) ... ok
+test_guid_dedup_transcript_and_no_description_fallback (tests.podcasts.test_feeds.FeedTests) ... ok
+test_publisher_html_transcript_excludes_navigation_and_scripts (tests.podcasts.test_feeds.FeedTests) ... ok
+test_rejects_private_mixed_and_credential_targets (tests.podcasts.test_feeds.FeedTests) ... ok
+test_vtt_srt_json (tests.podcasts.test_feeds.FeedTests) ... ok
+test_body_limit_is_enforced_without_content_length (tests.podcasts.test_feeds.FetchBoundaryTests) ... ok
+test_redirect_to_private_address_rejected_before_second_connection (tests.podcasts.test_feeds.FetchBoundaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.671s
+
+OK

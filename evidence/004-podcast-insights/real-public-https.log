@@ -1,0 +1,46 @@
+Live RSS: JS Party: JavaScript, CSS, Web Development, 2270738 bytes, 2 publisher transcripts
+{
+  "checked_at": "2026-09-16T12:58:13.152895+00:00",
+  "base_url": "https://hundred-belfast-blackberry-females.trycloudflare.com",
+  "feed_url": "https://changelog.com/jsparty/feed",
+  "feed_title": "JS Party: JavaScript, CSS, Web Development",
+  "feed_bytes": 2270738,
+  "feed_sha256": "3202b93de10f5d659d02bea172fe3664fa79701fe8089483108b0037fb453c70",
+  "episodes": [
+    {
+      "episode_id": "3d21625bfa9f8de4c6275af17e497eec70978b037fe9e6b0f99508334b43273d",
+      "title": "WYSIWYG",
+      "source_url": "https://changelog.com/jsparty/348",
+      "transcript_url": "https://changelog.com/jsparty/348/transcript",
+      "batch_id": "20260916-017c85ae",
+      "transcript_characters": 75171,
+      "transcript_sha256": "bc2d8f8c8a98617dd1ba086e51e5d7fbaa53e2bc9a8699c7104415a3226ea2ee",
+      "segment_count": 94,
+      "spark_application_id": "local-1789563100288",
+      "spark_master": "local[2]"
+    },
+    {
+      "episode_id": "8293487d224b19c31e3fce689879a7a1a0c1d048cc6f8f41f4d0d78ad51fe4c9",
+      "title": "React: then & now",
+      "source_url": "https://changelog.com/jsparty/349",
+      "transcript_url": "https://changelog.com/jsparty/349/transcript",
+      "batch_id": "20260916-7757495c",
+      "transcript_characters": 69702,
+      "transcript_sha256": "82ca46f5b7cfbc21ab931fc8a1bb1222b168c7d8147f2ad1364d5d313fe1a141",
+      "segment_count": 88,
+      "spark_application_id": "local-1789563100288",
+      "spark_master": "local[2]"
+    }
+  ],
+  "total_stored_episodes": 3,
+  "target_notifications": 2,
+  "checks": [
+    "real publisher RSS and HTML transcripts",
+    "real MongoDB and Spark local[2]",
+    "HTTP register/login/CSRF/detail/notifications",
+    "second public RSS poll: no duplicate target episodes or batches",
+    "second account cannot read target episodes",
+    "anonymous notifications denied"
+  ],
+  "scope": "Historical public episodes; no scale, recommendation quality, or new-release latency claim"
+}

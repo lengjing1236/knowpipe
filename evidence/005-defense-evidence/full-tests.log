@@ -1,0 +1,132 @@
+test_hand_computed_precision_and_ndcg (tests.evaluation.test_metrics.MetricsTests) ... ok
+test_short_empty_results_do_not_inflate_precision (tests.evaluation.test_metrics.MetricsTests) ... ok
+test_unjudged_and_duplicate_rankings_rejected (tests.evaluation.test_metrics.MetricsTests) ... ok
+test_invalid_source_rejected (tests.mining.test_contract.TestValidateDocument) ... ok
+test_missing_required_field_rejected (tests.mining.test_contract.TestValidateDocument) ... ok
+test_short_body_flagged (tests.mining.test_contract.TestValidateDocument) ... ok
+test_valid_record_gets_defaults_and_quality (tests.mining.test_contract.TestValidateDocument) ... ok
+test_content_hash_cross_source_duplicate (tests.mining.test_dedup.TestDedup) ... ok
+test_content_hash_different_content_not_duplicate (tests.mining.test_dedup.TestDedup) ... ok
+test_exact_key_different_url_not_duplicate (tests.mining.test_dedup.TestDedup) ... ok
+test_exact_key_same_source_and_url (tests.mining.test_dedup.TestDedup) ... ok
+test_mining_results_accumulates_history_across_batches_without_deleting_old (tests.mining.test_mongo_sink.TestMongoSink)
+对应 quickstart.md Step 3：mining_results 按批次追加历史记录（不覆盖删除）， ... ok
+test_mining_results_queryable_by_doc_id_and_batch_id (tests.mining.test_mongo_sink.TestMongoSink) ... ok
+test_repeat_upsert_with_changed_content_updates_not_duplicates (tests.mining.test_mongo_sink.TestMongoSink)
+对应 FR-012/SC-004：内容变更后重新 upsert 以新内容覆盖同一条记录，而非新增。 ... ok
+test_repeat_upsert_with_unchanged_content_does_not_duplicate (tests.mining.test_mongo_sink.TestMongoSink)
+对应 FR-012/SC-004：内容不变时重复 upsert 不产生重复的 documents 记录。 ... ok
+test_upsert_documents_overwrites_on_same_key (tests.mining.test_mongo_sink.TestMongoSink) ... ok
+test_ranking_runs_in_spark_task (tests.mining.test_spark_job.TestExecutorSimilarity) ... WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/16 19:55:44 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                ok
+test_batch_stats_written_with_failed_status_when_run_mining_raises (tests.mining.test_spark_job.TestMainWritesBatchStatsOnFailure) ... 批次 20260916-d5a8dd6d 处理失败
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py", line 261, in main
+    mining_map = run_mining(spark, valid_records, top_k=args.top_k,
+  File "/usr/lib/python3.10/unittest/mock.py", line 1114, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/usr/lib/python3.10/unittest/mock.py", line 1118, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/usr/lib/python3.10/unittest/mock.py", line 1173, in _execute_mock_call
+    raise effect
+RuntimeError: boom
+ok
+test_empty_body_after_tokenize_counted_as_failed (tests.mining.test_spark_job.TestSparkJob) ... ok
+test_min_slice_produces_keywords_and_clusters (tests.mining.test_spark_job.TestSparkJob) ... [Stage 0:>                                                        (0 + 12) / 12][Stage 0:====>                                                    (1 + 11) / 12]                                                                                [Stage 4:=========>                                               (2 + 10) / 12]                                                                                [Stage 24:>                                                       (0 + 12) / 12][Stage 24:=======================>                                 (5 + 7) / 12]                                                                                [Stage 25:>                                                         (0 + 2) / 2]                                                                                ok
+test_respects_page_cap_per_site_without_key (tests.mining.test_stackexchange_collector.TestStackExchangeMultiSiteCycling) ... ok
+test_stops_before_next_site_when_target_reached_on_first_site (tests.mining.test_stackexchange_collector.TestStackExchangeMultiSiteCycling) ... ok
+test_switches_to_next_site_when_current_site_exhausted (tests.mining.test_stackexchange_collector.TestStackExchangeMultiSiteCycling) ... ok
+test_chinese_and_english_real_spark (tests.podcasts.test_analysis.TranscriptSparkTests) ... Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 1.070 seconds.
+Prefix dict has been built successfully.
+[Stage 0:>                                                          (0 + 2) / 2][Stage 0:===========================================================(2 + 0) / 2]                                                                                [Stage 9:>                                                          (0 + 2) / 2]                                                                                [Stage 14:>                                                         (0 + 1) / 1]                                                                                [Stage 34:=============================>                            (1 + 1) / 2]                                                                                ok
+test_single_segment_and_empty_input (tests.podcasts.test_analysis.TranscriptSparkTests) ... ok
+test_entity_expansion_rejected (tests.podcasts.test_feeds.FeedTests) ... ok
+test_guid_dedup_transcript_and_no_description_fallback (tests.podcasts.test_feeds.FeedTests) ... ok
+test_rejects_private_mixed_and_credential_targets (tests.podcasts.test_feeds.FeedTests) ... ok
+test_vtt_srt_json (tests.podcasts.test_feeds.FeedTests) ... ok
+test_body_limit_is_enforced_without_content_length (tests.podcasts.test_feeds.FetchBoundaryTests) ... ok
+test_redirect_to_private_address_rejected_before_second_connection (tests.podcasts.test_feeds.FetchBoundaryTests) ... ok
+test_expired_lease_recovers_processing_and_does_not_duplicate_notifications (tests.podcasts.test_pipeline.NotificationContractTests) ... ok
+test_sse_resume_and_read_are_user_scoped (tests.podcasts.test_pipeline.NotificationContractTests) ... ok
+test_api_ownership_and_manual_transcript (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_failed_processing_is_recorded_and_can_be_retried (tests.podcasts.test_pipeline.PodcastPipelineTests) ... Podcast batch 20260916-8c048c8e failed: RuntimeError
+ok
+test_lease_excludes_competing_worker (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_poll_process_retry_and_notification_idempotency (tests.podcasts.test_pipeline.PodcastPipelineTests) ... ok
+test_cap_duplicate_and_release (tests.podcasts.test_pipeline.SubscriptionQuotaTests) ... ok
+test_recommendations_with_valid_session_passes_auth (tests.web.test_auth.TestLoginRequired) ... ok
+test_recommendations_without_session_returns_401 (tests.web.test_auth.TestLoginRequired) ... ok
+test_requesting_other_users_data_returns_403 (tests.web.test_auth.TestOwnershipCheck) ... 拒绝越权请求：session user_id=u1 请求了其他 user_id
+ok
+test_verify_password_correct (tests.web.test_auth.TestPasswordHashing) ... ok
+test_verify_password_incorrect (tests.web.test_auth.TestPasswordHashing) ... ok
+test_does_not_recommend_already_read_documents (tests.web.test_baseline.TestBaselineWithReadHistory) ... ok
+test_uses_similar_doc_ids_from_read_documents (tests.web.test_baseline.TestBaselineWithReadHistory) ... ok
+test_falls_back_to_newest_first (tests.web.test_baseline.TestBaselineWithoutReadHistory) ... ok
+test_batch_classification (tests.web.test_classify.TestClassifyAll) ... ok
+test_keyword_hit_is_known (tests.web.test_classify.TestClassifyUnit) ... ok
+test_no_hit_is_new (tests.web.test_classify.TestClassifyUnit) ... ok
+test_topic_hit_without_keyword_hit_is_refine (tests.web.test_classify.TestClassifyUnit) ... ok
+test_no_evidence_does_not_change_status (tests.web.test_classify.TestConflictOverride) ... ok
+test_pending_review_keeps_status_hidden (tests.web.test_classify.TestConflictOverride) ... ok
+test_reviewed_evidence_switches_to_possible_conflict (tests.web.test_classify.TestConflictOverride) ... ok
+test_latest_known_state_wins_over_earlier_contradictory_state (tests.web.test_classify.TestContradictoryFeedback)
+对应 spec FR-019：矛盾反馈以最近一次为准更新画像，重新判定使用最新已知集合。 ... ok
+test_get_document_detail_found (tests.web.test_mongo_sink.TestDocumentDetail) ... ok
+test_get_document_detail_not_found (tests.web.test_mongo_sink.TestDocumentDetail) ... ok
+test_derive_known_keywords_from_topics_and_read_docs (tests.web.test_mongo_sink.TestTopicAggregations) ... ok
+test_get_knowledge_units_includes_topic_and_keyword_units (tests.web.test_mongo_sink.TestTopicAggregations) ... ok
+test_get_topic_aggregations_groups_by_cluster (tests.web.test_mongo_sink.TestTopicAggregations) ... ok
+test_composite_unique_index_upsert_no_duplicates (tests.web.test_mongo_sink.TestUserKnowledge) ... ok
+test_write_score_batch_does_not_overwrite_status (tests.web.test_mongo_sink.TestUserKnowledge) ... ok
+test_append_feedback (tests.web.test_mongo_sink.TestUserProfiles) ... ok
+test_get_or_create_profile_defaults (tests.web.test_mongo_sink.TestUserProfiles) ... ok
+test_save_known_topics_upserts (tests.web.test_mongo_sink.TestUserProfiles) ... ok
+test_create_user_and_find (tests.web.test_mongo_sink.TestUsers) ... ok
+test_duplicate_username_raises (tests.web.test_mongo_sink.TestUsers) ... ok
+test_csrf_required_and_valid_token_allows_register (tests.web.test_public_web.PublicWebTests) ... ok
+test_health_and_stats_do_not_expose_secrets (tests.web.test_public_web.PublicWebTests) ... ok
+test_production_cookie_and_shared_rate_limit (tests.web.test_public_web.PublicWebTests) ... ok
+test_production_rejects_missing_secret_and_insecure_origin (tests.web.test_public_web.PublicWebTests) ... ok
+test_session_bootstrap_no_url_user_id (tests.web.test_public_web.PublicWebTests) ... ok
+test_untrusted_json_and_query_operators_rejected (tests.web.test_public_web.PublicWebTests) ... ok
+test_login_success_sets_session (tests.web.test_routes_api.TestAuthContract) ... ok
+test_login_wrong_password_returns_401 (tests.web.test_routes_api.TestAuthContract) ... ok
+test_register_duplicate_username_returns_409 (tests.web.test_routes_api.TestAuthContract) ... ok
+test_register_missing_fields_returns_400 (tests.web.test_routes_api.TestAuthContract) ... ok
+test_register_success (tests.web.test_routes_api.TestAuthContract) ... ok
+test_confirmed_known_triggers_reclassification (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_invalid_action_returns_400 (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_other_users_id_returns_403 (tests.web.test_routes_api.TestProfileFeedbackContract) ... 拒绝越权请求：session user_id=1499903de77b429181e5ce2f90d861b4 请求了其他 user_id
+ok
+test_success_returns_feedback_record (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_unauthenticated_returns_401 (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_invalid_topic_id_returns_400 (tests.web.test_routes_api.TestProfileTopicsContract) ... ok
+test_other_users_id_returns_403 (tests.web.test_routes_api.TestProfileTopicsContract) ... 拒绝越权请求：session user_id=a4c4b4903c4e42ed9b8cdb2d840d5b33 请求了其他 user_id
+ok
+test_success_returns_updated_known_topics (tests.web.test_routes_api.TestProfileTopicsContract) ... ok
+test_unauthenticated_returns_401 (tests.web.test_routes_api.TestProfileTopicsContract) ... ok
+test_document_detail_found (tests.web.test_routes_api.TestPublicReadContract) ... ok
+test_document_detail_not_found_returns_404 (tests.web.test_routes_api.TestPublicReadContract) ... ok
+test_topics_sorted_by_document_count_desc (tests.web.test_routes_api.TestPublicReadContract) ... ok
+test_baseline_mode_excludes_personalized_fields (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_invalid_limit_returns_400 (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_new_user_without_profile_gets_all_new (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_other_users_id_returns_403 (tests.web.test_routes_api.TestRecommendationsContract) ... 拒绝越权请求：session user_id=3dc2cdc470a24a66b061f3c5c0dbd593 请求了其他 user_id
+ok
+test_unauthenticated_returns_401 (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_valid_request_returns_items_with_status (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_run_produces_scores_and_batch_stats (tests.web.test_score_job.TestScoreJob) ... [Stage 0:>                                                        (0 + 12) / 12][Stage 0:=========>                                               (2 + 10) / 12][Stage 0:===================>                                      (4 + 8) / 12][Stage 0:=============================>                            (6 + 6) / 12][Stage 0:===========================================>              (9 + 3) / 12][Stage 0:====================================================>    (11 + 1) / 12]                                                                                ok
+test_score_reflects_topic_relevance_and_quality (tests.web.test_score_job.TestScoreJob)
+命中已知主题簇 + 可靠文档的分数应高于未命中 + 不可靠文档的分数。 ... ok
+
+----------------------------------------------------------------------
+Ran 97 tests in 85.428s
+
+OK

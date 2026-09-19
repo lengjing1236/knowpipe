@@ -1,0 +1,12 @@
+{
+  "desktop": "1440px passed",
+  "mobile": "390px no horizontal overflow",
+  "flows": [
+    "login without URL user_id",
+    "session bootstrap",
+    "SSE connected",
+    "transcript and Spark segments",
+    "logout"
+  ],
+  "javascript_errors": []
+}

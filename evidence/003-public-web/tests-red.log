@@ -1,0 +1,52 @@
+======================================================================
+ERROR: test_csrf_required_and_valid_token_allows_register (tests.web.test_public_web.PublicWebTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/tests/web/test_public_web.py", line 16, in setUp
+    self.token = self.client.get('/api/auth/csrf').get_json()['csrf_token']
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_health_and_stats_do_not_expose_secrets (tests.web.test_public_web.PublicWebTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/tests/web/test_public_web.py", line 16, in setUp
+    self.token = self.client.get('/api/auth/csrf').get_json()['csrf_token']
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_production_cookie_and_shared_rate_limit (tests.web.test_public_web.PublicWebTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/tests/web/test_public_web.py", line 16, in setUp
+    self.token = self.client.get('/api/auth/csrf').get_json()['csrf_token']
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_production_rejects_missing_secret_and_insecure_origin (tests.web.test_public_web.PublicWebTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/tests/web/test_public_web.py", line 16, in setUp
+    self.token = self.client.get('/api/auth/csrf').get_json()['csrf_token']
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_session_bootstrap_no_url_user_id (tests.web.test_public_web.PublicWebTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/tests/web/test_public_web.py", line 16, in setUp
+    self.token = self.client.get('/api/auth/csrf').get_json()['csrf_token']
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_untrusted_json_and_query_operators_rejected (tests.web.test_public_web.PublicWebTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/tests/web/test_public_web.py", line 16, in setUp
+    self.token = self.client.get('/api/auth/csrf').get_json()['csrf_token']
+TypeError: 'NoneType' object is not subscriptable
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.040s
+
+FAILED (errors=6)

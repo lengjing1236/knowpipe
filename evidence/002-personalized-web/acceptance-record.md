@@ -4,6 +4,8 @@
 [tasks.md](../../specs/002-personalized-web/tasks.md) |
 [quickstart.md](../../specs/002-personalized-web/quickstart.md)
 
+[已验证] 2026-09-16 复核：本记录为历史小规模验收，Step 5 未满足万条数据与人工评价要求，T044 已恢复为未完成。最新改动与测试见 Feature 003–005 evidence。
+
 本文件汇总 quickstart.md 全部 Step 的验收结果，作为课程答辩的证据索引。验收均基于
 真实 MongoDB 实例（`knowpipe_mining` 库，Feature 1 已产出的 200 篇文档/210 条
 mining_results）与真实 `local[*]` SparkSession，未使用 mongomock/测试替身。
@@ -44,7 +46,7 @@ mining_results）与真实 `local[*]` SparkSession，未使用 mongomock/测试�
   画像更新与重新判定（`classify.classify_all` + `mongo_sink.upsert_user_knowledge_status`）
   按预期生效。
 
-## Step 5：规模化判定 + 个性化/基线对比（User Story 2，对应 spec SC-002/SC-003）— 已完成（现有全量规模）
+## Step 5：规模化判定 + 个性化/基线对比（User Story 2，对应 spec SC-002/SC-003）— 小规模链路已验证；万条规模与人工质量评价待完成
 
 - 运行 `python3 -m knowpipe.web.score_job --mongo-uri mongodb://localhost:27017
   --mongo-db knowpipe_mining`：
@@ -55,7 +57,7 @@ mining_results）与真实 `local[*]` SparkSession，未使用 mongomock/测试�
 - 对比 `mode=personalized` 与 `mode=baseline` 两组 `GET /api/recommendations`
   返回：`mode=baseline` 的条目不含 `status`/`matched_keywords`/
   `matched_topic_cluster_id` 字段（对应 Contract 6 baseline 分支约定），两组
-  结果集顺序/内容明显不同，验证个性化排序确实产生了区别于纯相似度基线的效果。
+  结果集顺序/内容不同，只能验证两种排序路径有区别，不能证明推荐质量提升。
 
 **规模说明**：本次运行基于 Feature 1 当前已产出的真实数据规模（200 篇文档/
 210 条挖掘结果），验证了 `score_job.py` 的计算逻辑、批次可追溯性写入

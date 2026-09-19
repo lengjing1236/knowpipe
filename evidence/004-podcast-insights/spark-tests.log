@@ -1,0 +1,16 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/16 19:39:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+test_chinese_and_english_real_spark (tests.podcasts.test_analysis.TranscriptSparkTests) ... Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 1.196 seconds.
+Prefix dict has been built successfully.
+[Stage 0:>                                                          (0 + 2) / 2][Stage 0:=============================>                             (1 + 1) / 2]                                                                                [Stage 7:>                                                          (0 + 2) / 2]                                                                                [Stage 9:>                                                          (0 + 2) / 2][Stage 11:>                                                         (0 + 1) / 1]                                                                                [Stage 12:>                                                         (0 + 2) / 2]                                                                                [Stage 34:=============================>                            (1 + 1) / 2]                                                                                ok
+test_single_segment_and_empty_input (tests.podcasts.test_analysis.TranscriptSparkTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 76.091s
+
+OK

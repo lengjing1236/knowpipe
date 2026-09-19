@@ -1,0 +1,8 @@
+Podcast batch 20260916-82e24c05 failed: RuntimeError
+拒绝越权请求：session user_id=b365490b2bb247b1801966d38507412f 请求了其他 user_id
+拒绝越权请求：session user_id=23960b891fa043529b265599f5e90857 请求了其他 user_id
+拒绝越权请求：session user_id=8d79a3ea82004a69a27622d5644aae67 请求了其他 user_id
+----------------------------------------------------------------------
+Ran 36 tests in 5.046s
+
+OK

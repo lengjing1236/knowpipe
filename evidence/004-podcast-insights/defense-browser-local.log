@@ -1,0 +1,8 @@
+{
+  "base_url": "http://127.0.0.1:8019",
+  "real_podcast_detail": "passed",
+  "desktop_1440": "passed",
+  "mobile_390_no_overflow": "passed",
+  "SSE_unavailable_polling_actual_persisted_notifications": "passed",
+  "javascript_errors": []
+}

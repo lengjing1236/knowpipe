@@ -1,0 +1,9 @@
+{
+  "server": "Gunicorn, 2 processes, real HTTP",
+  "database": "knowpipe_acceptance_0cdc8e76",
+  "login_csrf_identity": "passed",
+  "transcript_analysis_detail": "passed",
+  "authenticated_sse": "passed",
+  "notification_count": 1,
+  "data_kind": "synthetic acceptance fixture, not course scale evidence"
+}
