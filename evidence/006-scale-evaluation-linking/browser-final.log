@@ -1,0 +1,22 @@
+127.0.0.1 - - [19/Sep/2026 22:43:17] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:18] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:18] "GET /static/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:21] "GET /api/auth/csrf HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:21] "POST /api/auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /static/app.js HTTP/1.1" 304 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /api/auth/me HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /api/auth/csrf HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /api/podcasts/subscriptions HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /api/notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /api/podcasts/episodes HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:22] "GET /api/notifications/stream HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:23] "GET /api/podcasts/episodes/3d21625bfa9f8de4c6275af17e497eec70978b037fe9e6b0f99508334b43273d HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:23] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:27] "GET /api/notifications/stream HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:27] "GET /api/notifications HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:29] "GET /api/documents/stackexchange/askubuntu-1567044 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:30] "GET /api/topics HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 22:43:31] "GET /api/recommendations?user_id=c9f8da8b945a4e29b08ec8f0d42fc435&limit=20&mode=personalized HTTP/1.1" 200 -
+{"run_id": "33c9a6456be849f89ce67b442b3dd4a4", "episode_id": "3d21625bfa9f8de4c6275af17e497eec70978b037fe9e6b0f99508334b43273d", "document_count": 10692, "visible_links": 282, "checks": ["real Mongo linked API", "unsubscribed 404", "HTTP login", "desktop related reading", "390px mobile no overflow", "open document body"], "javascript_errors": []}

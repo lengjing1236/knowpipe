@@ -1,0 +1,32 @@
+{
+  "batch_id": "20260919-861467cb",
+  "snapshot_sha256": "633215eae9603ca8c97b711eb74fdc7221cff1afeb89ca923c8fb672ac3746ee",
+  "quality": {
+    "input": 10692,
+    "invalid": 0,
+    "duplicate": 0,
+    "valid": 10692
+  },
+  "parameters": {
+    "top_k": 10,
+    "num_clusters": 8,
+    "top_similar": 5,
+    "shuffle_partitions": 4
+  },
+  "logical_cpus": 12,
+  "code_revision": "d38bdacc18245eebc6ece81a4c717c7c6e5ffe0b",
+  "event_log_dir": "/home/lengjing1236/knowpipe/state/course-006/spark-events-20260919-861467cb",
+  "status": "success",
+  "accepted": true,
+  "sources": {
+    "stackexchange": 10592,
+    "arxiv": 100
+  },
+  "matched_results": 10692,
+  "minimum": 10000,
+  "elapsed_seconds": 367.145,
+  "peak_process_tree_rss_bytes": 2451599360,
+  "memory_measurement": "0.5s Linux process-tree RSS samples; shared pages may be double-counted",
+  "spark_application_id": "local-1789827457103",
+  "spark_master": "local[2]"
+}

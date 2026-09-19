@@ -14,7 +14,7 @@ Precision@K：前 K 中相关条数 / K；短列表仍除 K。NDCG@K：按 2^gra
 
 ## 最终门槛
 
-- [ ] 最新文献批次：有效 Stack Exchange ≥10,000，arXiv 为补充；保留失败/去重统计与日志。
+- [x] 最新文献批次：有效 Stack Exchange ≥10,000，arXiv 为补充；保留失败/去重统计与日志。2026-09-19 由 [Feature 006](../../evidence/006-scale-evaluation-linking/acceptance-record.md) 完成。
 - [ ] 至少两种画像真实人工评价完成，保存指标与对照基线。
 - [ ] 真实 RSS 的节目 → 文字稿 → Spark → Mongo → 通知走通。
 - [ ] 外部网络访问 HTTPS，两个账户隔离，重启数据不丢失。

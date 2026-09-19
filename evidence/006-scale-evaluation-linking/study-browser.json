@@ -1,0 +1,10 @@
+{
+  "candidate_count": 40,
+  "checks": [
+    "initial labels blank",
+    "incomplete labels rejected",
+    "downloaded JSON schema"
+  ],
+  "javascript_errors": [],
+  "note": "synthetic UI smoke only; test download deleted; no human evaluation performed"
+}

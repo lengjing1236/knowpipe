@@ -1,0 +1,12 @@
+{
+  "sources": {
+    "stackexchange": 10592,
+    "arxiv": 100
+  },
+  "matched_results": 10692,
+  "result_rows": 10692,
+  "minimum": 10000,
+  "accepted": true,
+  "documents_after_repeat": 10692,
+  "same_snapshot": true
+}

@@ -1,0 +1,32 @@
+{
+  "run_id": "33c9a6456be849f89ce67b442b3dd4a4",
+  "algorithm": "shared-tfidf-cosine-v1",
+  "status": "success",
+  "started_at": "2026-09-19 14:24:34.170775+00:00",
+  "document_count": 10692,
+  "segment_count": 182,
+  "episodes": [
+    {
+      "episode_id": "8293487d224b19c31e3fce689879a7a1a0c1d048cc6f8f41f4d0d78ad51fe4c9",
+      "batch_id": "20260916-7757495c",
+      "fingerprint": "3affe4290fafee2b37b5dcebc1779e59ca285769a81e0bbeb3d3611e0335008c"
+    },
+    {
+      "episode_id": "3d21625bfa9f8de4c6275af17e497eec70978b037fe9e6b0f99508334b43273d",
+      "batch_id": "20260916-017c85ae",
+      "fingerprint": "0ac92d4d2c3f393071a7b9aa18341a9f86bb6b1f843847eaa3c6bf35860f5085"
+    }
+  ],
+  "corpus_sha256": "2b1a21574a2efa4819afcd1206ce46da3d62342073cec1ba599506282366be8d",
+  "spark_application_id": "local-1789827865144",
+  "spark_master": "local[2]",
+  "parameters": {
+    "vocab_size": 20000,
+    "max_df": 0.95,
+    "top_k": 3,
+    "max_documents": 20000,
+    "max_segments": 500
+  },
+  "link_count": 546,
+  "elapsed_seconds": 785.212
+}

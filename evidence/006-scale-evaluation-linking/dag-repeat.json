@@ -1,0 +1,2795 @@
+{
+  "run": "repeat",
+  "event_count": 2480,
+  "completed_stages": 285,
+  "credential_pattern_hits": 0,
+  "dag": [
+    {
+      "Stage ID": 0,
+      "Stage Name": "flatMap at CountVectorizer.scala:215",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827465741,
+      "Completion Time": 1789827471877,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 1,
+      "Stage Name": "count at CountVectorizer.scala:236",
+      "Parent IDs": [
+        0
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827471909,
+      "Completion Time": 1789827472634,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 3,
+      "Stage Name": "top at CountVectorizer.scala:242",
+      "Parent IDs": [
+        2
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827472688,
+      "Completion Time": 1789827473023,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 4,
+      "Stage Name": "treeAggregate at IDF.scala:55",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827473564,
+      "Completion Time": 1789827476964,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 5,
+      "Stage Name": "treeAggregate at IDF.scala:55",
+      "Parent IDs": [
+        4
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827476966,
+      "Completion Time": 1789827477010,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 6,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827477434,
+      "Completion Time": 1789827478117,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 8,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        7
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827478181,
+      "Completion Time": 1789827478256,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 9,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827478711,
+      "Completion Time": 1789827480357,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 11,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        10
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827480428,
+      "Completion Time": 1789827480517,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 12,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827480637,
+      "Completion Time": 1789827482297,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 13,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827482320,
+      "Completion Time": 1789827482370,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 14,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827482426,
+      "Completion Time": 1789827482648,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 15,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827482719,
+      "Completion Time": 1789827482826,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 16,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827482939,
+      "Completion Time": 1789827483222,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 17,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827483288,
+      "Completion Time": 1789827483389,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 18,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827483895,
+      "Completion Time": 1789827484003,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 19,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        18
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827484005,
+      "Completion Time": 1789827484029,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 20,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827484288,
+      "Completion Time": 1789827485111,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 21,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        20
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827485112,
+      "Completion Time": 1789827485133,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 22,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827485167,
+      "Completion Time": 1789827485260,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 23,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        22
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827485262,
+      "Completion Time": 1789827485281,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 24,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827485574,
+      "Completion Time": 1789827487191,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 26,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        25
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827487274,
+      "Completion Time": 1789827487339,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 27,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:204",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827488227,
+      "Completion Time": 1789827490569,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 28,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827496865,
+      "Completion Time": 1789827497501,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 30,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        29
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827497534,
+      "Completion Time": 1789827497578,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 31,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827497689,
+      "Completion Time": 1789827498065,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 32,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498078,
+      "Completion Time": 1789827498109,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 33,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498140,
+      "Completion Time": 1789827498180,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 34,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498199,
+      "Completion Time": 1789827498252,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 35,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498285,
+      "Completion Time": 1789827498372,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 36,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498393,
+      "Completion Time": 1789827498439,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 37,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498501,
+      "Completion Time": 1789827498627,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 38,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        37
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827498629,
+      "Completion Time": 1789827498647,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 39,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827499193,
+      "Completion Time": 1789827499932,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 40,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        39
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827499933,
+      "Completion Time": 1789827500116,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 41,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827500175,
+      "Completion Time": 1789827500301,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 42,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        41
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827500302,
+      "Completion Time": 1789827500415,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 43,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827500467,
+      "Completion Time": 1789827500583,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 44,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        43
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827500584,
+      "Completion Time": 1789827500750,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 45,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827500799,
+      "Completion Time": 1789827500906,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 46,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        45
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827500908,
+      "Completion Time": 1789827501037,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 47,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827501104,
+      "Completion Time": 1789827501225,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 48,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        47
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827501226,
+      "Completion Time": 1789827501372,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 49,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827501420,
+      "Completion Time": 1789827501521,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 50,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        49
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827501522,
+      "Completion Time": 1789827501660,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 51,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827501720,
+      "Completion Time": 1789827501862,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 52,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        51
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827501863,
+      "Completion Time": 1789827502074,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 53,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827502132,
+      "Completion Time": 1789827502285,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 54,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        53
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827502287,
+      "Completion Time": 1789827502490,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 55,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827502548,
+      "Completion Time": 1789827502713,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 56,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        55
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827502715,
+      "Completion Time": 1789827502934,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 57,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827503002,
+      "Completion Time": 1789827503150,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 58,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        57
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827503152,
+      "Completion Time": 1789827503313,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 59,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827503373,
+      "Completion Time": 1789827503566,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 60,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        59
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827503568,
+      "Completion Time": 1789827503760,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 61,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827503838,
+      "Completion Time": 1789827504019,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 62,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        61
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827504023,
+      "Completion Time": 1789827504184,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 63,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827504239,
+      "Completion Time": 1789827504387,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 64,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        63
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827504389,
+      "Completion Time": 1789827504545,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 65,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827504601,
+      "Completion Time": 1789827504748,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 66,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        65
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827504750,
+      "Completion Time": 1789827504919,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 67,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827504989,
+      "Completion Time": 1789827505131,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 68,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        67
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827505133,
+      "Completion Time": 1789827505318,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 69,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827505411,
+      "Completion Time": 1789827505633,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 70,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        69
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827505634,
+      "Completion Time": 1789827505857,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 71,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827505951,
+      "Completion Time": 1789827506148,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 72,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        71
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827506149,
+      "Completion Time": 1789827506304,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 73,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827506365,
+      "Completion Time": 1789827506505,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 74,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        73
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827506506,
+      "Completion Time": 1789827506662,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 75,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827506719,
+      "Completion Time": 1789827506850,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 76,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        75
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827506851,
+      "Completion Time": 1789827506971,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 77,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827507024,
+      "Completion Time": 1789827507147,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 78,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        77
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827507149,
+      "Completion Time": 1789827507275,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 79,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827507567,
+      "Completion Time": 1789827508023,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 81,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        80
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827508102,
+      "Completion Time": 1789827508143,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 82,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827508351,
+      "Completion Time": 1789827508682,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 83,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827510080,
+      "Completion Time": 1789827510539,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 85,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        84
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827510559,
+      "Completion Time": 1789827510580,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 86,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827510621,
+      "Completion Time": 1789827510833,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 87,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827510843,
+      "Completion Time": 1789827510875,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 88,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827510886,
+      "Completion Time": 1789827510920,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 89,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827510932,
+      "Completion Time": 1789827510961,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 90,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827510983,
+      "Completion Time": 1789827511050,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 91,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827511062,
+      "Completion Time": 1789827511096,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 92,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827511154,
+      "Completion Time": 1789827511278,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 93,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        92
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827511279,
+      "Completion Time": 1789827511333,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 94,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827511649,
+      "Completion Time": 1789827512065,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 95,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        94
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512066,
+      "Completion Time": 1789827512183,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 96,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512222,
+      "Completion Time": 1789827512317,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 97,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        96
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512318,
+      "Completion Time": 1789827512434,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 98,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512471,
+      "Completion Time": 1789827512550,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 99,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        98
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512551,
+      "Completion Time": 1789827512665,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 100,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512724,
+      "Completion Time": 1789827512812,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 101,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        100
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512813,
+      "Completion Time": 1789827512917,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 102,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827512958,
+      "Completion Time": 1789827513056,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 103,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        102
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513057,
+      "Completion Time": 1789827513160,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 104,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513197,
+      "Completion Time": 1789827513324,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 105,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        104
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513326,
+      "Completion Time": 1789827513471,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 106,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513515,
+      "Completion Time": 1789827513626,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 107,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        106
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513627,
+      "Completion Time": 1789827513757,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 108,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513801,
+      "Completion Time": 1789827513892,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 109,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        108
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827513892,
+      "Completion Time": 1789827513998,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 110,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514036,
+      "Completion Time": 1789827514108,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 111,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        110
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514109,
+      "Completion Time": 1789827514212,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 112,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514254,
+      "Completion Time": 1789827514319,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 113,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        112
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514320,
+      "Completion Time": 1789827514414,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 114,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514461,
+      "Completion Time": 1789827514532,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 115,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        114
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514533,
+      "Completion Time": 1789827514643,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 116,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514690,
+      "Completion Time": 1789827514769,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 117,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        116
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514769,
+      "Completion Time": 1789827514863,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 118,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514909,
+      "Completion Time": 1789827514978,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 119,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        118
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827514979,
+      "Completion Time": 1789827515073,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 120,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827515162,
+      "Completion Time": 1789827515470,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 122,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        121
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827515527,
+      "Completion Time": 1789827515560,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 123,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827515688,
+      "Completion Time": 1789827515934,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 124,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516698,
+      "Completion Time": 1789827516981,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 126,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        125
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827516026,
+      "Completion Time": 1789827516047,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 127,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516094,
+      "Completion Time": 1789827516319,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 128,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516327,
+      "Completion Time": 1789827516354,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 129,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516364,
+      "Completion Time": 1789827516396,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 130,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516412,
+      "Completion Time": 1789827516444,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 131,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516469,
+      "Completion Time": 1789827516556,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 132,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516567,
+      "Completion Time": 1789827516601,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 133,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516638,
+      "Completion Time": 1789827516747,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 134,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        133
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516748,
+      "Completion Time": 1789827516762,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 135,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827516964,
+      "Completion Time": 1789827517344,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 136,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        135
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517345,
+      "Completion Time": 1789827517433,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 137,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517468,
+      "Completion Time": 1789827517542,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 138,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        137
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517543,
+      "Completion Time": 1789827517636,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 139,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517673,
+      "Completion Time": 1789827517748,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 140,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        139
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517749,
+      "Completion Time": 1789827517840,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 141,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517874,
+      "Completion Time": 1789827517950,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 142,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        141
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827517950,
+      "Completion Time": 1789827518040,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 143,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518072,
+      "Completion Time": 1789827518152,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 144,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        143
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518153,
+      "Completion Time": 1789827518240,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 145,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518274,
+      "Completion Time": 1789827518346,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 146,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        145
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518346,
+      "Completion Time": 1789827518430,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 147,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518467,
+      "Completion Time": 1789827518545,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 148,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        147
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518546,
+      "Completion Time": 1789827518639,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 149,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518676,
+      "Completion Time": 1789827518743,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 150,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        149
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518744,
+      "Completion Time": 1789827518831,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 151,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518865,
+      "Completion Time": 1789827518942,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 152,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        151
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827518943,
+      "Completion Time": 1789827519035,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 153,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519068,
+      "Completion Time": 1789827519148,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 154,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        153
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519148,
+      "Completion Time": 1789827519242,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 155,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519276,
+      "Completion Time": 1789827519348,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 156,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        155
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519349,
+      "Completion Time": 1789827519435,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 157,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519473,
+      "Completion Time": 1789827519554,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 158,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        157
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519554,
+      "Completion Time": 1789827519641,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 159,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519673,
+      "Completion Time": 1789827519746,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 160,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        159
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519747,
+      "Completion Time": 1789827519854,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 161,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519892,
+      "Completion Time": 1789827519975,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 162,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        161
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827519976,
+      "Completion Time": 1789827520086,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 163,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520137,
+      "Completion Time": 1789827520209,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 164,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        163
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520210,
+      "Completion Time": 1789827520316,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 165,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520350,
+      "Completion Time": 1789827520419,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 166,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        165
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520420,
+      "Completion Time": 1789827520510,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 167,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520544,
+      "Completion Time": 1789827520628,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 168,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        167
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520629,
+      "Completion Time": 1789827520719,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 169,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827520787,
+      "Completion Time": 1789827521033,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 171,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        170
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827521080,
+      "Completion Time": 1789827521118,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 172,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827521258,
+      "Completion Time": 1789827521483,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 173,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827522216,
+      "Completion Time": 1789827522528,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 175,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        174
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827522547,
+      "Completion Time": 1789827522562,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 176,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827522596,
+      "Completion Time": 1789827522797,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 177,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827522806,
+      "Completion Time": 1789827522838,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 178,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827522851,
+      "Completion Time": 1789827522888,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 179,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827522904,
+      "Completion Time": 1789827522936,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 180,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827522955,
+      "Completion Time": 1789827523009,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 181,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827523023,
+      "Completion Time": 1789827523083,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 182,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827523132,
+      "Completion Time": 1789827523306,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 183,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        182
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827523307,
+      "Completion Time": 1789827523323,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 184,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827523560,
+      "Completion Time": 1789827524050,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 185,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        184
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827524050,
+      "Completion Time": 1789827524201,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 186,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827524249,
+      "Completion Time": 1789827524354,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 187,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        186
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827524355,
+      "Completion Time": 1789827524634,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 188,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827524756,
+      "Completion Time": 1789827524888,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 189,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        188
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827524889,
+      "Completion Time": 1789827525031,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 190,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525076,
+      "Completion Time": 1789827525321,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 191,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        190
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525322,
+      "Completion Time": 1789827525444,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 192,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525481,
+      "Completion Time": 1789827525578,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 193,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        192
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525580,
+      "Completion Time": 1789827525703,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 194,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525748,
+      "Completion Time": 1789827525843,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 195,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        194
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525844,
+      "Completion Time": 1789827525939,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 196,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827525972,
+      "Completion Time": 1789827526050,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 197,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        196
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827526051,
+      "Completion Time": 1789827526143,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 198,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827526184,
+      "Completion Time": 1789827526314,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 199,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        198
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827526315,
+      "Completion Time": 1789827526537,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 200,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827526593,
+      "Completion Time": 1789827526709,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 201,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        200
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827526710,
+      "Completion Time": 1789827526903,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 202,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527012,
+      "Completion Time": 1789827527129,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 203,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        202
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527131,
+      "Completion Time": 1789827527219,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 204,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527256,
+      "Completion Time": 1789827527355,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 205,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        204
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527356,
+      "Completion Time": 1789827527440,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 206,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527480,
+      "Completion Time": 1789827527550,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 207,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        206
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527551,
+      "Completion Time": 1789827527631,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 208,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527663,
+      "Completion Time": 1789827527737,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 209,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        208
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527738,
+      "Completion Time": 1789827527849,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 210,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527882,
+      "Completion Time": 1789827527945,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 211,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        210
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827527946,
+      "Completion Time": 1789827528031,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 212,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528074,
+      "Completion Time": 1789827528134,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 213,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        212
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528135,
+      "Completion Time": 1789827528229,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 214,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528268,
+      "Completion Time": 1789827528337,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 215,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        214
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528338,
+      "Completion Time": 1789827528429,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 216,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528461,
+      "Completion Time": 1789827528546,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 217,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        216
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528547,
+      "Completion Time": 1789827528645,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 218,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528681,
+      "Completion Time": 1789827528756,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 219,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        218
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528756,
+      "Completion Time": 1789827528839,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 220,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528876,
+      "Completion Time": 1789827528963,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 221,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        220
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827528963,
+      "Completion Time": 1789827529050,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 222,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827529086,
+      "Completion Time": 1789827529184,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 223,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        222
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827529186,
+      "Completion Time": 1789827529287,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 224,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827529371,
+      "Completion Time": 1789827529572,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 226,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        225
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827529619,
+      "Completion Time": 1789827529645,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 227,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827529775,
+      "Completion Time": 1789827530065,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 228,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530300,
+      "Completion Time": 1789827530350,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 230,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        229
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827530371,
+      "Completion Time": 1789827530387,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 231,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530424,
+      "Completion Time": 1789827530453,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 232,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530461,
+      "Completion Time": 1789827530470,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 233,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530479,
+      "Completion Time": 1789827530497,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 234,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530509,
+      "Completion Time": 1789827530518,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 235,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530527,
+      "Completion Time": 1789827530538,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 236,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530549,
+      "Completion Time": 1789827530558,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 237,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530576,
+      "Completion Time": 1789827530599,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 238,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        237
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530600,
+      "Completion Time": 1789827530609,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 239,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530655,
+      "Completion Time": 1789827530702,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 240,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        239
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530703,
+      "Completion Time": 1789827530712,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 241,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530725,
+      "Completion Time": 1789827530751,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 242,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        241
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530752,
+      "Completion Time": 1789827530760,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 243,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530816,
+      "Completion Time": 1789827530854,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 245,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        244
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827530872,
+      "Completion Time": 1789827530885,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 246,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827530966,
+      "Completion Time": 1789827531005,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 247,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531182,
+      "Completion Time": 1789827531249,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 249,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        248
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827531267,
+      "Completion Time": 1789827531284,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 250,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531315,
+      "Completion Time": 1789827531376,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 251,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531385,
+      "Completion Time": 1789827531394,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 252,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531404,
+      "Completion Time": 1789827531428,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 253,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531443,
+      "Completion Time": 1789827531454,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 254,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531467,
+      "Completion Time": 1789827531478,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 255,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531490,
+      "Completion Time": 1789827531510,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 256,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531529,
+      "Completion Time": 1789827531546,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 257,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        256
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531547,
+      "Completion Time": 1789827531558,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 258,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531617,
+      "Completion Time": 1789827531694,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 259,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        258
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531695,
+      "Completion Time": 1789827531704,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 260,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531718,
+      "Completion Time": 1789827531743,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 261,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        260
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531744,
+      "Completion Time": 1789827531753,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 262,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531807,
+      "Completion Time": 1789827531856,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 264,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        263
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827531877,
+      "Completion Time": 1789827531901,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 265,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827531997,
+      "Completion Time": 1789827532052,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 266,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532251,
+      "Completion Time": 1789827532322,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 268,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        267
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827532342,
+      "Completion Time": 1789827532354,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 269,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532385,
+      "Completion Time": 1789827532439,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 270,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532447,
+      "Completion Time": 1789827532468,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 271,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532479,
+      "Completion Time": 1789827532493,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 272,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532505,
+      "Completion Time": 1789827532526,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 273,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532536,
+      "Completion Time": 1789827532547,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 274,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532558,
+      "Completion Time": 1789827532575,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 275,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532592,
+      "Completion Time": 1789827532615,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 276,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        275
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532616,
+      "Completion Time": 1789827532627,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 277,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532686,
+      "Completion Time": 1789827532778,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 278,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        277
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532779,
+      "Completion Time": 1789827532788,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 279,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532804,
+      "Completion Time": 1789827532829,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 280,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        279
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532830,
+      "Completion Time": 1789827532839,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 281,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827532893,
+      "Completion Time": 1789827532972,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 283,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        282
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827533021,
+      "Completion Time": 1789827533039,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 284,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533136,
+      "Completion Time": 1789827533180,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 285,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533442,
+      "Completion Time": 1789827533513,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 287,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        286
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827533535,
+      "Completion Time": 1789827533552,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 288,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533593,
+      "Completion Time": 1789827533660,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 289,
+      "Stage Name": "takeSample at KMeans.scala:403",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533669,
+      "Completion Time": 1789827533692,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 290,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533703,
+      "Completion Time": 1789827533732,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 291,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533743,
+      "Completion Time": 1789827533754,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 292,
+      "Stage Name": "sum at KMeans.scala:423",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533764,
+      "Completion Time": 1789827533786,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 293,
+      "Stage Name": "collect at KMeans.scala:428",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533798,
+      "Completion Time": 1789827533808,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 294,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533836,
+      "Completion Time": 1789827533852,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 295,
+      "Stage Name": "countByValue at KMeans.scala:451",
+      "Parent IDs": [
+        294
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533852,
+      "Completion Time": 1789827533863,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 296,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827533916,
+      "Completion Time": 1789827534012,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 297,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        296
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827534012,
+      "Completion Time": 1789827534021,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 298,
+      "Stage Name": "mapPartitions at KMeans.scala:568",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827534035,
+      "Completion Time": 1789827534060,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 299,
+      "Stage Name": "collectAsMap at KMeans.scala:585",
+      "Parent IDs": [
+        298
+      ],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827534061,
+      "Completion Time": 1789827534069,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 300,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827534127,
+      "Completion Time": 1789827534192,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 302,
+      "Stage Name": "$anonfun$withThreadLocalCaptured$1 at CompletableFuture.java:1768",
+      "Parent IDs": [
+        301
+      ],
+      "Number of Tasks": 1,
+      "Submission Time": 1789827534212,
+      "Completion Time": 1789827534225,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 303,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:133",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827534324,
+      "Completion Time": 1789827534394,
+      "Failure Reason": null
+    },
+    {
+      "Stage ID": 304,
+      "Stage Name": "collect at /home/lengjing1236/knowpipe/knowpipe/mining/spark_job.py:227",
+      "Parent IDs": [],
+      "Number of Tasks": 2,
+      "Submission Time": 1789827534762,
+      "Completion Time": 1789827753565,
+      "Failure Reason": null
+    }
+  ]
+}

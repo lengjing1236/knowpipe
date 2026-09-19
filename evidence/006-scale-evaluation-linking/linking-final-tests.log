@@ -1,0 +1,21 @@
+test_shared_space_ranks_related_and_keeps_source_identity (tests.linking.test_job.LinkingSparkTests) ... WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/19 22:36:13 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/09/19 22:36:16 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+Building prefix dict from the default dictionary ...
+Loading model from cache /tmp/jieba.cache
+Loading model cost 3.352 seconds.
+Prefix dict has been built successfully.
+[Stage 0:>                                                          (0 + 0) / 2][Stage 0:>                                                          (0 + 2) / 2][Stage 2:>                                                          (0 + 1) / 1][Stage 5:>                                                          (0 + 1) / 1]                                                                                [Stage 6:>                                                          (0 + 2) / 2]                                                                                [Stage 7:>                                                          (0 + 2) / 2]                                                                                [Stage 10:>                                                         (0 + 2) / 2][Stage 10:=============================>                            (1 + 1) / 2]                                                                                [Stage 11:>                                                         (0 + 2) / 2]                                                                                [Stage 13:>                                                         (0 + 2) / 2][Stage 13:>                 (0 + 2) / 2][Stage 14:>                 (0 + 0) / 2][Stage 14:>                                                         (0 + 2) / 2][Stage 15:>                                                         (0 + 2) / 2]                                                                                [Stage 16:>                                                         (0 + 0) / 2][Stage 16:>                                                         (0 + 2) / 2][Stage 16:=============================>                            (1 + 1) / 2][Stage 18:>                                                         (0 + 1) / 1][Stage 21:>                                                         (0 + 1) / 1]                                                                                [Stage 24:>                                                         (0 + 1) / 1]ok
+test_api_preserves_subscription_ownership (tests.linking.test_job.LinkingStoreTests) ... ok
+test_failed_run_does_not_publish (tests.linking.test_job.LinkingStoreTests) ... ok
+test_limits_fail_without_replacing_current_run (tests.linking.test_job.LinkingStoreTests) ... ok
+test_pending_and_empty_are_distinct (tests.linking.test_job.LinkingStoreTests) ... ok
+test_stale_or_deleted_documents_hidden (tests.linking.test_job.LinkingStoreTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 148.921s
+
+OK

@@ -9,7 +9,7 @@
 
 [已验证] JS Party 真实编程播客已完成 RSS、HTML 官方文字稿、Spark、MongoDB 和网页验收：2 集、182 段，另 1 集等待文字稿。见 [真实节目证据](evidence/004-podcast-insights/real-programming-podcast.json)。
 
-[已验证] 无服务器/域名的答辩演示已通过本机服务和免费临时 HTTPS 的 HTTP/浏览器验收，见 [明日答辩运行手册](defense/明日答辩运行手册.md)。永久云部署、手机独立网络访问、万条主源最终验收、真实人工推荐评价仍待完成。完整状态见 [答辩交付状态](defense/交付状态与演示路线.md)。
+[已验证] 无服务器/域名的答辩演示已通过本机服务和免费临时 HTTPS 的 HTTP/浏览器验收，见 [明日答辩运行手册](defense/明日答辩运行手册.md)。永久云部署、手机独立网络访问、真实人工推荐评价仍待完成；万条主源已在 Feature 006 完成真实批次验收。完整状态见 [答辩交付状态](defense/交付状态与演示路线.md)。
 
 ## 明天答辩：直接启动当前机器的演示
 
@@ -20,6 +20,21 @@ cat state/defense/demo-account.json
 ```
 
 访问 http://127.0.0.1:8019/login。后台、数据库和 Web 一起启动，已处理的节目会保留。可选 `start --public` 生成临时 HTTPS 地址；已有服务时先 `stop`，见运行手册。此脚本面向已安装 Python 依赖、Java 和 MongoDB 的 Linux/WSL；当前机器已配置。
+
+## 本轮改进：规模、评价与跨来源关联
+
+- [已验证] 冻结真实语料并连续两次通过规模验收：**10,592 条有效 Stack Exchange + 100 条 arXiv**，重跑不增加文档数。[证据](evidence/006-scale-evaluation-linking/acceptance-record.md)
+- [已验证] 推荐评价可导出两任务盲标页面、下载人工标签并计算 Precision@10/NDCG@10。[待确认] 真实标签尚未提供，不能宣称推荐更好。
+- [已验证] 播客片段支持“延伸阅读”：使用共享 TF-IDF 空间关联文献，展示关联词与原文入口；内容变化后隐藏旧结果。关联需离线刷新，不在网页请求中计算。
+
+```bash
+SPARK_LOCAL_IP=127.0.0.1 python3 -m knowpipe.linking.job \
+  --mongo-db knowpipe_course_006 --output state/course-006/linking-new.json
+# 查看实验库：启动后注册账号并订阅目标 RSS
+MONGO_DB=knowpipe_course_006 python3 -m knowpipe.web.app
+```
+
+实验使用独立数据库，保留原演示数据。采集、规模重跑、标注和关联命令见 [Feature 006 使用说明](specs/006-scale-evaluation-linking/quickstart.md)。
 
 ## 使用
 

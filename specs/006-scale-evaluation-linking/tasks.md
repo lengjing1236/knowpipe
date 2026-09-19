@@ -8,7 +8,7 @@
 Independent test：同一冻结输入两次真实运行，主源有效≥10000，文档数一致。
 - [X] T003 [US1] 编写快照去重/错误门槛测试 tests/mining/test_scale.py
 - [X] T004 [US1] 实现采集快照、真实批次核对、资源统计 knowpipe/mining/scale.py；增加采集余量 knowpipe/mining/collectors/stackexchange.py
-- [ ] T005 [US1] 执行真实采集和规模重跑，保存 evidence/006-scale-evaluation-linking/scale-*.json
+- [X] T005 [US1] 执行真实采集和规模重跑，保存 evidence/006-scale-evaluation-linking/scale-*.json
 ## Phase 4: US2 人工效果评价
 Independent test：候选盲标来源隐藏，完整标签才能评价，手算指标一致。
 - [X] T006 [US2] 编写标注导入和候选冻结测试 tests/evaluation/test_study.py
@@ -20,9 +20,9 @@ Independent test：真实Spark相关文献排名、授权隔离、陈旧过滤�
 - [X] T010 [US3] 编写Spark关联与API测试 tests/linking/test_job.py
 - [X] T011 [US3] 实现联合模型、版本化结果和原子发布 knowpipe/linking/job.py
 - [X] T012 [US3] 实现详情API与延伸阅读 knowpipe/web/routes_podcasts.py、knowpipe/web/static/app.js
-- [ ] T013 [US3] 执行真实关联与浏览器/API验收 evidence/006-scale-evaluation-linking/linking-acceptance.json
+- [X] T013 [US3] 执行真实关联与浏览器/API验收 evidence/006-scale-evaluation-linking/linking-acceptance.json
 ## Phase 6: Polish
-- [ ] T014 完整回归与简明使用说明 README.md、evidence/006-scale-evaluation-linking/acceptance-record.md
+- [X] T014 完整回归与简明使用说明 README.md、evidence/006-scale-evaluation-linking/acceptance-record.md
 
 ## Dependencies / Strategy
 [方案] T001→T002→T003→T004→T005→T006→T007→T008。T009依赖真人，不阻止独立的T010→T011→T012→T013→T014。先交付US1，逐故事测试提交。US1采集期间可核对验收格式；US2标注期间可开发US3；US3算法与UI测试准备可并行。实现代码按阶段顺序执行。

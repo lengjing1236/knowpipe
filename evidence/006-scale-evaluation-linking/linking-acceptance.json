@@ -1,0 +1,15 @@
+{
+  "run_id": "33c9a6456be849f89ce67b442b3dd4a4",
+  "episode_id": "3d21625bfa9f8de4c6275af17e497eec70978b037fe9e6b0f99508334b43273d",
+  "document_count": 10692,
+  "visible_links": 282,
+  "checks": [
+    "real Mongo linked API",
+    "unsubscribed 404",
+    "HTTP login",
+    "desktop related reading",
+    "390px mobile no overflow",
+    "open document body"
+  ],
+  "javascript_errors": []
+}
