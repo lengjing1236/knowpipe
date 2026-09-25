@@ -28,6 +28,12 @@
 - [ ] T013 [US4] 编写并执行真实浏览器→worker→Spark→翻译→已读重算闭环与新增三分支，写 scripts/acceptance_mvp011.py 和 evidence/011-mvp-recommendation-validation/browser.json。
 - [ ] T014 运行针对性回归，复核 spec→code→evidence，更新 evidence/011-mvp-recommendation-validation/acceptance.md、根 plan.md、README.md、quickstart.md。
 
+## 验收中发现的必要修复
+
+- [ ] T015 [US4] 单机实际长文翻译阶段仍保留已用完的语义会话，造成内存压力。计算后释放可重建会话，保持结果发布顺序、失败清理和下一作业惰性加载；仅修改worker资源生命周期及针对性测试，不改变算法／模型／门槛。实际Web复验后纳入T014的最终记录。
+
 ## 依赖与并行
 
 T001–002先完成。T003 与 T004 并行；T003冻结后 T005–008可并行，其中T006依赖T005，T005/006同一代理，T007语言代理，T008评估代理。根代理准备T009/010测试及闭环脚本，接口就绪后集成。T011/T012/T013重型部分串行，T014最后执行。禁止两个代理修改同一文件；需要跨域改动由根代理协调。
+
+T015来自T013实际运行的资源观察，在最终T014之前完成；它不是规模扩展，也不使已有算法效果失败变为通过。

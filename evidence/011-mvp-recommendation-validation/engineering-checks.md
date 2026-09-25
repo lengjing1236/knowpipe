@@ -23,3 +23,5 @@ node --check knowpipe/web/static/learning.js
 - 浏览器与真实RSS脚本新增语义处理状态断言；选中播客必须准备中文并产生当前有效通知；ASR异常由创建方清理临时数据库。编译及JavaScript语法检查通过，实际流程结果另记。
 
 - 浏览器真实执行后发现验收器将一次失败当成最终失败，现已区分可重试、运行中、稳定终态及超时，并保留失败页面与逐篇版本/次数/质量记录。11项新测试与5项既有重放测试共16项通过，见 `browser-harness-tests.log`；这是验收器回归，不算真实阅读通过。
+
+- 语义会话生命周期修复由算法代理执行 `python3 -m pytest tests/recommendations/test_worker.py tests/recommendations/test_semantic.py tests/recommendations/test_integration011.py -q`，21项通过（3.02秒）。覆盖先发布结果、释放会话、再翻译，同一provider下一作业惰性重建，以及清理异常不覆盖原结果。此为代理执行记录，不声称已测得具体内存节省；新进程Web复验另记。

@@ -2,6 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 import mongomock
 import numpy as np
@@ -25,6 +26,35 @@ class Translation:
 
 
 class SemanticProviderTests(unittest.TestCase):
+    def test_close_releases_sessions_and_next_model_use_lazily_reloads(self):
+        with tempfile.TemporaryDirectory() as root:
+            folder = Path(root) / 'rank'
+            folder.mkdir()
+            (folder / 'config.json').write_text('{}')
+            # Stub runtime/file decoding only; exercise the actual _model and
+            # close implementation without opening any ONNX model weights.
+            runtime = SimpleNamespace(SessionOptions=SimpleNamespace,
+                GraphOptimizationLevel=SimpleNamespace(ORT_ENABLE_ALL=1),
+                InferenceSession=Mock(side_effect=[object(), object()]))
+            tokenizer = Mock()
+            provider = LocalSemantic(root)
+            provider._manifest = {'language': 'multilingual'}
+            provider._processor_id = 'fixed-test-identity'
+            original_text_converter = provider.text
+            with patch.dict('sys.modules', {'onnxruntime': runtime,
+                                           'tokenizers': SimpleNamespace(Tokenizer=tokenizer)}):
+                first = provider._model('rank')
+                self.assertIs(provider._model('rank'), first)
+                provider.close()
+                self.assertEqual(provider._models, {})
+                self.assertEqual(provider.processor_id, 'fixed-test-identity')
+                self.assertIs(provider.text, original_text_converter)
+                second = provider._model('rank')
+                self.assertIsNot(second[1], first[1])
+                self.assertEqual(runtime.InferenceSession.call_count, 2)
+                provider.close()
+                provider.close()  # Closing an already empty cache is safe.
+
     def test_missing_assets_and_no_implicit_download_or_inference(self):
         self.assertIsNone(configured_semantic({}))
         with tempfile.TemporaryDirectory() as root:

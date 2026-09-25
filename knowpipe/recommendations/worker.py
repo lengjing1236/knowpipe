@@ -191,6 +191,18 @@ class RecommendationWorker:
                 code = str(error) if isinstance(error, ValueError) and str(error) in limits else 'computation_failed'
                 queue.fail(self.db, job, code)
                 LOG.exception('recommendation_job_failed')
+            finally:
+                # Results are materialized before publication. Release the ONNX
+                # sessions before the separate, potentially long full-text phase;
+                # LocalSemantic lazily reloads them for the next recommendation.
+                try:
+                    close_semantic = getattr(self.semantic, 'close', None)
+                    if callable(close_semantic):
+                        close_semantic()
+                except Exception as error:
+                    # Cleanup must not replace a result or the original job
+                    # failure. Do not log arbitrary provider exception text.
+                    LOG.warning('recommendation_semantic_release_failed: %s', type(error).__name__)
         # Publish the computed list before full-text translation. Readers can see
         # the real processing state while every selected document is prepared.
         # The finished job no longer owns a renewable job lease; use worker lease

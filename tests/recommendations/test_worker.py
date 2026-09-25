@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 import mongomock
 from knowpipe.learning.content import content_view, publish_fulltext, content_version
 from knowpipe.learning.providers import TextResult
@@ -96,3 +96,130 @@ class WorkerTests(unittest.TestCase):
         provider.translate.return_value = TextResult('数据库事务恢复。', 'zh')
         worker.prepare_chinese({'items': [item]})
         self.assertTrue(content_view(db.documents.find_one({'doc_id': 'retry'}))['chinese_ready'])
+
+
+class SemanticLifecycleWorkerTests(unittest.TestCase):
+    def worker(self, semantic):
+        import time
+        from types import SimpleNamespace
+        from knowpipe.learning.providers import UnconfiguredProvider
+        from knowpipe.learning.store import save_goal
+        from knowpipe.recommendations import queue
+        db = mongomock.MongoClient().db
+        worker = RecommendationWorker(db, '/unused', spark=object(), semantic=semantic,
+                                      translator=UnconfiguredProvider(), goal_translator=UnconfiguredProvider())
+        save_goal(db, 'u', 'PostgreSQL transaction recovery')
+        worker.owner = queue.acquire_worker(db)
+        snapshot = {'corpus_id': 'c', 'feature_id': 'f', 'processing_id': 'p'}
+        queue.publish_corpus(db, worker.owner, snapshot)
+        worker.index = SimpleNamespace(snapshot=snapshot)
+        worker.last_refresh = time.monotonic()
+        return worker, db
+
+    def result(self):
+        return {'items': [{'source': 'docs', 'doc_id': 'candidate', 'content_version': 'v'}],
+                'semantic': {'status': 'ready', 'processor_id': 'semantic-test'}}
+
+    def test_releases_after_publication_before_translation_and_reuses_same_provider(self):
+        from knowpipe.learning.store import save_goal
+        events, provider_ids = [], []
+
+        class ReloadableSemantic:
+            processor_id = 'semantic-test'
+
+            def __init__(self):
+                self.session = None
+                self.loads = 0
+
+            def relevance(self):
+                if self.session is None:
+                    self.session = object()
+                    self.loads += 1
+                events.append('compute')
+                return .75
+
+            def close(self):
+                # The job has been published before resource release.
+                self_test.assertEqual(db.recommendation_jobs.find_one(
+                    {'_id': db.user_profiles.find_one({'user_id': 'u'})['desired_recommendation_job']})['status'], 'ready')
+                self.session = None
+                events.append('release')
+
+        self_test = self
+        semantic = ReloadableSemantic()
+        worker, db = self.worker(semantic)
+        expected = self.result()
+
+        def compute(*args, **kwargs):
+            self.assertIs(kwargs['semantic'], semantic)
+            provider_ids.append(id(kwargs['semantic']))
+            score = semantic.relevance()
+            return {**expected, 'score': score}
+
+        def translate(result, *, guard, generation):
+            self.assertIsNone(semantic.session)
+            self.assertEqual(result, {**expected, 'score': .75})
+            job = db.recommendation_jobs.find_one(
+                {'_id': db.user_profiles.find_one({'user_id': 'u'})['desired_recommendation_job']})
+            self.assertEqual(job['result'], result)
+            self.assertTrue(guard())
+            events.append('translate')
+
+        with patch('knowpipe.recommendations.worker.recommend', side_effect=compute), \
+                patch.object(worker, 'prepare_chinese', side_effect=translate), \
+                patch('knowpipe.recommendations.worker.publish_recommendations', side_effect=lambda *_: events.append('notify')):
+            self.assertTrue(worker.run_once())
+            save_goal(db, 'u', 'PostgreSQL transaction retry')
+            self.assertTrue(worker.run_once())
+        self.assertEqual(events, ['compute', 'release', 'translate', 'notify'] * 2)
+        self.assertEqual(semantic.loads, 2)
+        self.assertEqual(provider_ids, [id(semantic), id(semantic)])
+        self.assertEqual(semantic.processor_id, 'semantic-test')
+
+    def test_computation_failure_still_releases_and_preserves_original_error(self):
+        semantic = Mock(processor_id='semantic-test')
+        worker, db = self.worker(semantic)
+        with patch('knowpipe.recommendations.worker.recommend', side_effect=ValueError('history_limit_exceeded')), \
+                patch.object(worker, 'prepare_chinese') as translate, \
+                self.assertLogs('knowpipe.recommendations.worker', level='ERROR'):
+            self.assertTrue(worker.run_once())
+        semantic.close.assert_called_once_with()
+        translate.assert_not_called()
+        self.assertEqual(db.recommendation_jobs.find_one({})['error_code'], 'history_limit_exceeded')
+
+    def test_provider_without_close_is_compatible(self):
+        from types import SimpleNamespace
+        for semantic in (SimpleNamespace(processor_id='semantic-test'),
+                         SimpleNamespace(processor_id='semantic-test', close=None)):
+            with self.subTest(provider=semantic):
+                worker, db = self.worker(semantic)
+                with patch('knowpipe.recommendations.worker.recommend', return_value=self.result()), \
+                        patch.object(worker, 'prepare_chinese') as translate, \
+                        patch('knowpipe.recommendations.worker.publish_recommendations'):
+                    self.assertTrue(worker.run_once())
+                translate.assert_called_once()
+                self.assertEqual(db.recommendation_jobs.find_one({})['status'], 'ready')
+
+    def test_cleanup_failure_cannot_replace_result_or_original_computation_error(self):
+        for compute_error in (None, ValueError('history_limit_exceeded')):
+            with self.subTest(compute_error=compute_error):
+                semantic = Mock(processor_id='semantic-test')
+                semantic.close.side_effect = RuntimeError('private provider detail')
+                worker, db = self.worker(semantic)
+                with patch('knowpipe.recommendations.worker.recommend', return_value=self.result(), side_effect=compute_error), \
+                        patch.object(worker, 'prepare_chinese') as translate, \
+                        patch('knowpipe.recommendations.worker.publish_recommendations'), \
+                        self.assertLogs('knowpipe.recommendations.worker', level='WARNING') as logs:
+                    self.assertTrue(worker.run_once())
+                semantic.close.assert_called_once_with()
+                output = '\n'.join(logs.output)
+                self.assertIn('recommendation_semantic_release_failed: RuntimeError', output)
+                self.assertNotIn('private provider detail', output)
+                job = db.recommendation_jobs.find_one({})
+                if compute_error is None:
+                    self.assertEqual(job['status'], 'ready')
+                    self.assertEqual(job['result'], self.result())
+                    translate.assert_called_once()
+                else:
+                    self.assertEqual(job['error_code'], 'history_limit_exceeded')
+                    translate.assert_not_called()
