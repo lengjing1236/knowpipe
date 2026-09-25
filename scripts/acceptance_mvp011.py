@@ -35,6 +35,8 @@ def main():
     parser.add_argument('--corpus', default='state/feature011/evaluation/selected-documents.jsonl')
     parser.add_argument('--output', default='evidence/011-mvp-recommendation-validation')
     parser.add_argument('--timeout', type=int, default=1800)
+    parser.add_argument('--browser-settings', default=os.environ.get('KNOWPIPE_BROWSER_SETTINGS'),
+                        help='可选 Chromium executable/args JSON；默认使用 Playwright 已安装的浏览器')
     args = parser.parse_args()
     out = Path(args.output); out.mkdir(parents=True, exist_ok=True)
     report = {'status': 'running', 'scope': 'Real production worker and browser; small frozen real-source corpus, not full-background quality proof',
@@ -71,9 +73,10 @@ def main():
         process = subprocess.Popen([sys.executable, '-m', 'knowpipe.recommendations.worker',
             '--mongo-uri', args.mongo_uri, '--mongo-db', name, '--index-root', 'state/feature011/browser-index'],
             env=env, stdout=worker_log, stderr=subprocess.STDOUT)
-        settings = json.loads(Path('/tmp/knowpipe-chromium.json').read_text())
+        settings = json.loads(Path(args.browser_settings).read_text()) if args.browser_settings else {}
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True, executable_path=settings['executable'], args=settings['args'])
+            browser = p.chromium.launch(headless=True, executable_path=settings.get('executable'),
+                                        args=settings.get('args', []))
             page = browser.new_page(viewport={'width': 1440, 'height': 1000})
             page.on('pageerror', lambda e: report['page_errors'].append(str(e)))
             base = f'http://127.0.0.1:{server.server_port}'
@@ -97,13 +100,20 @@ def main():
                         if not require_translation:
                             return job
                         from knowpipe.learning.content import content_view
+                        english_states = []
                         for item in job['result'].get('items', []):
                             doc = db.documents.find_one({'source': item['source'], 'doc_id': item['doc_id']})
                             view = content_view(doc)
-                            if not view['language'].startswith('zh') and view['chinese_ready']:
-                                return job, item, view
+                            if not view['language'].startswith('zh'):
+                                english_states.append(view['processing']['translation']['status'])
+                                if view['chinese_ready']:
+                                    return job, item, view
                         if not job['result'].get('items'):
                             raise AssertionError('real_worker_returned_no_candidates')
+                        if not english_states:
+                            raise AssertionError('no_english_recommendation_to_verify_translation')
+                        if all(status in {'failed', 'unavailable'} for status in english_states):
+                            raise AssertionError('selected_english_translations_failed')
                     if job and job['status'] == 'failed':
                         raise RuntimeError('worker_job_failed:' + str(job.get('error_code')))
                     page.wait_for_timeout(2000)
@@ -127,7 +137,7 @@ def main():
             expect(page.locator('#read-count')).to_have_text('0')
             expect(page.get_by_text('逐段核对中文与原文', exact=True)).to_be_visible()
             page.get_by_text('逐段核对中文与原文', exact=True).click()
-            assert page.locator('.aligned-paragraph').count() > 0
+            expect(page.locator('.aligned-paragraph').first).to_be_visible()
             page.screenshot(path=str(out / 'mvp-desktop.png'))
             page.set_viewport_size({'width': 390, 'height': 844})
             assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
