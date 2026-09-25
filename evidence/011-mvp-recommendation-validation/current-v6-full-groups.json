@@ -1,0 +1,141 @@
+{
+  "raw_sha256": "0f7aa3467c282ceb0484063970724ae2f5c134d98b56004161559b6af6c6922c",
+  "review_sha256": "21a2b8ed0a0fc13ca41fadafc6556cb8a62904327726722e8723e0bc613b85a9",
+  "groups": {
+    "development_full_and_controls": {
+      "case_ids": [
+        "postgres_retry_cold",
+        "postgres_retry_partial",
+        "postgres_retry_covered",
+        "python_semaphore_cold",
+        "python_semaphore_partial",
+        "python_semaphore_covered",
+        "no_suitable_limited_pool",
+        "mirror_not_new",
+        "paraphrase_not_new",
+        "new_irrelevant_words"
+      ],
+      "case_count": 10,
+      "top3_total": 15,
+      "relevance": {
+        "partial": 8,
+        "direct": 5,
+        "irrelevant": 2
+      },
+      "direct_rate": 0.3333333333333333,
+      "lenient_direct_plus_partial_upper_bound": 0.8666666666666667,
+      "known_false_assertions": 3,
+      "uncertain_assertions": 5,
+      "expected_positive_supplement_cases": [
+        "postgres_retry_partial",
+        "python_semaphore_partial"
+      ],
+      "confirmed_positive_supplement_cases": [
+        "postgres_retry_partial"
+      ],
+      "partial_computation_case_ids": []
+    },
+    "reserved_validation": {
+      "case_ids": [
+        "docker_tmpfs_cold",
+        "docker_tmpfs_partial",
+        "docker_tmpfs_covered",
+        "django_iterator_cold",
+        "django_iterator_partial",
+        "django_iterator_covered",
+        "docker_readonly_multisource"
+      ],
+      "case_count": 7,
+      "top3_total": 20,
+      "relevance": {
+        "direct": 8,
+        "partial": 5,
+        "irrelevant": 7
+      },
+      "direct_rate": 0.4,
+      "lenient_direct_plus_partial_upper_bound": 0.65,
+      "known_false_assertions": 8,
+      "uncertain_assertions": 7,
+      "expected_positive_supplement_cases": [
+        "docker_tmpfs_partial",
+        "django_iterator_partial"
+      ],
+      "confirmed_positive_supplement_cases": [
+        "docker_tmpfs_partial"
+      ],
+      "partial_computation_case_ids": [
+        "docker_tmpfs_cold",
+        "docker_tmpfs_partial",
+        "docker_tmpfs_covered",
+        "django_iterator_partial",
+        "docker_readonly_multisource"
+      ]
+    },
+    "background_only": {
+      "case_ids": [
+        "postgres_retry_cold",
+        "postgres_retry_partial",
+        "postgres_retry_covered",
+        "python_semaphore_cold",
+        "python_semaphore_partial",
+        "python_semaphore_covered",
+        "docker_tmpfs_cold",
+        "docker_tmpfs_partial",
+        "docker_tmpfs_covered",
+        "django_iterator_cold",
+        "django_iterator_partial",
+        "django_iterator_covered",
+        "docker_readonly_multisource"
+      ],
+      "case_count": 13,
+      "top3_total": 34,
+      "relevance": {
+        "partial": 13,
+        "direct": 12,
+        "irrelevant": 9
+      },
+      "direct_rate": 0.35294117647058826,
+      "lenient_direct_plus_partial_upper_bound": 0.7352941176470589,
+      "known_false_assertions": 10,
+      "uncertain_assertions": 12,
+      "expected_positive_supplement_cases": [
+        "postgres_retry_partial",
+        "python_semaphore_partial",
+        "docker_tmpfs_partial",
+        "django_iterator_partial"
+      ],
+      "confirmed_positive_supplement_cases": [
+        "postgres_retry_partial",
+        "docker_tmpfs_partial"
+      ],
+      "partial_computation_case_ids": [
+        "docker_tmpfs_cold",
+        "docker_tmpfs_partial",
+        "docker_tmpfs_covered",
+        "django_iterator_partial",
+        "docker_readonly_multisource"
+      ]
+    },
+    "controlled_only": {
+      "case_ids": [
+        "no_suitable_limited_pool",
+        "mirror_not_new",
+        "paraphrase_not_new",
+        "new_irrelevant_words"
+      ],
+      "case_count": 4,
+      "top3_total": 1,
+      "relevance": {
+        "direct": 1
+      },
+      "direct_rate": 1.0,
+      "lenient_direct_plus_partial_upper_bound": 1.0,
+      "known_false_assertions": 1,
+      "uncertain_assertions": 0,
+      "expected_positive_supplement_cases": [],
+      "confirmed_positive_supplement_cases": [],
+      "partial_computation_case_ids": []
+    }
+  },
+  "scope_zh": "代理审核的有限冻结案例，不估计全用户准确率。宽松上界只是敏感性说明，不改冻结直接帮助定义/门槛；保留集首次最终运行后未调参。"
+}

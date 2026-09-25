@@ -32,7 +32,7 @@ python3 scripts/prepare_qwen011.py --download
 export SPARK_LOCAL_IP=127.0.0.1
 export SPARK_MASTER='local[1]'
 export LEARNING_SPARK_PARTITIONS=4
-export PYSPARK_SUBMIT_ARGS='--driver-memory 1g pyspark-shell'
+export PYSPARK_SUBMIT_ARGS='--driver-memory 640m --conf spark.memory.fraction=0.35 --conf spark.sql.ui.retainedExecutions=10 --conf spark.ui.retainedJobs=10 --conf spark.ui.retainedStages=20 pyspark-shell'
 export KNOWPIPE_SEMANTIC_MODEL_PATH="$PWD/state/feature011/semantic-multilingual"
 export KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH="$PWD/state/feature011/media/qwen2.5-1.5b-instruct-q4_k_m.gguf"
 export KNOWPIPE_LLAMA_TRANSLATION_URL=http://127.0.0.1:8089
@@ -50,6 +50,8 @@ state/feature011/media/llama-b6000/build/bin/llama-server \
 ```
 
 同一时刻只执行一个重型验收程序。并行开发不代表同时启动多个 Spark／模型任务；单个生产 worker 内部调用模型是实际链路的一部分。
+
+本机约7.3GiB内存，完整背景首次以1g堆运行时，可用内存曾降至107MiB；在已保存案例边界停止后，以640m堆和同一输入签名恢复完成。上面的配置用于控制本机内存，UI保留数量只减少监控记录，不改变推荐规则。堆大小不等于进程总内存，还需为Python、语义模型、翻译服务、MongoDB和浏览器留空间；资源实测见 `current-v6-full-resource-events.json`。已有保留场景现在均已观察，下一轮调参后的泛化验证需要新冻结场景。
 
 ## 3. 冻结案例与原文审核
 
