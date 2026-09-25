@@ -1,0 +1,1406 @@
+{
+  "scope": "Read-only in-run resident memory samples; no controlled before/after benchmark and no performance-quality claim",
+  "roles": {
+    "worker": 131752,
+    "spark": 131770,
+    "translation_server": 115776
+  },
+  "samples": [
+    {
+      "time": "2026-09-25T14:44:32.077076+00:00",
+      "rss_kib": {
+        "worker": 145724,
+        "spark": 435320,
+        "translation_server": 872036
+      },
+      "available_kib": 1580988,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": []
+      }
+    },
+    {
+      "time": "2026-09-25T14:44:42.133040+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435396,
+        "translation_server": 883812
+      },
+      "available_kib": 1677484,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:44:52.150407+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435396,
+        "translation_server": 964044
+      },
+      "available_kib": 1653248,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:45:02.184616+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435504,
+        "translation_server": 1046356
+      },
+      "available_kib": 1665832,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:45:10.475021+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435504,
+        "translation_server": 1046356
+      },
+      "available_kib": 1656136,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:45:20.606017+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435504,
+        "translation_server": 1046356
+      },
+      "available_kib": 1658468,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:45:32.501237+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435504,
+        "translation_server": 1046356
+      },
+      "available_kib": 1656848,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:45:42.535995+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435604,
+        "translation_server": 1046356
+      },
+      "available_kib": 1665912,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:45:52.614656+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435660,
+        "translation_server": 1046356
+      },
+      "available_kib": 1665160,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:02.654149+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435660,
+        "translation_server": 1046356
+      },
+      "available_kib": 1659820,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:12.673616+00:00",
+      "rss_kib": {
+        "worker": 145792,
+        "spark": 435660,
+        "translation_server": 1046048
+      },
+      "available_kib": 1656044,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:21.207691+00:00",
+      "rss_kib": {
+        "worker": 154080,
+        "spark": 435660,
+        "translation_server": 1047116
+      },
+      "available_kib": 1665128,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:31.219751+00:00",
+      "rss_kib": {
+        "worker": 226220,
+        "spark": 454652,
+        "translation_server": 1047008
+      },
+      "available_kib": 1578720,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:41.238681+00:00",
+      "rss_kib": {
+        "worker": 224144,
+        "spark": 490324,
+        "translation_server": 1046912
+      },
+      "available_kib": 1532232,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:49.612764+00:00",
+      "rss_kib": {
+        "worker": 224340,
+        "spark": 606096,
+        "translation_server": 1037176
+      },
+      "available_kib": 1407604,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:46:59.622144+00:00",
+      "rss_kib": {
+        "worker": 210792,
+        "spark": 608656,
+        "translation_server": 1034232
+      },
+      "available_kib": 1336748,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:47:09.642570+00:00",
+      "rss_kib": {
+        "worker": 210792,
+        "spark": 660784,
+        "translation_server": 1034212
+      },
+      "available_kib": 1330852,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:47:19.653989+00:00",
+      "rss_kib": {
+        "worker": 212008,
+        "spark": 810908,
+        "translation_server": 1031872
+      },
+      "available_kib": 1207900,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:47:27.676559+00:00",
+      "rss_kib": {
+        "worker": 424828,
+        "spark": 805684,
+        "translation_server": 1029532
+      },
+      "available_kib": 1066920,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:47:37.704967+00:00",
+      "rss_kib": {
+        "worker": 510612,
+        "spark": 805824,
+        "translation_server": 1027508
+      },
+      "available_kib": 993656,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:47:47.730962+00:00",
+      "rss_kib": {
+        "worker": 622252,
+        "spark": 806652,
+        "translation_server": 919212
+      },
+      "available_kib": 919704,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:47:56.008300+00:00",
+      "rss_kib": {
+        "worker": 809956,
+        "spark": 799848,
+        "translation_server": 821304
+      },
+      "available_kib": 688452,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:48:06.037285+00:00",
+      "rss_kib": {
+        "worker": 824956,
+        "spark": 799708,
+        "translation_server": 819048
+      },
+      "available_kib": 698872,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:48:16.060886+00:00",
+      "rss_kib": {
+        "worker": 930408,
+        "spark": 799848,
+        "translation_server": 800020
+      },
+      "available_kib": 641060,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:48:24.212540+00:00",
+      "rss_kib": {
+        "worker": 1133204,
+        "spark": 799464,
+        "translation_server": 745544
+      },
+      "available_kib": 522152,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:48:34.222872+00:00",
+      "rss_kib": {
+        "worker": 1210480,
+        "spark": 796500,
+        "translation_server": 674336
+      },
+      "available_kib": 392908,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:48:44.250666+00:00",
+      "rss_kib": {
+        "worker": 1234912,
+        "spark": 795664,
+        "translation_server": 667852
+      },
+      "available_kib": 341752,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:48:52.286132+00:00",
+      "rss_kib": {
+        "worker": 1230380,
+        "spark": 797832,
+        "translation_server": 652192
+      },
+      "available_kib": 304532,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:02.301421+00:00",
+      "rss_kib": {
+        "worker": 1218408,
+        "spark": 807188,
+        "translation_server": 651132
+      },
+      "available_kib": 234792,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:12.332007+00:00",
+      "rss_kib": {
+        "worker": 1213096,
+        "spark": 811072,
+        "translation_server": 650388
+      },
+      "available_kib": 160992,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:22.406640+00:00",
+      "rss_kib": {
+        "worker": 1205272,
+        "spark": 809308,
+        "translation_server": 649416
+      },
+      "available_kib": 131496,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:30.589320+00:00",
+      "rss_kib": {
+        "worker": 1204108,
+        "spark": 811048,
+        "translation_server": 649392
+      },
+      "available_kib": 113484,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:40.816263+00:00",
+      "rss_kib": {
+        "worker": 1199896,
+        "spark": 811276,
+        "translation_server": 649304
+      },
+      "available_kib": 116996,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:51.060356+00:00",
+      "rss_kib": {
+        "worker": 955376,
+        "spark": 802388,
+        "translation_server": 649304
+      },
+      "available_kib": 336168,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:49:58.913394+00:00",
+      "rss_kib": {
+        "worker": 955376,
+        "spark": 802852,
+        "translation_server": 649304
+      },
+      "available_kib": 314456,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:50:08.951342+00:00",
+      "rss_kib": {
+        "worker": 939188,
+        "spark": 789620,
+        "translation_server": 648644
+      },
+      "available_kib": 316280,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:50:18.961942+00:00",
+      "rss_kib": {
+        "worker": 819308,
+        "spark": 785156,
+        "translation_server": 648644
+      },
+      "available_kib": 428716,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:50:27.085486+00:00",
+      "rss_kib": {
+        "worker": 783764,
+        "spark": 784140,
+        "translation_server": 648644
+      },
+      "available_kib": 433032,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:50:37.102536+00:00",
+      "rss_kib": {
+        "worker": 760744,
+        "spark": 772004,
+        "translation_server": 684816
+      },
+      "available_kib": 446824,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:50:47.133767+00:00",
+      "rss_kib": {
+        "worker": 760724,
+        "spark": 747496,
+        "translation_server": 789424
+      },
+      "available_kib": 530204,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:50:57.153796+00:00",
+      "rss_kib": {
+        "worker": 760724,
+        "spark": 750596,
+        "translation_server": 827012
+      },
+      "available_kib": 516048,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:51:05.167919+00:00",
+      "rss_kib": {
+        "worker": 759400,
+        "spark": 743036,
+        "translation_server": 827012
+      },
+      "available_kib": 525576,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:51:15.196432+00:00",
+      "rss_kib": {
+        "worker": 759120,
+        "spark": 742412,
+        "translation_server": 854660
+      },
+      "available_kib": 506588,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:51:25.217596+00:00",
+      "rss_kib": {
+        "worker": 756140,
+        "spark": 742976,
+        "translation_server": 932112
+      },
+      "available_kib": 516860,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:51:35.232873+00:00",
+      "rss_kib": {
+        "worker": 756140,
+        "spark": 742672,
+        "translation_server": 950420
+      },
+      "available_kib": 523584,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:51:43.375322+00:00",
+      "rss_kib": {
+        "worker": 755300,
+        "spark": 739664,
+        "translation_server": 1020608
+      },
+      "available_kib": 523652,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:51:53.430312+00:00",
+      "rss_kib": {
+        "worker": 755188,
+        "spark": 738920,
+        "translation_server": 1029844
+      },
+      "available_kib": 519228,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:52:03.465397+00:00",
+      "rss_kib": {
+        "worker": 755188,
+        "spark": 740500,
+        "translation_server": 1034756
+      },
+      "available_kib": 516572,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:52:12.374825+00:00",
+      "rss_kib": {
+        "worker": 755188,
+        "spark": 739764,
+        "translation_server": 1034136
+      },
+      "available_kib": 531900,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:52:22.393075+00:00",
+      "rss_kib": {
+        "worker": 755188,
+        "spark": 741360,
+        "translation_server": 1037344
+      },
+      "available_kib": 518844,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:52:32.399845+00:00",
+      "rss_kib": {
+        "worker": 755172,
+        "spark": 740856,
+        "translation_server": 1038680
+      },
+      "available_kib": 517968,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:52:42.420818+00:00",
+      "rss_kib": {
+        "worker": 754332,
+        "spark": 736756,
+        "translation_server": 1023844
+      },
+      "available_kib": 416292,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:52:50.546562+00:00",
+      "rss_kib": {
+        "worker": 755744,
+        "spark": 736336,
+        "translation_server": 831344
+      },
+      "available_kib": 364672,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:00.603634+00:00",
+      "rss_kib": {
+        "worker": 753240,
+        "spark": 736336,
+        "translation_server": 940716
+      },
+      "available_kib": 288596,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:10.721128+00:00",
+      "rss_kib": {
+        "worker": 753240,
+        "spark": 736348,
+        "translation_server": 886368
+      },
+      "available_kib": 291016,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:19.409054+00:00",
+      "rss_kib": {
+        "worker": 753240,
+        "spark": 734632,
+        "translation_server": 807308
+      },
+      "available_kib": 201148,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:29.503970+00:00",
+      "rss_kib": {
+        "worker": 753224,
+        "spark": 734624,
+        "translation_server": 720572
+      },
+      "available_kib": 159540,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:39.555169+00:00",
+      "rss_kib": {
+        "worker": 753120,
+        "spark": 734752,
+        "translation_server": 811872
+      },
+      "available_kib": 167672,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:48.245002+00:00",
+      "rss_kib": {
+        "worker": 752972,
+        "spark": 733916,
+        "translation_server": 764136
+      },
+      "available_kib": 191984,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:53:58.372888+00:00",
+      "rss_kib": {
+        "worker": 752120,
+        "spark": 733916,
+        "translation_server": 748880
+      },
+      "available_kib": 214004,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:54:08.423723+00:00",
+      "rss_kib": {
+        "worker": 752120,
+        "spark": 733916,
+        "translation_server": 743592
+      },
+      "available_kib": 210656,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:54:18.444427+00:00",
+      "rss_kib": {
+        "worker": 750340,
+        "spark": 734012,
+        "translation_server": 870608
+      },
+      "available_kib": 248316,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:54:28.629685+00:00",
+      "rss_kib": {
+        "worker": 750004,
+        "spark": 733900,
+        "translation_server": 912992
+      },
+      "available_kib": 249856,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:54:36.717925+00:00",
+      "rss_kib": {
+        "worker": 749560,
+        "spark": 731100,
+        "translation_server": 931776
+      },
+      "available_kib": 266632,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:54:46.823940+00:00",
+      "rss_kib": {
+        "worker": 740828,
+        "spark": 729856,
+        "translation_server": 924272
+      },
+      "available_kib": 255016,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:54:56.954860+00:00",
+      "rss_kib": {
+        "worker": 737708,
+        "spark": 729864,
+        "translation_server": 898036
+      },
+      "available_kib": 257348,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:55:05.613941+00:00",
+      "rss_kib": {
+        "worker": 735572,
+        "spark": 727944,
+        "translation_server": 927824
+      },
+      "available_kib": 277964,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:55:15.710112+00:00",
+      "rss_kib": {
+        "worker": 735548,
+        "spark": 719508,
+        "translation_server": 852980
+      },
+      "available_kib": 276268,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:55:25.733483+00:00",
+      "rss_kib": {
+        "worker": 733988,
+        "spark": 717200,
+        "translation_server": 825476
+      },
+      "available_kib": 253048,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:55:34.261587+00:00",
+      "rss_kib": {
+        "worker": 733752,
+        "spark": 710652,
+        "translation_server": 885488
+      },
+      "available_kib": 270344,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:55:44.298233+00:00",
+      "rss_kib": {
+        "worker": 722304,
+        "spark": 704300,
+        "translation_server": 845696
+      },
+      "available_kib": 257240,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:55:54.385452+00:00",
+      "rss_kib": {
+        "worker": 717588,
+        "spark": 704252,
+        "translation_server": 915932
+      },
+      "available_kib": 255984,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:56:04.498357+00:00",
+      "rss_kib": {
+        "worker": 713924,
+        "spark": 704260,
+        "translation_server": 897996
+      },
+      "available_kib": 240516,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:56:13.238340+00:00",
+      "rss_kib": {
+        "worker": 708548,
+        "spark": 703984,
+        "translation_server": 862204
+      },
+      "available_kib": 243808,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:56:23.634801+00:00",
+      "rss_kib": {
+        "worker": 707448,
+        "spark": 703932,
+        "translation_server": 891792
+      },
+      "available_kib": 244820,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:56:33.676945+00:00",
+      "rss_kib": {
+        "worker": 706336,
+        "spark": 703920,
+        "translation_server": 827360
+      },
+      "available_kib": 250068,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:56:42.241803+00:00",
+      "rss_kib": {
+        "worker": 706332,
+        "spark": 702800,
+        "translation_server": 924284
+      },
+      "available_kib": 260184,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:56:52.344863+00:00",
+      "rss_kib": {
+        "worker": 706348,
+        "spark": 702120,
+        "translation_server": 907488
+      },
+      "available_kib": 252664,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:57:02.550011+00:00",
+      "rss_kib": {
+        "worker": 706348,
+        "spark": 702120,
+        "translation_server": 783584
+      },
+      "available_kib": 219048,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:57:11.342929+00:00",
+      "rss_kib": {
+        "worker": 706348,
+        "spark": 702292,
+        "translation_server": 741236
+      },
+      "available_kib": 239704,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:57:21.376785+00:00",
+      "rss_kib": {
+        "worker": 706348,
+        "spark": 702404,
+        "translation_server": 754252
+      },
+      "available_kib": 253332,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:57:31.419405+00:00",
+      "rss_kib": {
+        "worker": 706348,
+        "spark": 702404,
+        "translation_server": 748452
+      },
+      "available_kib": 239568,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:57:39.780013+00:00",
+      "rss_kib": {
+        "worker": 706348,
+        "spark": 702532,
+        "translation_server": 869124
+      },
+      "available_kib": 246552,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:57:49.892087+00:00",
+      "rss_kib": {
+        "worker": 706328,
+        "spark": 702532,
+        "translation_server": 865952
+      },
+      "available_kib": 243084,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:00.009292+00:00",
+      "rss_kib": {
+        "worker": 705212,
+        "spark": 702508,
+        "translation_server": 867596
+      },
+      "available_kib": 252400,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:08.523858+00:00",
+      "rss_kib": {
+        "worker": 704196,
+        "spark": 702296,
+        "translation_server": 921756
+      },
+      "available_kib": 277272,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:18.703465+00:00",
+      "rss_kib": {
+        "worker": 704284,
+        "spark": 702100,
+        "translation_server": 950380
+      },
+      "available_kib": 275092,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:28.847672+00:00",
+      "rss_kib": {
+        "worker": 704828,
+        "spark": 700672,
+        "translation_server": 904268
+      },
+      "available_kib": 278136,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:38.867731+00:00",
+      "rss_kib": {
+        "worker": 705372,
+        "spark": 702816,
+        "translation_server": 740964
+      },
+      "available_kib": 226836,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:47.365537+00:00",
+      "rss_kib": {
+        "worker": 706096,
+        "spark": 715704,
+        "translation_server": 680448
+      },
+      "available_kib": 216988,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:58:57.420410+00:00",
+      "rss_kib": {
+        "worker": 705776,
+        "spark": 723896,
+        "translation_server": 680432
+      },
+      "available_kib": 144172,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:59:07.918585+00:00",
+      "rss_kib": {
+        "worker": 705776,
+        "spark": 773352,
+        "translation_server": 680396
+      },
+      "available_kib": 122748,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:59:16.184853+00:00",
+      "rss_kib": {
+        "worker": 705308,
+        "spark": 948772,
+        "translation_server": 680392
+      },
+      "available_kib": 26672,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:59:28.130189+00:00",
+      "rss_kib": {
+        "worker": 705112,
+        "spark": 949188,
+        "translation_server": 680264
+      },
+      "available_kib": 28264,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T14:59:46.698016+00:00",
+      "rss_kib": {
+        "worker": 704536,
+        "spark": 950304,
+        "translation_server": 677444
+      },
+      "available_kib": 32024,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T15:00:00.339661+00:00",
+      "rss_kib": {
+        "worker": 704312,
+        "spark": 952016,
+        "translation_server": 677440
+      },
+      "available_kib": 29740,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T15:00:13.682774+00:00",
+      "rss_kib": {
+        "worker": 705220,
+        "spark": 955620,
+        "translation_server": 677372
+      },
+      "available_kib": 58152,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T15:00:23.801478+00:00",
+      "rss_kib": {
+        "worker": 719512,
+        "spark": 954736,
+        "translation_server": 674536
+      },
+      "available_kib": 62184,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    },
+    {
+      "time": "2026-09-25T15:00:31.858101+00:00",
+      "rss_kib": {
+        "worker": 805172,
+        "spark": 954032,
+        "translation_server": 670168
+      },
+      "available_kib": 3380128,
+      "jobs": {
+        "knowpipe_mvp011_c4f4a898349a4635b53a069d7dc2fc0a": [
+          "ready",
+          "running"
+        ]
+      }
+    }
+  ]
+}

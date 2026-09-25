@@ -11,7 +11,7 @@
 
 [当前重点] MVP尚未通过产品验收。先验证目标相关性、已读对照、具体补充及中文理解是否符合需求；对应[Spec与实现差距复核](docs/mvp-spec-implementation-gap-2026-09-25.md)。规模扩展在MVP功能正确后再决定，不以历史工程任务完成替代MVP通过。
 
-[实施中：011] 在 Spark 词汇召回后增加有界多语语义重排、候选与已读原文上下文对照，让覆盖程度和可能的补充参与选择。Web 展示实际比较范围和中英对照；语义处理失败时降级为目标推荐，不发送“补充”通知。具体进度与失败证据见 [Spec→实现→证据追踪](evidence/011-mvp-recommendation-validation/traceability.md)。
+[011 实现与实测] 在 Spark 词汇召回后增加有界多语语义重排、候选与已读原文上下文对照，让覆盖程度和可能的补充参与选择。Web 展示实际比较范围和中英对照；语义处理失败时降级为目标推荐，不发送“补充”通知。17场景实测仍有偏题、错误补充及技术误译，不能宣称 MVP 达标。当前结果及范围见 [验收记录](evidence/011-mvp-recommendation-validation/acceptance.md) 和 [Spec→实现→证据追踪](evidence/011-mvp-recommendation-validation/traceability.md)。
 
 [已验证：能力边界] 语义模型仍可能误判补充，本地翻译也仍有改变技术含义的错误；模型分数、数字和代码完整性通过均不能证明知识正确。系统不能判断用户掌握程度或脑中未知的知识。历史已实测本地Spark及同机Standalone两个独立executor；当前仅一台物理电脑，跨主机扩展不在本轮MVP范围。
 

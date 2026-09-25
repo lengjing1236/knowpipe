@@ -80,7 +80,7 @@ python3 scripts/acceptance_replays011.py --output state/feature011/recheck/repla
 python3 scripts/acceptance_rss011.py --output state/feature011/recheck/rss-real.json
 ```
 
-浏览器脚本使用 Playwright 已安装的 Chromium；本机自备二进制可传 `--browser-settings /tmp/knowpipe-chromium.json`（JSON 包含 `executable`、`args`）。它创建隔离数据库，从页面保存中文目标，由真实 worker/Spark 计算并翻译，打开中文全文与对照，显式已读后重算，不注入 ready 任务；结束清理自身 Web、worker 和临时数据库。
+浏览器脚本使用 Playwright 已安装的 Chromium；本机自备二进制可传 `--browser-settings /tmp/knowpipe-chromium.json`（JSON 包含 `executable`、`args`）。它创建隔离数据库，从页面保存中文目标，由真实 worker/Spark 计算并翻译，打开中文全文与对照，显式已读后重算，不注入 ready 任务；结束清理自身 Web、worker 和临时数据库。已有证据目录会拒绝覆盖；额外工程场景可以传 `--goal`，报告保留实际目标，不能拿事后挑选的场景替代冻结效果验收。翻译等待记录逐篇状态、版本、次数和质量项，区分待重试、运行中、最终耗尽及超时；失败时尽力保存真实页面截图。
 
 三分支回放使用明确声明的受控 RSS 文字稿，检验补充／重复／无关的决策、中文就绪和通知幂等，不声称真实新播客。`acceptance_rss011.py` 另行回放完整发布方 RSS 条目，实际下载完整音频并 ASR；依赖已有 `state/feature009/media` 中经核验的 Whisper 模型和节目来源。它不代表长期实时订阅或学习质量验证。
 
