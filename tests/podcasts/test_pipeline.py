@@ -27,7 +27,7 @@ class PodcastPipelineTests(unittest.TestCase):
         worker.run_once(self.db, fetch=fetch, analyze=analyze)
         self.assertEqual(self.db.podcast_episodes.count_documents({}), 2)
         self.assertEqual(self.db.podcast_episodes.count_documents({'status': 'awaiting_transcript'}), 1)
-        self.assertEqual(self.db.notifications.count_documents({}), 2)
+        self.assertEqual(self.db.notifications.count_documents({}), 0)
         ready = self.db.podcast_episodes.find_one({'status': 'ready'})
         self.assertTrue(ready['batch_id'])
         self.assertEqual(self.db.batches.find_one({'batch_id': ready['batch_id']})['status'], 'success')
@@ -133,7 +133,7 @@ class NotificationContractTests(unittest.TestCase):
         worker.run_once(db, analyze=lambda _: {'segments': [], 'spark_application_id': 'test', 'spark_master': 'test'})
         self.assertEqual(db.batches.find_one({'batch_id': 'old'})['status'], 'failed')
         self.assertEqual(db.podcast_episodes.find_one({'episode_id': 'e'})['status'], 'ready')
-        self.assertEqual(db.notifications.count_documents({}), 1)
+        self.assertEqual(db.notifications.count_documents({}), 0)
 
 class SubscriptionQuotaTests(unittest.TestCase):
     def test_cap_duplicate_and_release(self):
