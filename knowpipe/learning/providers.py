@@ -56,6 +56,7 @@ _TRANSLATION_ERROR_CODES = {
     (ProviderUnavailable, "translation_model_unavailable"): "translation_model_unavailable",
     (ProviderUnavailable, "translation_language_not_supported"): "translation_language_not_supported",
     (ProviderUnavailable, "translation_rate_limited"): "translation_rate_limited",
+    (ProviderUnavailable, "translation_auth_failed"): "translation_auth_failed",
     (ProviderUnavailable, "translation_remote_unavailable"): "translation_remote_unavailable",
 }
 

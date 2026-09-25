@@ -1,0 +1,60 @@
+{
+  "scope": "3个完整公开技术段落和1个测试学习目标；不代表全文或一般质量通过",
+  "cases": [
+    {
+      "id": "wal-order-and-redo",
+      "language": "en",
+      "target_language": "zh",
+      "source_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+      "source_kind": "frozen_official_fulltext_paragraph",
+      "source_sha256": "fc8905d17c9e21be1a678d66fc7b1c15f1ace3c6cd8167ce0bff45708e169359",
+      "input": "Write-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL's central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after WAL records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the WAL records. (This is roll-forward recovery, also known as REDO.)",
+      "review_checks": [
+        "日志记录刷入持久存储后才能写数据文件",
+        "不必在每次事务提交时刷出数据页",
+        "崩溃后通过日志重做尚未应用的修改",
+        "roll-forward/REDO必须译为前滚/重做，不能译成回滚"
+      ]
+    },
+    {
+      "id": "python-semaphore-counter",
+      "language": "en",
+      "target_language": "zh",
+      "source_url": "https://docs.python.org/3/library/asyncio-sync.html#asyncio.Semaphore",
+      "source_kind": "official_html_paragraph_whitespace_normalized",
+      "source_sha256": "164235da463a7c60943e87ecaecc4b13b5f5f6820f4c2a1862113784913554e0",
+      "input": "A semaphore manages an internal counter which is decremented by each acquire() call and incremented by each release() call. The counter can never go below zero; when acquire() finds that it is zero, it blocks, waiting until some task calls release() .",
+      "review_checks": [
+        "acquire()减计数、release()增计数",
+        "计数不能小于零",
+        "计数为零时acquire()阻塞并等待release()"
+      ]
+    },
+    {
+      "id": "python-bounded-semaphore-condition",
+      "language": "en",
+      "target_language": "zh",
+      "source_url": "https://docs.python.org/3/library/asyncio-sync.html#asyncio.BoundedSemaphore",
+      "source_kind": "official_html_paragraph_whitespace_normalized",
+      "source_sha256": "164235da463a7c60943e87ecaecc4b13b5f5f6820f4c2a1862113784913554e0",
+      "input": "Bounded Semaphore is a version of Semaphore that raises a ValueError in release() if it increases the internal counter above the initial value .",
+      "review_checks": [
+        "release()使计数大于初始值时才抛ValueError",
+        "不能把大于误译为等于或大于等于"
+      ]
+    },
+    {
+      "id": "chinese-learning-goal",
+      "language": "zh",
+      "target_language": "en",
+      "source_url": null,
+      "source_kind": "validation_goal_not_external_document",
+      "input": "学习 Python asyncio 如何限制同时运行的下载协程不超过 10 个，以及 BoundedSemaphore 过度释放时为什么抛出 ValueError。",
+      "review_checks": [
+        "asyncio协程不能误译成进程",
+        "保留最多10个并发下载",
+        "保留BoundedSemaphore过度释放和ValueError的关系"
+      ]
+    }
+  ]
+}

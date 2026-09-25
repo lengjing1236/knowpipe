@@ -190,8 +190,23 @@ class RemoteTranslationTests(unittest.TestCase):
         provider._opener = Mock()
         provider._opener.open.side_effect = urllib.error.HTTPError(
             provider.ENDPOINT, 401, 'private-key=secret', {}, io.BytesIO())
-        with self.assertRaisesRegex(providers.ProviderUnavailable, '^translation_remote_unavailable$'):
+        with self.assertRaisesRegex(providers.ProviderUnavailable, '^translation_auth_failed$'):
             provider.translate('Source.', 'en', 'zh')
+        self.assertEqual(provider._opener.open.call_count, 1)
+
+    def test_forbidden_access_has_explicit_safe_public_authentication_error(self):
+        provider = self.provider()
+        provider._opener = Mock()
+        provider._opener.open.side_effect = urllib.error.HTTPError(
+            provider.ENDPOINT, 403, 'private-key=secret', {}, io.BytesIO())
+        db = mongomock.MongoClient().db
+        key = {'source': 'docs', 'doc_id': 'remote-auth'}
+        db.documents.insert_one(key.copy())
+        content.publish_fulltext(db, **key, text='Source.', language='en')
+        view = providers.translate_document(db, **key, provider=provider)
+        self.assertFalse(view['chinese_ready'])
+        self.assertEqual(view['processing']['translation']['error_code'], 'translation_auth_failed')
+        self.assertNotIn('secret', json.dumps(view))
         self.assertEqual(provider._opener.open.call_count, 1)
 
 

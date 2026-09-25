@@ -100,7 +100,8 @@ class BigModelTranslator:
                         raise ProviderUnavailable('translation_rate_limited') from None
                     time.sleep(delay)
                     continue
-                code = 'translation_rate_limited' if status == 429 else 'translation_remote_unavailable'
+                code = ('translation_rate_limited' if status == 429 else
+                        'translation_auth_failed' if status in (401, 403) else 'translation_remote_unavailable')
                 raise ProviderUnavailable(code) from None
             except (TimeoutError, OSError, urllib.error.URLError):
                 raise ProviderUnavailable('translation_remote_unavailable') from None

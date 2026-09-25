@@ -150,6 +150,7 @@
       translation_language_not_supported: '当前翻译服务不支持这篇资料的语言。',
       provider_not_configured: '免费远程翻译服务尚未配置 API Key；中文原文可以直接阅读。',
       translation_rate_limited: '免费翻译服务的调用频率或额度受限，请稍后重试。',
+      translation_auth_failed: '远程翻译服务认证失败，请重新配置有效且有访问权限的 API Key。',
       translation_remote_unavailable: '远程翻译服务暂时无法连接或拒绝请求，请检查网络与 API Key。',
       translation_paragraph_too_long: '原文单段超过当前翻译长度限制，未发布截断译文。',
       translation_model_mismatch: '远程服务返回的模型与指定免费模型不一致，未采用本次结果。',

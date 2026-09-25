@@ -10,4 +10,6 @@
 
 缓存绑定原文版本及服务、型号、提示词和适配器身份。服务端型号别名可能更新，无法把它当作固定权重；复核服务更新后可提高 `KNOWPIPE_REMOTE_TRANSLATION_REVISION`（默认 `v1`）使旧译文重新处理。历史本地适配器保留用于旧实验复现，只有显式 `KNOWPIPE_TRANSLATION_PROVIDER=local` 才能选中；交付演示启动器必须设置 `bigmodel-free`。
 
-当前验证范围：模拟 HTTP 的接口测试；没有以测试替身冒充真实远程质量验证。若没有配置 API Key，不能声称远程翻译已实测或误译问题已经解决。
+当前验证范围：模拟 HTTP 的接口测试已通过。2026-09-25 对 3 个完整公开技术段落与 1 条中文目标发起真实请求，均未取得译文；后续有限诊断确认官方端点返回 HTTP 401（认证未通过）。原始失败记录见 `evidence/012-demo-delivery/remote-translation.json`，诊断只记录状态码，不保存密钥或服务端错误正文。当前不能声称远程翻译质量已通过或误译问题已经解决。
+
+配置有效密钥后可运行 `python3 scripts/verify_remote_translation012.py --output evidence/012-demo-delivery/remote-translation-retry.json`，脚本从 `state/demo012/bigmodel-api-key` 读取密钥并保留原文、译文、耗时及完整性检查结果。它不会让翻译模型自评，也不会自动将完整性检查判作技术含义正确；需要逐项对照原文的条件、否定和操作顺序。已有真实结果不会被脚本覆盖。
