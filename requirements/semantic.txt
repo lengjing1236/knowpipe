@@ -1,0 +1,4 @@
+# Optional CPU semantic features; model weights are acquired explicitly.
+numpy==2.2.6
+tokenizers==0.23.1
+onnxruntime==1.23.2

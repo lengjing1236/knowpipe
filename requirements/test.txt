@@ -1,0 +1,4 @@
+-r worker.txt
+pytest==8.4.2
+mongomock==4.3.0
+playwright==1.63.0

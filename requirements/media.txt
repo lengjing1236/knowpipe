@@ -1,0 +1,4 @@
+# Optional local CPU providers; model weights are explicit operator-managed files.
+faster-whisper==1.2.1
+ctranslate2==4.8.1
+sentencepiece==0.2.1
