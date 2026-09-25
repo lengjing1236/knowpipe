@@ -10,7 +10,7 @@
 | SC-002：转载/同义/无关/错误对象无错误补充，同时真补充不可全拒绝 | `semantic_analysis.py`、`engine.py`、`podcasts/learning.py` | 正式full source-review覆盖全部additional；`postgres-full-review-notes.md`/`docker-full-review-notes.md`有第二代理只读事实复核 | **失败。** 11条错误补充，12条双侧解释证据不足；正向部分已读的PG/Docker有真实补充，Python/Django未达到冻结预期。同义改写仍被当新知识。镜像在对象门槛被排除，不能验证语义去重 |
 | SC-003：不同历史合理改变证据/优先项，消融说明作用 | `engine._choose`覆盖/补充/去重；`current-v6-full-ablations.json` | 34个固定候选重排对照仅3个改变：PG冷启动去重使正确材料前移；PG部分已读的历史项反而使正确材料后移；Docker替换后仍无更多直接材料 | **未证实稳定收益。** 已读原文会被排除，也能识别个别新事实，但同义误报和偏题仍存在。消融仅对同一已召回/比较后的候选重排，不能冒充完整无历史管线 |
 | SC-004：中文目标/全文关键事实、条件、顺序正确，真实全文阅读 | `learning/local_providers.py`、`llama_provider.py`、`providers.py`、`quality.py`、`content.py` | 语言专项证据保留Argos/NLLB/Qwen的真实输出与事实复核；最终full固定Qwen段落v1，同一处理身份；真实阅读由根代理验收 | **已测试候选仍有关键事实错误。** 结构对齐/数字标识符保护不是语义正确。某次目标译文改善不能替代完整技术全文通过 |
-| SC-005：真实Web→worker→Spark→阅读→显式已读；新增三类与真实RSS | worker、Web、`podcasts/learning.py`、`scripts/acceptance_replays011.py` | 18项评价/回放程序防误判轻测通过；根代理正在运行最终组合真实Web/RSS | **待根代理实际闭环及三分支回放结果。** 不能以旧009记录、注入ready job或文字稿回放代替真实音频；全禁通知也不能通过正例 |
+| SC-005：真实Web→worker→Spark→阅读→显式已读；新增三类与真实RSS | worker、Web、`podcasts/learning.py`、`scripts/acceptance_replays011.py` | `browser.json`真实浏览器保存目标→生产worker/Spark推荐就绪，未注入ready job；运行1072.7秒后报`selected_english_translations_failed`，三篇入选英文均未通过翻译质量门禁；观察/诊断文件记录处理状态 | **完整闭环尚无通过证据。** 首次脚本在全部本次失败时提前退出，未区分待重试与最终耗尽；阅读、显式已读及重算未执行到。验收器已修复终态判定，原失败原样保留。真实RSS/ASR与三分支通知回放仍待结果；全禁通知也不能通过正例 |
 | SC-006：万条背景复验、至少两个预冻结保留场景 | `scripts/evaluate_mvp011.py`、冻结SHA、旧包快照 | 最终17案：13案使用同一10,215篇完整背景，4案明确受控；Docker/Django及跨来源7个保留场景首次最终运行后仅审核，未据此调参 | **验证流程已落实，结果有失败。** 一次资源检查点重启保留前三案，以同一签名继续；详见resource-events。旧baseline完整背景对照仍待后续窗口，不将v5开发数据当最终基线 |
 
 

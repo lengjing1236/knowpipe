@@ -1,0 +1,21 @@
+test_existing_evidence_cannot_be_overwritten (tests.recommendations.test_mvp_browser.BrowserFailureArtifactsTests) ... ok
+test_failure_is_captured_before_browser_closes (tests.recommendations.test_mvp_browser.BrowserFailureArtifactsTests) ... ok
+test_screenshot_failure_does_not_replace_the_original_failure (tests.recommendations.test_mvp_browser.BrowserFailureArtifactsTests) ... ok
+test_chinese_original_does_not_substitute_for_actual_english_translation (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_first_failed_attempt_waits_and_records_its_identity_and_quality (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_old_version_or_processor_attempts_cannot_exhaust_current_translation (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_past_retry_time_is_not_exhaustion_and_mongo_naive_utc_is_supported (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_report_retains_failure_before_retry_and_records_timeout (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_terminal_observation_is_rechecked_before_abort (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_terminal_requires_all_foreign_candidates_exhausted_or_unavailable (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_third_running_attempt_may_still_succeed_and_timeout_is_explicit (tests.recommendations.test_mvp_browser.BrowserTranslationWaitTests) ... ok
+test_actual_positive_needs_current_chinese_notice_and_idempotency (tests.recommendations.test_mvp_replays.ReplayDecisionTests) ... ok
+test_all_notifications_suppressed_cannot_pass_positive (tests.recommendations.test_mvp_replays.ReplayDecisionTests) ... ok
+test_completed_negative_decision_can_pass (tests.recommendations.test_mvp_replays.ReplayDecisionTests) ... ok
+test_failed_worker_without_notifications_cannot_pass_negative (tests.recommendations.test_mvp_replays.ReplayDecisionTests) ... ok
+test_partial_unsupported_comparison_is_safe_but_not_verified_negative (tests.recommendations.test_mvp_replays.ReplayDecisionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.033s
+
+OK
