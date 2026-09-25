@@ -146,9 +146,14 @@
       translation_invalid_input: '当前正文无法由此翻译模型处理。',
       translation_invalid_output: '译文为空或超出处理限制，尚未发布。',
       translation_timeout: '全文翻译超时，请稍后刷新推荐重试。',
-      translation_model_unavailable: '翻译模型文件不可用，需要配置可用模型。',
-      translation_language_not_supported: '当前本地模型不支持这篇资料的语言。',
-      provider_not_configured: '翻译服务尚未配置。',
+      translation_model_unavailable: '当前翻译服务不可用，请检查服务配置。',
+      translation_language_not_supported: '当前翻译服务不支持这篇资料的语言。',
+      provider_not_configured: '免费远程翻译服务尚未配置 API Key；中文原文可以直接阅读。',
+      translation_rate_limited: '免费翻译服务的调用频率或额度受限，请稍后重试。',
+      translation_remote_unavailable: '远程翻译服务暂时无法连接或拒绝请求，请检查网络与 API Key。',
+      translation_paragraph_too_long: '原文单段超过当前翻译长度限制，未发布截断译文。',
+      translation_model_mismatch: '远程服务返回的模型与指定免费模型不一致，未采用本次结果。',
+      translation_protected_code_damaged: '译文未完整保留代码标记，未发布本次结果。',
       translation_attempts_exhausted: '翻译重试次数已用完，可刷新推荐重新尝试。',
       translation_failed: '翻译未完成，可刷新推荐重试；未发布部分结果。'
     };

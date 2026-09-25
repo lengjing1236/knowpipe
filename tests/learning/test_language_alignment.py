@@ -21,7 +21,7 @@ class LanguageAlignmentTests(unittest.TestCase):
         return provider
 
     def test_shared_factory_uses_one_bilingual_instance_without_loading(self):
-        config = {'KNOWPIPE_NLLB_MODEL_PATH': '/unused/shared'}
+        config = {'KNOWPIPE_NLLB_MODEL_PATH': '/unused/shared', 'KNOWPIPE_TRANSLATION_PROVIDER': 'local'}
         forward, reverse = configured_translator(config), configured_goal_translator(config)
         self.assertIs(forward, reverse)
         self.assertIs(forward, configured_language_provider(config))

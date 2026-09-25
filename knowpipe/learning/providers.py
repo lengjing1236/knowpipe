@@ -48,9 +48,15 @@ _TRANSLATION_ERROR_CODES = {
     (ValueError, "invalid_fulltext"): "translation_invalid_output",
     (ValueError, "translation_quality_failed"): "translation_quality_failed",
     (ValueError, "invalid_translation_alignment"): "translation_alignment_failed",
+    (ValueError, "invalid_translation_output"): "translation_invalid_output",
+    (ValueError, "translation_paragraph_too_long"): "translation_paragraph_too_long",
+    (ValueError, "translation_model_mismatch"): "translation_model_mismatch",
+    (ValueError, "translation_protected_code_damaged"): "translation_protected_code_damaged",
     (TimeoutError, "translation_timeout"): "translation_timeout",
     (ProviderUnavailable, "translation_model_unavailable"): "translation_model_unavailable",
     (ProviderUnavailable, "translation_language_not_supported"): "translation_language_not_supported",
+    (ProviderUnavailable, "translation_rate_limited"): "translation_rate_limited",
+    (ProviderUnavailable, "translation_remote_unavailable"): "translation_remote_unavailable",
 }
 
 

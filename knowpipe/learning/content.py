@@ -13,6 +13,8 @@ STATES = {"not_requested", "queued", "running", "ready", "failed", "unavailable"
 PUBLIC_ERRORS = {"translation_empty_output", "translation_truncated", "translation_incomplete",
                  "translation_invalid_input", "translation_invalid_output", "translation_timeout",
                  "translation_model_unavailable", "translation_language_not_supported",
+                 "translation_rate_limited", "translation_remote_unavailable", "translation_paragraph_too_long",
+                 "translation_model_mismatch", "translation_protected_code_damaged",
                  "translation_failed", "translation_attempts_exhausted", "provider_not_configured",
                  "translation_quality_failed", "translation_alignment_failed"}
 

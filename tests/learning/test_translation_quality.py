@@ -120,7 +120,8 @@ class TranslationQualityTests(unittest.TestCase):
     def test_goal_factory_is_offline_and_uses_reverse_direction(self):
         with self.assertRaises(providers.ProviderUnavailable):
             configured_goal_translator({}).translate('数据库', 'zh', 'en')
-        provider = configured_goal_translator({'KNOWPIPE_GOAL_TRANSLATION_MODEL_PATH': '/unused'})
+        provider = configured_goal_translator({'KNOWPIPE_GOAL_TRANSLATION_MODEL_PATH': '/unused',
+                                               'KNOWPIPE_TRANSLATION_PROVIDER': 'local'})
         self.assertEqual((provider.source_language, provider.target_language), ('zh', 'en'))
 
     def test_number_check_accepts_chinese_adjacency_and_fullwidth_digits(self):

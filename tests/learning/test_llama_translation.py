@@ -29,6 +29,7 @@ class LlamaTranslationTests(unittest.TestCase):
 
     def test_shared_local_provider_and_remote_endpoint_rejection(self):
         config = {'KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH': '/unused/model.gguf',
+                  'KNOWPIPE_TRANSLATION_PROVIDER': 'local',
                   'KNOWPIPE_LLAMA_TRANSLATION_URL': 'http://127.0.0.1:8089'}
         self.assertIs(configured_translator(config), configured_goal_translator(config))
         for url in ('https://example.com', 'http://127.0.0.1:8089/private', 'http://user@127.0.0.1:8089'):

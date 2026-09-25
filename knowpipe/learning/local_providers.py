@@ -249,8 +249,10 @@ def _shared_nllb(path, threads, timeout_seconds):
 
 
 def configured_language_provider(env=None):
-    """Explicit shared bilingual model; factories never download weights."""
+    """Remote by default; historical local adapters require an explicit mode."""
     config = os.environ if env is None else env
+    if config.get('KNOWPIPE_TRANSLATION_PROVIDER', 'bigmodel-free') != 'local':
+        return _configured_remote(config)
     llama_path = config.get('KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH')
     if llama_path:
         endpoint = config.get('KNOWPIPE_LLAMA_TRANSLATION_URL')
@@ -347,6 +349,8 @@ class _ContextTranscriber:
 
 def configured_translator(env=None):
     config = os.environ if env is None else env
+    if config.get('KNOWPIPE_TRANSLATION_PROVIDER', 'bigmodel-free') != 'local':
+        return _configured_remote(config)
     if config.get('KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH') or config.get('KNOWPIPE_NLLB_MODEL_PATH'):
         return configured_language_provider(config)
     path = config.get('KNOWPIPE_TRANSLATION_MODEL_PATH')
@@ -367,6 +371,8 @@ def configured_transcriber(env=None):
 
 def configured_goal_translator(env=None):
     config = os.environ if env is None else env
+    if config.get('KNOWPIPE_TRANSLATION_PROVIDER', 'bigmodel-free') != 'local':
+        return _configured_remote(config)
     if config.get('KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH') or config.get('KNOWPIPE_NLLB_MODEL_PATH'):
         return configured_language_provider(config)
     path = config.get('KNOWPIPE_GOAL_TRANSLATION_MODEL_PATH')
@@ -375,3 +381,10 @@ def configured_goal_translator(env=None):
     return LocalTranslator(path, source_language='zh', target_language='en',
                            threads=config.get('KNOWPIPE_MODEL_THREADS', 2),
                            timeout_seconds=config.get('KNOWPIPE_GOAL_TRANSLATION_TIMEOUT_SECONDS', 180))
+
+
+def _configured_remote(config):
+    if config.get('KNOWPIPE_TRANSLATION_PROVIDER', 'bigmodel-free') != 'bigmodel-free':
+        return UnconfiguredProvider()
+    from .remote_translation import configured_remote_translator
+    return configured_remote_translator(config)
