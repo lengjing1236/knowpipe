@@ -1,0 +1,147 @@
+{
+  "exported_at_utc": "2026-09-25T15:52:40.711933+00:00",
+  "scope": "Local Codex root sessions whose recorded cwd equals this project; child-agent forks excluded.",
+  "not_guaranteed_complete_history": true,
+  "prompt_count": 96,
+  "root_agent_task_prompt_count": 179,
+  "credential_redactions": 0,
+  "exclusions": {
+    "environment_or_generated_context": 21,
+    "invalid_or_in_progress_lines": 1
+  },
+  "source_files": [
+    {
+      "name": "rollout-2026-08-30T22-01-20-01a052f9-89f7-7191-aa0c-829fb3765b9f.jsonl",
+      "bytes_at_export": 6602006,
+      "snapshot_sha256": "7be13547023a0c991a9c9b6343a1fcb36ef49fdadd0999d02f105ca7848bd445",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 9
+    },
+    {
+      "name": "rollout-2026-09-02T23-53-17-01a062d3-1b84-7d23-82cd-b6bc1229a773.jsonl",
+      "bytes_at_export": 4689288,
+      "snapshot_sha256": "492ea7110bc3f68031931b99f614b2e1eefc80a7ddfee1d9b34b3602a48cfbaf",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 5
+    },
+    {
+      "name": "rollout-2026-09-03T00-15-14-01a062e7-33d2-7ea0-ad81-791d297e3fd9.jsonl",
+      "bytes_at_export": 56037,
+      "snapshot_sha256": "aa11e453004e8f31caf3494937529afb2e2943efd067c8287dfd6e80c33577de",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-03T22-12-08-01a0679c-db7d-7bc2-b32a-b4bfdf7a60db.jsonl",
+      "bytes_at_export": 5851962,
+      "snapshot_sha256": "f62a8af8df4ecfefc0335a4a139cefde9972521dca64028f96a2a10b409469e0",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 7
+    },
+    {
+      "name": "rollout-2026-09-03T22-46-07-01a067bb-f937-7492-8275-149945323cdd.jsonl",
+      "bytes_at_export": 41936,
+      "snapshot_sha256": "376dbb74304adacc0cc441b6590872db0af2ca0571ff038c4164101504c99f02",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-03T23-06-35-01a067ce-b7c5-7fc1-bd01-07a615b4a609.jsonl",
+      "bytes_at_export": 41960,
+      "snapshot_sha256": "407dc36cb3987e5f7f8551a611ee63a46804993e5d362dbbeecb68d428bbc9a4",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-04T00-48-18-01a0682b-d4c6-7a32-9470-8f52a831cd3c.jsonl",
+      "bytes_at_export": 42979,
+      "snapshot_sha256": "30abef86861d2f910b621ea5e085f97834dd2190019162241ae603fb99efcdd0",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-05T18-13-11-01a0710e-d0d1-7b83-a7ab-7bb61c67e46b.jsonl",
+      "bytes_at_export": 123431,
+      "snapshot_sha256": "13f439d2f748d2fc419b6fa4801ef5d09cfa15ce9bbfb5f30c3b59123442c6e3",
+      "record_type": "response_item.user (older log format)",
+      "exported_prompts": 4
+    },
+    {
+      "name": "rollout-2026-09-16T19-16-24-01a0a9ee-a51d-7ad2-bdeb-d5ecc8003ab6.jsonl",
+      "bytes_at_export": 1373762,
+      "snapshot_sha256": "2b07414ecf37a1b452dc1a965b55527f39132e0cd21d625964e1367169ffbd3d",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 2
+    },
+    {
+      "name": "rollout-2026-09-16T20-40-32-01a0aa3b-aca8-77e1-bda8-d7d71fcfc3d9.jsonl",
+      "bytes_at_export": 953672,
+      "snapshot_sha256": "f9c45cb819f8b49b7e3b75dc1a902aa39fe82fccd3646fee1d1f5b3eba829394",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 2
+    },
+    {
+      "name": "rollout-2026-09-16T22-23-38-01a0aa9a-0eda-7e02-b158-62680ffed992.jsonl",
+      "bytes_at_export": 314098,
+      "snapshot_sha256": "ef925bf7d6f57c33aecf781ec9f6a4beeacdff6811eb7fdf64d19ab4e45d7014",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-16T23-10-06-01a0aac4-9ba0-7761-9109-a2545fdf4cf7.jsonl",
+      "bytes_at_export": 216319,
+      "snapshot_sha256": "7b56fa0185d60a0150fa795765286138aaf0d9147b15bd616b2639d900ca0681",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-17T16-52-16-01a0ae91-0a32-7233-be2e-9480aad1ad2a.jsonl",
+      "bytes_at_export": 1033034,
+      "snapshot_sha256": "5012a1855a950af958649bf459e7f2a70949153484b5add9debd285726aaa802",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 10
+    },
+    {
+      "name": "rollout-2026-09-17T17-53-20-01a0aec8-f285-7a61-a61f-aa0c707704e0.jsonl",
+      "bytes_at_export": 62693,
+      "snapshot_sha256": "696edfc08612fcab8b831af29a87af6afed29860471388365e3d66cc3cc6eed3",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-19T18-58-56-01a0b951-baa6-7a41-acd8-5584d28305f7.jsonl",
+      "bytes_at_export": 54655,
+      "snapshot_sha256": "cead582246f01125239f26e727dddfb3066434a369ab81d34ed2859dd2dfd32e",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-19T19-28-57-01a0b96d-3571-7503-af4c-b3263dfc252a.jsonl",
+      "bytes_at_export": 122724,
+      "snapshot_sha256": "df8e69367dc5d1738507c28450333e42825112eee5b99d852de5e5d9eafad7e4",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 2
+    },
+    {
+      "name": "rollout-2026-09-19T20-54-29-01a0b9bb-8468-7f73-8d41-ec54d5755e4b.jsonl",
+      "bytes_at_export": 52094,
+      "snapshot_sha256": "b5aa6ea9e3bd11eb0583defedf39a45bff48478def9bceac4499fb3fe391c745",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 1
+    },
+    {
+      "name": "rollout-2026-09-19T21-00-20-01a0b9c0-df5b-7383-bc17-dfc42d62ad9b.jsonl",
+      "bytes_at_export": 26485409,
+      "snapshot_sha256": "8b923fc01cff184520e3a96c8ef681176512aca87fc054015f259dce4a5348d7",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 43
+    },
+    {
+      "name": "rollout-2026-09-25T13-10-06-01a0d6f8-8735-7080-9373-833cca12582d.jsonl",
+      "bytes_at_export": 252774,
+      "snapshot_sha256": "37ea843e547c2b92dd31f20b8c5a1ff3d950a34459982028c18e7c2b7ead64f9",
+      "record_type": "event_msg.user_message",
+      "exported_prompts": 3
+    }
+  ]
+}

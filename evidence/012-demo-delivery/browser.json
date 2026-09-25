@@ -1,0 +1,931 @@
+{
+  "created_at": "2026-09-25T15:54:49.299603+00:00",
+  "status": "passed",
+  "scope": "真实Web操作；12篇原生中文演示子集，不作为万条质量通过证明",
+  "goal": "学习 Python 的异常捕获、异常传播和日志记录",
+  "mocked_responses": false,
+  "steps": [
+    "goal_saved_via_browser",
+    "real_recommendations_visible",
+    "explicit_read_persisted",
+    "new_revision_recomputed",
+    "source_filter_and_mobile_verified"
+  ],
+  "page_errors": "original in-memory list unavailable after exporter exception; not claimed zero",
+  "recovery_note": "原始录制操作及页面断言已完成；导出时Playwright video.path返回str触发类型错误。此记录从原始录像、截图时间和实际MongoDB结果恢复；未重新生成或注入推荐结果。等待裁剪区间按原始画面核对。",
+  "before": {
+    "items": [
+      {
+        "source": "django_docs",
+        "doc_id": "topics/db/transactions",
+        "title": "数据库事务",
+        "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/transactions/",
+        "content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "rank": 1,
+        "selection_score": 0.5722750781919624,
+        "relevance": 0.673264797872897,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "django_docs",
+            "doc_id": "topics/db/transactions",
+            "title": "数据库事务",
+            "content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+            "start": 5176,
+            "end": 5244,
+            "text": "所有派生自 Python 的 Exception 类的错误都会被捕获并记录到 django.db.backends.base 记录器中。"
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 1,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 1,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "django_docs",
+          "doc_id": "topics/db/transactions",
+          "title": "数据库事务",
+          "content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+          "start": 5176,
+          "end": 5244,
+          "text": "所有派生自 Python 的 Exception 类的错误都会被捕获并记录到 django.db.backends.base 记录器中。",
+          "matched_terms": [
+            "exception",
+            "python",
+            "捕获",
+            "记录"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "Python",
+            "field": "body_text",
+            "start": 4204,
+            "end": 4345,
+            "text": "会启动一个事务，而且事务也会被自动提交或回滚，这取决于查询是否成功。\n\nPEP 249 （Python 数据库接口规范 v2.0）要求自动提交在初始时是关闭的。Django 会覆盖这个默认值并开启自动提交。\n\n为了避免这种情况，你可以参考 取消事务管理 ，但并不推荐这样做。\n\n停用"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "django_docs",
+            "doc_id": "topics/db/transactions",
+            "title": "数据库事务",
+            "content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+            "start": 5176,
+            "end": 5244,
+            "text": "所有派生自 Python 的 Exception 类的错误都会被捕获并记录到 django.db.backends.base 记录器中。"
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        }
+      },
+      {
+        "source": "python_docs",
+        "doc_id": "howto/logging.html",
+        "title": "日志指南",
+        "source_url": "https://docs.python.org/zh-cn/3/howto/logging.html",
+        "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+        "doc_key": "4fd32201736e06365801a2c33f9b19e9e488c2dee6ecd41bd405a98ebeab2286",
+        "rank": 2,
+        "selection_score": 0.3528126398926157,
+        "relevance": 0.4974815186569591,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "python_docs",
+            "doc_id": "howto/logging.html",
+            "title": "日志指南",
+            "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+            "start": 14440,
+            "end": 14489,
+            "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。"
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 4,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 8,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "python_docs",
+          "doc_id": "howto/logging.html",
+          "title": "日志指南",
+          "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+          "start": 14440,
+          "end": 14489,
+          "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+          "matched_terms": [
+            "log",
+            "python"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "Python",
+            "field": "body_text",
+            "start": 1646,
+            "end": 1787,
+            "text": "\n一种很常见的情况是将日志事件记录到文件中，下面让我们来看这个问题。请确认在一个新启动的 Python 解释器中尝试以下操作，而非在上面描述的会话中继续:\n\n```\nimport logging\nlogger = logging.getLogger(__name__)\nloggin"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "python_docs",
+            "doc_id": "howto/logging.html",
+            "title": "日志指南",
+            "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+            "start": 14440,
+            "end": 14489,
+            "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。"
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        }
+      },
+      {
+        "source": "django_docs",
+        "doc_id": "topics/async",
+        "title": "异步支持",
+        "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/async/",
+        "content_version": "20cd0393f67ab40162cd3d8a88d14eb8af2de593d50d6ce06d3ff34c7aa956e3",
+        "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+        "rank": 3,
+        "selection_score": 0.20849774990437125,
+        "relevance": 0.339378738039669,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "django_docs",
+            "doc_id": "topics/async",
+            "title": "异步支持",
+            "content_version": "20cd0393f67ab40162cd3d8a88d14eb8af2de593d50d6ce06d3ff34c7aa956e3",
+            "start": 4533,
+            "end": 4570,
+            "text": "如果你需要在 Python 中执行此操作，请使用 os.environ ："
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 1,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 1,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "django_docs",
+          "doc_id": "topics/async",
+          "title": "异步支持",
+          "content_version": "20cd0393f67ab40162cd3d8a88d14eb8af2de593d50d6ce06d3ff34c7aa956e3",
+          "start": 4533,
+          "end": 4570,
+          "text": "如果你需要在 Python 中执行此操作，请使用 os.environ ：",
+          "matched_terms": [
+            "python"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "Python",
+            "field": "body_text",
+            "start": 172,
+            "end": 313,
+            "text": "sync() 适配器来和 Django 的同步部分进行交互。你还可以集成一系列的原生异步 Python 库。\n\n异步视图\n\n任何视图都可以通过使其可调用部分返回协程来声明为异步 - 通常情况下，可以使用 async def 来实现这一点。对于基于函数的视图，这意味着要使用 asyn"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "django_docs",
+            "doc_id": "topics/async",
+            "title": "异步支持",
+            "content_version": "20cd0393f67ab40162cd3d8a88d14eb8af2de593d50d6ce06d3ff34c7aa956e3",
+            "start": 4533,
+            "end": 4570,
+            "text": "如果你需要在 Python 中执行此操作，请使用 os.environ ："
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        }
+      }
+    ],
+    "baseline": [
+      {
+        "doc_key": "3f90efa473718379f9e8e282bf4231d7494b28987f93f83472a742dd2de4f04d",
+        "relevance": 0.31898970552801276
+      },
+      {
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "relevance": 0.3058050907684382
+      },
+      {
+        "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+        "relevance": 0.2678035506575918
+      }
+    ],
+    "without_history": [
+      {
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "rank": 1,
+        "score": 0.5722750781919624
+      },
+      {
+        "doc_key": "4fd32201736e06365801a2c33f9b19e9e488c2dee6ecd41bd405a98ebeab2286",
+        "rank": 2,
+        "score": 0.3528126398926157
+      },
+      {
+        "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+        "rank": 3,
+        "score": 0.20849774990437125
+      }
+    ],
+    "without_diversity": [
+      {
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "rank": 1,
+        "score": 0.673264797872897
+      },
+      {
+        "doc_key": "4fd32201736e06365801a2c33f9b19e9e488c2dee6ecd41bd405a98ebeab2286",
+        "rank": 2,
+        "score": 0.4974815186569591
+      },
+      {
+        "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+        "rank": 3,
+        "score": 0.339378738039669
+      }
+    ],
+    "history_used": 0,
+    "history_unavailable": 0,
+    "history_references": [],
+    "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+    "parameters": {
+      "candidates": 100,
+      "paragraphs_per_document": 3,
+      "top_k": 3,
+      "paragraphs_total": 300,
+      "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+      "min_relevance": 0.03,
+      "min_query_coverage": 0.2,
+      "history_weight": 0.6,
+      "supplement_weight": 0.4,
+      "diversity_weight": 0.15,
+      "duplicate_threshold": 0.95,
+      "semantic_thresholds": {
+        "relevance": 0.015,
+        "goal_similarity": 0.35,
+        "entailment": 0.75,
+        "contradiction": 0.65,
+        "neutral": 0.7,
+        "context_similarity": 0.3,
+        "duplicate": 0.95
+      }
+    },
+    "reason": null,
+    "query": {
+      "original": "学习 Python 的异常捕获、异常传播和日志记录",
+      "variants": [
+        "学习 Python 的异常捕获、异常传播和日志记录"
+      ],
+      "status": "unavailable",
+      "processor_id": "translation-not-configured-v1",
+      "rules_version": "bilingual-object-query-v2",
+      "entities": [
+        {
+          "name": "Python",
+          "aliases": [
+            "python"
+          ]
+        }
+      ],
+      "error_code": "goal_translation_unavailable"
+    },
+    "semantic": {
+      "status": "ready",
+      "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+      "comparison_scope": {
+        "candidate_paragraphs": 297,
+        "candidate_sentences": 6,
+        "history_sentences": 0,
+        "comparison_pairs": 0,
+        "unsupported_units": 0,
+        "history_contexts": 0,
+        "history_selection_method": "candidate-nearest-context-not-answer-gated",
+        "all_relations_require_comparable_context": true,
+        "oversized_sentences": 0,
+        "candidate_sentences_outside_budget": 0,
+        "history_sentences_outside_budget": 0,
+        "limits": {
+          "candidate_paragraphs": 300,
+          "candidate_sentences": 90,
+          "history_sentences": 100,
+          "comparison_pairs": 270
+        },
+        "native_original_wide_recall": true,
+        "recalled_documents": 11,
+        "paragraph_budget_per_document": 27,
+        "nonlexical_context_paragraphs": 266,
+        "history_paragraphs_available": 0,
+        "history_paragraphs_outside_budget": 0
+      },
+      "error_code": null,
+      "language": "multilingual"
+    },
+    "history_relevant_paragraphs": 0
+  },
+  "after": {
+    "status": "ready",
+    "items": [
+      {
+        "source": "python_docs",
+        "doc_id": "howto/logging.html",
+        "title": "日志指南",
+        "source_url": "https://docs.python.org/zh-cn/3/howto/logging.html",
+        "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+        "doc_key": "4fd32201736e06365801a2c33f9b19e9e488c2dee6ecd41bd405a98ebeab2286",
+        "rank": 1,
+        "selection_score": 0.4318248484767336,
+        "relevance": 0.5080292335020395,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "history_comparison",
+        "comparison": {
+          "status": "uncertain",
+          "candidate": {
+            "source": "python_docs",
+            "doc_id": "howto/logging.html",
+            "title": "日志指南",
+            "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+            "start": 14440,
+            "end": 14489,
+            "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+            "chinese_context": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+            "chinese_context_scope": "native"
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [
+            {
+              "status": "uncertain",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "howto/logging.html",
+                "title": "日志指南",
+                "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+                "start": 14440,
+                "end": 14489,
+                "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+                "chinese_context": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+                "chinese_context_scope": "native"
+              },
+              "history": null,
+              "focus": {
+                "source": "python_docs",
+                "doc_id": "howto/logging.html",
+                "title": "日志指南",
+                "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+                "start": 14440,
+                "end": 14489,
+                "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。"
+              },
+              "history_focus": null,
+              "context_dependent": false,
+              "scores": {
+                "relevance": 0.26417130143083883,
+                "context_similarity": 0.0,
+                "cross_encoder_relevance": 0.058019328151776864,
+                "goal_similarity": 0.3525221471218654,
+                "supplement": 0.0
+              }
+            },
+            {
+              "status": "uncertain",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "howto/logging.html",
+                "title": "日志指南",
+                "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+                "start": 12940,
+                "end": 12984,
+                "text": "在 Python 3.2 中，引入了一种新的配置日志记录的方法，使用字典来保存配置信息。",
+                "chinese_context": "在 Python 3.2 中，引入了一种新的配置日志记录的方法，使用字典来保存配置信息。",
+                "chinese_context_scope": "native"
+              },
+              "history": null,
+              "focus": {
+                "source": "python_docs",
+                "doc_id": "howto/logging.html",
+                "title": "日志指南",
+                "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+                "start": 12940,
+                "end": 12984,
+                "text": "在 Python 3.2 中，引入了一种新的配置日志记录的方法，使用字典来保存配置信息。"
+              },
+              "history_focus": null,
+              "context_dependent": false,
+              "scores": {
+                "relevance": 0.5080292335020395,
+                "context_similarity": 0.0,
+                "cross_encoder_relevance": 0.1753771314036474,
+                "goal_similarity": 0.6505944201156362,
+                "supplement": 0.0
+              }
+            },
+            {
+              "status": "uncertain",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "howto/logging.html",
+                "title": "日志指南",
+                "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+                "start": 12363,
+                "end": 12426,
+                "text": "你可以看到配置文件方法相较于 Python 代码方法有一些优势，主要是配置和代码的分离以及非开发者轻松修改日志记录属性的能力。",
+                "chinese_context": "你可以看到配置文件方法相较于 Python 代码方法有一些优势，主要是配置和代码的分离以及非开发者轻松修改日志记录属性的能力。",
+                "chinese_context_scope": "native"
+              },
+              "history": null,
+              "focus": {
+                "source": "python_docs",
+                "doc_id": "howto/logging.html",
+                "title": "日志指南",
+                "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+                "start": 12363,
+                "end": 12426,
+                "text": "你可以看到配置文件方法相较于 Python 代码方法有一些优势，主要是配置和代码的分离以及非开发者轻松修改日志记录属性的能力。"
+              },
+              "history_focus": null,
+              "context_dependent": false,
+              "scores": {
+                "relevance": 0.3834411127814383,
+                "context_similarity": 0.0,
+                "cross_encoder_relevance": 0.021884721681046646,
+                "goal_similarity": 0.5383938518244633,
+                "supplement": 0.0
+              }
+            }
+          ],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 3,
+            "history_sentences": 40,
+            "uncompared_candidate_sentences": 8,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "python_docs",
+          "doc_id": "howto/logging.html",
+          "title": "日志指南",
+          "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+          "start": 14440,
+          "end": 14489,
+          "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+          "matched_terms": [
+            "log",
+            "python"
+          ],
+          "chinese_context": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。",
+          "chinese_context_scope": "native"
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "Python",
+            "field": "body_text",
+            "start": 1646,
+            "end": 1787,
+            "text": "\n一种很常见的情况是将日志事件记录到文件中，下面让我们来看这个问题。请确认在一个新启动的 Python 解释器中尝试以下操作，而非在上面描述的会话中继续:\n\n```\nimport logging\nlogger = logging.getLogger(__name__)\nloggin"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "uncertain",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "python_docs",
+            "doc_id": "howto/logging.html",
+            "title": "日志指南",
+            "content_version": "619fd76bab33b44aa8ab8c09fe5f76b7ec736f881bde3ee0c84a00f46a1137a2",
+            "start": 14440,
+            "end": 14489,
+            "text": "日志包中包含一个不做任何事情的处理器: NullHandler (自 Python 3.1 起)。"
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 21
+        },
+        "chinese_ready": true,
+        "translation_status": "not_required"
+      },
+      {
+        "source": "python_docs",
+        "doc_id": "library/asyncio-task.html",
+        "title": "协程与任务",
+        "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-task.html",
+        "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+        "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+        "rank": 2,
+        "selection_score": 0.16803007687647548,
+        "relevance": 0.256971810857353,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "history_comparison",
+        "comparison": {
+          "status": "uncertain",
+          "candidate": {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-task.html",
+            "title": "协程与任务",
+            "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+            "start": 10449,
+            "end": 10615,
+            "text": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。",
+            "chinese_context": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。",
+            "chinese_context_scope": "native"
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [
+            {
+              "status": "uncertain",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 10449,
+                "end": 10615,
+                "text": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。",
+                "chinese_context": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。",
+                "chinese_context_scope": "native"
+              },
+              "history": null,
+              "focus": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 10514,
+                "end": 10615,
+                "text": "例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。"
+              },
+              "history_focus": null,
+              "context_dependent": true,
+              "scores": {
+                "relevance": 0.256971810857353,
+                "context_similarity": 0.0,
+                "cross_encoder_relevance": 0.02987497847166518,
+                "goal_similarity": 0.35429902473693353,
+                "supplement": 0.0
+              }
+            }
+          ],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 1,
+            "history_sentences": 40,
+            "uncompared_candidate_sentences": 1,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-task.html",
+          "title": "协程与任务",
+          "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+          "start": 10449,
+          "end": 10615,
+          "text": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。",
+          "matched_terms": [
+            "exception",
+            "传播",
+            "捕获"
+          ],
+          "chinese_context": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。",
+          "chinese_context_scope": "native"
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "Python",
+            "field": "body_text",
+            "start": 1983,
+            "end": 2124,
+            "text": "受可等待对象。\n\n可等待 对象有三种主要类型：协程, 任务 和 Future.\n\n协程\n\nPython 协程属于 可等待 对象，因此可以在其他协程中被等待:\n\n```\nimport asyncio\n\nasync def nested():\n    return 42\n\nasync "
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "uncertain",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-task.html",
+            "title": "协程与任务",
+            "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+            "start": 10449,
+            "end": 10615,
+            "text": "如果 return_exceptions 为假值，则在 gather() 被标记为完成后取消它将不会取消任何已提交的可等待对象。 例如，在将一个异常传播给调用者之后，gather 可被标记为已完成，因此，在从 gather 捕获一个（由可等待对象所引发的）异常之后调用 gather.cancel() 将不会取消任何其他可等待对象。"
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 21
+        },
+        "chinese_ready": true,
+        "translation_status": "not_required"
+      }
+    ],
+    "corpus": {
+      "corpus_id": "0b4c76234c1e88f35107c6615114f265459d23ae588caa6ec68ac6b011fa4114",
+      "document_count": 12,
+      "paragraph_count": 2334,
+      "sources": {
+        "django_docs": 5,
+        "python_docs": 7
+      },
+      "created_at": "2026-09-25 15:43:08.863000"
+    },
+    "input_revision": 2,
+    "reason": null,
+    "history_used": 1,
+    "history_unavailable": 0,
+    "history_relevant_paragraphs": 21,
+    "query": {
+      "original": "学习 Python 的异常捕获、异常传播和日志记录",
+      "variants": [
+        "学习 Python 的异常捕获、异常传播和日志记录"
+      ],
+      "status": "unavailable",
+      "processor_id": "translation-not-configured-v1",
+      "rules_version": "bilingual-object-query-v2",
+      "entities": [
+        {
+          "name": "Python",
+          "aliases": [
+            "python"
+          ]
+        }
+      ],
+      "error_code": "goal_translation_unavailable"
+    },
+    "semantic": {
+      "status": "partial",
+      "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+      "comparison_scope": {
+        "candidate_paragraphs": 300,
+        "candidate_sentences": 4,
+        "history_sentences": 40,
+        "comparison_pairs": 0,
+        "unsupported_units": 12,
+        "history_contexts": 21,
+        "history_selection_method": "candidate-nearest-context-not-answer-gated",
+        "all_relations_require_comparable_context": true,
+        "oversized_sentences": 0,
+        "candidate_sentences_outside_budget": 0,
+        "history_sentences_outside_budget": 0,
+        "limits": {
+          "candidate_paragraphs": 300,
+          "candidate_sentences": 90,
+          "history_sentences": 100,
+          "comparison_pairs": 270
+        },
+        "native_original_wide_recall": true,
+        "recalled_documents": 10,
+        "paragraph_budget_per_document": 30,
+        "nonlexical_context_paragraphs": 272,
+        "history_paragraphs_available": 21,
+        "history_paragraphs_outside_budget": 0
+      },
+      "error_code": "semantic_units_unsupported",
+      "language": "multilingual"
+    },
+    "completed_at": "2026-09-25 15:51:16.544000"
+  },
+  "profile": {
+    "goal": {
+      "text": "学习 Python 的异常捕获、异常传播和日志记录",
+      "updated_at": "2026-09-25 15:42:56.915000"
+    },
+    "revision": 2,
+    "read_count": 1
+  },
+  "history": {
+    "items": [
+      {
+        "source": "django_docs",
+        "doc_id": "topics/db/transactions",
+        "title": "数据库事务",
+        "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/transactions/",
+        "content_status": "fulltext",
+        "content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+        "language": "zh",
+        "processing": {
+          "extraction": {
+            "status": "ready"
+          },
+          "transcription": {
+            "status": "not_required"
+          },
+          "translation": {
+            "status": "not_required"
+          },
+          "analysis": {
+            "status": "ready"
+          }
+        },
+        "chinese_ready": true,
+        "translation_quality": {
+          "checks_version": null,
+          "status": "not_checked",
+          "issues": [],
+          "human_reviewed": false,
+          "semantic_verified": false
+        },
+        "translation_processor": null,
+        "is_read": true,
+        "read_version_status": "current",
+        "read_at": "2026-09-25 15:48:06.350000",
+        "read_content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+        "version_status": "current"
+      }
+    ],
+    "total": 1,
+    "page": 1,
+    "limit": 20
+  },
+  "job_times": [
+    {
+      "started_at": "2026-09-25 15:44:20.638000",
+      "finished_at": "2026-09-25 15:47:21.025000",
+      "updated_at": null,
+      "status": "ready"
+    },
+    {
+      "started_at": "2026-09-25 15:48:30.530000",
+      "finished_at": "2026-09-25 15:51:16.544000",
+      "updated_at": null,
+      "status": "ready"
+    }
+  ],
+  "raw_seconds": 416.0,
+  "raw_video": "state/delivery012/raw/page@93e427b0dc1676f45f1901876060c0e7.webm",
+  "free_remote_translation_quality": "HTTP401; no translation obtained",
+  "cuts": [
+    {
+      "start": 0,
+      "end": 18,
+      "reason": "录制器初始化空白画面"
+    },
+    {
+      "start": 45,
+      "end": 145,
+      "reason": "真实首次推荐等待，录像可核对"
+    },
+    {
+      "start": 215,
+      "end": 377,
+      "reason": "真实已读后重算等待，录像可核对"
+    }
+  ],
+  "stages": [
+    {
+      "name": "登录系统",
+      "caption": "真实网页操作；演示使用12篇中文官方全文",
+      "time": 18
+    },
+    {
+      "name": "设置中文学习目标",
+      "caption": "目标提交后由后台实际计算推荐",
+      "time": 30
+    },
+    {
+      "name": "查看推荐结果",
+      "caption": "首次推荐计算约180秒；视频已剪辑等待，排序质量仍待改进",
+      "time": 145
+    },
+    {
+      "name": "查看原文依据",
+      "caption": "展开推荐理由与来源，核对资料是否有帮助",
+      "time": 163
+    },
+    {
+      "name": "阅读中文全文",
+      "caption": "来源提供的完整中文原文，无需翻译",
+      "time": 174
+    },
+    {
+      "name": "主动标记已读",
+      "caption": "阅读不自动标记；个人历史记录对应资料版本",
+      "time": 190
+    },
+    {
+      "name": "查看已读记录",
+      "caption": "已读表示阅读过，不代表已经掌握",
+      "time": 198
+    },
+    {
+      "name": "重新计算完成",
+      "caption": "已使用新的已读记录；约3分钟等待已剪辑",
+      "time": 377
+    },
+    {
+      "name": "按来源筛选资料",
+      "caption": "从统一资料库筛选Django官方文档",
+      "time": 395
+    },
+    {
+      "name": "RSS订阅入口",
+      "caption": "仅展示管理入口，未冒充音频到通知全流程通过",
+      "time": 404
+    },
+    {
+      "name": "演示完成",
+      "caption": "目标、推荐、全文、已读与重算已实际运行",
+      "time": 411
+    }
+  ],
+  "raw_sha256": "a3a72fb2bde0b0bcbd11bcb368600bd20b308e76a4249c6a82c634c8c0b1cfda",
+  "video": {
+    "path": "submission/2026-09-25/04-备份演示视频/Knowpipe演示.mp4",
+    "duration": "136.000000",
+    "size": "2927265",
+    "sha256": "019f9b6b3fcb68e3d6f1a6a1fb90f6ac44dcbc0dd6ab0e628d4303cd95bd7eeb",
+    "has_chinese_captions": true,
+    "edits": "仅删除browser.json列出的实际等待；未更改返回结果",
+    "audio": "无旁白，含中文说明字幕"
+  }
+}

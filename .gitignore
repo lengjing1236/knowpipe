@@ -58,3 +58,6 @@ report*.md
 # evidence/ 下的运行日志作为课程证据保留，不受上面的 *.log 规则忽略
 !evidence/**/*.log
 my_think.txt
+# 课程交付压缩包可按脚本重建，避免重复收录源码与媒体
+/submission/Knowpipe-六项交付-*.zip
+/submission/*/01-源代码/源码快照.zip

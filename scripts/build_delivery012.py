@@ -101,7 +101,7 @@ cat state/demo-release/account.json
             if len(presentation.slides)<6: raise AssertionError('PPT页数异常')
     evidence=DEST/'核验依据'
     evidence.mkdir(exist_ok=True)
-    for name in ['browser.json','acceptance.md','remote-translation.json','remote-diagnostic.json']:
+    for name in ['browser.json','acceptance.md','remote-translation.json','remote-translation-diagnostic.json']:
         p=ROOT/'evidence/012-demo-delivery'/name
         if p.exists(): (evidence/name).write_bytes(p.read_bytes())
     old=ROOT/'evidence/011-mvp-recommendation-validation/acceptance.md'
@@ -140,7 +140,7 @@ cat state/demo-release/account.json
 
 ## 提交前仅需核对
 
-成员实际分工/比例与初版差异、学校另行要求的学号班级，以及指定提交渠道。本工具没有向教师或群聊发送材料。
+分工已按用户确认填为两人各50%，与初版无调整；如学校另行要求，补充学号班级并核对指定提交渠道。本工具没有向教师或群聊发送材料。
 
 源码基线：{revision}。远程状态：{remote.get('status','待核验')}。文件完整性见文件清单.json。
 ''',encoding='utf-8')

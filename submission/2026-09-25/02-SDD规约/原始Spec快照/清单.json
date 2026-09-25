@@ -1,0 +1,365 @@
+{
+  "captured_at_utc": "2026-09-25T15:59:00.594766+00:00",
+  "files": [
+    {
+      "source": ".specify/memory/constitution.md",
+      "sha256": "87241880e9a2f0074470040aee18594a89b8c2348315490b8b6b0a2a890a09f5"
+    },
+    {
+      "source": "docs/sdd-workflow.md",
+      "sha256": "e4b7f2201f12a687bcacaab54d5eef39f841ee4241ab72cf00251e37169df048"
+    },
+    {
+      "source": "project_goal_and_agent_prompt.md",
+      "sha256": "d9299e6ab44cd6ff73bdc581e02f07345018bcafcd271dfec9e2f5f65211c354"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/checklists/requirements.md",
+      "sha256": "2413c67bc9aeaba56443342752edeee10dfd9023c4d469a681b08fbacd95f3db"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/contracts/storage-contract.md",
+      "sha256": "0b436160a2cf9ad1edcaa3626de879f6556b0348e0b4a8d187e17cd3a65a2d94"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/data-model.md",
+      "sha256": "b200f1930bfe8e98fe11f93b1573c4f757b35d6fa4707851da7d3520dbe990e1"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/plan.md",
+      "sha256": "7e51d999032fe9a1ff164d432e5ddca810b9f5c430e39950f49228b43766a2d5"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/quickstart.md",
+      "sha256": "9363f28c59579980252b1e5e0c84b602822481212eb5507b722278503c77ad7b"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/research.md",
+      "sha256": "af8fb0bdea1394e93d4a69dce54f81cd809e577bfefceb78a026bb3a0f75b2b9"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/spec.md",
+      "sha256": "475e8f930f626848135b85b3876cce3333e3aece69b038728aafa4064d7ffb58"
+    },
+    {
+      "source": "specs/001-data-pipeline-spark-mining/tasks.md",
+      "sha256": "b3daeaf3ce726beb4bec368877841f53deeba111848e23a1d9ba8d57ad6def8c"
+    },
+    {
+      "source": "specs/002-personalized-web/checklists/requirements.md",
+      "sha256": "687e24f9338670544a2f9f60c97238bfc9e773e7a69d8ca220e76ba6cb0be6b5"
+    },
+    {
+      "source": "specs/002-personalized-web/contracts/api-contract.md",
+      "sha256": "ea23e4eaf92a0b67b443d08b6b1d6935d1c0ce94ad76811cf555e5f0ff18441e"
+    },
+    {
+      "source": "specs/002-personalized-web/data-model.md",
+      "sha256": "21b2f72aa404af21f7351ee40bf797c3719d409ac29de4543fdb7e34049cf92d"
+    },
+    {
+      "source": "specs/002-personalized-web/plan.md",
+      "sha256": "f04b4f6eecd152ebff0c1abb75c82faaafc1f7091a49e74b1c59d86682e7a15b"
+    },
+    {
+      "source": "specs/002-personalized-web/quickstart.md",
+      "sha256": "c0d8bfd0d846adedb9bb656a088d955ea352900af7900f2f92f4e2e398008680"
+    },
+    {
+      "source": "specs/002-personalized-web/research.md",
+      "sha256": "c5ec623dad7206967cbf73750b02c7f4b5e8bbfbf46dfecfcfe4450abb574264"
+    },
+    {
+      "source": "specs/002-personalized-web/spec.md",
+      "sha256": "6d3cceefd9531eb1c2c7d0a0f11564c75fa8f8c6d4313e3224a2e00352596f41"
+    },
+    {
+      "source": "specs/002-personalized-web/tasks.md",
+      "sha256": "6febabf70b6dbb2df71213a76e05551745e3fb5503ca6fc55508ac8ae32db384"
+    },
+    {
+      "source": "specs/003-public-web/contracts/api-contract.md",
+      "sha256": "e6b170f06a430a988fa5cb10c99fdaed32861acd0a4ff6e03d7d0bd94e91b873"
+    },
+    {
+      "source": "specs/003-public-web/plan.md",
+      "sha256": "06e6609f17ff280e22fdd0d8521e7f5e15093e2c8fc084df0aa4671f72526e53"
+    },
+    {
+      "source": "specs/003-public-web/quickstart.md",
+      "sha256": "afe079cfdb7062e5e4405517befa15d8828a6de0c744240efb03e24a02e2a2cc"
+    },
+    {
+      "source": "specs/003-public-web/spec.md",
+      "sha256": "0ec9569907143e504c9ef9b59840398cceb105f68c125cf23183a7b63bb46aec"
+    },
+    {
+      "source": "specs/003-public-web/tasks.md",
+      "sha256": "ff66086287a09511feca52c67605310be2ed68cbc8a6f9f21505074902082235"
+    },
+    {
+      "source": "specs/004-podcast-insights/contracts/api-contract.md",
+      "sha256": "6946eaaf0261a035d60a26b27054033b89f3e61e816275411869c269f9ad8ef1"
+    },
+    {
+      "source": "specs/004-podcast-insights/data-model.md",
+      "sha256": "ccd58f13c56ef8e01423db23f0c87e932f9356db10a9fb4f873805150292ee0f"
+    },
+    {
+      "source": "specs/004-podcast-insights/plan.md",
+      "sha256": "48b9ee51ad0dc4327f48bfa39c934305eb250622298ae65d13ec1f905f8307c8"
+    },
+    {
+      "source": "specs/004-podcast-insights/quickstart.md",
+      "sha256": "0ddb70d6dbed764f2513626b012b307cd48079ccd408b6929d234efd3b968c00"
+    },
+    {
+      "source": "specs/004-podcast-insights/spec.md",
+      "sha256": "ec1772bebc424e355bec489ce47053755bf659339df37580f39bf82d6364a3f1"
+    },
+    {
+      "source": "specs/004-podcast-insights/tasks.md",
+      "sha256": "560f9e66e9afb8e255aa0f27db76178e0a2e20481bfaf80c1ff93ad4cea2dbdc"
+    },
+    {
+      "source": "specs/005-defense-evidence/plan.md",
+      "sha256": "c7ffd9aaf26e9f603e45492138270100a161c6256b315a9580a748021d7e8e13"
+    },
+    {
+      "source": "specs/005-defense-evidence/quickstart.md",
+      "sha256": "9a38619908cab9af47adc04cc8980abb20ea5516521a0624b474475c81d2196e"
+    },
+    {
+      "source": "specs/005-defense-evidence/spec.md",
+      "sha256": "760436047e8df309c4f16c1bf7705b0130ee71204afe58d44e7fe39feefd9704"
+    },
+    {
+      "source": "specs/005-defense-evidence/tasks.md",
+      "sha256": "d6f0c6123c2832af3961c85d39ef997c8d9d605af1a4d0805e9b3dba77a31321"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/checklists/requirements.md",
+      "sha256": "6c1372788218bf9f71e8ff0ba8dba19ada03786c92e354ad8b66bb16a467eb19"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/contracts/interfaces.md",
+      "sha256": "a07564f7613953cbf13025df98aff2b2115dd534bbb907ffb9e3babd93412bb9"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/data-model.md",
+      "sha256": "788227a45e17f1c055a59025b02970ad312ab1039084b86874232e5a881f438c"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/plan.md",
+      "sha256": "d9e509d87848e5f11847b319c7bd5c3ba46ba06024481aaf06090227de344992"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/quickstart.md",
+      "sha256": "8989d619c6b8a0811689b4587b8cce2bdd5ccd2d73248f4413a203a4231b156f"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/research.md",
+      "sha256": "61118c99f000aa79b72b8eb29620a7ba268c85d28c8e4ac748a59e7a9f7b4e98"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/spec.md",
+      "sha256": "f5e2cc6008f5206908f3e70216b5bc2ed7f88946bc8664b581491ddd2105ab54"
+    },
+    {
+      "source": "specs/006-scale-evaluation-linking/tasks.md",
+      "sha256": "6a9584c8f2f962789ca84075cc8c6c5d4dd1ff082b59cd27b9cb05806e3e2056"
+    },
+    {
+      "source": "specs/007-learning-foundation/checklists/requirements.md",
+      "sha256": "42a07b9bc4a062810d4f3e78b9266ebe81326ded29242cc66ea00098666495d2"
+    },
+    {
+      "source": "specs/007-learning-foundation/contracts/api.md",
+      "sha256": "1ff1a9261e792ee424fa4dd94093e2df40e8aeb74b3a25bb45791464a7e53de3"
+    },
+    {
+      "source": "specs/007-learning-foundation/data-model.md",
+      "sha256": "4e634f7ba831e79eaaf93783c7e37c74190fd5320a06707964518abc4058361d"
+    },
+    {
+      "source": "specs/007-learning-foundation/plan.md",
+      "sha256": "0d1c8ed1a03def19aaf8e53bff6f0821846fd08ad7e6d63fab6caf3ed0216272"
+    },
+    {
+      "source": "specs/007-learning-foundation/quickstart.md",
+      "sha256": "6a602cefed2ae6d771235123854e76a47c9f7980ea1329837cf1e7168d98bb9c"
+    },
+    {
+      "source": "specs/007-learning-foundation/research.md",
+      "sha256": "c5f34d67d04d564a5240b33b65a52941df92ebaa6381e62d41957ba8fe2c62b9"
+    },
+    {
+      "source": "specs/007-learning-foundation/spec.md",
+      "sha256": "f05a52ded4091fe59de2f8d7d525589337dde6e69f1b1a88edc901bc8e1a0ba2"
+    },
+    {
+      "source": "specs/007-learning-foundation/tasks.md",
+      "sha256": "123ed244e61076583fb336c5304b4b6f4dd9e8a54a5a4cd917fccd29d5411317"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/checklists/requirements.md",
+      "sha256": "d6f6f1e1d446b9fea98449baef5f132b9b1a22626ba0f581aa743dfb5fc4528b"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/contracts/api.md",
+      "sha256": "18cc78db29cbc376940fef7cb592ef650e99404f353f53354a7ef8508bb6d199"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/data-model.md",
+      "sha256": "c33e026e07706e6925e1ab9a491128fcaf46b7ac222b5d781e5ef4a0f5ecf988"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/plan.md",
+      "sha256": "4571ac780931cd4a7b2044315135558719f73c82314caca427206c59422d677e"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/quickstart.md",
+      "sha256": "f63ced85c9eecf593f150b3635b4a18248b05bf56905203d7df23cec66330c73"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/research.md",
+      "sha256": "7947e198444e7edfc4169857e5635beb28380da20c9cc89e39f7b937f621795f"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/spec.md",
+      "sha256": "1f198f33f1d111c5055e50a1115e1366e7bbbe2d873ede6e5857d6a78e5810c0"
+    },
+    {
+      "source": "specs/008-goal-history-recommendations/tasks.md",
+      "sha256": "8b9beea6ce84a0295de82bfa4adfe67b6933cc816114e192869a453ec5c3a3ee"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/checklists/requirements.md",
+      "sha256": "5baf5311e21c637c30b6c5304992dc8e07c1826a5002ce61d489d3300f9f5f16"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/contracts/interfaces.md",
+      "sha256": "7e34fc59f0976c568fa4be24ac139bc7b26793819bbe06c775184eb04b671499"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/data-model.md",
+      "sha256": "a57e532f274861e57c747523edc4bbf6b51632c020a43c081173b30714e5b901"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/plan.md",
+      "sha256": "f2a2e309e5e3cbe007c8b2c45164b9e4e606e453a7912cb9a6401f747419f8f6"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/quickstart.md",
+      "sha256": "f6045d54df3861e2e93d49f26ca387e127136cd637dd290f1a654d4663d24344"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/research.md",
+      "sha256": "9abea4e5c540587a70e0c10bf6ab240b5a130dd49da3874ccfeb86a49185b7fb"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/spec.md",
+      "sha256": "17dfb4d28f3ae7f6f5aace452e18ab3e7ba6be4c9f7848803032131be7cb5e35"
+    },
+    {
+      "source": "specs/009-fulltext-podcast-learning/tasks.md",
+      "sha256": "13c680a5b8392829a6695890f8f3f361bfadc0494c1ce3778261bd398a79adcc"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/checklists/requirements.md",
+      "sha256": "1e8e385b1ca8973d816404da00b31472051e86a102780c4cbb7dd28716204878"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/contracts/interfaces.md",
+      "sha256": "df82168c8e6e07126a6befaa425c9efa28e8df6ae268cfbda130a3c8809806a7"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/data-model.md",
+      "sha256": "e5f8ea057b0e5bce8a5decb9c95a090197deebde4d04f7d77f53c5f6fc17c9f8"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/plan.md",
+      "sha256": "1881fb702588fd39c39a9dc4f88d6164825d26e42e6c9c118c42171ed3637668"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/quickstart.md",
+      "sha256": "b2b6eafc6db520d870bb641d111886df881fd92711c384314d1e30c667a759bd"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/research.md",
+      "sha256": "2b63c79d8bb821d203375f836f23489956fb3e718a4019419c029c7d938b243e"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/spec.md",
+      "sha256": "90c173a2bfedecd0ac8ed20277506a211c39f6684c87928a5baca2c3815ef3dd"
+    },
+    {
+      "source": "specs/010-quality-cluster-readiness/tasks.md",
+      "sha256": "30d6e77da0092998b309025f0f5453243e5e1da5e151f35876d26cd606026a46"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/checklists/requirements.md",
+      "sha256": "84036fd75a9a5714db0ed6d93b6a8726120869bfca792a7d328f274a73f1e69c"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/contracts/runtime.md",
+      "sha256": "c39e8f61cae829fc8a3dfe3658bf82d4a5d1b4b69ca570eb9d97c4a09d452248"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/data-model.md",
+      "sha256": "ec440eccd77403460dd1369b2a0029c9669c4e806dd598220589ac041ceba9b4"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/plan.md",
+      "sha256": "b39cf4ae2efed96754c924856e6848320af8e6ed0deb0138d3e5cd480ee008ff"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/quickstart.md",
+      "sha256": "2ca8263fcc93dbb6469d7d43258c9e857768d2658b2f0c16cb3b9c9b59cb2b97"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/research.md",
+      "sha256": "94c50f65a3fa608ffc08024bc98798fdc887e64b3418277114ef16508365f273"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/spec.md",
+      "sha256": "d3171579df1008bfbde36678610a1e66375b491f706f09a2bd391f4df4414968"
+    },
+    {
+      "source": "specs/011-mvp-recommendation-validation/tasks.md",
+      "sha256": "be9a3bcf7e7dc0ceb3685c9efeadd0d445362cf981ef5b54e2ebde775d66139d"
+    },
+    {
+      "source": "specs/012-demo-delivery/checklists/requirements.md",
+      "sha256": "e52dd5ee3ac4541917a1f76b5bb7fbed6484309f1ea0284f498a86dd96dcb978"
+    },
+    {
+      "source": "specs/012-demo-delivery/contracts/delivery.md",
+      "sha256": "3d5d9cb4d33da7cf630d4fbcdebe87a31c464a7cbea50b5342a44e4acef55608"
+    },
+    {
+      "source": "specs/012-demo-delivery/data-model.md",
+      "sha256": "45f984d5fe86d64da93ed25c342ae1f4e5ec4dbba647c1f108ae6a84157dc2af"
+    },
+    {
+      "source": "specs/012-demo-delivery/plan.md",
+      "sha256": "a8f2d4a83fdc702a61e358c1967423412bb8b108bcba07b3fe58c170b0e2442d"
+    },
+    {
+      "source": "specs/012-demo-delivery/quickstart.md",
+      "sha256": "07a4f2490208efe61d191c70a17cbabc4ef9fe1e552054828e6ebe33362ad4cf"
+    },
+    {
+      "source": "specs/012-demo-delivery/research.md",
+      "sha256": "82514b774407de54d8ed9474c78b9c80f34be0e876511b001733c29626da3d17"
+    },
+    {
+      "source": "specs/012-demo-delivery/spec.md",
+      "sha256": "8dea2c66687f1e0742f77f80f5117f62eea12b849013d5e4991c49b1bf4ee76b"
+    },
+    {
+      "source": "specs/012-demo-delivery/tasks.md",
+      "sha256": "606fdc19a1586b93391c78b47349531ed34a86f2b4d32105ec7af664650e0bce"
+    }
+  ]
+}

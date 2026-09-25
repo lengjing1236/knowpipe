@@ -1,0 +1,41 @@
+{
+  "pptx": "submission/2026-09-25/06-汇报PPT/Knowpipe项目汇报.pptx",
+  "slides": 11,
+  "draft": false,
+  "preview_note": "PIL按同一布局绘制，非PowerPoint/LibreOffice逐像素渲染；PPT文字与图形仍可编辑。",
+  "screenshots": [
+    {
+      "file": "01-workspace.png",
+      "exists": true,
+      "pixels": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "03-reading.png",
+      "exists": true,
+      "pixels": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "04-history.png",
+      "exists": true,
+      "pixels": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "05-recomputed.png",
+      "exists": true,
+      "pixels": [
+        1440,
+        900
+      ]
+    }
+  ],
+  "quality_verdict": "011 MVP未通过；012工程演示单独记录"
+}

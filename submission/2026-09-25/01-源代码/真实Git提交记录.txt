@@ -1,0 +1,81 @@
+80a4871 | 2026-09-25T23:42:28+08:00 | 功能(翻译)：接入免费远程模型并禁止默认本地回退
+fb48bce | 2026-09-25T23:37:13+08:00 | 文档(规约)：明确中文演示版与六项课程交付范围
+c9ea330 | 2026-09-25T23:29:40+08:00 | 文档(规划)：评估三项修复并明确免费远程翻译要求
+9891e41 | 2026-09-25T23:11:04+08:00 | 文档(进度)：保存网页验收中断现场及未完成清单
+ff730f2 | 2026-09-25T22:52:24+08:00 | 修复(验收)：重试后重新核对增量推荐与通知状态
+10bcfb9 | 2026-09-25T22:43:30+08:00 | 验证(播客)：记录真实音频转写入选与中文通知阻断
+d547d5c | 2026-09-25T22:42:22+08:00 | 修复(工作者)：全文翻译前释放可重建的语义会话
+2995d59 | 2026-09-25T22:23:29+08:00 | 修复(验收)：等待翻译重试终态并保留失败现场
+8397042 | 2026-09-25T22:09:09+08:00 | 验证(网页)：记录真实推荐完成与中文阅读受阻结果
+4c26cde | 2026-09-25T22:07:09+08:00 | 文档(验收)：明确保留场景失败与后续修复依赖
+f6e1ba7 | 2026-09-25T21:59:44+08:00 | 验证(推荐)：保存万条背景评估及核心需求未通过证据
+aeb5f81 | 2026-09-25T21:38:57+08:00 | 分析(验收)：区分资料新细节与目标相关的有效补充
+9ff57b1 | 2026-09-25T21:11:55+08:00 | 验证(推荐)：记录开发案例的真实改善与未通过项
+e1e0549 | 2026-09-25T21:11:21+08:00 | 修复(验收)：验证真实语义链路并检查播客通知完整性
+aef29a9 | 2026-09-25T21:09:23+08:00 | 修复(评价)：区分真实资料、合成反例与处理失败
+d137d41 | 2026-09-25T21:06:16+08:00 | 修复(评价)：防止计算失败与错误原文证据被判为通过
+ebfce7c | 2026-09-25T21:05:52+08:00 | 文档(规约)：同步实际算法边界与本机验收步骤
+a5c0a4d | 2026-09-25T21:04:50+08:00 | 修复(翻译)：保留段落上下文并隔离实验译文缓存
+bb7fd7a | 2026-09-25T21:03:44+08:00 | 修复(推荐)：统一历史语境门控并验证上下文对照
+7fb28fc | 2026-09-25T20:57:32+08:00 | 修复(验收)：支持浏览器配置并及时报告全文翻译失败
+5eb2c94 | 2026-09-25T20:48:32+08:00 | docs: 添加项目文档和计划
+dd74887 | 2026-09-25T20:48:14+08:00 | docs(evidence): 添加011 MVP推荐验证迭代证据
+13e9fcc | 2026-09-25T20:47:57+08:00 | docs(evidence): 添加010质量集群就绪迭代证据
+0c79970 | 2026-09-25T20:47:44+08:00 | docs(evidence): 添加009播客全文学习迭代证据
+1bcbc6e | 2026-09-25T20:47:25+08:00 | docs(evidence): 添加008目标历史推荐迭代证据
+b18d154 | 2026-09-25T20:47:10+08:00 | docs(evidence): 添加007学习基础迭代证据
+145d13c | 2026-09-25T20:46:52+08:00 | docs(specs): 添加迭代007-011完整规格说明
+c3ca100 | 2026-09-25T20:46:35+08:00 | chore: 添加数据准备和任务提交脚本
+5ef54c4 | 2026-09-25T20:46:19+08:00 | test: 添加端到端验收测试脚本
+7b5b40e | 2026-09-25T20:46:00+08:00 | test(recommendations): 添加推荐引擎完整测试套件
+be1629f | 2026-09-25T20:45:41+08:00 | test: 添加语料库和学习模块测试套件
+cda3bfa | 2026-09-25T20:45:27+08:00 | test(podcasts): 更新测试覆盖音频处理流程
+4f10009 | 2026-09-25T20:45:09+08:00 | feat(web): 添加学习内容专用页面
+6a04d22 | 2026-09-25T20:44:54+08:00 | refactor(web): 更新前端支持多数据源浏览
+af9a659 | 2026-09-25T20:44:38+08:00 | feat(web): 添加学习内容API路由
+d466c80 | 2026-09-25T20:44:26+08:00 | refactor(web): 集成推荐系统路由和数据接口
+c65d316 | 2026-09-25T20:44:09+08:00 | refactor(podcasts): 集成学习内容提取功能
+cfd07cd | 2026-09-25T20:43:52+08:00 | feat(recommendations): 实现推荐引擎和语义检索
+cd3ffb3 | 2026-09-25T20:43:36+08:00 | feat(podcasts): 添加音频转录和学习内容提取
+138f49e | 2026-09-25T20:43:21+08:00 | feat(learning): 实现内容翻译和语言处理模块
+ad6b8b9 | 2026-09-25T20:43:05+08:00 | feat(corpus): 实现多源语料库采集系统
+d488ccb | 2026-09-25T20:42:48+08:00 | chore: 更新容器配置支持推荐系统
+0a136bf | 2026-09-25T20:42:32+08:00 | chore: 添加推荐系统相关依赖
+3a86dab | 2026-09-19T22:45:43+08:00 | chore(evidence): normalize browser log ending
+bc56f83 | 2026-09-19T22:45:19+08:00 | docs(delivery): verify scale reruns and real cross-source browsing
+55f50bb | 2026-09-19T22:39:28+08:00 | perf(linking): cache vocabulary when decoding shared terms
+efff330 | 2026-09-19T22:23:35+08:00 | fix(mining): reject duplicate result rows in scale acceptance
+8566e23 | 2026-09-19T22:18:58+08:00 | docs(evidence): record real scale run and pending human judgments
+d38bdac | 2026-09-19T22:14:54+08:00 | test(course): add real browser acceptance and strict study checks
+245a7b8 | 2026-09-19T22:12:10+08:00 | feat(linking): connect podcast segments to versioned document matches
+6c1dc22 | 2026-09-19T22:09:05+08:00 | feat(evaluation): export blind studies from shared recommendation scoring
+15ed9a8 | 2026-09-19T22:04:34+08:00 | feat(mining): freeze source snapshots and verify real scale runs
+595b100 | 2026-09-19T22:02:45+08:00 | docs(specs): plan scale validation, human evaluation and source linking
+31ab36c | 2026-09-19T21:05:13+08:00 | docs(review): assess course readiness with codegraph evidence
+68493f9 | 2026-09-19T21:03:49+08:00 | docs(delivery): preserve acceptance evidence and defense walkthroughs
+3deb814 | 2026-09-19T21:03:36+08:00 | build(deploy): package web and worker services with HTTPS
+bf6c606 | 2026-09-19T21:03:35+08:00 | feat(web): add secure podcast subscriptions and transcript insights
+26c079d | 2026-09-19T21:03:35+08:00 | feat(evaluation): compare rankings using human relevance judgments
+34ab1d6 | 2026-09-19T21:03:35+08:00 | fix(pipeline): rank similarity in Spark tasks and use latest results
+30f96dc | 2026-09-19T21:03:35+08:00 | docs(specs): define public web and podcast acceptance criteria
+1993082 | 2026-09-14T22:42:08+08:00 | 移除个人工具 CLI，仓库仅保留课程项目
+0f1abd2 | 2026-09-14T22:26:37+08:00 | 优化 README：突出课程项目主线，补充目录与运行说明
+4aae18e | 2026-09-06T01:40:00+08:00 | 新增课程答辩材料：项目报告、答辩讲稿与生成 PPT
+b889620 | 2026-09-06T01:00:00+08:00 | web: 完成登录鉴权、API 路由与单页前端，Feature 002 验收通过
+b08bc73 | 2026-09-06T00:50:00+08:00 | web: 新增推荐排序 Spark 作业与 Flask 应用工厂
+168b683 | 2026-09-06T00:35:00+08:00 | web: 新增用户数据层与知识状态判定/基线排序逻辑
+6ef25a1 | 2026-09-06T00:20:00+08:00 | 新增 Feature 002 规格设计文档：个性化知识分类与 Web 展示
+793c3ee | 2026-09-05T23:40:00+08:00 | mining: 完成 Spark 挖掘作业与 arXiv 采集器，Feature 001 验收通过
+45c8f05 | 2026-09-05T22:35:00+08:00 | mining: 新增 MongoDB 写入层与 StackExchange 采集器
+9a304e0 | 2026-09-05T21:15:00+08:00 | mining: 新增文档字段契约与两级去重逻辑
+776de26 | 2026-09-05T20:20:00+08:00 | 新增 Feature 001 规格设计文档：数据管道与 Spark 挖掘
+f4b3559 | 2026-09-04T18:35:00+08:00 | 新增技术选型 Tradeoff 分析与选题调研最终方案
+e967141 | 2026-09-04T09:20:00+08:00 | 补充选题汇报 PPT 的实施方案内容
+5a2f1f5 | 2026-09-04T01:05:00+08:00 | 新增课程选题确认汇报（Markdown 源 + PPT 生成脚本 + 产出）
+dc182c3 | 2026-09-03T22:15:00+08:00 | 新增课程项目前置调研报告
+5cd8dcf | 2026-09-14T22:06:46+08:00 | 忽略课程方参考 PDF 与 Office 临时锁文件
+95300b6 | 2026-08-30T23:30:47+08:00 | 多个 RSS/Atom 订阅源； 按 feed_url + episode GUID 去重； 失败任务自动重试； 报告原子写入本地归档目录； Webhook 手机通知； SMTP 邮件通知； cron 每小时执行一次
+651dc8a | 2026-08-30T22:55:43+08:00 | Podcast 输入 综合处理模式 integrated 一次同时生成长文总结和未知/深化/冲突知识卡 个人记忆库问答 SQLite 记忆库和 JSONL 迁移 LLM 本地响应缓存，重复处理相同内容时不会重复调用云端模型。 B站合集断点续跑、LLM 重试、输出结构校验、批量落盘优化。
+1d81290 | 2026-08-30T22:28:51+08:00 | 我先推进了几项不依赖产品方向的架构增强： - 合集任务支持 --bili-resume 断点续跑，失败分P会自动重试：[cli.py](/home/lengjing1236/knowpipe/knowpipe/cli.py) - LLM 请求增加网络/限流重试、指数退避和输出校验：[brain.py](/home/lengjing1236/knowpipe/knowpipe/brain.py) - 原子卡批量处理改为最后一次性落盘，减少大量 JSONL I/O：[store.py](/home/lengjing1236/knowpipe/knowpipe/store.py) - 增加了核心行为测试：[test_core.py](/home/lengjing1236/knowpipe/tests/test_core.py) - python3 -m unittest discover -v 已通过 4 项测试。
+d4a7c51 | 2026-08-30T22:17:05+08:00 | add gitignore
+0cb1424 | 2026-08-30T22:16:39+08:00 | init

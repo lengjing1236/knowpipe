@@ -25,13 +25,19 @@ def dump(path, value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base', default='http://127.0.0.1:8019')
-    parser.add_argument('--credentials', required=True)
-    parser.add_argument('--goal', required=True)
+    parser.add_argument('--credentials')
+    parser.add_argument('--resume-report', help='Resume encoding from an existing real recording manifest')
+    parser.add_argument('--goal')
     parser.add_argument('--timeout', type=int, default=600)
     parser.add_argument('--output', default='evidence/012-demo-delivery')
     parser.add_argument('--video', default='submission/2026-09-25/04-备份演示视频/Knowpipe演示.mp4')
     args = parser.parse_args()
     out = ROOT / args.output
+    if args.resume_report:
+        encode_recording(json.loads(Path(args.resume_report).read_text()), out, ROOT / args.video)
+        return
+    if not args.credentials or not args.goal:
+        parser.error('--credentials and --goal are required for a new recording')
     raw = ROOT / 'state/delivery012/raw'
     raw.mkdir(parents=True, exist_ok=True)
     out.mkdir(parents=True, exist_ok=True)
@@ -50,6 +56,7 @@ def main():
             for cut in pending:
                 cut['captioned'] = True
         result['stages'].append({'name': name, 'caption': explanation, 'time': time.monotonic() - start})
+        dump(out / 'browser-checkpoint.json', result)
         print(name, flush=True)
     def get(page, path):
         response = page.request.get(args.base + path)
@@ -193,9 +200,13 @@ def main():
         finally:
             result['raw_seconds'] = round(time.monotonic() - start, 2)
             context.close()
-            result['raw_video'] = str(video.path().relative_to(ROOT))
+            result['raw_video'] = str(Path(video.path()).relative_to(ROOT))
             browser.close()
             dump(out / 'browser.json', result)
+    encode_recording(result, out, ROOT / args.video)
+
+
+def encode_recording(result, out, video_out):
     # Only remove captured idle waits. Every retained frame remains actual UI.
     source = ROOT / result['raw_video']
     intervals, cursor = [], 0.0
@@ -204,7 +215,6 @@ def main():
             intervals.append((cursor, cut['start']))
         cursor = max(cursor, cut['end'])
     intervals.append((cursor, result['raw_seconds']))
-    video_out = ROOT / args.video
     video_out.parent.mkdir(parents=True, exist_ok=True)
     def edited_time(value):
         return max(0, value - sum(max(0, min(value, c['end']) - c['start']) for c in result['cuts']))
@@ -216,7 +226,7 @@ def main():
         a,b=edited_time(item['time']),edited_time(end)
         if b>a:
             subtitles.append(f'{len(subtitles)+1}\n{timestamp(a)} --> {timestamp(b)}\n{item["name"]}｜{item["caption"]}\n')
-    srt=raw/'captions.srt';srt.write_text('\n'.join(subtitles),encoding='utf-8')
+    srt=source.parent/'captions.srt';srt.write_text('\n'.join(subtitles),encoding='utf-8')
     filters=[]
     for i,(a,b) in enumerate(intervals):
         filters.append(f'[0:v]trim=start={a:.3f}:end={b:.3f},setpts=PTS-STARTPTS[v{i}]')
