@@ -1,0 +1,36 @@
+# 技术决策记录
+
+[已验证：代码审计] 010 supplement_score 仅选择解释片段，未进入最终 _choose；关键词重合不能区分改写与新方法。Argos 有 transaction→service、fsync→一丝不苟等真实错误；代码／数字完整不保证含义。
+
+[方案] 使用有界语义特征补足词汇检索。官方候选：
+- https://huggingface.co/cross-encoder/ms-marco-MiniLM-L6-v2 （目标与片段相关性，英文，Apache-2.0）
+- https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2 （句子向量，英文，Apache-2.0）
+- https://huggingface.co/cross-encoder/nli-MiniLM2-L6-H768 （蕴含／矛盾／中立，英文，Apache-2.0）
+
+选择官方量化 ONNX 可复用现有 tokenizers／onnxruntime，避免 Torch 与全库重嵌入。实际文件和许可证必须在下载记录核实。NLI 的中立输出不是“学生不会”的证据；只对本次显式历史片段作可审查候选补充判断，阈值通过冻结回归对照验证。
+
+[方案] 候选翻译：NLLB distilled 600M，CT2 int8；沿用 Argos 作实际基线。NLLB 官方说明其为通用领域、研究用途、句子级翻译，非专业长文保证，CC-BY-NC-4.0。本课程本地实验可测试，未来商业发布需另选许可适用模型。
+- https://huggingface.co/facebook/nllb-200-distilled-600M
+- https://forum.opennmt.net/t/nllb-200-with-ctranslate2/5090
+
+[已验证：HEAD] OpenNMT 教程分发 ZIP 578,586,670 bytes，SentencePiece 4,852,054 bytes。没有上游认证校验值时，本地首次下载 SHA 仅作复现标识，不称为安全认证。
+
+[方案] 不用庞大术语词表替换真实翻译，不把人工修正样例作为模型输出；代码和标识符保留、真实逐段对齐、关键事实对照互补。不能用否定词数量证明否定语义正确。
+
+[方案] 四主题原文事实由独立评估代理先整理，标明代理编制、有限测试，保留场景不参与调参。已有 010 问题是回归，不是盲测。正文来源缺失时允许少量补入合适全文，但须记录变更并重冻结数据，不能暗删干扰材料。
+
+## 实测后调整（未查看保留集）
+
+[已验证] NLLB真实A/B仍将异常、协程及事务重试问题误译，见language-quality.json。这证明英文语义模型依赖目标英译的单点会延续错误。
+
+[方案] 相关性与句子向量改用官方多语候选：`cross-encoder/mmarco-mMiniLMv2-L12-H384-v1`、`sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2`，直接比较原中文目标与原文，新增量化下载约263MB。英文NLI仍只处理支持语言，中文句须真实转换，失败则不确定。模型版本／SHA进入处理身份；此调整仅是待验证修复，不能据下载成功宣称通过。
+
+[方案] 首屏推荐上限3篇，减少全文自动翻译等待；每篇仍完整处理。推荐列表先发布，中文准备独立继续，页面显示真实阶段。不减少全库召回范围，不以该界面改动替代质量验证。
+
+[已验证：开发诊断] 多语模型的sigmoid分数不是校准后的正确概率。4组通用技术事实/泛词干扰及原中文semaphore诊断显示直接材料分数跨语言下降，改为原中文目标向量相似度与cross-encoder共同门控。开发校准输入/原输出/选择理由均见semantic-calibration*.json；未使用Docker/Django保留场景调参数，SC标准不变。
+
+[已验证：来源审核] Python官方同步原语正文/标题不一定重复出现Python，原字面名称门控会排除真实官方材料。query规则v2允许官方适配器类型与精确HTTPS域名共同证明技术对象范围，并输出来源链接证据；这不证明正文必然相关或正确。已测试伪装域名/用户信息URL/论坛链接不能冒充官方身份。
+
+[方案：中文全文后续候选] NLLB完整WAL实测仍遗漏原因、日志重放步骤并误译point-in-time，不作默认质量升级。选择官方Qwen2.5-1.5B-Instruct GGUF Q4_K_M（1,117,320,736 bytes、Apache-2.0）+固定llama.cpp b6000作为另一个本地CPU候选；只使用通用技术翻译指令，真实分词窗口、完整生成与模型身份检查，需单独A/B。网络下载中断已记录并改进续传，尚未据此声称候选质量通过。
+- https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF
+- https://github.com/ggml-org/llama.cpp/releases/tag/b6000
