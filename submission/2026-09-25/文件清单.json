@@ -1,0 +1,676 @@
+{
+  "created_at": "2026-09-25T16:00:46.711957+00:00",
+  "source_revision": "0ce07cd5b041a88c48485ace2d9bd3ca6513d830",
+  "branch": "011-mvp-recommendation-validation",
+  "remote": {
+    "status": "已推送",
+    "repository": "https://github.com/lengjing1236/knowpipe",
+    "branch": "011-mvp-recommendation-validation",
+    "verified_code_revision": "0ce07cd5b041a88c48485ace2d9bd3ca6513d830",
+    "evidence": "git push成功返回5eb2c94..0ce07cd；该版本含运行代码、实际视频与六项材料。后续提交仅更新交付索引与任务完成记录。"
+  },
+  "browser_status": "passed",
+  "video_seconds": 136.0,
+  "files": [
+    {
+      "path": "01-源代码/源码与运行说明.md",
+      "bytes": 2572,
+      "sha256": "cc4a50c5a42344597bf9e97715e83d188a5da378e527095ae0c411278f901ed4"
+    },
+    {
+      "path": "01-源代码/源码快照.zip",
+      "bytes": 668553,
+      "sha256": "eb69529c81f5f879ddb59e4ec438a5b47df722cc3ce359b3fe5f32bba525402f"
+    },
+    {
+      "path": "01-源代码/演示中文全文.jsonl",
+      "bytes": 375409,
+      "sha256": "709450f337c575d5d38eba11d11ecbaa88241427797af2d6db4a7b1f036e4e67"
+    },
+    {
+      "path": "01-源代码/真实Git提交记录.txt",
+      "bytes": 9168,
+      "sha256": "e31958fe7cc0d4ca9798bb4f4700b2e2040757fbfc834a125320c76a61e3aaf4"
+    },
+    {
+      "path": "01-源代码/资料来源说明.md",
+      "bytes": 2280,
+      "sha256": "018d1562ca64201b69b4f9aa43c30caebbe7b3b518b9321302bf4913735b586b"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/.specify/memory/constitution.md",
+      "bytes": 6010,
+      "sha256": "87241880e9a2f0074470040aee18594a89b8c2348315490b8b6b0a2a890a09f5"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/docs/sdd-workflow.md",
+      "bytes": 5858,
+      "sha256": "e4b7f2201f12a687bcacaab54d5eef39f841ee4241ab72cf00251e37169df048"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/project_goal_and_agent_prompt.md",
+      "bytes": 9738,
+      "sha256": "d9299e6ab44cd6ff73bdc581e02f07345018bcafcd271dfec9e2f5f65211c354"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/checklists/requirements.md",
+      "bytes": 1650,
+      "sha256": "2413c67bc9aeaba56443342752edeee10dfd9023c4d469a681b08fbacd95f3db"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/contracts/storage-contract.md",
+      "bytes": 3586,
+      "sha256": "0b436160a2cf9ad1edcaa3626de879f6556b0348e0b4a8d187e17cd3a65a2d94"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/data-model.md",
+      "bytes": 5792,
+      "sha256": "b200f1930bfe8e98fe11f93b1573c4f757b35d6fa4707851da7d3520dbe990e1"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/plan.md",
+      "bytes": 6802,
+      "sha256": "7e51d999032fe9a1ff164d432e5ddca810b9f5c430e39950f49228b43766a2d5"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/quickstart.md",
+      "bytes": 3413,
+      "sha256": "9363f28c59579980252b1e5e0c84b602822481212eb5507b722278503c77ad7b"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/research.md",
+      "bytes": 6231,
+      "sha256": "af8fb0bdea1394e93d4a69dce54f81cd809e577bfefceb78a026bb3a0f75b2b9"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/spec.md",
+      "bytes": 10977,
+      "sha256": "475e8f930f626848135b85b3876cce3333e3aece69b038728aafa4064d7ffb58"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/001-data-pipeline-spark-mining/tasks.md",
+      "bytes": 27117,
+      "sha256": "b3daeaf3ce726beb4bec368877841f53deeba111848e23a1d9ba8d57ad6def8c"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/checklists/requirements.md",
+      "bytes": 1401,
+      "sha256": "687e24f9338670544a2f9f60c97238bfc9e773e7a69d8ca220e76ba6cb0be6b5"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/contracts/api-contract.md",
+      "bytes": 5133,
+      "sha256": "ea23e4eaf92a0b67b443d08b6b1d6935d1c0ce94ad76811cf555e5f0ff18441e"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/data-model.md",
+      "bytes": 7172,
+      "sha256": "21b2f72aa404af21f7351ee40bf797c3719d409ac29de4543fdb7e34049cf92d"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/plan.md",
+      "bytes": 8700,
+      "sha256": "f04b4f6eecd152ebff0c1abb75c82faaafc1f7091a49e74b1c59d86682e7a15b"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/quickstart.md",
+      "bytes": 5961,
+      "sha256": "c0d8bfd0d846adedb9bb656a088d955ea352900af7900f2f92f4e2e398008680"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/research.md",
+      "bytes": 10181,
+      "sha256": "c5ec623dad7206967cbf73750b02c7f4b5e8bbfbf46dfecfcfe4450abb574264"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/spec.md",
+      "bytes": 14893,
+      "sha256": "6d3cceefd9531eb1c2c7d0a0f11564c75fa8f8c6d4313e3224a2e00352596f41"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/002-personalized-web/tasks.md",
+      "bytes": 20781,
+      "sha256": "6febabf70b6dbb2df71213a76e05551745e3fb5503ca6fc55508ac8ae32db384"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/003-public-web/contracts/api-contract.md",
+      "bytes": 971,
+      "sha256": "e6b170f06a430a988fa5cb10c99fdaed32861acd0a4ff6e03d7d0bd94e91b873"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/003-public-web/plan.md",
+      "bytes": 721,
+      "sha256": "06e6609f17ff280e22fdd0d8521e7f5e15093e2c8fc084df0aa4671f72526e53"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/003-public-web/quickstart.md",
+      "bytes": 3916,
+      "sha256": "afe079cfdb7062e5e4405517befa15d8828a6de0c744240efb03e24a02e2a2cc"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/003-public-web/spec.md",
+      "bytes": 3178,
+      "sha256": "0ec9569907143e504c9ef9b59840398cceb105f68c125cf23183a7b63bb46aec"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/003-public-web/tasks.md",
+      "bytes": 951,
+      "sha256": "ff66086287a09511feca52c67605310be2ed68cbc8a6f9f21505074902082235"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/004-podcast-insights/contracts/api-contract.md",
+      "bytes": 1424,
+      "sha256": "6946eaaf0261a035d60a26b27054033b89f3e61e816275411869c269f9ad8ef1"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/004-podcast-insights/data-model.md",
+      "bytes": 1371,
+      "sha256": "ccd58f13c56ef8e01423db23f0c87e932f9356db10a9fb4f873805150292ee0f"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/004-podcast-insights/plan.md",
+      "bytes": 1437,
+      "sha256": "48b9ee51ad0dc4327f48bfa39c934305eb250622298ae65d13ec1f905f8307c8"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/004-podcast-insights/quickstart.md",
+      "bytes": 2210,
+      "sha256": "0ddb70d6dbed764f2513626b012b307cd48079ccd408b6929d234efd3b968c00"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/004-podcast-insights/spec.md",
+      "bytes": 4394,
+      "sha256": "ec1772bebc424e355bec489ce47053755bf659339df37580f39bf82d6364a3f1"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/004-podcast-insights/tasks.md",
+      "bytes": 967,
+      "sha256": "560f9e66e9afb8e255aa0f27db76178e0a2e20481bfaf80c1ff93ad4cea2dbdc"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/005-defense-evidence/plan.md",
+      "bytes": 601,
+      "sha256": "c7ffd9aaf26e9f603e45492138270100a161c6256b315a9580a748021d7e8e13"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/005-defense-evidence/quickstart.md",
+      "bytes": 2038,
+      "sha256": "9a38619908cab9af47adc04cc8980abb20ea5516521a0624b474475c81d2196e"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/005-defense-evidence/spec.md",
+      "bytes": 1453,
+      "sha256": "760436047e8df309c4f16c1bf7705b0130ee71204afe58d44e7fe39feefd9704"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/005-defense-evidence/tasks.md",
+      "bytes": 592,
+      "sha256": "d6f0c6123c2832af3961c85d39ef997c8d9d605af1a4d0805e9b3dba77a31321"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/checklists/requirements.md",
+      "bytes": 988,
+      "sha256": "6c1372788218bf9f71e8ff0ba8dba19ada03786c92e354ad8b66bb16a467eb19"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/contracts/interfaces.md",
+      "bytes": 1528,
+      "sha256": "a07564f7613953cbf13025df98aff2b2115dd534bbb907ffb9e3babd93412bb9"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/data-model.md",
+      "bytes": 1225,
+      "sha256": "788227a45e17f1c055a59025b02970ad312ab1039084b86874232e5a881f438c"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/plan.md",
+      "bytes": 2005,
+      "sha256": "d9e509d87848e5f11847b319c7bd5c3ba46ba06024481aaf06090227de344992"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/quickstart.md",
+      "bytes": 2310,
+      "sha256": "8989d619c6b8a0811689b4587b8cce2bdd5ccd2d73248f4413a203a4231b156f"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/research.md",
+      "bytes": 1164,
+      "sha256": "61118c99f000aa79b72b8eb29620a7ba268c85d28c8e4ac748a59e7a9f7b4e98"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/spec.md",
+      "bytes": 5179,
+      "sha256": "f5e2cc6008f5206908f3e70216b5bc2ed7f88946bc8664b581491ddd2105ab54"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/006-scale-evaluation-linking/tasks.md",
+      "bytes": 2399,
+      "sha256": "6a9584c8f2f962789ca84075cc8c6c5d4dd1ff082b59cd27b9cb05806e3e2056"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/checklists/requirements.md",
+      "bytes": 857,
+      "sha256": "42a07b9bc4a062810d4f3e78b9266ebe81326ded29242cc66ea00098666495d2"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/contracts/api.md",
+      "bytes": 2486,
+      "sha256": "1ff1a9261e792ee424fa4dd94093e2df40e8aeb74b3a25bb45791464a7e53de3"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/data-model.md",
+      "bytes": 2291,
+      "sha256": "4e634f7ba831e79eaaf93783c7e37c74190fd5320a06707964518abc4058361d"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/plan.md",
+      "bytes": 3767,
+      "sha256": "0d1c8ed1a03def19aaf8e53bff6f0821846fd08ad7e6d63fab6caf3ed0216272"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/quickstart.md",
+      "bytes": 1423,
+      "sha256": "6a602cefed2ae6d771235123854e76a47c9f7980ea1329837cf1e7168d98bb9c"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/research.md",
+      "bytes": 2753,
+      "sha256": "c5f34d67d04d564a5240b33b65a52941df92ebaa6381e62d41957ba8fe2c62b9"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/spec.md",
+      "bytes": 7029,
+      "sha256": "f05a52ded4091fe59de2f8d7d525589337dde6e69f1b1a88edc901bc8e1a0ba2"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/007-learning-foundation/tasks.md",
+      "bytes": 3804,
+      "sha256": "123ed244e61076583fb336c5304b4b6f4dd9e8a54a5a4cd917fccd29d5411317"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/checklists/requirements.md",
+      "bytes": 439,
+      "sha256": "d6f6f1e1d446b9fea98449baef5f132b9b1a22626ba0f581aa743dfb5fc4528b"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/contracts/api.md",
+      "bytes": 1364,
+      "sha256": "18cc78db29cbc376940fef7cb592ef650e99404f353f53354a7ef8508bb6d199"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/data-model.md",
+      "bytes": 2038,
+      "sha256": "c33e026e07706e6925e1ab9a491128fcaf46b7ac222b5d781e5ef4a0f5ecf988"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/plan.md",
+      "bytes": 2804,
+      "sha256": "4571ac780931cd4a7b2044315135558719f73c82314caca427206c59422d677e"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/quickstart.md",
+      "bytes": 3017,
+      "sha256": "f63ced85c9eecf593f150b3635b4a18248b05bf56905203d7df23cec66330c73"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/research.md",
+      "bytes": 2605,
+      "sha256": "7947e198444e7edfc4169857e5635beb28380da20c9cc89e39f7b937f621795f"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/spec.md",
+      "bytes": 6281,
+      "sha256": "1f198f33f1d111c5055e50a1115e1366e7bbbe2d873ede6e5857d6a78e5810c0"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/008-goal-history-recommendations/tasks.md",
+      "bytes": 2579,
+      "sha256": "8b9beea6ce84a0295de82bfa4adfe67b6933cc816114e192869a453ec5c3a3ee"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/checklists/requirements.md",
+      "bytes": 520,
+      "sha256": "5baf5311e21c637c30b6c5304992dc8e07c1826a5002ce61d489d3300f9f5f16"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/contracts/interfaces.md",
+      "bytes": 3278,
+      "sha256": "7e34fc59f0976c568fa4be24ac139bc7b26793819bbe06c775184eb04b671499"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/data-model.md",
+      "bytes": 1450,
+      "sha256": "a57e532f274861e57c747523edc4bbf6b51632c020a43c081173b30714e5b901"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/plan.md",
+      "bytes": 3475,
+      "sha256": "f2a2e309e5e3cbe007c8b2c45164b9e4e606e453a7912cb9a6401f747419f8f6"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/quickstart.md",
+      "bytes": 4389,
+      "sha256": "f6045d54df3861e2e93d49f26ca387e127136cd637dd290f1a654d4663d24344"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/research.md",
+      "bytes": 1415,
+      "sha256": "9abea4e5c540587a70e0c10bf6ab240b5a130dd49da3874ccfeb86a49185b7fb"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/spec.md",
+      "bytes": 7032,
+      "sha256": "17dfb4d28f3ae7f6f5aace452e18ab3e7ba6be4c9f7848803032131be7cb5e35"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/009-fulltext-podcast-learning/tasks.md",
+      "bytes": 3459,
+      "sha256": "13c680a5b8392829a6695890f8f3f361bfadc0494c1ce3778261bd398a79adcc"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/checklists/requirements.md",
+      "bytes": 816,
+      "sha256": "1e8e385b1ca8973d816404da00b31472051e86a102780c4cbb7dd28716204878"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/contracts/interfaces.md",
+      "bytes": 2184,
+      "sha256": "df82168c8e6e07126a6befaa425c9efa28e8df6ae268cfbda130a3c8809806a7"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/data-model.md",
+      "bytes": 1665,
+      "sha256": "e5f8ea057b0e5bce8a5decb9c95a090197deebde4d04f7d77f53c5f6fc17c9f8"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/plan.md",
+      "bytes": 3960,
+      "sha256": "1881fb702588fd39c39a9dc4f88d6164825d26e42e6c9c118c42171ed3637668"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/quickstart.md",
+      "bytes": 2775,
+      "sha256": "b2b6eafc6db520d870bb641d111886df881fd92711c384314d1e30c667a759bd"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/research.md",
+      "bytes": 1780,
+      "sha256": "2b63c79d8bb821d203375f836f23489956fb3e718a4019419c029c7d938b243e"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/spec.md",
+      "bytes": 7173,
+      "sha256": "90c173a2bfedecd0ac8ed20277506a211c39f6684c87928a5baca2c3815ef3dd"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/010-quality-cluster-readiness/tasks.md",
+      "bytes": 4283,
+      "sha256": "30d6e77da0092998b309025f0f5453243e5e1da5e151f35876d26cd606026a46"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/checklists/requirements.md",
+      "bytes": 876,
+      "sha256": "84036fd75a9a5714db0ed6d93b6a8726120869bfca792a7d328f274a73f1e69c"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/contracts/runtime.md",
+      "bytes": 3182,
+      "sha256": "c39e8f61cae829fc8a3dfe3658bf82d4a5d1b4b69ca570eb9d97c4a09d452248"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/data-model.md",
+      "bytes": 1272,
+      "sha256": "ec440eccd77403460dd1369b2a0029c9669c4e806dd598220589ac041ceba9b4"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/plan.md",
+      "bytes": 4569,
+      "sha256": "b39cf4ae2efed96754c924856e6848320af8e6ed0deb0138d3e5cd480ee008ff"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/quickstart.md",
+      "bytes": 6541,
+      "sha256": "2ca8263fcc93dbb6469d7d43258c9e857768d2658b2f0c16cb3b9c9b59cb2b97"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/research.md",
+      "bytes": 6473,
+      "sha256": "94c50f65a3fa608ffc08024bc98798fdc887e64b3418277114ef16508365f273"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/spec.md",
+      "bytes": 7384,
+      "sha256": "d3171579df1008bfbde36678610a1e66375b491f706f09a2bd391f4df4414968"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/011-mvp-recommendation-validation/tasks.md",
+      "bytes": 4006,
+      "sha256": "be9a3bcf7e7dc0ceb3685c9efeadd0d445362cf981ef5b54e2ebde775d66139d"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/checklists/requirements.md",
+      "bytes": 684,
+      "sha256": "e52dd5ee3ac4541917a1f76b5bb7fbed6484309f1ea0284f498a86dd96dcb978"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/contracts/delivery.md",
+      "bytes": 662,
+      "sha256": "3d5d9cb4d33da7cf630d4fbcdebe87a31c464a7cbea50b5342a44e4acef55608"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/data-model.md",
+      "bytes": 570,
+      "sha256": "45f984d5fe86d64da93ed25c342ae1f4e5ec4dbba647c1f108ae6a84157dc2af"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/plan.md",
+      "bytes": 2720,
+      "sha256": "a8f2d4a83fdc702a61e358c1967423412bb8b108bcba07b3fe58c170b0e2442d"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/quickstart.md",
+      "bytes": 1782,
+      "sha256": "07a4f2490208efe61d191c70a17cbabc4ef9fe1e552054828e6ebe33362ad4cf"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/research.md",
+      "bytes": 820,
+      "sha256": "82514b774407de54d8ed9474c78b9c80f34be0e876511b001733c29626da3d17"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/spec.md",
+      "bytes": 4780,
+      "sha256": "8dea2c66687f1e0742f77f80f5117f62eea12b849013d5e4991c49b1bf4ee76b"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/specs/012-demo-delivery/tasks.md",
+      "bytes": 1181,
+      "sha256": "e1c107d4ba7e0900a1f7320da99c28b3c6a4c918fec635f2fa300ad03b53112c"
+    },
+    {
+      "path": "02-SDD规约/原始Spec快照/清单.json",
+      "bytes": 14536,
+      "sha256": "2ff12ead9af50aa52c11a2532a0fb71f01ea08913062aec78e644c60708feb4c"
+    },
+    {
+      "path": "02-SDD规约/提示词归档/AI协作任务提示词.md",
+      "bytes": 178382,
+      "sha256": "94698560b19dbaf68b6665aab2689196f5e0b7ba27bc757f726757a73a9fe400"
+    },
+    {
+      "path": "02-SDD规约/提示词归档/导出提示词.py",
+      "bytes": 8354,
+      "sha256": "d39673d8bdf3df11af5ca1da0251bbcbb29be962b7809a26f4b648f865d0e6f5"
+    },
+    {
+      "path": "02-SDD规约/提示词归档/来源清单.json",
+      "bytes": 6291,
+      "sha256": "34d8ec35d031ddd652a8f4ba8ae1e19e054a4e76007360b2cab232a1b3cea8a2"
+    },
+    {
+      "path": "02-SDD规约/提示词归档/真实用户提示词.md",
+      "bytes": 45509,
+      "sha256": "764bb2ce302b206f34222592323347fb97bf0cdfd13d8c5b3d576ac7098e9ad8"
+    },
+    {
+      "path": "02-SDD规约/生成提交文档.py",
+      "bytes": 5145,
+      "sha256": "2575907166a8e05cfb7cc3c21ff39e88b1568b077a3c7036c5052a59de31db43"
+    },
+    {
+      "path": "02-SDD规约/设计规约.docx",
+      "bytes": 43027,
+      "sha256": "1ad0b146acab4b6b5474f8ab741c5035a25142c03ea3a39bf9b8f09cab340c5d"
+    },
+    {
+      "path": "02-SDD规约/设计规约.md",
+      "bytes": 8599,
+      "sha256": "e2b041c5eadbd8b36716531403650fb5261c9179d8368eae8ef8ec6a87f6f09a"
+    },
+    {
+      "path": "02-SDD规约/过程与证据索引.md",
+      "bytes": 3733,
+      "sha256": "dd4e3e1af90670c645dd447970e71b5aba3c102c4defa222601fea320a7d14c8"
+    },
+    {
+      "path": "02-SDD规约/需求规约.docx",
+      "bytes": 41760,
+      "sha256": "99f35ce36bb4ba91ef7bba35ba316bde88521c6a45f24fddc36a2a57c3b4fc6a"
+    },
+    {
+      "path": "02-SDD规约/需求规约.md",
+      "bytes": 6802,
+      "sha256": "184715904550323672c30089e7494bc7fdba146082c31b61d7f4fdef3ac801ad"
+    },
+    {
+      "path": "03-项目报告/项目报告.docx",
+      "bytes": 43529,
+      "sha256": "8aef4cfa14557e7601abe17b2612aca8879b9cff0147589f4c2efeadc0f3b875"
+    },
+    {
+      "path": "03-项目报告/项目报告.md",
+      "bytes": 9930,
+      "sha256": "81a120a033e3b4932282954310b71c5c64de9a14c580fff0577409c71490cb2c"
+    },
+    {
+      "path": "04-备份演示视频/Knowpipe演示.mp4",
+      "bytes": 2927265,
+      "sha256": "019f9b6b3fcb68e3d6f1a6a1fb90f6ac44dcbc0dd6ab0e628d4303cd95bd7eeb"
+    },
+    {
+      "path": "04-备份演示视频/演示说明.md",
+      "bytes": 452,
+      "sha256": "385b9112b2824b42efaff20dcdb88b4c2c0a65a774fcead70774467671701da5"
+    },
+    {
+      "path": "05-分组分工表/分组分工表.docx",
+      "bytes": 38871,
+      "sha256": "9f1e5f78f105e8648f21a2db8f0bb07869e8fa08bc8d9b1d3975a0613dfd210d"
+    },
+    {
+      "path": "05-分组分工表/分组分工表.md",
+      "bytes": 1696,
+      "sha256": "9590ef28fabb70cb7ff78e10d09f90ebde6ac886781f298f19cffa6e5ffe7148"
+    },
+    {
+      "path": "06-汇报PPT/Knowpipe项目汇报-布局预览.pdf",
+      "bytes": 1209358,
+      "sha256": "076d36b07273b680498243ec603b50407ff8969b9c3b57777d6e13b53c3ac372"
+    },
+    {
+      "path": "06-汇报PPT/Knowpipe项目汇报-校验.json",
+      "bytes": 811,
+      "sha256": "b71cd8271e9340f36c8981a54ede940ee96461f50b13eaeefa399f843f1f531d"
+    },
+    {
+      "path": "06-汇报PPT/Knowpipe项目汇报.pptx",
+      "bytes": 660059,
+      "sha256": "58a6937d45089302069a3f48b2e36289b80b8eab7bc38f2b8a89400b6e5dc4a1"
+    },
+    {
+      "path": "06-汇报PPT/预览/01.png",
+      "bytes": 163924,
+      "sha256": "b48e4c186ec187915d1d1677e075aaa916a91d5023ea61f6a053ff929b3ab73d"
+    },
+    {
+      "path": "06-汇报PPT/预览/02.png",
+      "bytes": 126832,
+      "sha256": "43c853eaea4c79c2d5de2c86d8cfc659384599352cc9fbcc5d2b8b7d06acc33f"
+    },
+    {
+      "path": "06-汇报PPT/预览/03.png",
+      "bytes": 174321,
+      "sha256": "2aca301d1cb53012d33986833c6ef4009750e280a484e6fa9a7bf0c8d53e2596"
+    },
+    {
+      "path": "06-汇报PPT/预览/04.png",
+      "bytes": 143855,
+      "sha256": "20abd36f8b3042a4713ca6b8b8b960e76df212649973deabf63db4278bd521e9"
+    },
+    {
+      "path": "06-汇报PPT/预览/05.png",
+      "bytes": 143280,
+      "sha256": "eb01295c8741cd2036e110bd47df052cda5ba8667b2104b7b742858b3c0e62fc"
+    },
+    {
+      "path": "06-汇报PPT/预览/06.png",
+      "bytes": 206399,
+      "sha256": "e4a8a0e27e95033a8fed4f9cb9aeb667a63a17a9cc2b756327148e0a780aaee5"
+    },
+    {
+      "path": "06-汇报PPT/预览/07.png",
+      "bytes": 208986,
+      "sha256": "15d3f2be35bc2c12edd338ce32a1e6700bd81e9839610441d118433c215b5a28"
+    },
+    {
+      "path": "06-汇报PPT/预览/08.png",
+      "bytes": 150101,
+      "sha256": "f6108895d235641f05da7ed8e2c7956ac4eda85f231929cb4c51855f294317ed"
+    },
+    {
+      "path": "06-汇报PPT/预览/09.png",
+      "bytes": 156202,
+      "sha256": "a3c37a38958163bf279ab1f4e59ed591f310a4a17812f8b1b71019848ffda80f"
+    },
+    {
+      "path": "06-汇报PPT/预览/10.png",
+      "bytes": 139229,
+      "sha256": "a719dcb7e2e6cf5e138f28d394203e3aa38c61b50c9d5b372b984e89a3ed8028"
+    },
+    {
+      "path": "06-汇报PPT/预览/11.png",
+      "bytes": 169230,
+      "sha256": "0bacd09e8eb152350f0f103cc6f2ec47f2582409ca671a0acc8b476e77f6002d"
+    },
+    {
+      "path": "06-汇报PPT/预览/总览.png",
+      "bytes": 274388,
+      "sha256": "bfc5e222dd53b64972d79dbbd6612ee283d05183f9c2e4979d855d52ca696ff1"
+    },
+    {
+      "path": "核验依据/011算法质量验收.md",
+      "bytes": 5965,
+      "sha256": "7212abb8bb97d30b2d5dbfa308ddef0b3274fe78096e24fa2db7db637f9f5544"
+    },
+    {
+      "path": "核验依据/acceptance.md",
+      "bytes": 4084,
+      "sha256": "95d448431e64634c13057b386965b86c840a6dd5112ffd0ae50fc383aeadbf60"
+    },
+    {
+      "path": "核验依据/browser.json",
+      "bytes": 39683,
+      "sha256": "a36146cfe817c14f2060961ed0dce8465a25b12a5b30eb9b02701b0c1f71ce3a"
+    },
+    {
+      "path": "核验依据/remote-translation-diagnostic.json",
+      "bytes": 132,
+      "sha256": "6720101ae3360af0cafb076bbddd2111aa01251e85e6e1c63b67124edceb9f1d"
+    },
+    {
+      "path": "核验依据/remote-translation.json",
+      "bytes": 4851,
+      "sha256": "cb814b7406f9956547f7ff8be0e1af937fddff387a51ff310d842d630f39e7e8"
+    }
+  ]
+}

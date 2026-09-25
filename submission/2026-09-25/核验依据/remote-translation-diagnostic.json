@@ -1,0 +1,6 @@
+{
+  "purpose": "bounded_status_only_diagnostic",
+  "model": "glm-4.7-flash",
+  "http_status": 401,
+  "provider_error_code": "401"
+}

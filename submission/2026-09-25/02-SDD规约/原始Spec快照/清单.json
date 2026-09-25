@@ -1,5 +1,5 @@
 {
-  "captured_at_utc": "2026-09-25T15:59:00.594766+00:00",
+  "captured_at_utc": "2026-09-25T16:00:45.664192+00:00",
   "files": [
     {
       "source": ".specify/memory/constitution.md",
@@ -359,7 +359,7 @@
     },
     {
       "source": "specs/012-demo-delivery/tasks.md",
-      "sha256": "606fdc19a1586b93391c78b47349531ed34a86f2b4d32105ec7af664650e0bce"
+      "sha256": "e1c107d4ba7e0900a1f7320da99c28b3c6a4c918fec635f2fa300ad03b53112c"
     }
   ]
 }
