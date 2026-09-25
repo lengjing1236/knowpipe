@@ -1,0 +1,28 @@
+{
+  "mongo": {
+    "version": "7.0.14",
+    "concurrent_marks": 48,
+    "unique_records": 12,
+    "concurrent_removals": 48,
+    "isolation": "temporary database"
+  },
+  "browser": {
+    "desktop": "1440x1000",
+    "mobile": "390x844",
+    "horizontal_overflow": false,
+    "javascript_errors": [],
+    "flows": [
+      "login",
+      "home entry",
+      "goal persistence",
+      "pagination",
+      "title search",
+      "Chinese reading",
+      "explicit read and undo",
+      "abstract fallback",
+      "version conflict",
+      "logout and account isolation"
+    ]
+  },
+  "fixture_notice": "页面数据为隔离测试样例，不是实际语料或推荐效果证据。"
+}
