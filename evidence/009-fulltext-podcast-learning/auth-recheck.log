@@ -1,0 +1,17 @@
+
+tests/learning/test_routes.py::LearningRoutesTests::test_auth_csrf_and_goal_validation 
+-------------------------------- live log call ---------------------------------
+INFO     knowpipe.web.auth:auth.py:48 拒绝未登录请求：check_identity
+INFO     knowpipe.web.auth:auth.py:48 拒绝未登录请求：check_identity
+INFO     knowpipe.web.auth:auth.py:48 拒绝未登录请求：check_identity
+INFO     knowpipe.web.auth:auth.py:48 拒绝未登录请求：check_identity
+PASSED                                                                   [ 12%]
+tests/learning/test_routes.py::LearningRoutesTests::test_chinese_page_and_home_entry PASSED [ 25%]
+tests/learning/test_routes.py::LearningRoutesTests::test_goal_persists_is_idempotent_and_isolated PASSED [ 37%]
+tests/learning/test_routes.py::LearningRoutesTests::test_marking_version_changed_after_open_returns_conflict PASSED [ 50%]
+tests/learning/test_routes.py::LearningRoutesTests::test_only_explicit_read_action_adds_history PASSED [ 62%]
+tests/learning/test_routes.py::LearningRoutesTests::test_pagination_and_missing_detail PASSED [ 75%]
+tests/learning/test_routes.py::LearningRoutesTests::test_read_does_not_become_known_on_legacy_topic_save PASSED [ 87%]
+tests/learning/test_routes.py::LearningRoutesTests::test_read_validation_and_unknown_document PASSED [100%]
+
+============================== 8 passed in 4.22s ===============================

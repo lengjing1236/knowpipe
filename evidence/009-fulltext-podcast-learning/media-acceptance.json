@@ -1,0 +1,100 @@
+{
+  "created_at": "2026-09-25T09:52:43.247527+00:00",
+  "mode": "real_local_cpu_int8",
+  "models": {
+    "translation": {
+      "source": "https://argos-net.com/v1/translate-en_zh-1_9.argosmodel",
+      "sha256": "433e7c4f034d87fbe2353161e05f18646d7999452f801a4e1f0378522b9850ab",
+      "bytes": 70743021,
+      "path": "/home/lengjing1236/knowpipe/state/feature009/media/translate-en_zh-1_9"
+    },
+    "asr": {
+      "repository": "Systran/faster-whisper-tiny",
+      "revision": "d90ca5fe260221311c53c58e660288d3deb8d356",
+      "download_mirror": "https://hf-mirror.com",
+      "files": {
+        "model.bin": {
+          "sha256": "dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1",
+          "bytes": 75538270
+        },
+        "config.json": {
+          "sha256": "a73a28cdfe1c43ccc7202fa333d1f89c202477271407ae9a7f19afa52039cac8",
+          "bytes": 2249
+        },
+        "tokenizer.json": {
+          "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+          "bytes": 2203239
+        },
+        "vocabulary.txt": {
+          "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913",
+          "bytes": 459861
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "faster-whisper": "1.2.1",
+    "ctranslate2": "4.8.1",
+    "sentencepiece": "0.2.1"
+  },
+  "translation": {
+    "source_authorship": "Knowpipe acceptance fixture, original technical prose",
+    "input": "Database transactions keep related updates together. A transaction commits all changes when it succeeds. If a database operation fails, roll back the transaction instead of saving only part of the changes.\n\n```python\nconnection.execute(\"INSERT INTO notes (title) VALUES (?)\", (\"learning\",))\nconnection.commit()\n```\n\nAn index can speed up searches, but it also adds storage and update cost. Measure queries before adding an index.\n\nEnd of the document: always close a database connection.",
+    "output": "数据库交易将相关更新保存在一起.交易成功时执行所有更改 。如果数据库操作失败, 则将交易倒转, 而不是只保存部分更改 。\n\n```python\nconnection.execute(\"INSERT INTO notes (title) VALUES (?)\", (\"learning\",))\nconnection.commit()\n```\n\n一个索引可以加速搜索,但也增加了存储和更新成本.在添加索引前测量查询。\n\n文档的结尾: 总是关闭数据库连接 。",
+    "seconds": 2.2355047759992885,
+    "code_preserved": true,
+    "complete_processing": true
+  },
+  "asr": {
+    "status": "not_run",
+    "reason": "Technical-only run uses the complete actual podcast below."
+  },
+  "limits": [
+    "ASR completion verifies actual processing, not transcription accuracy.",
+    "Translation completeness means no omitted input chunks; adequacy requires separate review.",
+    "These CPU baseline models are not a claim of production learning quality."
+  ],
+  "technical_podcast": {
+    "source": {
+      "feed_url": "https://feeds.transistor.fm/aws-morning-brief",
+      "item_guid": "20edf1f8-433b-4019-aead-2107d801a653",
+      "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+      "published_at": "Mon, 12 Jan 2026 03:00:00 -0800",
+      "episode_url": "https://share.transistor.fm/s/bca97e83",
+      "audio_url": "https://dts.podtrac.com/redirect.mp3/media.transistor.fm/bca97e83/a89e4b76.mp3",
+      "rss_item_snapshot": "aws-episode-rss-item.xml",
+      "scope": "One unchanged item selected from live feed; channel wrapper reconstructed for bounded acceptance.",
+      "duration_seconds": 200.4752,
+      "retrieved_at": "2026-09-25T09:32:59.116498+00:00",
+      "audio_bytes": 8059405,
+      "audio_sha256": "9901898bb357cd3a334b89e8acac0f99522ef76fc6ea627a042e394b9cb18d69",
+      "rss_snapshot_sha256": "5c8bbc44496e374dfde3e79149de26e8192b5889b2a59424d7316b2166ba0c2a"
+    },
+    "asr_seconds": 17.625947944001382,
+    "translation_seconds": 6.260461386998941,
+    "asr_timing_scope": "RSS poll + public audio download + decode + ASR + publication",
+    "rss_production_stage": {
+      "database_name": "knowpipe_media_acceptance_23cdad13ca4a",
+      "kept_for_root_integration": true,
+      "episode_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+      "feed_id": "5f02f512164eb95c219f7c66c08182b3766f013ef96ffa99656b9e7ef2bc621c",
+      "content_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+      "rss_asr_seconds": 17.625947944001382,
+      "audio_fetch": "Production transcribe_url fetched the complete public URL again, no audio test double.",
+      "feed_fetch": "Explicit one-item snapshot from the real publisher feed.",
+      "second_poll": "One document, one batch, one ASR attempt; no duplicate processing.",
+      "scope": "RSS→ASR→fulltext publication only; recommendation and notification require root integration."
+    },
+    "language": "en",
+    "transcript_characters": 2961,
+    "translation_characters": 1077,
+    "transcript_sha256": "d05fe2e33a44aee4b0d79e23b0cabdb624a4e31977928abd2a5dd97fffc74df3",
+    "translation_sha256": "8df5232d56ad5fc5804b49a2bd2467efb3f3522155d3f5fd388745092c0ff2ce",
+    "transcript_path": "/home/lengjing1236/knowpipe/state/feature009/media/aws-transcript.txt",
+    "translation_path": "/home/lengjing1236/knowpipe/state/feature009/media/aws-translation-zh.txt",
+    "complete_processing": true,
+    "quality_status": "Engineering baseline only; not accepted for instructional reading. No independent ASR/bilingual quality score.",
+    "publication": "Full publisher-derived transcripts/translations remain in ignored local cache, not Git evidence.",
+    "quality_review": "evidence/009-fulltext-podcast-learning/media-quality-review.md"
+  }
+}

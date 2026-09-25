@@ -1,0 +1,27 @@
+{
+  "lightweight": {
+    "passed": 178,
+    "failed": 0,
+    "seconds": 36.92,
+    "command": "python3 -m pytest tests/learning tests/corpus tests/recommendations tests/podcasts tests/web --ignore=tests/recommendations/test_engine.py --ignore=tests/recommendations/test_incremental.py --ignore=tests/podcasts/test_analysis.py -q"
+  },
+  "recommendation_v3": {
+    "passed": 12,
+    "real_spark_tests": 4,
+    "seconds": 85.706,
+    "note": "8 lightweight cases overlap with the lightweight suite"
+  },
+  "incremental": {
+    "passed": 1,
+    "seconds": 43.31,
+    "scope": "real Spark, new vocabulary, unchanged feature reuse, deletion, corrupt cache recovery"
+  },
+  "compileall": "passed",
+  "javascript_syntax": "passed",
+  "earlier_unreproduced_failure": {
+    "test": "LearningRoutesTests.test_goal_persists_is_idempotent_and_isolated",
+    "response": 401,
+    "isolated_recheck": "8 passed",
+    "root_cause": "not established; preserve initial failure and do not claim fixed"
+  }
+}

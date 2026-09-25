@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "scope": "controlled replay of actual publisher RSS/ASR artifacts into real >=10k corpus; not an independent usefulness label",
+  "database": "knowpipe_scale009_be3ded4ac5444204bb619ff4d618adf4",
+  "source_media_database": "knowpipe_media_acceptance_23cdad13ca4a",
+  "goal": "ECS Fargate tmpfs",
+  "user_id": "media-acceptance-user",
+  "episode_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+  "index": {
+    "corpus_id": "dd401cf038aca4b27a534bec7aaa4b687e391f4592cb4af0c77db3d55343e61f",
+    "document_count": 10216,
+    "paragraph_count": 222610,
+    "strategy": "incremental",
+    "changed_documents": 1,
+    "reused_documents": 10215,
+    "idf_basis_corpus_id": "ebb478a999812cc8f9ab04a32a739d1e0aae88a62766033f4b227d2dbaf09947"
+  },
+  "selected": [
+    {
+      "source": "podcast",
+      "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+      "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+      "rank": 1,
+      "chinese_ready": true,
+      "reason": "goal_only"
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "serverfault-1168632",
+      "title": "Elastic IP Setup in ECS Fargate",
+      "rank": 2,
+      "chinese_ready": true,
+      "reason": "goal_only"
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "serverfault-1173624",
+      "title": "How Are Bots Still Sending Requests to My AWS ECS Fargate Service Despite Security Groups Blocking Direct IP Access?",
+      "rank": 3,
+      "chinese_ready": true,
+      "reason": "goal_only"
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "serverfault-1168903",
+      "title": "AWS ECS Scheduled Tasks logs not showing up in CloudWatch",
+      "rank": 4,
+      "chinese_ready": true,
+      "reason": "goal_only"
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "serverfault-1159251",
+      "title": "Cannot access the ALB URL for N8N, but my ECS Service is running fine, reaching steady state without issues",
+      "rank": 5,
+      "chinese_ready": true,
+      "reason": "goal_only"
+    }
+  ],
+  "notification": {
+    "kind": "learning_recommendation",
+    "recommendation_mode": "goal_only",
+    "count": 1
+  },
+  "actual_translation_characters": 1077,
+  "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+  "seconds": 211.37
+}

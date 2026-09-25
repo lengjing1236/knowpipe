@@ -1,0 +1,755 @@
+{
+  "database": "knowpipe_scale009_be3ded4ac5444204bb619ff4d618adf4",
+  "scope": "real public fulltext scale and traceable retrieval; not learning-effectiveness proof",
+  "goal": "PostgreSQL 事务 transaction rollback",
+  "status": "passed",
+  "started_at": "2026-09-25T10:05:55Z",
+  "source": {
+    "path": "state/feature009/corpus-expanded/documents.jsonl",
+    "sha256": "ecf155020ecb4c0813632f7b523608be5b08a9b073cb7b7aa64861e2ed24a37e"
+  },
+  "mongo": {
+    "version": "7.0.14",
+    "imported": 10215,
+    "seconds": 2.7,
+    "import_reused": true
+  },
+  "index": {
+    "corpus_id": "ebb478a999812cc8f9ab04a32a739d1e0aae88a62766033f4b227d2dbaf09947",
+    "document_count": 10215,
+    "skipped_count": 0,
+    "sources": {
+      "django_docs": 5,
+      "docker_docs": 12,
+      "postgresql_docs": 24,
+      "python_docs": 7,
+      "stackexchange": 10167
+    },
+    "algorithm": "goal-paragraph-coverage-mmr-v3",
+    "paragraph_count": 222579,
+    "spark_application_id": "local-1790330763374",
+    "spark_master": "local[1]",
+    "index_path": "/home/lengjing1236/knowpipe/state/feature009/scale-index/ebb478a999812cc8f9ab04a32a739d1e0aae88a62766033f4b227d2dbaf09947/index-351vn426",
+    "strategy": "full",
+    "rebuild_reason": "initial",
+    "idf_basis_corpus_id": "ebb478a999812cc8f9ab04a32a739d1e0aae88a62766033f4b227d2dbaf09947",
+    "basis_document_count": 10215,
+    "basis_paragraph_count": 222579,
+    "idf_policy": "frozen_base_extend_zero_df",
+    "incremental_generation": 0,
+    "cumulative_changed_documents": 0,
+    "changed_documents": 10215,
+    "reused_documents": 0,
+    "feature_id": "f93bc2a99c9575d940d581920e5a508ab9242b281cb9f33ae8cb2d5f9cec96e9",
+    "preparation_seconds": 287.42
+  },
+  "recommendation": {
+    "seconds": 103.56,
+    "items": [
+      {
+        "source": "stackexchange",
+        "doc_id": "stackoverflow-79965834",
+        "title": "Can't rollback a spring transaction",
+        "source_url": "https://stackoverflow.com/questions/79965834/cant-rollback-a-spring-transaction",
+        "content_version": "5c65c7e5d7bdec2e2a9900723b995de252b54ab1ff5b0e3e2fb2ac14550fa7d5",
+        "doc_key": "daf8b43f5f0f91b834803a64b2484d21b20f5397f7332a3c6db6a48ea847f473",
+        "rank": 1,
+        "selection_score": 0.573226429252996,
+        "relevance": 0.6743840344152895,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 0,
+          "end": 35,
+          "text": "Can't rollback a spring transaction",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "fc336d4634aec2acbbeafde6885567853d4364923aa9718e3368f6a41e630895",
+            "start": 0,
+            "end": 35,
+            "text": "Can't rollback a spring transaction",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "python_docs",
+        "doc_id": "library/sqlite3.html",
+        "title": "sqlite3 --- SQLite 数据库的 DB-API 2.0 接口",
+        "source_url": "https://docs.python.org/zh-cn/3/library/sqlite3.html",
+        "content_version": "c4714dde37756b5c559b5fe274186f642c650c0b50acad6c5893c83d390acf62",
+        "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+        "rank": 2,
+        "selection_score": 0.41837426275376877,
+        "relevance": 0.5920610900472236,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 42655,
+          "end": 42681,
+          "text": "事务应当显式地使用 rollback() 执行回滚。",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "62f09434485861fba47dad36ede4a4627762454b30b5982953009faa340e5295",
+            "start": 42655,
+            "end": 42681,
+            "text": "事务应当显式地使用 rollback() 执行回滚。",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "dba-338360",
+        "title": "Does a transaction have to fit in memory?",
+        "source_url": "https://dba.stackexchange.com/questions/338360/does-a-transaction-have-to-fit-in-memory",
+        "content_version": "072d5215585fece9480468f758a87c8dcdf791eee765ca4799c42a429e319da2",
+        "doc_key": "1a9bc25add62f8b26b740d0f1e7b3fc79b5f1f267a3f651cc6b2d47d743b2c02",
+        "rank": 3,
+        "selection_score": 0.39511378730637825,
+        "relevance": 0.5310539398109766,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 1088,
+          "end": 1560,
+          "text": "In case you wonder how PostgreSQL can rollback a large transaction if it does not have the data from that transaction in memory: PostgreSQL never actually performs a rollback. If you run ROLLBACK (or an error aborts the transaction), all that happens is that the transaction is marked as \"aborted\" in the commit log, so that all the data it wrote become invisible. The data from an aborted transaction remain stored in the table until the next autovacuum run removes them.",
+          "matched_terms": [
+            "postgresql",
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "6bca7f338b9eac6e3af51fd30ff1f90aaed4cef9cc603a94c2e2e076a3a2dbbf",
+            "start": 1088,
+            "end": 1560,
+            "text": "In case you wonder how PostgreSQL can rollback a large transaction if it does not have the data from that transaction in memory: PostgreSQL never actually performs a rollback. If you run ROLLBACK (or an error aborts the transaction), all that happens is that the transaction is marked as \"aborted\" in the commit log, so that all the data it wrote become invisible. The data from an aborted transaction remain stored in the table until the next autovacuum run removes them.",
+            "matched_terms": [
+              "postgresql",
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 1.0,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "dba-335663",
+        "title": "Unique index on computed column when contributing columns are already unique",
+        "source_url": "https://dba.stackexchange.com/questions/335663/unique-index-on-computed-column-when-contributing-columns-are-already-unique",
+        "content_version": "18c0e2c8e3d8c02cfdafebb4fbae15ffad0d0e24d330c10ec2d94c048c504a94",
+        "doc_key": "42bbebde4e9ec41b5ca340df09a3095f45ae0968f353b8e80e3441d3c8e2eab5",
+        "rank": 4,
+        "selection_score": 0.3814803835034007,
+        "relevance": 0.5331549187620919,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 1695,
+          "end": 1762,
+          "text": "ELSE\nBEGIN\n  ROLLBACK TRANSACTION;\n  ...  /* report failure */\nEND;",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "7dd6973c1a17e0e45e12e4c4a461b5e28106bce80dd33bd1ec4b3656d4e495b5",
+            "start": 1695,
+            "end": 1762,
+            "text": "ELSE\nBEGIN\n  ROLLBACK TRANSACTION;\n  ...  /* report failure */\nEND;",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "django_docs",
+        "doc_id": "topics/db/transactions",
+        "title": "数据库事务",
+        "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/transactions/",
+        "content_version": "745c108cdfca2641c852db082d835ef3f7bec38f3c4379b14760909400444e4b",
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "rank": 5,
+        "selection_score": 0.3773478107642979,
+        "relevance": 0.5273792574744515,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 9149,
+          "end": 9162,
+          "text": "回滚事务来保存 sid 。",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "44b038dd00d95115c02eb95a1771521a5e8e94f630fb2a406e05c79a29993fef",
+            "start": 9149,
+            "end": 9162,
+            "text": "回滚事务来保存 sid 。",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "softwareengineering-444712",
+        "title": "Is it needed a unit of work with DDD?",
+        "source_url": "https://softwareengineering.stackexchange.com/questions/444712/is-it-needed-a-unit-of-work-with-ddd",
+        "content_version": "eea4d78e1e7037834490548180629103de392d69340742c5171df24e1d3ce393",
+        "doc_key": "041969a5c8e8a8e1143f97869622ecb5d438e971db1bd175cf56747b7300c5c0",
+        "rank": 6,
+        "selection_score": 0.3608914631288116,
+        "relevance": 0.49817771845497494,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 1814,
+          "end": 1940,
+          "text": "(2) Commit: Open transactions, dump changes to the database and commit/rollback. Everything in a single place and transaction.",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "ef2ba44839c958611d5809034c9d63a38ca335030b7d575cc624e9e0c045f5f7",
+            "start": 1814,
+            "end": 1940,
+            "text": "(2) Commit: Open transactions, dump changes to the database and commit/rollback. Everything in a single place and transaction.",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "dba-350453",
+        "title": "Postgresql integrating transactions with external transactional resource",
+        "source_url": "https://dba.stackexchange.com/questions/350453/postgresql-integrating-transactions-with-external-transactional-resource",
+        "content_version": "ddf9fc1fb27144ef172cb100236a6acc88e3fe41bc8968c4c02e84d3988dbd06",
+        "doc_key": "b7766fa123eba23f944d5a8fedf308a4d29488f807d4e670819fe76967d8ca97",
+        "rank": 7,
+        "selection_score": 0.3375869099268667,
+        "relevance": 0.4667201858154453,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 2375,
+          "end": 2576,
+          "text": "So you have to teach your distributed transaction coordinator to use PostgreSQL's START TRANSACTION, PREPARE TRANSACTION, COMMIT PREPARED and ROLLBACK PREPARED to perform the two-phase commit protocol.",
+          "matched_terms": [
+            "postgresql",
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "4475a2700e51d791fa769da80d2650e24e4ddd5734ed791d46aa78d0b5a3d501",
+            "start": 2375,
+            "end": 2576,
+            "text": "So you have to teach your distributed transaction coordinator to use PostgreSQL's START TRANSACTION, PREPARE TRANSACTION, COMMIT PREPARED and ROLLBACK PREPARED to perform the two-phase commit protocol.",
+            "matched_terms": [
+              "postgresql",
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 1.0,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "dba-338374",
+        "title": "How to avoid database deadlocks?",
+        "source_url": "https://dba.stackexchange.com/questions/338374/how-to-avoid-database-deadlocks",
+        "content_version": "b304c7803f79fdbb870025b17a7b8a0db8e33284e51e0820b7406b4f2121b519",
+        "doc_key": "8602c25bf6627dd5403bd9cabdbfb1fabaaa7e0a11054b50d43d59110e11f892",
+        "rank": 8,
+        "selection_score": 0.3346885834998003,
+        "relevance": 0.4677589523940617,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 6611,
+          "end": 6706,
+          "text": "One of the transactions will eventually be selected to rollback allowing the other to complete.",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "d61f1694c19cdc67e5a0c179c6e0b17af5a20320681af310ec571dc9b83acf8d",
+            "start": 6611,
+            "end": 6706,
+            "text": "One of the transactions will eventually be selected to rollback allowing the other to complete.",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "dba-347715",
+        "title": "Why didn't the transaction fail?",
+        "source_url": "https://dba.stackexchange.com/questions/347715/why-didnt-the-transaction-fail",
+        "content_version": "88fce4ff0ba9d3359596f535ecdf9cbf68d257b243faa3fa5ebc080e66b221dd",
+        "doc_key": "d58832721b1fc28e8489f5404ba146e60fb611b03723e45445ea9d9a3f8b7dc8",
+        "rank": 9,
+        "selection_score": 0.31457972618816493,
+        "relevance": 0.44060722654805085,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 3698,
+          "end": 3916,
+          "text": "You have to explicitly set it ON (SET XACT_ABORT ON) before beginning the transaction if you want the entire transaction to abort and rollback whenever any statement within the scope of the transaction throws an error:",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "593ef01bf051cdbd2ff0d78f7dc028c8448128fbdcf780946ecc6be9a64dd292",
+            "start": 3698,
+            "end": 3916,
+            "text": "You have to explicitly set it ON (SET XACT_ABORT ON) before beginning the transaction if you want the entire transaction to abort and rollback whenever any statement within the scope of the transaction throws an error:",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "stackoverflow-80003232",
+        "title": "Postgres row-level security leaks across tenants when using a pooled connection",
+        "source_url": "https://stackoverflow.com/questions/80003232/postgres-row-level-security-leaks-across-tenants-when-using-a-pooled-connection",
+        "content_version": "dc028c18154b162d375911921c6a5a7d28bd989f418655a65301466a0b9e595d",
+        "doc_key": "035bacb81ba094460f75c7c9afcec9d36ecb5ffbfb5187ddea69cf424ec673da",
+        "rank": 10,
+        "selection_score": 0.2962169165641278,
+        "relevance": 0.4139911589590216,
+        "history_overlap": 0.0,
+        "reason": "goal_only",
+        "goal_evidence": {
+          "start": 5927,
+          "end": 6026,
+          "text": "If there was no transaction in progress in the released connection, rollback only raises a warning.",
+          "matched_terms": [
+            "rollback",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "supplement_evidence": {
+          "status": "insufficient_history",
+          "method": "goal-gated-lexical-comparison-v1",
+          "candidate": {
+            "pid": "fc20afafcb073f69c4c1d33777e1c4345d19976a270aaac1148a3d18a4fc4de2",
+            "start": 5927,
+            "end": 6026,
+            "text": "If there was no transaction in progress in the released connection, rollback only raises a warning.",
+            "matched_terms": [
+              "rollback",
+              "transaction"
+            ]
+          },
+          "comparison": null,
+          "overlap": 0.0,
+          "goal_coverage": 0.6666666666666666,
+          "shared_context_terms": [],
+          "additional_terms": [],
+          "compared_history_paragraphs": 0,
+          "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+        },
+        "supplement_eligible": false
+      }
+    ],
+    "baseline": [
+      {
+        "doc_key": "daf8b43f5f0f91b834803a64b2484d21b20f5397f7332a3c6db6a48ea847f473",
+        "relevance": 0.6743840344152895,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+        "relevance": 0.5920610900472236,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "42bbebde4e9ec41b5ca340df09a3095f45ae0968f353b8e80e3441d3c8e2eab5",
+        "relevance": 0.5331549187620919,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "1a9bc25add62f8b26b740d0f1e7b3fc79b5f1f267a3f651cc6b2d47d743b2c02",
+        "relevance": 0.5310539398109766,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "relevance": 0.5273792574744515,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "041969a5c8e8a8e1143f97869622ecb5d438e971db1bd175cf56747b7300c5c0",
+        "relevance": 0.49817771845497494,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "8602c25bf6627dd5403bd9cabdbfb1fabaaa7e0a11054b50d43d59110e11f892",
+        "relevance": 0.4677589523940617,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "b7766fa123eba23f944d5a8fedf308a4d29488f807d4e670819fe76967d8ca97",
+        "relevance": 0.4667201858154453,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "d58832721b1fc28e8489f5404ba146e60fb611b03723e45445ea9d9a3f8b7dc8",
+        "relevance": 0.44060722654805085,
+        "history_overlap": 0.0
+      },
+      {
+        "doc_key": "2548fac660265545758d890ad849f9622a787b4c7b3421b8a17d621f9d167325",
+        "relevance": 0.4337299518715826,
+        "history_overlap": 0.0
+      }
+    ],
+    "without_history": [
+      {
+        "doc_key": "daf8b43f5f0f91b834803a64b2484d21b20f5397f7332a3c6db6a48ea847f473",
+        "rank": 1,
+        "score": 0.573226429252996
+      },
+      {
+        "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+        "rank": 2,
+        "score": 0.41837426275376877
+      },
+      {
+        "doc_key": "1a9bc25add62f8b26b740d0f1e7b3fc79b5f1f267a3f651cc6b2d47d743b2c02",
+        "rank": 3,
+        "score": 0.39511378730637825
+      },
+      {
+        "doc_key": "42bbebde4e9ec41b5ca340df09a3095f45ae0968f353b8e80e3441d3c8e2eab5",
+        "rank": 4,
+        "score": 0.3814803835034007
+      },
+      {
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "rank": 5,
+        "score": 0.3773478107642979
+      },
+      {
+        "doc_key": "041969a5c8e8a8e1143f97869622ecb5d438e971db1bd175cf56747b7300c5c0",
+        "rank": 6,
+        "score": 0.3608914631288116
+      },
+      {
+        "doc_key": "b7766fa123eba23f944d5a8fedf308a4d29488f807d4e670819fe76967d8ca97",
+        "rank": 7,
+        "score": 0.3375869099268667
+      },
+      {
+        "doc_key": "8602c25bf6627dd5403bd9cabdbfb1fabaaa7e0a11054b50d43d59110e11f892",
+        "rank": 8,
+        "score": 0.3346885834998003
+      },
+      {
+        "doc_key": "d58832721b1fc28e8489f5404ba146e60fb611b03723e45445ea9d9a3f8b7dc8",
+        "rank": 9,
+        "score": 0.31457972618816493
+      },
+      {
+        "doc_key": "035bacb81ba094460f75c7c9afcec9d36ecb5ffbfb5187ddea69cf424ec673da",
+        "rank": 10,
+        "score": 0.2962169165641278
+      }
+    ],
+    "without_diversity": [
+      {
+        "doc_key": "daf8b43f5f0f91b834803a64b2484d21b20f5397f7332a3c6db6a48ea847f473",
+        "rank": 1,
+        "score": 0.6743840344152895
+      },
+      {
+        "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+        "rank": 2,
+        "score": 0.5920610900472236
+      },
+      {
+        "doc_key": "42bbebde4e9ec41b5ca340df09a3095f45ae0968f353b8e80e3441d3c8e2eab5",
+        "rank": 3,
+        "score": 0.5331549187620919
+      },
+      {
+        "doc_key": "1a9bc25add62f8b26b740d0f1e7b3fc79b5f1f267a3f651cc6b2d47d743b2c02",
+        "rank": 4,
+        "score": 0.5310539398109766
+      },
+      {
+        "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+        "rank": 5,
+        "score": 0.5273792574744515
+      },
+      {
+        "doc_key": "041969a5c8e8a8e1143f97869622ecb5d438e971db1bd175cf56747b7300c5c0",
+        "rank": 6,
+        "score": 0.49817771845497494
+      },
+      {
+        "doc_key": "8602c25bf6627dd5403bd9cabdbfb1fabaaa7e0a11054b50d43d59110e11f892",
+        "rank": 7,
+        "score": 0.4677589523940617
+      },
+      {
+        "doc_key": "b7766fa123eba23f944d5a8fedf308a4d29488f807d4e670819fe76967d8ca97",
+        "rank": 8,
+        "score": 0.4667201858154453
+      },
+      {
+        "doc_key": "d58832721b1fc28e8489f5404ba146e60fb611b03723e45445ea9d9a3f8b7dc8",
+        "rank": 9,
+        "score": 0.44060722654805085
+      },
+      {
+        "doc_key": "2548fac660265545758d890ad849f9622a787b4c7b3421b8a17d621f9d167325",
+        "rank": 10,
+        "score": 0.4337299518715826
+      }
+    ],
+    "history_used": 0,
+    "history_unavailable": 0,
+    "history_references": [],
+    "algorithm": "goal-paragraph-coverage-mmr-v3",
+    "parameters": {
+      "candidates": 100,
+      "paragraphs_per_document": 3,
+      "top_k": 10,
+      "min_relevance": 0.08,
+      "min_query_coverage": 0.5,
+      "history_weight": 0.4,
+      "diversity_weight": 0.15,
+      "duplicate_threshold": 0.95,
+      "supplement_min_overlap": 0.08,
+      "supplement_max_overlap": 0.7,
+      "supplement_min_additional_terms": 2
+    },
+    "reason": null,
+    "history_relevant_paragraphs": 0
+  },
+  "language_probe": {
+    "scope": "illustrative language-coverage probe, not independently labelled evaluation",
+    "cases": [
+      {
+        "goal": "理解操作系统的进程调度原理",
+        "seconds": 15.39,
+        "items": [],
+        "reason": "no_relevant_candidates"
+      },
+      {
+        "goal": "operating system process scheduling",
+        "seconds": 23.58,
+        "items": [
+          {
+            "title": "How to Design a Secure Script for Conditional File Access Based on Time and API Conditions?",
+            "source": "stackexchange",
+            "doc_id": "softwareengineering-453671"
+          },
+          {
+            "title": "How to set the nice value of GPIO interrupt using busybox's htop?",
+            "source": "stackexchange",
+            "doc_id": "unix-793443"
+          },
+          {
+            "title": "What causes unpredictability when doing multi threading",
+            "source": "stackexchange",
+            "doc_id": "softwareengineering-443221"
+          },
+          {
+            "title": "How to unmount a drive while a container is running?",
+            "source": "stackexchange",
+            "doc_id": "unix-792884"
+          },
+          {
+            "title": "Can we say that starvation-free implies deadlock-free?",
+            "source": "stackexchange",
+            "doc_id": "cs-176459"
+          },
+          {
+            "title": "Handle data layer when using DDD",
+            "source": "stackexchange",
+            "doc_id": "softwareengineering-448369"
+          },
+          {
+            "title": "Still confused why a monolithic operating system is faster than a layered operating system",
+            "source": "stackexchange",
+            "doc_id": "softwareengineering-441310"
+          },
+          {
+            "title": "I Don't Understand Nothing About Operating Systems even After reading books",
+            "source": "stackexchange",
+            "doc_id": "cs-159704"
+          },
+          {
+            "title": "Why is a program operating system dependent?",
+            "source": "stackexchange",
+            "doc_id": "cs-170816"
+          },
+          {
+            "title": "MS SQL backup to rustfs gives Operating system error 12175",
+            "source": "stackexchange",
+            "doc_id": "serverfault-1199634"
+          }
+        ],
+        "reason": null
+      }
+    ]
+  },
+  "resources": {
+    "master": "local[1]",
+    "application_id": "local-1790330763374",
+    "driver_memory": "768m",
+    "note": "single-host local Spark; not a distributed multi-host cluster"
+  },
+  "elapsed_seconds": 449.8
+}

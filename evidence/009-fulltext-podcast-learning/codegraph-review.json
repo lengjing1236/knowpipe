@@ -1,0 +1,38 @@
+{
+  "purpose": "Feature009 four-layer boundary review",
+  "indexed": "13 target paths; tool reported 44 files including discovered dependencies, 0 failures",
+  "dependency": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"edges\":[{\"from\":\"1113\",\"to\":\"1129\",\"type\":\"import\"},{\"from\":\"1113\",\"to\":\"1131\",\"type\":\"import\"},{\"from\":\"1113\",\"to\":\"1130\",\"type\":\"import\"},{\"from\":\"1113\",\"to\":\"1133\",\"type\":\"import\"},{\"from\":\"1113\",\"to\":\"1132\",\"type\":\"import\"}],\"nodes\":[{\"id\":\"1130\",\"is_external\":false,\"language\":\"unknown\",\"name\":\"flask\",\"path\":\"\",\"type\":\"module\"},{\"id\":\"1113\",\"is_external\":false,\"language\":\"python\",\"name\":\"routes_learning\",\"path\":\"/home/lengjing1236/knowpipe/knowpipe/web/routes_learning.py\",\"type\":\"codefile\"},{\"id\":\"1129\",\"is_external\":false,\"language\":\"unknown\",\"name\":\"re\",\"path\":\"\",\"type\":\"module\"},{\"id\":\"1133\",\"is_external\":false,\"language\":\"unknown\",\"name\":\"..recommendations\",\"path\":\"\",\"type\":\"module\"},{\"id\":\"1132\",\"is_external\":false,\"language\":\"unknown\",\"name\":\"..learning\",\"path\":\"\",\"type\":\"module\"},{\"id\":\"1131\",\"is_external\":false,\"language\":\"unknown\",\"name\":\".\",\"path\":\"\",\"type\":\"module\"}]}"
+        }
+      ]
+    }
+  },
+  "worker_calls": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"edges\":[],\"message\":\"Could not find symbol at location\",\"nodes\":[]}"
+        }
+      ]
+    }
+  },
+  "route_calls": {
+    "status": "fulfilled",
+    "value": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\"edges\":[{\"from\":\"1128\",\"to\":\"1114\",\"type\":\"calls\"}],\"fallback_message\":\"No symbol at line 115. Using nearest symbol 'refresh_recommendations' instead.\",\"nodes\":[{\"col_end\":10000,\"col_start\":0,\"depth\":1,\"id\":\"1114\",\"language\":\"\",\"line_end\":16,\"line_start\":15,\"name\":\"_db\",\"path\":\"/home/lengjing1236/knowpipe/knowpipe/web/routes_learning.py\",\"signature\":\"_db\"}],\"root\":\"1128\",\"root_node\":{\"col_end\":10000,\"col_start\":0,\"depth\":0,\"id\":\"1128\",\"language\":\"\",\"line_end\":119,\"line_start\":116,\"name\":\"refresh_recommendations\",\"path\":\"/home/lengjing1236/knowpipe/knowpipe/web/routes_learning.py\",\"signature\":\"refresh_recommendations\"},\"symbol_name\":\"refresh_recommendations\",\"used_fallback\":true}"
+        }
+      ]
+    }
+  },
+  "limitations": "Python relative imports returned unresolved module nodes; worker method location not resolved. The graph alone cannot prove the complete call chain. Confirmed with source reads and real runtime evidence instead."
+}

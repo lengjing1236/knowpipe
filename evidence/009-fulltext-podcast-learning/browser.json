@@ -1,0 +1,17 @@
+{
+  "scope": "real scale result Web presentation, actual selected-document translation, RSS form and account isolation",
+  "source_scale": "scale.json",
+  "screens": [
+    "learning-desktop.png",
+    "chinese-reading.png",
+    "podcasts-desktop.png",
+    "podcasts-mobile.png"
+  ],
+  "page_errors": [],
+  "status": "passed",
+  "mobile_overflow": false,
+  "chinese_reading": true,
+  "opening_does_not_mark_read": true,
+  "subscription_add_remove": true,
+  "old_goal_cards_removed": true
+}

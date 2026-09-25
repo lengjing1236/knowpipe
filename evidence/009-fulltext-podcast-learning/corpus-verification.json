@@ -1,0 +1,13 @@
+{
+  "verified_documents": 10179,
+  "verified_original_answers": 15751,
+  "verified_code_blocks": 27851,
+  "original_providers": {
+    "Python Software Foundation": 7,
+    "Django Software Foundation": 5,
+    "Stack Exchange": 10167
+  },
+  "corpus_sha256": "dd31832bfe87c4371c3e8f67c76297eee831c449a2fa00641b7a235ab37fdf51",
+  "validation": "cached source response hashes, answer completeness, author coverage and exact code preservation",
+  "does_not_establish": "answer correctness, learning benefit, image understanding, translation quality"
+}

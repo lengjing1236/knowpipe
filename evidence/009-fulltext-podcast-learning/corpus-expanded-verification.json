@@ -1,0 +1,17 @@
+{
+  "verified_documents": 10215,
+  "verified_original_answers": 15751,
+  "verified_code_blocks": 27851,
+  "verified_official_documents": 48,
+  "verified_official_code_blocks": 779,
+  "original_providers": {
+    "Python Software Foundation": 7,
+    "Django Software Foundation": 5,
+    "Stack Exchange": 10167,
+    "PostgreSQL Global Development Group": 24,
+    "Docker, Inc. and contributors": 12
+  },
+  "corpus_sha256": "ecf155020ecb4c0813632f7b523608be5b08a9b073cb7b7aa64861e2ed24a37e",
+  "validation": "cached source response hashes, answer completeness, author coverage and exact code preservation",
+  "does_not_establish": "answer correctness, learning benefit, image understanding, translation quality"
+}

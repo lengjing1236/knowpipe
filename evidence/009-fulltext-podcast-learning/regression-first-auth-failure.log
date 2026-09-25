@@ -1,0 +1,18 @@
+..............................F......................................... [ 40%]
+........................................................................ [ 80%]
+..................................                                       [100%]
+=================================== FAILURES ===================================
+______ LearningRoutesTests.test_goal_persists_is_idempotent_and_isolated _______
+
+self = <tests.learning.test_routes.LearningRoutesTests testMethod=test_goal_persists_is_idempotent_and_isolated>
+
+    def test_goal_persists_is_idempotent_and_isolated(self):
+        for _ in range(2):
+            resp = self.put("goal", {"text": "  理解 Redis 持久化  "})
+>           self.assertEqual(resp.status_code, 200)
+E           AssertionError: 401 != 200
+
+tests/learning/test_routes.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED tests/learning/test_routes.py::LearningRoutesTests::test_goal_persists_is_idempotent_and_isolated
+1 failed, 177 passed in 47.81s

@@ -1,0 +1,19 @@
+{
+  "database": "knowpipe_scale009_be3ded4ac5444204bb619ff4d618adf4",
+  "scope": "real public fulltext scale and traceable retrieval; not learning-effectiveness proof",
+  "goal": "PostgreSQL 事务 transaction rollback",
+  "status": "failed",
+  "started_at": "2026-09-25T09:54:56Z",
+  "source": {
+    "path": "state/feature009/corpus-expanded/documents.jsonl",
+    "sha256": "ecf155020ecb4c0813632f7b523608be5b08a9b073cb7b7aa64861e2ed24a37e"
+  },
+  "mongo": {
+    "version": "7.0.14",
+    "imported": 10215,
+    "seconds": 58.76
+  },
+  "error_type": "ConnectionRefusedError",
+  "error": "[Errno 111] Connection refused",
+  "elapsed_seconds": 166.17
+}

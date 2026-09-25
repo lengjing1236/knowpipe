@@ -1,0 +1,180 @@
+imported {'version': '7.0.14', 'imported': 10215, 'seconds': 58.76}
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 17:55:59 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1][Stage 0:>                                                          (0 + 1) / 1]26/09/25 17:57:10 WARN MemoryStore: Not enough space to cache rdd_6_0 in memory! (computed 83.7 MiB so far)
+26/09/25 17:57:10 WARN BlockManager: Persisting block rdd_6_0 to disk instead.
+26/09/25 17:57:12 WARN MemoryStore: Not enough space to cache rdd_6_0 in memory! (computed 83.7 MiB so far)
+[Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                26/09/25 17:57:23 WARN RowBasedKeyValueBatch: Failed to allocate page (4194288 bytes).
+[Stage 5:>                                                          (0 + 1) / 1]26/09/25 17:57:33 ERROR Executor: Exception in task 0.0 in stage 5.0 (TID 4)
+java.lang.OutOfMemoryError: Java heap space
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillReader.<init>(UnsafeSorterSpillReader.java:54)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillWriter.getReader(UnsafeSorterSpillWriter.java:159)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.getSortedIterator(UnsafeExternalSorter.java:606)
+	at org.apache.spark.sql.execution.UnsafeKVExternalSorter.sortedIterator(UnsafeKVExternalSorter.java:212)
+	at org.apache.spark.sql.execution.aggregate.HashAggregateExec.finishAggregate(HashAggregateExec.scala:225)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.hashAgg_doAggregateWithKeys_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:44)
+	at org.apache.spark.sql.execution.WholeStageCodegenEvaluatorFactory$WholeStageCodegenPartitionEvaluator$$anon$1.hasNext(WholeStageCodegenEvaluatorFactory.scala:50)
+	at scala.collection.Iterator$$anon$9.hasNext(Iterator.scala:593)
+	at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:153)
+	at org.apache.spark.shuffle.ShuffleWriteProcessor.write(ShuffleWriteProcessor.scala:57)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:111)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:54)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:206)
+	at org.apache.spark.scheduler.Task.run(Task.scala:147)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:894)
+	at org.apache.spark.executor.Executor$TaskRunner$$Lambda$3526/0x00007f0609057cd8.apply(Unknown Source)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:86)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:83)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:97)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:897)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/09/25 17:57:33 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 0.0 in stage 5.0 (TID 4),5,main]
+java.lang.OutOfMemoryError: Java heap space
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillReader.<init>(UnsafeSorterSpillReader.java:54)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillWriter.getReader(UnsafeSorterSpillWriter.java:159)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.getSortedIterator(UnsafeExternalSorter.java:606)
+	at org.apache.spark.sql.execution.UnsafeKVExternalSorter.sortedIterator(UnsafeKVExternalSorter.java:212)
+	at org.apache.spark.sql.execution.aggregate.HashAggregateExec.finishAggregate(HashAggregateExec.scala:225)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.hashAgg_doAggregateWithKeys_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:44)
+	at org.apache.spark.sql.execution.WholeStageCodegenEvaluatorFactory$WholeStageCodegenPartitionEvaluator$$anon$1.hasNext(WholeStageCodegenEvaluatorFactory.scala:50)
+	at scala.collection.Iterator$$anon$9.hasNext(Iterator.scala:593)
+	at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:153)
+	at org.apache.spark.shuffle.ShuffleWriteProcessor.write(ShuffleWriteProcessor.scala:57)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:111)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:54)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:206)
+	at org.apache.spark.scheduler.Task.run(Task.scala:147)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:894)
+	at org.apache.spark.executor.Executor$TaskRunner$$Lambda$3526/0x00007f0609057cd8.apply(Unknown Source)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:86)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:83)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:97)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:897)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/09/25 17:57:33 WARN TaskSetManager: Lost task 0.0 in stage 5.0 (TID 4) (localhost executor driver): java.lang.OutOfMemoryError: Java heap space
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillReader.<init>(UnsafeSorterSpillReader.java:54)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeSorterSpillWriter.getReader(UnsafeSorterSpillWriter.java:159)
+	at org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter.getSortedIterator(UnsafeExternalSorter.java:606)
+	at org.apache.spark.sql.execution.UnsafeKVExternalSorter.sortedIterator(UnsafeKVExternalSorter.java:212)
+	at org.apache.spark.sql.execution.aggregate.HashAggregateExec.finishAggregate(HashAggregateExec.scala:225)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.hashAgg_doAggregateWithKeys_0$(Unknown Source)
+	at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)
+	at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:44)
+	at org.apache.spark.sql.execution.WholeStageCodegenEvaluatorFactory$WholeStageCodegenPartitionEvaluator$$anon$1.hasNext(WholeStageCodegenEvaluatorFactory.scala:50)
+	at scala.collection.Iterator$$anon$9.hasNext(Iterator.scala:593)
+	at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:153)
+	at org.apache.spark.shuffle.ShuffleWriteProcessor.write(ShuffleWriteProcessor.scala:57)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:111)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:54)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:206)
+	at org.apache.spark.scheduler.Task.run(Task.scala:147)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:894)
+	at org.apache.spark.executor.Executor$TaskRunner$$Lambda$3526/0x00007f0609057cd8.apply(Unknown Source)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:86)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:83)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:97)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:897)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+26/09/25 17:57:33 ERROR TaskSetManager: Task 0 in stage 5.0 failed 1 times; aborting job
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 47509)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/socketserver.py", line 316, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.10/socketserver.py", line 347, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 329, in handle
+    poll(accum_updates)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 293, in poll
+    if self.rfile.fileno() in r and func():
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 300, in accum_updates
+    num_updates = read_int(self.rfile)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/serializers.py", line 575, in read_int
+    raise EOFError
+EOFError
+----------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/knowpipe/recommendations/index.py", line 92, in build_index
+    terms.write.mode('overwrite').parquet(str(output / 'terms'))
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/readwriter.py", line 2093, in parquet
+    self._jwrite.parquet(path)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 251, in deco
+    return f(*a, **kw)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/protocol.py", line 327, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: <exception str() failed>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 540, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_scale009.py", line 55, in main
+    snapshot=build_index(spark,prepare_snapshot(db,args.index_root))
+  File "/home/lengjing1236/knowpipe/knowpipe/recommendations/index.py", line 109, in build_index
+    parts.unpersist()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/classic/dataframe.py", line 563, in unpersist
+    self._jdf.unpersist(blocking)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1361, in __call__
+    answer = self.gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1057, in send_command
+    response = self.send_command(command, retry, binary=binary)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 438, in connect_to_java_server
+    self.socket.connect((self.java_address, self.java_port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_scale009.py", line 101, in <module>
+    if __name__=='__main__':main()
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_scale009.py", line 97, in main
+    if spark:spark.stop()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/session.py", line 2150, in stop
+    self._sc.stop()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 703, in stop
+    self._jsc.stop()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1361, in __call__
+    answer = self.gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 438, in connect_to_java_server
+    self.socket.connect((self.java_address, self.java_port))
+ConnectionRefusedError: [Errno 111] Connection refused

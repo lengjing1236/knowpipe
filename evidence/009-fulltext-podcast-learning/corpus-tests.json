@@ -1,0 +1,7 @@
+{
+  "command": "python3 -m unittest tests.corpus.test_sources tests.recommendations.test_importer -v",
+  "tests_passed": 19,
+  "failures": 0,
+  "scope": "source completeness, HTML code preservation, quota/backoff and bounded cache, provenance/import validation; includes 2 existing importer regressions; official PostgreSQL/Docker main containers, immutable base snapshot, real connection resets and Retry-After",
+  "real_source_verification": "corpus-expanded-verification.json"
+}

@@ -1,0 +1,107 @@
+{
+  "pause_reason": "释放单机内存，按根代理要求让ASR和集成验收先运行；查询/参数不变",
+  "completed": 8,
+  "query_ids": [
+    "74580",
+    "254339",
+    "78176",
+    "132074",
+    "127201",
+    "194321",
+    "111802",
+    "46513"
+  ],
+  "algorithm": "goal-paragraph-coverage-mmr-v2",
+  "parameters": {
+    "candidates": 100,
+    "paragraphs_per_document": 3,
+    "top_k": 10,
+    "min_relevance": 0.08,
+    "min_query_coverage": 0.5,
+    "history_weight": 0.4,
+    "diversity_weight": 0.15,
+    "duplicate_threshold": 0.95,
+    "supplement_min_overlap": 0.08,
+    "supplement_max_overlap": 0.7,
+    "supplement_min_additional_terms": 2
+  },
+  "corpus_id": "a86e12d4fa9a251718417b2dfa9b10d3294118166d6524c27080c56fe72b4f49",
+  "progress_sha256": "954b6e046a5309d23205b9abc0294f68c95522e079b2d632ea519ca67825494e",
+  "cohort": {
+    "prefix": "knowpipe-009-holdout:",
+    "count": 32,
+    "query_ids": [
+      "74580",
+      "254339",
+      "78176",
+      "132074",
+      "127201",
+      "194321",
+      "111802",
+      "46513",
+      "90438",
+      "158534",
+      "118301",
+      "3997",
+      "150633",
+      "51268",
+      "179002",
+      "159373",
+      "67960",
+      "237593",
+      "201041",
+      "55697",
+      "74493",
+      "221234",
+      "108395",
+      "18371",
+      "219028",
+      "78903",
+      "20653",
+      "175014",
+      "212575",
+      "240734",
+      "92393",
+      "229170"
+    ],
+    "selection": "SHA256(prefix + query_id) ascending; fixed before retrieval",
+    "files": {
+      "corpus.parquet": {
+        "sha256": "b8eefa212252fe5af6ee72ba530df053740ff30c2c0bea77089f8a9271e94f75",
+        "bytes": 20111039,
+        "origin": "https://huggingface.co/datasets/BeIR/cqadupstack/resolve/e84b7220ce5a4e6c49aeb568983b0ec5a7584c2c/programmers/corpus/corpus-00000-of-00001.parquet"
+      },
+      "queries.parquet": {
+        "sha256": "106ba4777034ccec608a623ac93b5cfad63d89effc64d0528759ea94e276345d",
+        "bytes": 41633,
+        "origin": "https://huggingface.co/datasets/BeIR/cqadupstack/resolve/e84b7220ce5a4e6c49aeb568983b0ec5a7584c2c/programmers/queries/queries-00000-of-00001.parquet"
+      },
+      "qrels.tsv": {
+        "sha256": "ed69afa873c64d34298792d694c82c4293e4b7e3c6ea3edc7a73662d4b0cba76",
+        "bytes": 27053,
+        "origin": "https://huggingface.co/datasets/BeIR/cqadupstack-qrels/resolve/13595a9f221256a9a21e91c8b0fed3563382b6a7/programmers/test.tsv"
+      }
+    }
+  },
+  "files": {
+    "corpus.parquet": {
+      "sha256": "b8eefa212252fe5af6ee72ba530df053740ff30c2c0bea77089f8a9271e94f75",
+      "bytes": 20111039,
+      "origin": "https://huggingface.co/datasets/BeIR/cqadupstack/resolve/e84b7220ce5a4e6c49aeb568983b0ec5a7584c2c/programmers/corpus/corpus-00000-of-00001.parquet"
+    },
+    "queries.parquet": {
+      "sha256": "106ba4777034ccec608a623ac93b5cfad63d89effc64d0528759ea94e276345d",
+      "bytes": 41633,
+      "origin": "https://huggingface.co/datasets/BeIR/cqadupstack/resolve/e84b7220ce5a4e6c49aeb568983b0ec5a7584c2c/programmers/queries/queries-00000-of-00001.parquet"
+    },
+    "qrels.tsv": {
+      "sha256": "ed69afa873c64d34298792d694c82c4293e4b7e3c6ea3edc7a73662d4b0cba76",
+      "bytes": 27053,
+      "origin": "https://huggingface.co/datasets/BeIR/cqadupstack-qrels/resolve/13595a9f221256a9a21e91c8b0fed3563382b6a7/programmers/test.tsv"
+    }
+  },
+  "algorithm_files": {
+    "engine.py": "e5dd37422414ef44e89cc659faf0366c56d1b3d9482c3a88e35c10abd9f77ebc",
+    "text.py": "3fb555591ee9707d246b6b2fda15d6b1bd14e9095fe161b8ec70e2016d1157b0"
+  }
+}

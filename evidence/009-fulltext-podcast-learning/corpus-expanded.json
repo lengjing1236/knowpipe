@@ -1,0 +1,363 @@
+{
+  "generated_at": "2026-09-25T09:53:15.776916+00:00",
+  "valid_documents": 10215,
+  "corpus_sha256": "ecf155020ecb4c0813632f7b523608be5b08a9b073cb7b7aa64861e2ed24a37e",
+  "sources": {
+    "python_docs": 7,
+    "django_docs": 5,
+    "stackexchange": 10167,
+    "postgresql_docs": 24,
+    "docker_docs": 12
+  },
+  "source_sites": {
+    "python_docs": 7,
+    "django_docs": 5,
+    "stackoverflow": 1653,
+    "dba": 1735,
+    "unix": 1689,
+    "serverfault": 1709,
+    "softwareengineering": 1650,
+    "cs": 1731,
+    "postgresql_docs": 24,
+    "docker_docs": 12
+  },
+  "original_providers": {
+    "Python Software Foundation": 7,
+    "Django Software Foundation": 5,
+    "Stack Exchange": 10167,
+    "PostgreSQL Global Development Group": 24,
+    "Docker, Inc. and contributors": 12
+  },
+  "topic_domains": {
+    "编程与开发": 1660,
+    "Web与数据库": 5,
+    "数据库": 1759,
+    "Unix与Linux": 1689,
+    "系统与网络运维": 1721,
+    "软件工程": 1650,
+    "计算机理论": 1731
+  },
+  "document_types": {
+    "official_document": 48,
+    "qa_thread": 10167
+  },
+  "top_tags": {
+    "sql-server": 719,
+    "postgresql": 575,
+    "algorithms": 383,
+    "linux": 359,
+    "python": 341,
+    "complexity-theory": 296,
+    "c++": 269,
+    "debian": 269,
+    "c#": 232,
+    "mysql": 225,
+    "bash": 216,
+    "graphs": 196,
+    "java": 193,
+    "ubuntu": 181,
+    "design": 154,
+    "design-patterns": 147,
+    "sql-server-2022": 146,
+    "time-complexity": 144,
+    "architecture": 139,
+    "javascript": 138,
+    "docker": 134,
+    "c": 133,
+    "windows": 131,
+    "nginx": 130,
+    "sql-server-2019": 129,
+    "networking": 129,
+    "turing-machines": 127,
+    "object-oriented": 119,
+    "domain-driven-design": 118,
+    "r": 114,
+    "ssh": 112,
+    "optimization": 112,
+    "mariadb": 111,
+    "security": 108,
+    "formal-languages": 106,
+    "performance": 103,
+    "systemd": 101,
+    "kubernetes": 101,
+    "finite-automata": 99,
+    "query-performance": 97
+  },
+  "duplicates": {},
+  "rejected": {},
+  "languages": {
+    "zh": 12,
+    "en": 10203
+  },
+  "post_license_versions_unavailable": {
+    "question": 10068
+  },
+  "creation_date_ranges": {
+    "编程与开发": [
+      "2026-04-04T11:50:03+00:00",
+      "2026-09-24T22:20:28+00:00"
+    ],
+    "数据库": [
+      "2023-12-03T09:35:00+00:00",
+      "2026-09-23T20:51:25+00:00"
+    ],
+    "Unix与Linux": [
+      "2025-01-22T02:17:18+00:00",
+      "2026-09-24T16:18:07+00:00"
+    ],
+    "系统与网络运维": [
+      "2024-03-02T23:14:14+00:00",
+      "2026-09-20T21:01:40+00:00"
+    ],
+    "软件工程": [
+      "2021-12-01T14:17:09+00:00",
+      "2026-09-09T13:15:25+00:00"
+    ],
+    "计算机理论": [
+      "2022-12-20T16:04:04+00:00",
+      "2026-09-10T01:43:51+00:00"
+    ]
+  },
+  "characters": 40868017,
+  "body_utf8_bytes": 41104683,
+  "paragraph_blocks": 300806,
+  "complete_answers": 15751,
+  "documents_with_media_references": 1464,
+  "maximum_document_bytes": 69526,
+  "counting_rule": "one complete Q&A thread or official page is one document; answers, paragraphs and translations are not additional documents",
+  "limitations": [
+    "Accepted answers and nonnegative scores are selection signals, not correctness labels.",
+    "Text and code are complete; external images are linked, not OCR-processed.",
+    "Newest accepted-question sampling does not represent all computer technology topics.",
+    "Question license version can be absent from the API; per-post returned licenses and policy are retained."
+  ],
+  "base_snapshot": {
+    "path": "/home/lengjing1236/knowpipe/state/feature009/corpus",
+    "corpus_sha256": "dd31832bfe87c4371c3e8f67c76297eee831c449a2fa00641b7a235ab37fdf51",
+    "documents": 10179
+  },
+  "supplement_documents": 36,
+  "supplement_sources": [
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/transaction-iso.html",
+      "title": "13.2. Transaction Isolation #",
+      "source_url": "https://www.postgresql.org/docs/18/transaction-iso.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/explicit-locking.html",
+      "title": "13.3. Explicit Locking #",
+      "source_url": "https://www.postgresql.org/docs/18/explicit-locking.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/mvcc-caveats.html",
+      "title": "13.6. Caveats #",
+      "source_url": "https://www.postgresql.org/docs/18/mvcc-caveats.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/mvcc-serialization-failure-handling.html",
+      "title": "13.5. Serialization Failure Handling #",
+      "source_url": "https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-types.html",
+      "title": "11.2. Index Types #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-types.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-multicolumn.html",
+      "title": "11.3. Multicolumn Indexes #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-multicolumn.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-ordering.html",
+      "title": "11.4. Indexes and ORDER BY #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-ordering.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-unique.html",
+      "title": "11.6. Unique Indexes #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-unique.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-expressional.html",
+      "title": "11.7. Indexes on Expressions #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-expressional.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-partial.html",
+      "title": "11.8. Partial Indexes #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-partial.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-index-only-scans.html",
+      "title": "11.9. Index-Only Scans and Covering Indexes #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-index-only-scans.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-bitmap-scans.html",
+      "title": "11.5. Combining Multiple Indexes #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-bitmap-scans.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-opclass.html",
+      "title": "11.10. Operator Classes and Operator Families #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-opclass.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-collations.html",
+      "title": "11.11. Indexes and Collations #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-collations.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/indexes-examine.html",
+      "title": "11.12. Examining Index Usage #",
+      "source_url": "https://www.postgresql.org/docs/18/indexes-examine.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/using-explain.html",
+      "title": "14.1. Using EXPLAIN #",
+      "source_url": "https://www.postgresql.org/docs/18/using-explain.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/planner-stats.html",
+      "title": "14.2. Statistics Used by the Planner #",
+      "source_url": "https://www.postgresql.org/docs/18/planner-stats.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/sql-explain.html",
+      "title": "EXPLAIN",
+      "source_url": "https://www.postgresql.org/docs/18/sql-explain.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/sql-createindex.html",
+      "title": "CREATE INDEX",
+      "source_url": "https://www.postgresql.org/docs/18/sql-createindex.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/ddl-partitioning.html",
+      "title": "5.12. Table Partitioning #",
+      "source_url": "https://www.postgresql.org/docs/18/ddl-partitioning.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/wal-intro.html",
+      "title": "28.3. Write-Ahead Logging (WAL) #",
+      "source_url": "https://www.postgresql.org/docs/18/wal-intro.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/wal-configuration.html",
+      "title": "28.5. WAL Configuration #",
+      "source_url": "https://www.postgresql.org/docs/18/wal-configuration.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/backup-dump.html",
+      "title": "25.1. SQL Dump #",
+      "source_url": "https://www.postgresql.org/docs/18/backup-dump.html"
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/continuous-archiving.html",
+      "title": "25.3. Continuous Archiving and Point-in-Time Recovery (PITR) #",
+      "source_url": "https://www.postgresql.org/docs/18/continuous-archiving.html"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network",
+      "title": "Networking overview",
+      "source_url": "https://docs.docker.com/engine/network/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network/drivers/bridge",
+      "title": "Bridge network driver",
+      "source_url": "https://docs.docker.com/engine/network/drivers/bridge/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network/drivers/host",
+      "title": "Host network driver",
+      "source_url": "https://docs.docker.com/engine/network/drivers/host/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network/drivers/overlay",
+      "title": "Overlay network driver",
+      "source_url": "https://docs.docker.com/engine/network/drivers/overlay/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network/drivers/macvlan",
+      "title": "Macvlan network driver",
+      "source_url": "https://docs.docker.com/engine/network/drivers/macvlan/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network/drivers/ipvlan",
+      "title": "IPvlan network driver",
+      "source_url": "https://docs.docker.com/engine/network/drivers/ipvlan/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/storage/volumes",
+      "title": "Volumes",
+      "source_url": "https://docs.docker.com/engine/storage/volumes/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/storage/bind-mounts",
+      "title": "Bind mounts",
+      "source_url": "https://docs.docker.com/engine/storage/bind-mounts/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/storage/tmpfs",
+      "title": "tmpfs mounts",
+      "source_url": "https://docs.docker.com/engine/storage/tmpfs/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/containers/resource_constraints",
+      "title": "Resource constraints",
+      "source_url": "https://docs.docker.com/engine/containers/resource_constraints/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/logging/configure",
+      "title": "Configure logging drivers",
+      "source_url": "https://docs.docker.com/engine/logging/configure/"
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/security/rootless",
+      "title": "Rootless mode",
+      "source_url": "https://docs.docker.com/engine/security/rootless/"
+    }
+  ],
+  "expected_supplement_documents": 36,
+  "target_met": true,
+  "network_requests": 10,
+  "cache_hits": 32,
+  "failures": []
+}

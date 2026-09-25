@@ -1,0 +1,143 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 17:30:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 12:>                                                         (0 + 1) / 1]                                                                                [Stage 13:>                                                         (0 + 1) / 1]                                                                                [Stage 17:>                                                         (0 + 1) / 1]                                                                                [Stage 18:>                                                         (0 + 1) / 1][Stage 20:>                                                         (0 + 1) / 1][Stage 23:>                                                         (0 + 1) / 1]                                                                                [Stage 24:>   (0 + 1) / 1][Stage 25:>   (0 + 0) / 1][Stage 26:>   (0 + 0) / 1][Stage 25:>   (0 + 1) / 1][Stage 26:>   (0 + 0) / 1][Stage 27:>   (0 + 0) / 1][Stage 26:>   (0 + 1) / 1][Stage 27:>   (0 + 0) / 1][Stage 29:>   (0 + 0) / 1][Stage 27:>   (0 + 1) / 1][Stage 29:>   (0 + 0) / 1][Stage 31:>   (0 + 0) / 1][Stage 29:>   (0 + 1) / 1][Stage 31:>   (0 + 0) / 1][Stage 33:>   (0 + 0) / 1][Stage 31:>   (0 + 1) / 1][Stage 33:>   (0 + 0) / 1][Stage 35:>   (0 + 0) / 1][Stage 31:>   (0 + 1) / 1][Stage 33:>   (0 + 1) / 1][Stage 35:>   (0 + 0) / 1][Stage 33:>   (0 + 1) / 1][Stage 35:>   (0 + 0) / 1][Stage 38:>   (0 + 0) / 1][Stage 35:>                 (0 + 1) / 1][Stage 38:>                 (0 + 0) / 1][Stage 38:>                                                         (0 + 1) / 1][Stage 38:>                 (0 + 1) / 1][Stage 41:>                 (0 + 1) / 1]                                                                                [Stage 44:>                 (0 + 1) / 1][Stage 47:>                 (0 + 0) / 1][Stage 47:>                                                         (0 + 1) / 1]                                                                                [Stage 55:>                                                         (0 + 1) / 1]                                                                                [Stage 59:>                                                         (0 + 1) / 1]                                                                                [Stage 60:>                                                         (0 + 1) / 1]                                                                                [Stage 63:>   (0 + 1) / 1][Stage 64:>   (0 + 0) / 1][Stage 65:>   (0 + 0) / 1][Stage 64:>   (0 + 1) / 1][Stage 65:>   (0 + 0) / 1][Stage 66:>   (0 + 0) / 1][Stage 66:>                                                         (0 + 1) / 1][Stage 66:>   (0 + 1) / 1][Stage 67:>   (0 + 0) / 1][Stage 68:>   (0 + 0) / 1][Stage 67:>                 (0 + 1) / 1][Stage 68:>                 (0 + 1) / 1]                                                                                [Stage 70:>                                                         (0 + 0) / 1][Stage 70:>                                                         (0 + 1) / 1]                                                                                [Stage 76:>                                                         (0 + 1) / 1][Stage 78:>                                                         (0 + 1) / 1][Stage 81:>                                                         (0 + 1) / 1]                                                                                [Stage 100:>                                                        (0 + 1) / 1][Stage 100:>  (0 + 1) / 1][Stage 101:>  (0 + 0) / 1][Stage 102:>  (0 + 0) / 1][Stage 101:>                (0 + 1) / 1][Stage 102:>                (0 + 0) / 1][Stage 102:>                                                        (0 + 1) / 1]                                                                                [Stage 104:>                                                        (0 + 1) / 1]                                                                                [Stage 142:>                (0 + 1) / 1][Stage 143:>                (0 + 0) / 1][Stage 143:>                                                        (0 + 1) / 1]                                                                                [Stage 163:>                                                        (0 + 1) / 1]                                                                                [Stage 169:============================>                            (1 + 1) / 2]                                                                                [Stage 176:>                                                        (0 + 1) / 1]                                                                                [Stage 179:>                                                        (0 + 1) / 2][Stage 179:============================>                            (1 + 1) / 2]                                                                                [Stage 180:>                                                        (0 + 1) / 1]                                                                                {"finished": 1, "of": 32, "query_id": "74580", "returned": 10, "seconds": 74.843}
+[Stage 181:>                                                        (0 + 1) / 1][Stage 181:=========================================================(1 + 0) / 1]                                                                                [Stage 182:>                                                        (0 + 1) / 1]                                                                                [Stage 186:>                                                        (0 + 1) / 1][Stage 186:>                (0 + 1) / 1][Stage 187:>                (0 + 0) / 1][Stage 186:>  (0 + 1) / 1][Stage 187:>  (0 + 0) / 1][Stage 188:>  (0 + 0) / 1][Stage 186:>                (0 + 1) / 1][Stage 187:>                (0 + 0) / 1][Stage 186:>  (0 + 1) / 1][Stage 187:>  (0 + 0) / 1][Stage 188:>  (0 + 0) / 1][Stage 187:>                (0 + 1) / 1][Stage 188:>                (0 + 0) / 1][Stage 187:>                (0 + 1) / 1][Stage 188:>                (0 + 1) / 1]                                                                                [Stage 188:>                                                        (0 + 1) / 1][Stage 188:>                (0 + 1) / 1][Stage 189:>                (0 + 0) / 1][Stage 189:>                                                        (0 + 1) / 1]                                                                                [Stage 190:>                                                        (0 + 1) / 1]                                                                                [Stage 194:========>        (1 + 1) / 2][Stage 195:>                (0 + 0) / 2]                                                                                [Stage 247:>                                                        (0 + 1) / 1]                                                                                {"finished": 2, "of": 32, "query_id": "254339", "returned": 10, "seconds": 56.68}
+[Stage 272:>                                                        (0 + 1) / 1][Stage 272:>                (0 + 1) / 1][Stage 273:>                (0 + 0) / 1]                                                                                [Stage 274:>                                                        (0 + 1) / 1]                                                                                [Stage 302:>                (0 + 1) / 1][Stage 303:>                (0 + 0) / 1][Stage 303:>                                                        (0 + 1) / 1]                                                                                {"finished": 3, "of": 32, "query_id": "78176", "returned": 1, "seconds": 13.703}
+[Stage 333:>                (0 + 1) / 1][Stage 334:>                (0 + 0) / 1][Stage 334:>                                                        (0 + 1) / 1]                                                                                [Stage 336:>                                                        (0 + 1) / 1]                                                                                [Stage 372:>                                                        (0 + 1) / 1][Stage 372:>                (0 + 1) / 1][Stage 373:>                (0 + 0) / 1][Stage 373:>                                                        (0 + 1) / 1][Stage 373:>                (0 + 1) / 1][Stage 375:>                (0 + 0) / 1]                                                                                {"finished": 4, "of": 32, "query_id": "132074", "returned": 10, "seconds": 14.508}
+[Stage 416:>                                                        (0 + 1) / 1][Stage 417:>                                                        (0 + 1) / 1][Stage 417:>                (0 + 1) / 1][Stage 418:>                (0 + 0) / 1][Stage 418:>                                                        (0 + 1) / 1]                                                                                [Stage 420:>                                                        (0 + 1) / 1]                                                                                [Stage 456:>                (0 + 1) / 1][Stage 457:>                (0 + 0) / 1][Stage 457:>                                                        (0 + 1) / 1][Stage 457:>                (0 + 1) / 1][Stage 459:>                (0 + 0) / 1]                                                                                {"finished": 5, "of": 32, "query_id": "127201", "returned": 4, "seconds": 13.355}
+[Stage 502:>                                                        (0 + 1) / 1][Stage 502:>                (0 + 1) / 1][Stage 503:>                (0 + 0) / 1]                                                                                [Stage 504:>                                                        (0 + 1) / 1]                                                                                [Stage 540:>                (0 + 1) / 1][Stage 541:>                (0 + 0) / 1][Stage 541:>                                                        (0 + 1) / 1][Stage 541:>                (0 + 1) / 1][Stage 543:>                (0 + 0) / 1]                                                                                {"finished": 6, "of": 32, "query_id": "194321", "returned": 10, "seconds": 12.033}
+[Stage 586:>                                                        (0 + 1) / 1][Stage 586:>                (0 + 1) / 1][Stage 587:>                (0 + 0) / 1]                                                                                [Stage 588:>                                                        (0 + 1) / 1]                                                                                [Stage 624:>                (0 + 1) / 1][Stage 625:>                (0 + 0) / 1][Stage 625:>                                                        (0 + 1) / 1][Stage 625:>                (0 + 1) / 1][Stage 627:>                (0 + 0) / 1]                                                                                {"finished": 7, "of": 32, "query_id": "111802", "returned": 10, "seconds": 10.908}
+[Stage 668:>                                                        (0 + 1) / 1][Stage 668:>  (0 + 1) / 1][Stage 669:>  (0 + 0) / 1][Stage 670:>  (0 + 0) / 1]                                                                                [Stage 670:>                                                        (0 + 1) / 1][Stage 670:>                (0 + 1) / 1][Stage 671:>                (0 + 0) / 1]                                                                                [Stage 672:>                                                        (0 + 1) / 1]                                                                                [Stage 713:>                                                        (0 + 1) / 1]                                                                                {"finished": 8, "of": 32, "query_id": "46513", "returned": 10, "seconds": 13.876}
+ERROR:root:Exception while sending command.
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 535, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+RuntimeError: reentrant call inside <_io.BufferedReader name=3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 566, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Error while sending or receiving
+ERROR:root:KeyboardInterrupt while sending command.
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 408, in signal_handler
+    self.cancelAllJobs()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 2507, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 251, in deco
+    return f(*a, **kw)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/protocol.py", line 335, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o28.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 535, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 410, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+26/09/25 17:38:25 ERROR TaskContextImpl: Error in TaskCompletionListener
+org.apache.spark.SparkException: Block broadcast_501 does not exist
+	at org.apache.spark.errors.SparkCoreErrors$.blockDoesNotExistError(SparkCoreErrors.scala:309)
+	at org.apache.spark.storage.BlockInfoManager.blockInfo(BlockInfoManager.scala:303)
+	at org.apache.spark.storage.BlockInfoManager.unlock(BlockInfoManager.scala:424)
+	at org.apache.spark.storage.BlockManager.releaseLock(BlockManager.scala:1382)
+	at org.apache.spark.broadcast.TorrentBroadcast.$anonfun$releaseBlockManagerLock$1(TorrentBroadcast.scala:323)
+	at org.apache.spark.broadcast.TorrentBroadcast.$anonfun$releaseBlockManagerLock$1$adapted(TorrentBroadcast.scala:323)
+	at org.apache.spark.TaskContext$$anon$1.onTaskCompletion(TaskContext.scala:146)
+	at org.apache.spark.TaskContextImpl.$anonfun$invokeTaskCompletionListeners$1(TaskContextImpl.scala:175)
+	at org.apache.spark.TaskContextImpl.$anonfun$invokeTaskCompletionListeners$1$adapted(TaskContextImpl.scala:175)
+	at org.apache.spark.TaskContextImpl.invokeListeners(TaskContextImpl.scala:265)
+	at org.apache.spark.TaskContextImpl.invokeTaskCompletionListeners(TaskContextImpl.scala:175)
+	at org.apache.spark.TaskContextImpl.markTaskCompleted(TaskContextImpl.scala:164)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:217)
+	at org.apache.spark.scheduler.Task.run(Task.scala:147)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:894)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:86)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:83)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:97)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:897)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/09/25 17:38:25 ERROR TaskContextImpl: Error in TaskCompletionListener
+org.apache.spark.SparkException: Block broadcast_503 does not exist
+	at org.apache.spark.errors.SparkCoreErrors$.blockDoesNotExistError(SparkCoreErrors.scala:309)
+	at org.apache.spark.storage.BlockInfoManager.blockInfo(BlockInfoManager.scala:303)
+	at org.apache.spark.storage.BlockInfoManager.unlock(BlockInfoManager.scala:424)
+	at org.apache.spark.storage.BlockManager.releaseLock(BlockManager.scala:1382)
+	at org.apache.spark.broadcast.TorrentBroadcast.$anonfun$releaseBlockManagerLock$1(TorrentBroadcast.scala:323)
+	at org.apache.spark.broadcast.TorrentBroadcast.$anonfun$releaseBlockManagerLock$1$adapted(TorrentBroadcast.scala:323)
+	at org.apache.spark.TaskContext$$anon$1.onTaskCompletion(TaskContext.scala:146)
+	at org.apache.spark.TaskContextImpl.$anonfun$invokeTaskCompletionListeners$1(TaskContextImpl.scala:175)
+	at org.apache.spark.TaskContextImpl.$anonfun$invokeTaskCompletionListeners$1$adapted(TaskContextImpl.scala:175)
+	at org.apache.spark.TaskContextImpl.invokeListeners(TaskContextImpl.scala:265)
+	at org.apache.spark.TaskContextImpl.invokeTaskCompletionListeners(TaskContextImpl.scala:175)
+	at org.apache.spark.TaskContextImpl.markTaskCompleted(TaskContextImpl.scala:164)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:217)
+	at org.apache.spark.scheduler.Task.run(Task.scala:147)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$4(Executor.scala:894)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally(SparkErrorUtils.scala:86)
+	at org.apache.spark.util.SparkErrorUtils.tryWithSafeFinally$(SparkErrorUtils.scala:83)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:97)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:897)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+26/09/25 17:38:25 ERROR Executor: Exception in task 0.0 in stage 756.0 (TID 507): /tmp/blockmgr-2f404485-2db3-4468-b304-14fca79279b2/21/shuffle_157_507_0.index.551c95e0-525a-4913-a5da-6d4e7a47d779 (No such file or directory)
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 408, in signal_handler
+    self.cancelAllJobs()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 2507, in cancelAllJobs
+    self._jsc.sc().cancelAllJobs()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1362, in __call__
+    return_value = get_return_value(
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/errors/exceptions/captured.py", line 251, in deco
+    return f(*a, **kw)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/protocol.py", line 335, in get_return_value
+    raise Py4JError(
+py4j.protocol.Py4JError: An error occurred while calling o28.sc
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/evaluate_recommendations.py", line 136, in <module>
+    'elapsed_scope': '本次进程运行时长；各查询耗时包括恢复前已完成的查询，暂停等待时间不计入',
+  File "/home/lengjing1236/knowpipe/scripts/evaluate_recommendations.py", line 99, in main
+    progress = json.loads(progress_path.read_text(encoding='utf-8'))
+  File "/home/lengjing1236/knowpipe/knowpipe/recommendations/engine.py", line 116, in recommend
+    candidates = available.groupBy('doc_key').agg(F.max('relevance').alias('relevance')).orderBy(F.desc('relevance'), 'doc_key').limit(params['candidates'])
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/utils.py", line 283, in wrapped
+    return f(*args, **kwargs)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/functions/builtin.py", line 502, in desc
+    return col.desc() if isinstance(col, Column) else _invoke_function("desc", col)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/functions/builtin.py", line 112, in _invoke_function
+    jf = _get_jvm_function(name, SparkContext._active_spark_context)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/functions/builtin.py", line 101, in _get_jvm_function
+    return getattr(getattr(sc._jvm, "org.apache.spark.sql.functions"), name)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1575, in __getattr__
+    answer = self._gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 535, in send_command
+    answer = smart_decode(self.stream.readline()[:-1])
+  File "/usr/lib/python3.10/socket.py", line 705, in readinto
+    return self._sock.recv_into(b)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/core/context.py", line 410, in signal_handler
+    raise KeyboardInterrupt()
+KeyboardInterrupt

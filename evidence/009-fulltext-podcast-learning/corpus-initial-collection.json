@@ -1,0 +1,120 @@
+{
+  "generated_at": "2026-09-25T09:35:50.583857+00:00",
+  "valid_documents": 10003,
+  "corpus_sha256": "0ca57faa9360cb38d077b810aeb640bda0f33be0acf7fff95dac76336f2fe1ed",
+  "sources": {
+    "python_docs": 7,
+    "django_docs": 5,
+    "stackexchange": 9991
+  },
+  "source_sites": {
+    "python_docs": 7,
+    "django_docs": 5,
+    "stackoverflow": 1568,
+    "dba": 1735,
+    "unix": 1689,
+    "serverfault": 1709,
+    "softwareengineering": 1650,
+    "cs": 1640
+  },
+  "original_providers": {
+    "Python Software Foundation": 7,
+    "Django Software Foundation": 5,
+    "Stack Exchange": 9991
+  },
+  "topic_domains": {
+    "编程与开发": 1575,
+    "Web与数据库": 5,
+    "数据库": 1735,
+    "Unix与Linux": 1689,
+    "系统与网络运维": 1709,
+    "软件工程": 1650,
+    "计算机理论": 1640
+  },
+  "document_types": {
+    "official_document": 12,
+    "qa_thread": 9991
+  },
+  "top_tags": {
+    "sql-server": 718,
+    "postgresql": 550,
+    "algorithms": 358,
+    "linux": 347,
+    "python": 331,
+    "complexity-theory": 286,
+    "debian": 269,
+    "c++": 264,
+    "c#": 227,
+    "mysql": 225,
+    "bash": 214,
+    "java": 189,
+    "graphs": 184,
+    "ubuntu": 181,
+    "design": 154,
+    "design-patterns": 147,
+    "sql-server-2022": 146,
+    "architecture": 139,
+    "time-complexity": 133,
+    "javascript": 131,
+    "c": 130,
+    "windows": 130,
+    "nginx": 130,
+    "sql-server-2019": 129,
+    "networking": 129,
+    "docker": 122,
+    "turing-machines": 122,
+    "object-oriented": 119,
+    "domain-driven-design": 118,
+    "ssh": 112,
+    "mariadb": 111,
+    "optimization": 108,
+    "security": 107,
+    "r": 106,
+    "performance": 103,
+    "formal-languages": 103,
+    "systemd": 101,
+    "kubernetes": 101,
+    "query-performance": 97,
+    "finite-automata": 95
+  },
+  "duplicates": {},
+  "rejected": {
+    "negative_closed_or_migrated": 709
+  },
+  "characters": 39496136,
+  "body_utf8_bytes": 39958393,
+  "paragraph_blocks": 293001,
+  "complete_answers": 15508,
+  "documents_with_media_references": 1426,
+  "maximum_document_bytes": 69426,
+  "counting_rule": "one complete Q&A thread or official page is one document; answers, paragraphs and translations are not additional documents",
+  "limitations": [
+    "Accepted answers and nonnegative scores are selection signals, not correctness labels.",
+    "Text and code are complete; external images are linked, not OCR-processed.",
+    "Newest accepted-question sampling does not represent all computer technology topics.",
+    "Question license version can be absent from the API; per-post returned licenses and policy are retained."
+  ],
+  "target_documents": 10000,
+  "target_met": true,
+  "network_requests": 107,
+  "cache_hits": 12,
+  "pages": {
+    "stackoverflow": 18,
+    "dba": 18,
+    "unix": 18,
+    "serverfault": 18,
+    "softwareengineering": 18,
+    "cs": 17
+  },
+  "failures": [],
+  "quota_remaining": 189,
+  "query_order": "creation descending",
+  "source_collection_order": [
+    "stackoverflow",
+    "dba",
+    "unix",
+    "serverfault",
+    "softwareengineering",
+    "cs"
+  ]
+}

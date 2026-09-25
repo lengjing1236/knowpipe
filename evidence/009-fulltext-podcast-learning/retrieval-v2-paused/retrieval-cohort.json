@@ -1,0 +1,56 @@
+{
+  "prefix": "knowpipe-009-holdout:",
+  "count": 32,
+  "query_ids": [
+    "74580",
+    "254339",
+    "78176",
+    "132074",
+    "127201",
+    "194321",
+    "111802",
+    "46513",
+    "90438",
+    "158534",
+    "118301",
+    "3997",
+    "150633",
+    "51268",
+    "179002",
+    "159373",
+    "67960",
+    "237593",
+    "201041",
+    "55697",
+    "74493",
+    "221234",
+    "108395",
+    "18371",
+    "219028",
+    "78903",
+    "20653",
+    "175014",
+    "212575",
+    "240734",
+    "92393",
+    "229170"
+  ],
+  "selection": "SHA256(prefix + query_id) ascending; fixed before retrieval",
+  "files": {
+    "corpus.parquet": {
+      "sha256": "b8eefa212252fe5af6ee72ba530df053740ff30c2c0bea77089f8a9271e94f75",
+      "bytes": 20111039,
+      "origin": "https://huggingface.co/datasets/BeIR/cqadupstack/resolve/e84b7220ce5a4e6c49aeb568983b0ec5a7584c2c/programmers/corpus/corpus-00000-of-00001.parquet"
+    },
+    "queries.parquet": {
+      "sha256": "106ba4777034ccec608a623ac93b5cfad63d89effc64d0528759ea94e276345d",
+      "bytes": 41633,
+      "origin": "https://huggingface.co/datasets/BeIR/cqadupstack/resolve/e84b7220ce5a4e6c49aeb568983b0ec5a7584c2c/programmers/queries/queries-00000-of-00001.parquet"
+    },
+    "qrels.tsv": {
+      "sha256": "ed69afa873c64d34298792d694c82c4293e4b7e3c6ea3edc7a73662d4b0cba76",
+      "bytes": 27053,
+      "origin": "https://huggingface.co/datasets/BeIR/cqadupstack-qrels/resolve/13595a9f221256a9a21e91c8b0fed3563382b6a7/programmers/test.tsv"
+    }
+  }
+}

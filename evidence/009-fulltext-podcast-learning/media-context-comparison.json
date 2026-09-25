@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-09-25T09:50:19.716197+00:00",
+  "model_revision": "d90ca5fe260221311c53c58e660288d3deb8d356",
+  "source_audio_sha256": "9901898bb357cd3a334b89e8acac0f99522ef76fc6ea627a042e394b9cb18d69",
+  "source_episode": "https://share.transistor.fm/s/bca97e83",
+  "metadata_context": {
+    "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+    "feed_title": "Last Week in AWS"
+  },
+  "changes": [
+    "Prompt uses only publisher metadata as hotwords, no reference transcript.",
+    "Join unfinished ASR segments before translation."
+  ],
+  "asr_seconds": 19.536840856999333,
+  "translation_seconds": 12.392174145999888,
+  "transcript_path": "/home/lengjing1236/knowpipe/state/feature009/media/aws-transcript-context.txt",
+  "translation_path": "/home/lengjing1236/knowpipe/state/feature009/media/aws-translation-context-zh.txt",
+  "transcript_sha256": "d05fe2e33a44aee4b0d79e23b0cabdb624a4e31977928abd2a5dd97fffc74df3",
+  "translation_sha256": "8df5232d56ad5fc5804b49a2bd2467efb3f3522155d3f5fd388745092c0ff2ce",
+  "transcript_characters": 2961,
+  "translation_characters": 1077,
+  "baseline_transcript_sha256": "2da43ddc00242329d7d9ff0d18fd1da7db1182abf410797cedcb4c6d6c911234",
+  "baseline_translation_sha256": "8d19ae562c58bd9ab6d24507251110376299134537fa8ce7633a2326cc5500db",
+  "scope": "Within-example contextual engineering comparison; not an independent ASR accuracy or translation quality score."
+}

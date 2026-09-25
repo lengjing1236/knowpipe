@@ -1,0 +1,14 @@
+{
+  "scope": "actual RSS incremental result, personal notification and Chinese reading UI",
+  "page_errors": [],
+  "screens": [
+    "rss-personal-desktop.png",
+    "rss-personal-mobile.png",
+    "rss-chinese-mobile.png"
+  ],
+  "status": "passed",
+  "personal_notifications": 1,
+  "episodes": 1,
+  "actual_chinese_characters": 1077,
+  "notification_does_not_mark_document_read": true
+}
