@@ -1,0 +1,44 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:15:25 INFO Master: Started daemon with process name: 85670@LAPTOP-2JUIFGTU
+26/09/25 19:15:26 INFO SignalUtils: Registering signal handler for TERM
+26/09/25 19:15:26 INFO SignalUtils: Registering signal handler for HUP
+26/09/25 19:15:26 INFO SignalUtils: Registering signal handler for INT
+26/09/25 19:15:26 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:15:26 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:15:26 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:15:26 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:15:26 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:15:26 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:15:26 INFO Utils: Successfully started service 'sparkMaster' on port 47774.
+26/09/25 19:15:26 INFO Master: Starting Spark master at spark://127.0.0.1:47774
+26/09/25 19:15:26 INFO Master: Running Spark version 4.2.0
+26/09/25 19:15:27 INFO JettyUtils: Start Jetty 127.0.0.1:46282 for MasterUI
+26/09/25 19:15:27 INFO Utils: Successfully started service 'MasterUI' on port 46282.
+26/09/25 19:15:27 INFO MasterWebUI: Bound MasterWebUI to 127.0.0.1, and started at http://localhost:46282
+26/09/25 19:15:27 INFO Utils: Successfully started service on port 6066.
+26/09/25 19:15:27 INFO StandaloneRestServer: Started REST server for submitting applications on 127.0.0.1 with port 6066
+26/09/25 19:15:27 INFO Master: 127.0.0.1:47793 got disassociated, removing it.
+26/09/25 19:15:27 INFO Master: I have been elected leader! New state: ALIVE
+26/09/25 19:15:29 INFO Master: Registering worker 127.0.0.1:45130 with 2 cores, 1200.0 MiB RAM
+26/09/25 19:15:34 INFO Master: Registering app acceptance_spark010.py
+26/09/25 19:15:34 INFO Master: Registered app acceptance_spark010.py with ID app-20260925191534-0000
+26/09/25 19:15:34 INFO Master: Start scheduling for app app-20260925191534-0000 with rpId: 0
+26/09/25 19:15:34 INFO Master: Launching executor app-20260925191534-0000/0 on worker worker-20260925191528-127.0.0.1-45130
+26/09/25 19:15:34 INFO Master: Launching executor app-20260925191534-0000/1 on worker worker-20260925191528-127.0.0.1-45130
+26/09/25 19:15:34 INFO Master: Start scheduling for app app-20260925191534-0000 with rpId: 0
+26/09/25 19:15:34 INFO Master: Start scheduling for app app-20260925191534-0000 with rpId: 0
+26/09/25 19:16:45 INFO Master: Received unregister request from application app-20260925191534-0000
+26/09/25 19:16:45 INFO Master: Removing app app-20260925191534-0000
+26/09/25 19:16:46 INFO Master: 127.0.0.1:47805 got disassociated, removing it.
+26/09/25 19:16:46 INFO Master: 127.0.0.1:45262 got disassociated, removing it.
+26/09/25 19:16:46 WARN Master: Got status update for unknown executor app-20260925191534-0000/1
+26/09/25 19:16:46 WARN Master: Got status update for unknown executor app-20260925191534-0000/0
+26/09/25 19:16:48 WARN Master: Got status update for unknown executor app-20260925191534-0000/0
+26/09/25 19:16:48 WARN Master: Got status update for unknown executor app-20260925191534-0000/1
+26/09/25 19:16:49 INFO Master: 127.0.0.1:47803 got disassociated, removing it.
+26/09/25 19:16:49 INFO Master: 127.0.0.1:45130 got disassociated, removing it.
+26/09/25 19:16:49 INFO Master: Removing worker worker-20260925191528-127.0.0.1-45130 on 127.0.0.1:45130
+26/09/25 19:16:49 INFO Master: Telling app of lost worker: worker-20260925191528-127.0.0.1-45130
+26/09/25 19:16:49 ERROR Master: RECEIVED SIGNAL TERM

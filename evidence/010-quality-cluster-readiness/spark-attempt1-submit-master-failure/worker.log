@@ -1,0 +1,29 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:12:15 INFO Worker: Started daemon with process name: 82966@LAPTOP-2JUIFGTU
+26/09/25 19:12:15 INFO SignalUtils: Registering signal handler for TERM
+26/09/25 19:12:15 INFO SignalUtils: Registering signal handler for HUP
+26/09/25 19:12:15 INFO SignalUtils: Registering signal handler for INT
+26/09/25 19:12:16 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:12:16 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:12:16 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:12:16 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:12:16 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:12:16 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:12:16 INFO Utils: Successfully started service 'sparkWorker' on port 44736.
+26/09/25 19:12:16 INFO Worker: Worker decommissioning not enabled.
+26/09/25 19:12:16 INFO Worker: Starting Spark worker 127.0.0.1:44736 with 2 cores, 1200.0 MiB RAM
+26/09/25 19:12:16 INFO Worker: Running Spark version 4.2.0
+26/09/25 19:12:16 INFO Worker: Spark home: /home/lengjing1236/.local/lib/python3.10/site-packages/pyspark
+26/09/25 19:12:16 INFO ResourceUtils: ==============================================================
+26/09/25 19:12:16 INFO ResourceUtils: No custom resources configured for spark.worker.
+26/09/25 19:12:16 INFO ResourceUtils: ==============================================================
+26/09/25 19:12:17 INFO JettyUtils: Start Jetty 127.0.0.1:45842 for WorkerUI
+26/09/25 19:12:17 INFO Utils: Successfully started service 'WorkerUI' on port 45842.
+26/09/25 19:12:17 INFO WorkerWebUI: Bound WorkerWebUI to 127.0.0.1, and started at http://localhost:45842
+26/09/25 19:12:17 INFO Worker: Connecting to master 127.0.0.1:46844...
+26/09/25 19:12:17 INFO TransportClientFactory: Successfully created connection to /127.0.0.1:46844 after 71 ms (0 ms spent in bootstraps)
+26/09/25 19:12:18 INFO Worker: Successfully registered with master spark://127.0.0.1:46844
+26/09/25 19:12:18 INFO Worker: Worker cleanup enabled; old application directories will be deleted in: /home/lengjing1236/knowpipe/state/feature010/spark-comparison/worker
+26/09/25 19:13:03 ERROR Worker: RECEIVED SIGNAL TERM

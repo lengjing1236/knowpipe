@@ -1,0 +1,68 @@
+{
+  "recorded_at": "2026-09-25T11:10:17.117013+00:00",
+  "purpose": "真实全文与模型的开发验收；非独立翻译质量评价或学习收益证明",
+  "source": {
+    "source": "postgresql_docs",
+    "doc_id": "18/wal-intro.html",
+    "title": "28.3. Write-Ahead Logging (WAL) #",
+    "source_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+    "license": "PostgreSQL License; https://www.postgresql.org/docs/18/legalnotice.html",
+    "provenance": {
+      "fetch_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+      "retrieved_at": "2026-09-25T09:46:08.611299+00:00",
+      "raw_sha256": "13656603502056d4085b64b7c5fb8f8719703f8eb0f511efeaf7cfedff3dbb28",
+      "raw_bytes": 16648,
+      "adapter_version": "supplemental-official-html-v1",
+      "original_provider": "PostgreSQL Global Development Group",
+      "license_artifact": {
+        "fetch_url": "https://www.postgresql.org/docs/18/legalnotice.html",
+        "retrieved_at": "2026-09-25T09:45:21.294547+00:00",
+        "raw_sha256": "5dff39c8d3ebbc522c65b906b321abb2a363e4fab6d5b66f404b37c842a6f12a",
+        "raw_bytes": 12727,
+        "local_filename": "postgresql_docs-LICENSE.html",
+        "stored_sha256": "5dff39c8d3ebbc522c65b906b321abb2a363e4fab6d5b66f404b37c842a6f12a"
+      },
+      "modifications": "Main text extracted from HTML; navigation removed, code retained."
+    }
+  },
+  "source_characters": 2449,
+  "original_text": "28.3. Write-Ahead Logging (WAL) #\n\nWrite-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL's central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after WAL records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the WAL records. (This is roll-forward recovery, also known as REDO.)\n\nTip\n\nBecause WAL restores database file contents after a crash, journaled file systems are not necessary for reliable storage of the data files or WAL files. In fact, journaling overhead can reduce performance, especially if journaling causes file system data to be flushed to disk. Fortunately, data flushing during journaling can often be disabled with a file system mount option, e.g., data=writeback on a Linux ext3 file system. Journaled file systems do improve boot speed after a crash.\n\nUsing WAL results in a significantly reduced number of disk writes, because only the WAL file needs to be flushed to disk to guarantee that a transaction is committed, rather than every data file changed by the transaction. The WAL file is written sequentially, and so the cost of syncing the WAL is much less than the cost of flushing the data pages. This is especially true for servers handling many small transactions touching different parts of the data store. Furthermore, when the server is processing many small concurrent transactions, one fsync of the WAL file may suffice to commit many transactions.\n\nWAL also makes it possible to support on-line backup and point-in-time recovery, as described in Section 25.3. By archiving the WAL data we can support reverting to any time instant covered by the available WAL data: we simply install a prior physical backup of the database, and replay the WAL just as far as the desired time. What's more, the physical backup doesn't have to be an instantaneous snapshot of the database state — if it is made over some period of time, then replaying the WAL for that period will fix any internal inconsistencies.",
+  "provider_output": "28.3. 将第28.3.节改为第28.3.节。笔前记录( WAL) #\n\n写前日志(WAL)是确保数据完整性的标准方法.详细的描述可以在大多数(如果不是全部)关于交易处理的书籍中找到.简言之,WAL的中心概念是,数据文件的更改(表格和索引所在的地方)必须在这些更改被记录之后,也就是在WAL记录描述这些更改被冲入永久存储之后,才能写出.如果我们遵循这个程序,我们不需要将数据页冲到每次交易承诺的磁盘上,因为我们知道,一旦发生崩溃,我们将能够使用日志恢复数据库:没有应用到数据页的任何更改都可以从WAL记录中被重置出(这是滚动前的恢复,也称为REDO).\n\n提示( T)\n\n因为WAL在崩溃后恢复了数据库文件内容,所以被日记的文件系统对于可靠地存储数据文件或WAL文件并不必要.实际上,分录管理费可以降低性能,特别是分录导致文件系统数据被冲入磁盘时.所幸的是,在分录期间所冲取的数据往往可以用一个文件系统挂载选项被禁用,例如,在Linuxext3文件系统中的数据=writeback.已登出的文件系统在崩溃后确实改善了启动速度 。\n\n使用WAL的结果是磁盘写作数量显著地减少,因为只有WAL文件需要被冲入磁盘来保证某项交易被承诺,而不是交易所改变的每一个数据文件.WAL文件是相继被写入的,因此同步WAL的成本远低于冲出数据页的成本.对于处理涉及数据库不同部分的许多小交易的服务器来说尤其如此。此外,当服务器正在处理许多小的并行交易时,WAL文件的一丝不苟可能足以进行许多交易。\n\n如第25.3节所描述的,WAL还使支持在线备份和即时恢复成为可能。通过将WAL数据归档,我们可以支持恢复到可用WAL数据覆盖的任何时候:我们只是安装了数据库的先前物理备份,并按所期望的时间重放WAL。更有甚者,物理备份不必是数据库状态的即时快照——如果是在一段时间内制作的,那么重放该时期的WAL会解决任何内部不一致.",
+  "processor_id": "argos-en-zh-078dd3b624cae129d7a7168ab433cd4f7c048ae16ed29c93e1f2f3be54d59e1b",
+  "seconds": 4.564175,
+  "view": {
+    "content_status": "fulltext",
+    "content_version": "cf1a7a9afe8ce27b8256f678e91c6e66eeb43b390437327e6ccbbbdf25c02402",
+    "language": "en",
+    "processing": {
+      "extraction": {
+        "status": "ready"
+      },
+      "transcription": {
+        "status": "not_required"
+      },
+      "translation": {
+        "status": "ready"
+      },
+      "analysis": {
+        "status": "not_requested"
+      }
+    },
+    "chinese_ready": true,
+    "translation_quality": {
+      "checks_version": "translation-integrity-v1",
+      "status": "checks_passed",
+      "issues": [],
+      "human_reviewed": false,
+      "semantic_verified": false
+    },
+    "translation_processor": "argos-en-zh-078dd3b624cae129d7a7168ab433cd4f7c048ae16ed29c93e1f2f3be54d59e1b",
+    "original_text": "28.3. Write-Ahead Logging (WAL) #\n\nWrite-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL's central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after WAL records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the WAL records. (This is roll-forward recovery, also known as REDO.)\n\nTip\n\nBecause WAL restores database file contents after a crash, journaled file systems are not necessary for reliable storage of the data files or WAL files. In fact, journaling overhead can reduce performance, especially if journaling causes file system data to be flushed to disk. Fortunately, data flushing during journaling can often be disabled with a file system mount option, e.g., data=writeback on a Linux ext3 file system. Journaled file systems do improve boot speed after a crash.\n\nUsing WAL results in a significantly reduced number of disk writes, because only the WAL file needs to be flushed to disk to guarantee that a transaction is committed, rather than every data file changed by the transaction. The WAL file is written sequentially, and so the cost of syncing the WAL is much less than the cost of flushing the data pages. This is especially true for servers handling many small transactions touching different parts of the data store. Furthermore, when the server is processing many small concurrent transactions, one fsync of the WAL file may suffice to commit many transactions.\n\nWAL also makes it possible to support on-line backup and point-in-time recovery, as described in Section 25.3. By archiving the WAL data we can support reverting to any time instant covered by the available WAL data: we simply install a prior physical backup of the database, and replay the WAL just as far as the desired time. What's more, the physical backup doesn't have to be an instantaneous snapshot of the database state — if it is made over some period of time, then replaying the WAL for that period will fix any internal inconsistencies.",
+    "chinese_text": "28.3. 将第28.3.节改为第28.3.节。笔前记录( WAL) #\n\n写前日志(WAL)是确保数据完整性的标准方法.详细的描述可以在大多数(如果不是全部)关于交易处理的书籍中找到.简言之,WAL的中心概念是,数据文件的更改(表格和索引所在的地方)必须在这些更改被记录之后,也就是在WAL记录描述这些更改被冲入永久存储之后,才能写出.如果我们遵循这个程序,我们不需要将数据页冲到每次交易承诺的磁盘上,因为我们知道,一旦发生崩溃,我们将能够使用日志恢复数据库:没有应用到数据页的任何更改都可以从WAL记录中被重置出(这是滚动前的恢复,也称为REDO).\n\n提示( T)\n\n因为WAL在崩溃后恢复了数据库文件内容,所以被日记的文件系统对于可靠地存储数据文件或WAL文件并不必要.实际上,分录管理费可以降低性能,特别是分录导致文件系统数据被冲入磁盘时.所幸的是,在分录期间所冲取的数据往往可以用一个文件系统挂载选项被禁用,例如,在Linuxext3文件系统中的数据=writeback.已登出的文件系统在崩溃后确实改善了启动速度 。\n\n使用WAL的结果是磁盘写作数量显著地减少,因为只有WAL文件需要被冲入磁盘来保证某项交易被承诺,而不是交易所改变的每一个数据文件.WAL文件是相继被写入的,因此同步WAL的成本远低于冲出数据页的成本.对于处理涉及数据库不同部分的许多小交易的服务器来说尤其如此。此外,当服务器正在处理许多小的并行交易时,WAL文件的一丝不苟可能足以进行许多交易。\n\n如第25.3节所描述的,WAL还使支持在线备份和即时恢复成为可能。通过将WAL数据归档,我们可以支持恢复到可用WAL数据覆盖的任何时候:我们只是安装了数据库的先前物理备份,并按所期望的时间重放WAL。更有甚者,物理备份不必是数据库状态的即时快照——如果是在一段时间内制作的,那么重放该时期的WAL会解决任何内部不一致."
+  },
+  "quality_limitations": [
+    "数字/代码完整性不检测术语、语义关系、一般文字遗漏。",
+    "不把完整处理或规则通过当作中文教学质量达标。",
+    "模型未升级，仍为已有 Argos en_zh 1.9 基线。"
+  ]
+}

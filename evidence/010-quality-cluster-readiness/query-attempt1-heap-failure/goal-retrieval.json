@@ -1,0 +1,21 @@
+{
+  "scope": "fixed development probes, not independent relevance labels or learning benefit",
+  "case_interpretation_sha256": "cdc71d74f069a1ae6fefaba727b16282add6ee6ff7078e7b1ecbea9cb150f301",
+  "corpus": {
+    "corpus_id": "ebb478a999812cc8f9ab04a32a739d1e0aae88a62766033f4b227d2dbaf09947",
+    "feature_id": "f93bc2a99c9575d940d581920e5a508ab9242b281cb9f33ae8cb2d5f9cec96e9",
+    "document_count": 10215,
+    "paragraph_count": 222579,
+    "sources": {
+      "django_docs": 5,
+      "docker_docs": 12,
+      "postgresql_docs": 24,
+      "python_docs": 7,
+      "stackexchange": 10167
+    }
+  },
+  "cases": [],
+  "status": "failed",
+  "master": "local[1]",
+  "error_type": "ConnectionRefusedError"
+}

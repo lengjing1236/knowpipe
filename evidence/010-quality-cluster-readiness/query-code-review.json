@@ -1,0 +1,9 @@
+{
+  "scope": "Code fingerprints recorded after completed retrieval; original result file not rewritten. Future resume requires captured fingerprints and rejects older records without them.",
+  "algorithm_files": {
+    "engine.py": "53a9415626e63fc03d45d6f437c48ebc58d0341e1dc1700d04b05fed7d598cbf",
+    "query.py": "35d9187d7b77f9f9303c462eb0154736b3764fbcc4379bbd5fd4d10e814ca0f3",
+    "text.py": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6",
+    "index.py": "c8f3a136a9533b356b212ae58541248862f6b857c9f5186b5d6d23efa375ab43"
+  }
+}

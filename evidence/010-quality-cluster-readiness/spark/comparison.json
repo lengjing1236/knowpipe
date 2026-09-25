@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "checks": {
+    "successful_runs": true,
+    "identical_input": true,
+    "identical_paragraphs": true,
+    "identical_feature_identity": true,
+    "terms_equal_with_tolerance": true,
+    "postings_equal_with_tolerance": true,
+    "identical_recommendations_with_tolerance": true,
+    "two_real_executors_completed_tasks": true,
+    "native_standalone_master": true
+  },
+  "absolute_float_tolerance": 1e-10,
+  "max_absolute_float_delta": 5.551115123125783e-17,
+  "physical_computers": 1,
+  "deployment": "single-host native Standalone, two executor JVMs",
+  "multi_host_acceptance": "pending_resources",
+  "note": "Synthetic 12-document consistency test. Timings include startup; not a scale or speedup claim.",
+  "seconds": {
+    "local": 71.091,
+    "standalone": 107.217
+  },
+  "index_seconds": {
+    "local": 18.545,
+    "standalone": 20.097
+  },
+  "standalone_executors": [
+    {
+      "id": "1",
+      "hostPort": "127.0.0.1:46406",
+      "isActive": true,
+      "totalCores": 1,
+      "totalTasks": 142,
+      "completedTasks": 142,
+      "failedTasks": 0,
+      "totalDuration": 35359,
+      "maxMemory": 133378867,
+      "memoryUsed": 7678695
+    },
+    {
+      "id": "0",
+      "hostPort": "127.0.0.1:46194",
+      "isActive": true,
+      "totalCores": 1,
+      "totalTasks": 163,
+      "completedTasks": 163,
+      "failedTasks": 0,
+      "totalDuration": 31691,
+      "maxMemory": 133378867,
+      "memoryUsed": 8707042
+    }
+  ],
+  "master_worker_status": {
+    "aliveworkers": 1,
+    "cores": 2,
+    "memory": 1200
+  }
+}

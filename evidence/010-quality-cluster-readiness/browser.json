@@ -1,0 +1,190 @@
+{
+  "scope": "Web presentation of actual recorded 10k-corpus ranking and model output; isolated selected-document database",
+  "status": "passed",
+  "page_errors": [],
+  "screens": [
+    "query-desktop.png",
+    "quality-mobile.png"
+  ],
+  "requests": [
+    {
+      "path": "/api/auth/csrf",
+      "has_user": false,
+      "cookie_present": false
+    },
+    {
+      "path": "/api/auth/login",
+      "has_user": false,
+      "cookie_present": true,
+      "signed_at": "2026-09-25T11:25:56+00:00"
+    },
+    {
+      "path": "/api/auth/me",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/csrf",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/me",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/profile",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/documents",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/document",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/me",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/profile",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/documents",
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "has_user": true,
+      "cookie_present": true
+    }
+  ],
+  "responses": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/csrf",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/document",
+      "status": 200
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/profile",
+      "status": 200
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200
+    },
+    {
+      "path": "/api/learning/documents",
+      "status": 200
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200
+    }
+  ],
+  "entity_evidence_visible": true,
+  "translation_limitations_visible": true,
+  "query_failure_visible": true,
+  "mobile_overflow": false,
+  "opening_does_not_mark_read": true
+}

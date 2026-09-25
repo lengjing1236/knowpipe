@@ -1,0 +1,13 @@
+{
+  "application_id": "local-1790335191262",
+  "effective_config": {
+    "spark.driver.memory": "1g",
+    "spark.master": "local[1]",
+    "spark.sql.adaptive.coalescePartitions.enabled": "false",
+    "spark.sql.files.maxPartitionBytes": "16777216",
+    "spark.sql.shuffle.partitions": "16"
+  },
+  "first_attempt_driver_memory": "640m",
+  "first_attempt_read_partition_target": "Spark default 128MiB",
+  "note": "Second run after Java heap failure; single-host local[1]. A file split target is not a bound on decompressed memory."
+}

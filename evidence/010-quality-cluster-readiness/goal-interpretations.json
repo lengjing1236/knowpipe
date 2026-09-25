@@ -1,0 +1,255 @@
+{
+  "recorded_at": "2026-09-25T11:10:09.800981+00:00",
+  "purpose": "实现前固定的开发验收场景，不是独立相关性标注或学习收益评价；不依据结果改写目标",
+  "database": "mongomock; cache and adapter isolation only",
+  "model": {
+    "recorded_at": "2026-09-25T11:08:13.228093+00:00",
+    "source": "https://argos-net.com/v1/translate-zh_en-1_9.argosmodel",
+    "official_catalog": "https://raw.githubusercontent.com/argosopentech/argospm-index/main/index.json",
+    "package_version": "1.9",
+    "archive_bytes": 74481402,
+    "archive_sha256": "62e7af5a3a48b530e47b7b3e5c78c2de79073ecd815750d2bf3ab35b4a67da2d",
+    "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+    "model_path_relative": "state/feature010/media/translate-zh_en-1_9",
+    "first_download_hash_is_observation": true,
+    "inference_performed": false
+  },
+  "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+  "cases": [
+    {
+      "id": "db-1",
+      "case": {
+        "id": "db-1",
+        "domain": "数据库",
+        "zh": "PostgreSQL 的事务隔离级别",
+        "en": "PostgreSQL transaction isolation levels"
+      },
+      "query": {
+        "original": "PostgreSQL 的事务隔离级别",
+        "variants": [
+          "PostgreSQL 的事务隔离级别",
+          "PostgreSQL service isolation level"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "PostgreSQL",
+            "aliases": [
+              "postgresql",
+              "postgres"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.692293,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "db-2",
+      "case": {
+        "id": "db-2",
+        "domain": "数据库",
+        "zh": "PostgreSQL 如何使用索引优化查询",
+        "en": "PostgreSQL query optimization using indexes"
+      },
+      "query": {
+        "original": "PostgreSQL 如何使用索引优化查询",
+        "variants": [
+          "PostgreSQL 如何使用索引优化查询",
+          "PostgreSQL How to Optimise the Query with Index"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "PostgreSQL",
+            "aliases": [
+              "postgresql",
+              "postgres"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.160459,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "lang-1",
+      "case": {
+        "id": "lang-1",
+        "domain": "编程语言",
+        "zh": "Python 的异常处理机制",
+        "en": "Python exception handling mechanism"
+      },
+      "query": {
+        "original": "Python 的异常处理机制",
+        "variants": [
+          "Python 的异常处理机制",
+          "Python's Aberrant Mechanism"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "Python",
+            "aliases": [
+              "python"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.107509,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "lang-2",
+      "case": {
+        "id": "lang-2",
+        "domain": "编程语言",
+        "zh": "Python 的异步任务与协程",
+        "en": "Python asynchronous tasks and coroutines"
+      },
+      "query": {
+        "original": "Python 的异步任务与协程",
+        "variants": [
+          "Python 的异步任务与协程",
+          "Python's Elevated Tasks and Processes"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "Python",
+            "aliases": [
+              "python"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.177076,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "web-1",
+      "case": {
+        "id": "web-1",
+        "domain": "Web 开发",
+        "zh": "Django 如何处理数据库事务",
+        "en": "Django database transaction handling"
+      },
+      "query": {
+        "original": "Django 如何处理数据库事务",
+        "variants": [
+          "Django 如何处理数据库事务",
+          "Django how to handle database services"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "Django",
+            "aliases": [
+              "django"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.121816,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "web-2",
+      "case": {
+        "id": "web-2",
+        "domain": "Web 开发",
+        "zh": "Django 如何防止跨站请求伪造",
+        "en": "Django cross site request forgery protection"
+      },
+      "query": {
+        "original": "Django 如何防止跨站请求伪造",
+        "variants": [
+          "Django 如何防止跨站请求伪造",
+          "Django, how to prevent cross-site requests for forgery"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "Django",
+            "aliases": [
+              "django"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.217229,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "ops-1",
+      "case": {
+        "id": "ops-1",
+        "domain": "容器与系统",
+        "zh": "Docker 容器如何持久化存储数据",
+        "en": "Docker container persistent data storage"
+      },
+      "query": {
+        "original": "Docker 容器如何持久化存储数据",
+        "variants": [
+          "Docker 容器如何持久化存储数据",
+          "How Docker Containers Enduring Storage Data"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [
+          {
+            "name": "Docker",
+            "aliases": [
+              "docker"
+            ]
+          }
+        ],
+        "error_code": null
+      },
+      "seconds": 0.118527,
+      "repeat_query_equal": true
+    },
+    {
+      "id": "ops-2",
+      "case": {
+        "id": "ops-2",
+        "domain": "容器与系统",
+        "zh": "操作系统如何调度进程",
+        "en": "operating system process scheduling"
+      },
+      "query": {
+        "original": "操作系统如何调度进程",
+        "variants": [
+          "操作系统如何调度进程",
+          "How the operating system is managing the process"
+        ],
+        "status": "translated",
+        "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+        "rules_version": "bilingual-object-query-v1",
+        "entities": [],
+        "error_code": null
+      },
+      "seconds": 0.097478,
+      "repeat_query_equal": true
+    }
+  ]
+}

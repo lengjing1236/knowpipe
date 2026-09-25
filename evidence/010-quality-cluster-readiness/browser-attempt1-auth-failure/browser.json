@@ -1,0 +1,8 @@
+{
+  "scope": "Web presentation of actual recorded 10k-corpus ranking and model output; isolated selected-document database",
+  "status": "running",
+  "page_errors": [],
+  "screens": [
+    "query-desktop.png"
+  ]
+}

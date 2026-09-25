@@ -1,0 +1,57 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:30:02 INFO Worker: Started daemon with process name: 94574@LAPTOP-2JUIFGTU
+26/09/25 19:30:02 INFO SignalUtils: Registering signal handler for TERM
+26/09/25 19:30:02 INFO SignalUtils: Registering signal handler for HUP
+26/09/25 19:30:02 INFO SignalUtils: Registering signal handler for INT
+26/09/25 19:30:02 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:30:02 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:30:02 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:30:02 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:30:02 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:30:02 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:30:03 INFO Utils: Successfully started service 'sparkWorker' on port 46550.
+26/09/25 19:30:03 INFO Worker: Worker decommissioning not enabled.
+26/09/25 19:30:03 INFO Worker: Starting Spark worker 127.0.0.1:46550 with 2 cores, 1200.0 MiB RAM
+26/09/25 19:30:03 INFO Worker: Running Spark version 4.2.0
+26/09/25 19:30:03 INFO Worker: Spark home: /home/lengjing1236/.local/lib/python3.10/site-packages/pyspark
+26/09/25 19:30:03 INFO ResourceUtils: ==============================================================
+26/09/25 19:30:03 INFO ResourceUtils: No custom resources configured for spark.worker.
+26/09/25 19:30:03 INFO ResourceUtils: ==============================================================
+26/09/25 19:30:04 INFO JettyUtils: Start Jetty 127.0.0.1:46704 for WorkerUI
+26/09/25 19:30:04 INFO Utils: Successfully started service 'WorkerUI' on port 46704.
+26/09/25 19:30:04 INFO WorkerWebUI: Bound WorkerWebUI to 127.0.0.1, and started at http://localhost:46704
+26/09/25 19:30:04 INFO Worker: Connecting to master 127.0.0.1:48104...
+26/09/25 19:30:05 INFO TransportClientFactory: Successfully created connection to /127.0.0.1:48104 after 80 ms (0 ms spent in bootstraps)
+26/09/25 19:30:05 INFO Worker: Successfully registered with master spark://127.0.0.1:48104
+26/09/25 19:30:05 INFO Worker: Worker cleanup enabled; old application directories will be deleted in: /home/lengjing1236/knowpipe/state/feature010/spark-comparison/worker
+26/09/25 19:30:17 INFO Worker: Asked to launch executor app-20260925193016-0000/0 for knowpipe-feature010-deployment-acceptance
+26/09/25 19:30:17 INFO Worker: Asked to launch executor app-20260925193016-0000/1 for knowpipe-feature010-deployment-acceptance
+26/09/25 19:30:17 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:30:17 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:30:17 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:30:17 INFO ExecutorRunner: Launch command: "/usr/lib/jvm/java-17-openjdk-amd64/bin/java" "-cp" "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/conf:/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/jars/slf4j-api-2.0.17.jar:/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/jars/*" "-Xmx512M" "-Dspark.driver.port=44770" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-modules=jdk.incubator.vector" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Dio.netty.tryReflectionSetAccessible=true" "-Dio.netty.allocator.type=pooled" "-Dio.netty.handler.ssl.defaultEndpointVerificationAlgorithm=NONE" "--sun-misc-unsafe-memory-access=allow" "--enable-native-access=ALL-UNNAMED" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@127.0.0.1:44770" "--executor-id" "1" "--hostname" "127.0.0.1" "--cores" "1" "--app-id" "app-20260925193016-0000" "--worker-url" "spark://Worker@127.0.0.1:46550" "--resourceProfileId" "0"
+26/09/25 19:30:17 INFO ExecutorRunner: Launch command: "/usr/lib/jvm/java-17-openjdk-amd64/bin/java" "-cp" "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/conf:/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/jars/slf4j-api-2.0.17.jar:/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/jars/*" "-Xmx512M" "-Dspark.driver.port=44770" "-Djava.net.preferIPv6Addresses=false" "-XX:+IgnoreUnrecognizedVMOptions" "--add-modules=jdk.incubator.vector" "--add-opens=java.base/java.lang=ALL-UNNAMED" "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED" "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" "--add-opens=java.base/java.io=ALL-UNNAMED" "--add-opens=java.base/java.net=ALL-UNNAMED" "--add-opens=java.base/java.nio=ALL-UNNAMED" "--add-opens=java.base/java.util=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" "--add-opens=java.base/jdk.internal.ref=ALL-UNNAMED" "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED" "--add-opens=java.base/sun.security.action=ALL-UNNAMED" "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED" "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED" "-Dio.netty.tryReflectionSetAccessible=true" "-Dio.netty.allocator.type=pooled" "-Dio.netty.handler.ssl.defaultEndpointVerificationAlgorithm=NONE" "--sun-misc-unsafe-memory-access=allow" "--enable-native-access=ALL-UNNAMED" "org.apache.spark.executor.CoarseGrainedExecutorBackend" "--driver-url" "spark://CoarseGrainedScheduler@127.0.0.1:44770" "--executor-id" "0" "--hostname" "127.0.0.1" "--cores" "1" "--app-id" "app-20260925193016-0000" "--worker-url" "spark://Worker@127.0.0.1:46550" "--resourceProfileId" "0"
+26/09/25 19:31:53 INFO Worker: Executor app-20260925193016-0000/0 finished with state EXITED message Command exited with code 0 exitStatus 0
+26/09/25 19:31:53 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 0
+26/09/25 19:31:53 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20260925193016-0000, execId=0)
+26/09/25 19:31:53 INFO Worker: Executor app-20260925193016-0000/1 finished with state EXITED message Command exited with code 0 exitStatus 0
+26/09/25 19:31:53 INFO ExternalShuffleBlockResolver: Clean up non-shuffle and non-RDD files associated with the finished executor 1
+26/09/25 19:31:53 INFO ExternalShuffleBlockResolver: Executor is not registered (appId=app-20260925193016-0000, execId=1)
+26/09/25 19:31:53 INFO Worker: Asked to kill unknown executor app-20260925193016-0000/0
+26/09/25 19:31:53 INFO Worker: Asked to kill unknown executor app-20260925193016-0000/1
+26/09/25 19:31:53 INFO Worker: Cleaning up local directories for application app-20260925193016-0000
+26/09/25 19:31:53 INFO ExternalShuffleBlockResolver: Application app-20260925193016-0000 removed, cleanupLocalDirs = true
+26/09/25 19:31:55 ERROR Worker: RECEIVED SIGNAL TERM
+26/09/25 19:31:55 INFO ExecutorRunner: Killing process!
+26/09/25 19:31:55 INFO ExecutorRunner: Killing process!
+26/09/25 19:31:55 INFO Worker: Unknown Executor app-20260925193016-0000/0 finished with state EXITED message Worker shutting down exitStatus 0
+26/09/25 19:31:55 INFO Worker: Unknown Executor app-20260925193016-0000/1 finished with state EXITED message Worker shutting down exitStatus 0

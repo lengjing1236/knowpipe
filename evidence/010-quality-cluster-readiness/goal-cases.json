@@ -1,0 +1,14 @@
+{
+  "purpose": "实现前固定的开发验收场景，不是独立相关性标注或学习收益评价；不依据结果改写目标",
+  "frozen_at": "2026-09-25",
+  "cases": [
+    {"id": "db-1", "domain": "数据库", "zh": "PostgreSQL 的事务隔离级别", "en": "PostgreSQL transaction isolation levels"},
+    {"id": "db-2", "domain": "数据库", "zh": "PostgreSQL 如何使用索引优化查询", "en": "PostgreSQL query optimization using indexes"},
+    {"id": "lang-1", "domain": "编程语言", "zh": "Python 的异常处理机制", "en": "Python exception handling mechanism"},
+    {"id": "lang-2", "domain": "编程语言", "zh": "Python 的异步任务与协程", "en": "Python asynchronous tasks and coroutines"},
+    {"id": "web-1", "domain": "Web 开发", "zh": "Django 如何处理数据库事务", "en": "Django database transaction handling"},
+    {"id": "web-2", "domain": "Web 开发", "zh": "Django 如何防止跨站请求伪造", "en": "Django cross site request forgery protection"},
+    {"id": "ops-1", "domain": "容器与系统", "zh": "Docker 容器如何持久化存储数据", "en": "Docker container persistent data storage"},
+    {"id": "ops-2", "domain": "容器与系统", "zh": "操作系统如何调度进程", "en": "operating system process scheduling"}
+  ]
+}

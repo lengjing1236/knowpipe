@@ -1,0 +1,36 @@
+{
+  "status": "failed",
+  "checks": {
+    "successful_runs": true,
+    "identical_input": true,
+    "identical_paragraphs": true,
+    "identical_feature_identity": true,
+    "terms_equal_with_tolerance": true,
+    "postings_equal_with_tolerance": true,
+    "identical_recommendations_with_tolerance": true,
+    "two_real_executors_completed_tasks": false,
+    "native_standalone_master": false
+  },
+  "absolute_float_tolerance": 1e-10,
+  "max_absolute_float_delta": 0.0,
+  "physical_computers": 1,
+  "deployment": "single-host native Standalone, two executor JVMs",
+  "multi_host_acceptance": "pending_resources",
+  "note": "Synthetic 12-document consistency test. Timings include startup; not a scale or speedup claim.",
+  "seconds": {
+    "local": 44.127,
+    "standalone": 43.746
+  },
+  "index_seconds": {
+    "local": 10.272,
+    "standalone": 10.193
+  },
+  "standalone_executors": [],
+  "master_worker_status": {
+    "aliveworkers": 1,
+    "cores": 2,
+    "memory": 1200
+  },
+  "error_type": "RuntimeError",
+  "error": "spark_consistency_comparison_failed"
+}

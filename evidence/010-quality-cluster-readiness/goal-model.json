@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-09-25T11:08:13.228093+00:00",
+  "source": "https://argos-net.com/v1/translate-zh_en-1_9.argosmodel",
+  "official_catalog": "https://raw.githubusercontent.com/argosopentech/argospm-index/main/index.json",
+  "package_version": "1.9",
+  "archive_bytes": 74481402,
+  "archive_sha256": "62e7af5a3a48b530e47b7b3e5c78c2de79073ecd815750d2bf3ab35b4a67da2d",
+  "processor_id": "argos-zh-en-e59ed58a6a83335baf56a1a26e14851b7cd06d73b4ab9e159be2274136ee6112",
+  "model_path_relative": "state/feature010/media/translate-zh_en-1_9",
+  "first_download_hash_is_observation": true,
+  "inference_performed": false
+}

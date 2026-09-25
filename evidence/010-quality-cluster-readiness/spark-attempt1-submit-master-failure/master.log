@@ -1,0 +1,29 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:12:11 INFO Master: Started daemon with process name: 82883@LAPTOP-2JUIFGTU
+26/09/25 19:12:11 INFO SignalUtils: Registering signal handler for TERM
+26/09/25 19:12:11 INFO SignalUtils: Registering signal handler for HUP
+26/09/25 19:12:11 INFO SignalUtils: Registering signal handler for INT
+26/09/25 19:12:12 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:12:12 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:12:12 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:12:12 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:12:12 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:12:12 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:12:12 INFO Utils: Successfully started service 'sparkMaster' on port 46844.
+26/09/25 19:12:12 INFO Master: Starting Spark master at spark://127.0.0.1:46844
+26/09/25 19:12:12 INFO Master: Running Spark version 4.2.0
+26/09/25 19:12:13 INFO JettyUtils: Start Jetty 127.0.0.1:45494 for MasterUI
+26/09/25 19:12:13 INFO Utils: Successfully started service 'MasterUI' on port 45494.
+26/09/25 19:12:13 INFO MasterWebUI: Bound MasterWebUI to 127.0.0.1, and started at http://localhost:45494
+26/09/25 19:12:13 INFO Utils: Successfully started service on port 6066.
+26/09/25 19:12:13 INFO StandaloneRestServer: Started REST server for submitting applications on 127.0.0.1 with port 6066
+26/09/25 19:12:14 INFO Master: 127.0.0.1:45267 got disassociated, removing it.
+26/09/25 19:12:14 INFO Master: I have been elected leader! New state: ALIVE
+26/09/25 19:12:18 INFO Master: Registering worker 127.0.0.1:44736 with 2 cores, 1200.0 MiB RAM
+26/09/25 19:13:03 INFO Master: 127.0.0.1:48257 got disassociated, removing it.
+26/09/25 19:13:03 INFO Master: 127.0.0.1:44736 got disassociated, removing it.
+26/09/25 19:13:03 INFO Master: Removing worker worker-20260925191216-127.0.0.1-44736 on 127.0.0.1:44736
+26/09/25 19:13:03 INFO Master: Telling app of lost worker: worker-20260925191216-127.0.0.1-44736
+26/09/25 19:13:03 ERROR Master: RECEIVED SIGNAL TERM

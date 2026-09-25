@@ -1,0 +1,50 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+26/09/25 19:14:37 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:14:39 INFO SparkContext: Running Spark version 4.2.0
+26/09/25 19:14:39 INFO SparkContext: OS info Linux, 5.15.153.1-microsoft-standard-WSL2, amd64
+26/09/25 19:14:39 INFO SparkContext: Java version 17.0.20.1+1-1-22.04-Ubuntu
+26/09/25 19:14:39 INFO ResourceUtils: ==============================================================
+26/09/25 19:14:39 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/09/25 19:14:39 INFO ResourceUtils: ==============================================================
+26/09/25 19:14:39 INFO SparkContext: Submitted application: acceptance_spark010.py
+26/09/25 19:14:39 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:14:39 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:14:39 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:14:39 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:14:39 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:14:39 INFO Utils: Successfully started service 'sparkDriver' on port 44640.
+26/09/25 19:14:39 INFO SparkEnv: Registering MapOutputTracker
+26/09/25 19:14:39 INFO SparkEnv: Registering BlockManagerMaster
+26/09/25 19:14:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/09/25 19:14:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/09/25 19:14:39 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/09/25 19:14:39 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-04d9ae06-72a3-4b9a-865b-27f06c49ed2d
+26/09/25 19:14:39 INFO SparkEnv: Registering OutputCommitCoordinator
+26/09/25 19:14:40 INFO JettyUtils: Start Jetty 127.0.0.1:4040 for SparkUI
+26/09/25 19:14:40 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/09/25 19:14:40 INFO SparkContext: Added file file:///home/lengjing1236/knowpipe/state/feature010/spark-comparison/knowpipe.zip at file:///home/lengjing1236/knowpipe/state/feature010/spark-comparison/knowpipe.zip with timestamp 1790334879326
+26/09/25 19:14:40 INFO Utils: Copying /home/lengjing1236/knowpipe/state/feature010/spark-comparison/knowpipe.zip to /tmp/spark-5bc30b27-d1ad-4406-b95e-016134d506ad/userFiles-394c6398-c16f-42a0-9149-1509d1c9365d/knowpipe.zip
+26/09/25 19:14:40 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/09/25 19:14:40 INFO ResourceProfile: Limiting resource is cpu
+26/09/25 19:14:40 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/09/25 19:14:40 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:14:40 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:14:40 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:14:40 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:14:40 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:14:40 INFO Executor: Starting executor ID driver on host localhost
+26/09/25 19:14:40 INFO Executor: Running Spark version 4.2.0
+26/09/25 19:14:40 INFO Executor: OS info Linux, 5.15.153.1-microsoft-standard-WSL2, amd64
+26/09/25 19:14:40 INFO Executor: Java version 17.0.20.1+1-1-22.04-Ubuntu
+26/09/25 19:14:40 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/09/25 19:14:40 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@776182a3 for default.
+26/09/25 19:14:40 INFO Executor: Fetching file:///home/lengjing1236/knowpipe/state/feature010/spark-comparison/knowpipe.zip with timestamp 1790334879326
+26/09/25 19:14:40 INFO Utils: /home/lengjing1236/knowpipe/state/feature010/spark-comparison/knowpipe.zip has been previously copied to /tmp/spark-5bc30b27-d1ad-4406-b95e-016134d506ad/userFiles-394c6398-c16f-42a0-9149-1509d1c9365d/knowpipe.zip
+26/09/25 19:14:40 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45860.
+26/09/25 19:14:40 INFO NettyBlockTransferService: Server created on 127.0.0.1:45860
+26/09/25 19:14:40 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/09/25 19:14:40 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 127.0.0.1, 45860, None)
+26/09/25 19:14:40 INFO BlockManagerMasterEndpoint: Registering block manager 127.0.0.1:45860 with 127.2 MiB RAM, BlockManagerId(driver, 127.0.0.1, 45860, None)
+26/09/25 19:14:40 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 127.0.0.1, 45860, None)
+26/09/25 19:14:40 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 127.0.0.1, 45860, None)

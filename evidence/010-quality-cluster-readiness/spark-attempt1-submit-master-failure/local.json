@@ -1,0 +1,2652 @@
+{
+  "status": "passed",
+  "fixture": "synthetic fixed 12 documents; engineering consistency only",
+  "physical_computers_available": 1,
+  "multi_host_acceptance": "pending_resources",
+  "input_sha256": "01065d0be2b9664b881583a2f41e6581d9b2e7095fbcd262104bf663db4e3586",
+  "preflight": {
+    "status": "passed",
+    "master": "local[2]",
+    "application_id": "local-1790334688478",
+    "driver": {
+      "host": "LAPTOP-2JUIFGTU",
+      "pid": 81812,
+      "python_version": "3.10.12"
+    },
+    "shared_root": "/home/lengjing1236/knowpipe/state/feature010/spark-comparison/local-1790334682148068817",
+    "task_count": 8,
+    "tasks": [
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81987,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 0,
+        "task_attempt_id": 0,
+        "write_name": "executor-3d9ca9f5ca07450eb144eb988320dcbf"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81986,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 1,
+        "task_attempt_id": 1,
+        "write_name": "executor-0cbd1454e1e1437c9787b357571d4e0e"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81987,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 2,
+        "task_attempt_id": 2,
+        "write_name": "executor-f186b201d0ac471780b96bac5863b6bd"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81986,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 3,
+        "task_attempt_id": 3,
+        "write_name": "executor-4bb4764f9c2f42e4839c9fb4b0e3bc02"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81986,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 4,
+        "task_attempt_id": 4,
+        "write_name": "executor-b22f7f7880924dd3b24267e38e2c51c2"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81987,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 5,
+        "task_attempt_id": 5,
+        "write_name": "executor-aa3e1feb69b64d96a09ea3bb0ea0c8d8"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81987,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 6,
+        "task_attempt_id": 6,
+        "write_name": "executor-cb58632c9f55438ba0bf15d01eff5761"
+      },
+      {
+        "host": "LAPTOP-2JUIFGTU",
+        "python_pid": 81986,
+        "parent_pid": 81976,
+        "executor_jvm_pid": 81682,
+        "python_version": "3.10.12",
+        "rows": 1,
+        "read_matches": true,
+        "write_ok": true,
+        "dependencies": {
+          "knowpipe.recommendations.text": {
+            "available": true,
+            "version": "unknown",
+            "code_sha256": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6"
+          },
+          "jieba": {
+            "available": true,
+            "version": "0.42.1"
+          },
+          "pyspark": {
+            "available": true,
+            "version": "4.2.0"
+          }
+        },
+        "partition_id": 7,
+        "task_attempt_id": 7,
+        "write_name": "executor-2a22c531c67b4ab4a23f0f320f1a3bf1"
+      }
+    ],
+    "observed_hosts": [
+      "LAPTOP-2JUIFGTU"
+    ],
+    "single_host_observed": true,
+    "multi_host_acceptance": "not_established",
+    "seconds": 2.523,
+    "available": true,
+    "executors": [
+      {
+        "id": "driver",
+        "hostPort": "127.0.0.1:45074",
+        "isActive": true,
+        "totalCores": 2,
+        "totalTasks": 8,
+        "completedTasks": 8,
+        "failedTasks": 0,
+        "totalDuration": 8675,
+        "maxMemory": 133378867,
+        "memoryUsed": 9342
+      }
+    ]
+  },
+  "index_seconds": 10.272,
+  "snapshot": {
+    "corpus_id": "a750b8714fe4d1b56fcd77a58b005a038d6c1c251665bf9bc6572ffc60fe96b8",
+    "directory": "/home/lengjing1236/knowpipe/state/feature010/spark-comparison/local-1790334682148068817/a750b8714fe4d1b56fcd77a58b005a038d6c1c251665bf9bc6572ffc60fe96b8",
+    "source_path": "/home/lengjing1236/knowpipe/state/feature010/spark-comparison/local-1790334682148068817/a750b8714fe4d1b56fcd77a58b005a038d6c1c251665bf9bc6572ffc60fe96b8/documents.jsonl",
+    "document_count": 12,
+    "skipped_count": 0,
+    "sources": {
+      "official": 4,
+      "qa": 4,
+      "tutorial": 4
+    },
+    "algorithm": "goal-paragraph-coverage-mmr-v3",
+    "paragraph_count": 12,
+    "spark_application_id": "local-1790334688478",
+    "spark_master": "local[2]",
+    "index_path": "/home/lengjing1236/knowpipe/state/feature010/spark-comparison/local-1790334682148068817/a750b8714fe4d1b56fcd77a58b005a038d6c1c251665bf9bc6572ffc60fe96b8/index-s2bdd2es",
+    "strategy": "full",
+    "rebuild_reason": "initial",
+    "idf_basis_corpus_id": "a750b8714fe4d1b56fcd77a58b005a038d6c1c251665bf9bc6572ffc60fe96b8",
+    "basis_document_count": 12,
+    "basis_paragraph_count": 12,
+    "idf_policy": "frozen_base_extend_zero_df",
+    "incremental_generation": 0,
+    "cumulative_changed_documents": 0,
+    "changed_documents": 12,
+    "reused_documents": 0,
+    "feature_id": "b2e1e608c12cd5a75b784dfb29e69b48d129cceda7b3ae0ac653a7f9b48b5100"
+  },
+  "paragraphs_sha256": "95089b64058e260fabf1df1902d8146a309a2b8426d600a000a570933d6d87a1",
+  "terms": [
+    {
+      "term": "access",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "acquiring",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "acquisition",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "adds",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "after",
+      "idf": 1.4855078157817008
+    },
+    {
+      "term": "aof",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "append",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "application",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "around",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "asks",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "avoid",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "backup",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "backups",
+      "idf": 2.1786549963416464
+    },
+    {
+      "term": "bed",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "before",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "bridge",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "cache",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "callbacks",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "cancels",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "changes",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "choose",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "commits",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "compost",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "concurrency",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "conflict",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "connects",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "consumer",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "container",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "contains",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "contents",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "controls",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "coordinate",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "crash",
+      "idf": 2.1786549963416464
+    },
+    {
+      "term": "data",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "database",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "deadlocks",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "device",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "dns",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "docker",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "dry",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "durability",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "durable",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "earlier",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "enter",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "error",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "errors",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "exercise",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "failure",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "failures",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "file",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "finds",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "finishes",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "fixed",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "flower",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "fsync",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "garden",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "generic",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "happen",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "host",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "inside",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "invocation",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "isolation",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "kafka",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "kernel",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "latency",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "linux",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "loads",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "lock",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "locks",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "log",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "logging",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "manage",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "messages",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "method",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "names",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "need",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "network",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "networking",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "nutrients",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "offset",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "offsets",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "operation",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "order",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "paragraph",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "partial",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "partitions",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "periodic",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "persistence",
+      "idf": 1.9555114450274365
+    },
+    {
+      "term": "plants",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "policies",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "port",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "postgres",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "postgresql",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "processing",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "product",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "production",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "progress",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "protects",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "published",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "python",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "rdb",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "read",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "recovery",
+      "idf": 1.9555114450274365
+    },
+    {
+      "term": "redis",
+      "idf": 1.9555114450274365
+    },
+    {
+      "term": "release",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "repeatable",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "replay",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "replays",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "require",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "resolves",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "resources",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "restart",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "restores",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "retry",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "rollback",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "roses",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "routes",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "savepoints",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "saves",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "see",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "serializable",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "service",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "services",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "shared",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "snapshot",
+      "idf": 1.9555114450274365
+    },
+    {
+      "term": "soil",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "spring",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "stable",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "starts",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "state",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "still",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "storage",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "support",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "synchronize",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "system",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "testing",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "thread",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "through",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "topic",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "track",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "traffic",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "transaction",
+      "idf": 2.1786549963416464
+    },
+    {
+      "term": "unrelated",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "updates",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "uses",
+      "idf": 2.466337068793427
+    },
+    {
+      "term": "verify",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "vocabulary",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "water",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "weather",
+      "idf": 2.8718021769015913
+    },
+    {
+      "term": "writes",
+      "idf": 2.8718021769015913
+    }
+  ],
+  "postings": [
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "after",
+      "weight": 0.1267528789358113
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "cancels",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "changes",
+      "weight": 0.21044340566540418
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "database",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "error",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "finishes",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "inside",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "locks",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "partial",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "postgres",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "release",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "rollback",
+      "weight": 0.356311658969812
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "savepoints",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "support",
+      "weight": 0.24504024131630608
+    },
+    {
+      "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+      "term": "transaction",
+      "weight": 0.39012480550167694
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "application",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "around",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "callbacks",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "generic",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "happen",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "invocation",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "isolation",
+      "weight": 0.204710440238378
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "manage",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "method",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "paragraph",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "product",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "resources",
+      "weight": 0.204710440238378
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "retry",
+      "weight": 0.204710440238378
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "rollback",
+      "weight": 0.204710440238378
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "spring",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "transaction",
+      "weight": 0.3061757117391515
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "unrelated",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "4e562598eeb402d82774001758c894f035b66cb22fa02bb648382a6da658e564",
+      "term": "vocabulary",
+      "weight": 0.2383647780141672
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "after",
+      "weight": 0.13184877641907827
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "aof",
+      "weight": 0.43156915250545597
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "append",
+      "weight": 0.21890394739277225
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "choose",
+      "weight": 0.25489169368178055
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "crash",
+      "weight": 0.19337023505042944
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "durability",
+      "weight": 0.25489169368178055
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "fsync",
+      "weight": 0.21890394739277225
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "latency",
+      "weight": 0.25489169368178055
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "log",
+      "weight": 0.21890394739277225
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "logging",
+      "weight": 0.25489169368178055
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "operation",
+      "weight": 0.21890394739277225
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "persistence",
+      "weight": 0.17356474907854688
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "policies",
+      "weight": 0.25489169368178055
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "recovery",
+      "weight": 0.17356474907854688
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "redis",
+      "weight": 0.293870665546936
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "replay",
+      "weight": 0.21890394739277225
+    },
+    {
+      "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+      "term": "uses",
+      "weight": 0.21890394739277225
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "adds",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "after",
+      "weight": 0.14201188510391832
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "bed",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "compost",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "contains",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "dry",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "flower",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "garden",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "nutrients",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "plants",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "roses",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "soil",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "water",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "69df738a439cb6148f1e124cad24fa7b874bca295142c1cdc19d98180cb922e8",
+      "term": "weather",
+      "weight": 0.27453914173633875
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "asks",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "backups",
+      "weight": 0.16799588106960817
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "before",
+      "weight": 0.1901790185147849
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "cache",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "contents",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "device",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "durable",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "enter",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "failures",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "file",
+      "weight": 0.37493795256912343
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "fsync",
+      "weight": 0.1901790185147849
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "kernel",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "linux",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "operation",
+      "weight": 0.1901790185147849
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "require",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "still",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "storage",
+      "weight": 0.1901790185147849
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "synchronize",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "system",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "73c47eee3cc2122dd63ff91853da8c46e11ed9ead1597fdca1ac2ce0edef9d6c",
+      "term": "writes",
+      "weight": 0.22144439471890842
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "bridge",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "connects",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "container",
+      "weight": 0.4676100284971706
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "dns",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "docker",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "host",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "names",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "network",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "networking",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "port",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "published",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "resolves",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "routes",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "service",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "services",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "through",
+      "weight": 0.19135927415830986
+    },
+    {
+      "pid": "8a6a4c8e2d45a1d9f30fa40fd615d6561250bd994cc57969a58e03288e219a4d",
+      "term": "traffic",
+      "weight": 0.22281868405237476
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "append",
+      "weight": 0.21034095560392904
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "backup",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "before",
+      "weight": 0.21034095560392904
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "errors",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "exercise",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "failure",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "finds",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "log",
+      "weight": 0.21034095560392904
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "persistence",
+      "weight": 0.16677531682346958
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "production",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "recovery",
+      "weight": 0.28237515746664915
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "redis",
+      "weight": 0.16677531682346958
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "replays",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "restart",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "restores",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "snapshot",
+      "weight": 0.16677531682346958
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "storage",
+      "weight": 0.21034095560392904
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "testing",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+      "term": "verify",
+      "weight": 0.24492094849405127
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "after",
+      "weight": 0.15753325042742272
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "backups",
+      "weight": 0.23103924428229328
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "crash",
+      "weight": 0.23103924428229328
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "data",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "loads",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "periodic",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "persistence",
+      "weight": 0.20737559971779262
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "rdb",
+      "weight": 0.44283754557659394
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "recovery",
+      "weight": 0.20737559971779262
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "redis",
+      "weight": 0.3511174119791084
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "saves",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "b43cc1fe000d2fe8e153824c927f599f93ad04875ad9d43c70a8c65d55f6da7d",
+      "term": "snapshot",
+      "weight": 0.4352009819376786
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "access",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "acquiring",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "acquisition",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "avoid",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "concurrency",
+      "weight": 0.20052854253521646
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "coordinate",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "deadlocks",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "fixed",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "lock",
+      "weight": 0.39534204013141094
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "order",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "protects",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "python",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "resources",
+      "weight": 0.20052854253521646
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "shared",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "state",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "thread",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "bf0986506db6ddcf5162b924312024146f8c4b450eb848ab6a3879e7f7a1a690",
+      "term": "updates",
+      "weight": 0.23349537752569527
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "after",
+      "weight": 0.15753325042742272
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "backups",
+      "weight": 0.23103924428229328
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "crash",
+      "weight": 0.23103924428229328
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "data",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "loads",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "periodic",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "persistence",
+      "weight": 0.20737559971779262
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "rdb",
+      "weight": 0.44283754557659394
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "recovery",
+      "weight": 0.20737559971779262
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "redis",
+      "weight": 0.3511174119791084
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "saves",
+      "weight": 0.2615469881538248
+    },
+    {
+      "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+      "term": "snapshot",
+      "weight": 0.4352009819376786
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "after",
+      "weight": 0.12034119205383657
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "commits",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "consumer",
+      "weight": 0.3939023757118127
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "earlier",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "kafka",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "messages",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "offset",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "offsets",
+      "weight": 0.3939023757118127
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "partitions",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "processing",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "progress",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "replay",
+      "weight": 0.1997983044666673
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "starts",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "through",
+      "weight": 0.1997983044666673
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "topic",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e383ff641ba8e24c0402cbdfc8b584e87538f713ebfb3c22a0f5114f0555ff04",
+      "term": "track",
+      "weight": 0.23264508852771099
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "after",
+      "weight": 0.12950568080910643
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "changes",
+      "weight": 0.21501378707371685
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "concurrency",
+      "weight": 0.21501378707371685
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "conflict",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "controls",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "isolation",
+      "weight": 0.21501378707371685
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "need",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "postgresql",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "read",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "repeatable",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "retry",
+      "weight": 0.21501378707371685
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "see",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "serializable",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "snapshot",
+      "weight": 0.1704803154367876
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "stable",
+      "weight": 0.2503619921198505
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "transaction",
+      "weight": 0.39859748323823374
+    },
+    {
+      "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+      "term": "uses",
+      "weight": 0.21501378707371685
+    }
+  ],
+  "recommendations": [
+    {
+      "goal": "Redis persistence recovery",
+      "history_count": 0,
+      "seconds": 8.37,
+      "result": {
+        "items": [
+          {
+            "source": "official",
+            "doc_id": "redis-rdb",
+            "title": "Redis persistence snapshots",
+            "source_url": "https://example.invalid/redis-rdb",
+            "content_version": "cdd2b12e7deaabfe85dec7073dbf3c2a5f26bdc6f0bfce004279954aa0d811a2",
+            "doc_key": "1305de91b50a96f936226c360b41ead5b22632098ead66223622ef3b8de63d75",
+            "rank": 1,
+            "selection_score": 0.3758482816195345,
+            "relevance": 0.44217444896415825,
+            "history_overlap": 0.0,
+            "reason": "goal_only",
+            "goal_evidence": {
+              "start": 0,
+              "end": 133,
+              "text": "Redis persistence saves data with RDB snapshots. RDB snapshots are periodic backups. Redis recovery loads the snapshot after a crash.",
+              "matched_terms": [
+                "persistence",
+                "recovery",
+                "redis"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "Redis",
+                "field": "title",
+                "start": 0,
+                "end": 27,
+                "text": "Redis persistence snapshots"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "insufficient_history",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+                "start": 0,
+                "end": 133,
+                "text": "Redis persistence saves data with RDB snapshots. RDB snapshots are periodic backups. Redis recovery loads the snapshot after a crash.",
+                "matched_terms": [
+                  "persistence",
+                  "recovery",
+                  "redis"
+                ]
+              },
+              "comparison": null,
+              "overlap": 0.0,
+              "goal_coverage": 1.0,
+              "shared_context_terms": [],
+              "additional_terms": [],
+              "compared_history_paragraphs": 0,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": false
+          },
+          {
+            "source": "qa",
+            "doc_id": "redis-aof",
+            "title": "Redis persistence append log",
+            "source_url": "https://example.invalid/redis-aof",
+            "content_version": "3962b06e2cacddfc622301e9623fce480eaa68a3748364e7c7bdf759383095d2",
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "rank": 2,
+            "selection_score": 0.2784769783017886,
+            "relevance": 0.3700816170651158,
+            "history_overlap": 0.0,
+            "reason": "goal_only",
+            "goal_evidence": {
+              "start": 0,
+              "end": 156,
+              "text": "Redis persistence uses AOF append only logging. AOF fsync policies choose durability and latency. Redis recovery can replay the operation log after a crash.",
+              "matched_terms": [
+                "persistence",
+                "recovery",
+                "redis"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "Redis",
+                "field": "title",
+                "start": 0,
+                "end": 28,
+                "text": "Redis persistence append log"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "insufficient_history",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+                "start": 0,
+                "end": 156,
+                "text": "Redis persistence uses AOF append only logging. AOF fsync policies choose durability and latency. Redis recovery can replay the operation log after a crash.",
+                "matched_terms": [
+                  "persistence",
+                  "recovery",
+                  "redis"
+                ]
+              },
+              "comparison": null,
+              "overlap": 0.0,
+              "goal_coverage": 1.0,
+              "shared_context_terms": [],
+              "additional_terms": [],
+              "compared_history_paragraphs": 0,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": false
+          },
+          {
+            "source": "tutorial",
+            "doc_id": "redis-recovery",
+            "title": "Redis recovery practice",
+            "source_url": "https://example.invalid/redis-recovery",
+            "content_version": "fb2c5ac464f687b93bb7bfbcfaa22f02c3ffa0e0fe27a5a2d18c79555c6b8354",
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "rank": 3,
+            "selection_score": 0.26862198086936817,
+            "relevance": 0.35560492130026344,
+            "history_overlap": 0.0,
+            "reason": "goal_only",
+            "goal_evidence": {
+              "start": 0,
+              "end": 184,
+              "text": "Redis persistence recovery restores a snapshot and replays the append log. Verify the backup with a restart exercise. Recovery testing finds storage errors before a production failure.",
+              "matched_terms": [
+                "persistence",
+                "recovery",
+                "redis"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "Redis",
+                "field": "title",
+                "start": 0,
+                "end": 23,
+                "text": "Redis recovery practice"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "insufficient_history",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+                "start": 0,
+                "end": 184,
+                "text": "Redis persistence recovery restores a snapshot and replays the append log. Verify the backup with a restart exercise. Recovery testing finds storage errors before a production failure.",
+                "matched_terms": [
+                  "persistence",
+                  "recovery",
+                  "redis"
+                ]
+              },
+              "comparison": null,
+              "overlap": 0.0,
+              "goal_coverage": 1.0,
+              "shared_context_terms": [],
+              "additional_terms": [],
+              "compared_history_paragraphs": 0,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": false
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "1305de91b50a96f936226c360b41ead5b22632098ead66223622ef3b8de63d75",
+            "relevance": 0.44217444896415825,
+            "history_overlap": 0.0
+          },
+          {
+            "doc_key": "2703a9bafaac7cb0145905e707ea07f532bdb74ee5e24c3b596c4a60c1776b40",
+            "relevance": 0.44217444896415825,
+            "history_overlap": 0.0
+          },
+          {
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "relevance": 0.3700816170651158,
+            "history_overlap": 0.0
+          },
+          {
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "relevance": 0.35560492130026344,
+            "history_overlap": 0.0
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "1305de91b50a96f936226c360b41ead5b22632098ead66223622ef3b8de63d75",
+            "rank": 1,
+            "score": 0.3758482816195345
+          },
+          {
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "rank": 2,
+            "score": 0.2784769783017886
+          },
+          {
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "rank": 3,
+            "score": 0.26862198086936817
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "1305de91b50a96f936226c360b41ead5b22632098ead66223622ef3b8de63d75",
+            "rank": 1,
+            "score": 0.44217444896415825
+          },
+          {
+            "doc_key": "2703a9bafaac7cb0145905e707ea07f532bdb74ee5e24c3b596c4a60c1776b40",
+            "rank": 2,
+            "score": 0.44217444896415825
+          },
+          {
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "rank": 3,
+            "score": 0.3700816170651158
+          },
+          {
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "rank": 4,
+            "score": 0.35560492130026344
+          }
+        ],
+        "history_used": 0,
+        "history_unavailable": 0,
+        "history_references": [],
+        "algorithm": "goal-paragraph-coverage-mmr-v3",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 10,
+          "min_relevance": 0.08,
+          "min_query_coverage": 0.5,
+          "history_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "supplement_min_overlap": 0.08,
+          "supplement_max_overlap": 0.7,
+          "supplement_min_additional_terms": 2
+        },
+        "reason": null,
+        "query": {
+          "original": "Redis persistence recovery",
+          "variants": [
+            "Redis persistence recovery"
+          ],
+          "status": "native",
+          "processor_id": null,
+          "rules_version": "bilingual-object-query-v1",
+          "entities": [
+            {
+              "name": "Redis",
+              "aliases": [
+                "redis"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "history_relevant_paragraphs": 0
+      }
+    },
+    {
+      "goal": "Redis persistence recovery",
+      "history_count": 1,
+      "seconds": 9.333,
+      "result": {
+        "items": [
+          {
+            "source": "qa",
+            "doc_id": "redis-aof",
+            "title": "Redis persistence append log",
+            "source_url": "https://example.invalid/redis-aof",
+            "content_version": "3962b06e2cacddfc622301e9623fce480eaa68a3748364e7c7bdf759383095d2",
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "rank": 1,
+            "selection_score": 0.28429320784360707,
+            "relevance": 0.3700816170651158,
+            "history_overlap": 0.24061597469039855,
+            "reason": "history_comparison",
+            "goal_evidence": {
+              "start": 0,
+              "end": 156,
+              "text": "Redis persistence uses AOF append only logging. AOF fsync policies choose durability and latency. Redis recovery can replay the operation log after a crash.",
+              "matched_terms": [
+                "persistence",
+                "recovery",
+                "redis"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "start": 0,
+                "end": 156,
+                "text": "Redis persistence uses AOF append only logging. AOF fsync policies choose durability and latency. Redis recovery can replay the operation log after a crash."
+              },
+              "history": {
+                "source": "official",
+                "doc_id": "redis-rdb",
+                "title": "Redis persistence snapshots",
+                "content_version": "cdd2b12e7deaabfe85dec7073dbf3c2a5f26bdc6f0bfce004279954aa0d811a2",
+                "start": 0,
+                "end": 133,
+                "text": "Redis persistence saves data with RDB snapshots. RDB snapshots are periodic backups. Redis recovery loads the snapshot after a crash."
+              },
+              "overlap": 0.24061597469039858
+            },
+            "entity_evidence": [
+              {
+                "name": "Redis",
+                "field": "title",
+                "start": 0,
+                "end": 28,
+                "text": "Redis persistence append log"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "lexical_candidate",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "502eecb29f052a5e6e1b28315f25fa6c444a723421ce621af5d99ba1a58252eb",
+                "start": 0,
+                "end": 156,
+                "text": "Redis persistence uses AOF append only logging. AOF fsync policies choose durability and latency. Redis recovery can replay the operation log after a crash.",
+                "matched_terms": [
+                  "persistence",
+                  "recovery",
+                  "redis"
+                ]
+              },
+              "comparison": {
+                "source": "official",
+                "doc_id": "redis-rdb",
+                "title": "Redis persistence snapshots",
+                "content_version": "cdd2b12e7deaabfe85dec7073dbf3c2a5f26bdc6f0bfce004279954aa0d811a2",
+                "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+                "start": 0,
+                "end": 133,
+                "text": "Redis persistence saves data with RDB snapshots. RDB snapshots are periodic backups. Redis recovery loads the snapshot after a crash."
+              },
+              "overlap": 0.24061597469039858,
+              "goal_coverage": 1.0,
+              "shared_context_terms": [
+                "after",
+                "crash"
+              ],
+              "additional_terms": [
+                "aof",
+                "append",
+                "choose",
+                "durability",
+                "fsync",
+                "latency",
+                "log",
+                "logging",
+                "operation",
+                "policies",
+                "replay",
+                "uses"
+              ],
+              "compared_history_paragraphs": 1,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": true
+          },
+          {
+            "source": "tutorial",
+            "doc_id": "redis-recovery",
+            "title": "Redis recovery practice",
+            "source_url": "https://example.invalid/redis-recovery",
+            "content_version": "fb2c5ac464f687b93bb7bfbcfaa22f02c3ffa0e0fe27a5a2d18c79555c6b8354",
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "rank": 2,
+            "selection_score": 0.24228889664866077,
+            "relevance": 0.35560492130026344,
+            "history_overlap": 0.22428134823903828,
+            "reason": "history_comparison",
+            "goal_evidence": {
+              "start": 0,
+              "end": 184,
+              "text": "Redis persistence recovery restores a snapshot and replays the append log. Verify the backup with a restart exercise. Recovery testing finds storage errors before a production failure.",
+              "matched_terms": [
+                "persistence",
+                "recovery",
+                "redis"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "start": 0,
+                "end": 184,
+                "text": "Redis persistence recovery restores a snapshot and replays the append log. Verify the backup with a restart exercise. Recovery testing finds storage errors before a production failure."
+              },
+              "history": {
+                "source": "official",
+                "doc_id": "redis-rdb",
+                "title": "Redis persistence snapshots",
+                "content_version": "cdd2b12e7deaabfe85dec7073dbf3c2a5f26bdc6f0bfce004279954aa0d811a2",
+                "start": 0,
+                "end": 133,
+                "text": "Redis persistence saves data with RDB snapshots. RDB snapshots are periodic backups. Redis recovery loads the snapshot after a crash."
+              },
+              "overlap": 0.22428134823903828
+            },
+            "entity_evidence": [
+              {
+                "name": "Redis",
+                "field": "title",
+                "start": 0,
+                "end": 23,
+                "text": "Redis recovery practice"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "lexical_candidate",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "ad1a258065e1515b646e3bd887fc238d50df804a8389564a5c31f2c9e2648e27",
+                "start": 0,
+                "end": 184,
+                "text": "Redis persistence recovery restores a snapshot and replays the append log. Verify the backup with a restart exercise. Recovery testing finds storage errors before a production failure.",
+                "matched_terms": [
+                  "persistence",
+                  "recovery",
+                  "redis"
+                ]
+              },
+              "comparison": {
+                "source": "official",
+                "doc_id": "redis-rdb",
+                "title": "Redis persistence snapshots",
+                "content_version": "cdd2b12e7deaabfe85dec7073dbf3c2a5f26bdc6f0bfce004279954aa0d811a2",
+                "pid": "c00e773acec20d23f40e872369f3585af028cd115e1fa55149ddf8382ed92524",
+                "start": 0,
+                "end": 133,
+                "text": "Redis persistence saves data with RDB snapshots. RDB snapshots are periodic backups. Redis recovery loads the snapshot after a crash."
+              },
+              "overlap": 0.22428134823903828,
+              "goal_coverage": 1.0,
+              "shared_context_terms": [
+                "snapshot"
+              ],
+              "additional_terms": [
+                "append",
+                "backup",
+                "before",
+                "errors",
+                "exercise",
+                "failure",
+                "finds",
+                "log",
+                "production",
+                "replays",
+                "restart",
+                "restores"
+              ],
+              "compared_history_paragraphs": 1,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": true
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "2703a9bafaac7cb0145905e707ea07f532bdb74ee5e24c3b596c4a60c1776b40",
+            "relevance": 0.44217444896415825,
+            "history_overlap": 1.0
+          },
+          {
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "relevance": 0.3700816170651158,
+            "history_overlap": 0.24061597469039855
+          },
+          {
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "relevance": 0.35560492130026344,
+            "history_overlap": 0.22428134823903828
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "2703a9bafaac7cb0145905e707ea07f532bdb74ee5e24c3b596c4a60c1776b40",
+            "rank": 1,
+            "score": 0.3758482816195345
+          },
+          {
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "rank": 2,
+            "score": 0.2784769783017886
+          },
+          {
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "rank": 3,
+            "score": 0.26862198086936817
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "fb34312cac1c61e37f788067bc91d6cbe60a5218d6802cb1552692ed279a548c",
+            "rank": 1,
+            "score": 0.3344625974630671
+          },
+          {
+            "doc_key": "ca9a3c941e8265f1947c42bec0e8ff83bedbb532e3e45eb630987cd335794d02",
+            "rank": 2,
+            "score": 0.3237027008243994
+          }
+        ],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "official",
+            "doc_id": "redis-rdb",
+            "content_version": "cdd2b12e7deaabfe85dec7073dbf3c2a5f26bdc6f0bfce004279954aa0d811a2",
+            "doc_key": "1305de91b50a96f936226c360b41ead5b22632098ead66223622ef3b8de63d75"
+          }
+        ],
+        "algorithm": "goal-paragraph-coverage-mmr-v3",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 10,
+          "min_relevance": 0.08,
+          "min_query_coverage": 0.5,
+          "history_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "supplement_min_overlap": 0.08,
+          "supplement_max_overlap": 0.7,
+          "supplement_min_additional_terms": 2
+        },
+        "reason": null,
+        "query": {
+          "original": "Redis persistence recovery",
+          "variants": [
+            "Redis persistence recovery"
+          ],
+          "status": "native",
+          "processor_id": null,
+          "rules_version": "bilingual-object-query-v1",
+          "entities": [
+            {
+              "name": "Redis",
+              "aliases": [
+                "redis"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "history_relevant_paragraphs": 1
+      }
+    },
+    {
+      "goal": "PostgreSQL transaction rollback",
+      "history_count": 0,
+      "seconds": 4.958,
+      "result": {
+        "items": [
+          {
+            "source": "qa",
+            "doc_id": "postgres-rollback",
+            "title": "Postgres transaction rollback",
+            "source_url": "https://example.invalid/postgres-rollback",
+            "content_version": "f8e48f366a60aa1a1ddd0416586af189e4fe3790186c32f85c21450f1a2ffbec",
+            "doc_key": "618675351329eac992b8990b71a1f63adad5c96c573a2b703455e3bba3ac3b6b",
+            "rank": 1,
+            "selection_score": 0.3364310479511635,
+            "relevance": 0.3958012328837218,
+            "history_overlap": 0.0,
+            "reason": "goal_only",
+            "goal_evidence": {
+              "start": 0,
+              "end": 173,
+              "text": "Postgres transaction rollback cancels changes after an error. Savepoints support partial rollback inside a transaction. Release database locks when the transaction finishes.",
+              "matched_terms": [
+                "rollback",
+                "transaction"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "title",
+                "start": 0,
+                "end": 29,
+                "text": "Postgres transaction rollback"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "insufficient_history",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "28df1a7acba10d02d13da6dbd2202e6857a1781d8a31482e18827cc7adc247cc",
+                "start": 0,
+                "end": 173,
+                "text": "Postgres transaction rollback cancels changes after an error. Savepoints support partial rollback inside a transaction. Release database locks when the transaction finishes.",
+                "matched_terms": [
+                  "rollback",
+                  "transaction"
+                ]
+              },
+              "comparison": null,
+              "overlap": 0.0,
+              "goal_coverage": 0.6666666666666666,
+              "shared_context_terms": [],
+              "additional_terms": [],
+              "compared_history_paragraphs": 0,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": false
+          },
+          {
+            "source": "official",
+            "doc_id": "postgres-isolation",
+            "title": "PostgreSQL transaction isolation",
+            "source_url": "https://example.invalid/postgres-isolation",
+            "content_version": "2c1e61bd1616b0991bd0b44e21fa82c445ade9ee059ec6e3a5cc55591d7bea20",
+            "doc_key": "890fed0e5450d559ba75e8e294acd2782169df7cba4b0ef9fd6420395e834264",
+            "rank": 2,
+            "selection_score": 0.27635060899008146,
+            "relevance": 0.36344181359768635,
+            "history_overlap": 0.0,
+            "reason": "goal_only",
+            "goal_evidence": {
+              "start": 0,
+              "end": 187,
+              "text": "PostgreSQL transaction isolation controls which changes concurrent transactions can see. Repeatable read uses a stable snapshot. Serializable transactions may need retry after a conflict.",
+              "matched_terms": [
+                "postgresql",
+                "transaction"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "title",
+                "start": 0,
+                "end": 32,
+                "text": "PostgreSQL transaction isolation"
+              }
+            ],
+            "supplement_evidence": {
+              "status": "insufficient_history",
+              "method": "goal-gated-lexical-comparison-v1",
+              "candidate": {
+                "pid": "e7223d969921405d734068b8275cb3ca1a0dc695fd87e6f02d6a4ea4d3492f23",
+                "start": 0,
+                "end": 187,
+                "text": "PostgreSQL transaction isolation controls which changes concurrent transactions can see. Repeatable read uses a stable snapshot. Serializable transactions may need retry after a conflict.",
+                "matched_terms": [
+                  "postgresql",
+                  "transaction"
+                ]
+              },
+              "comparison": null,
+              "overlap": 0.0,
+              "goal_coverage": 0.6666666666666666,
+              "shared_context_terms": [],
+              "additional_terms": [],
+              "compared_history_paragraphs": 0,
+              "limitation": "仅比较当前目标下、版本一致的已读片段。列出的词未出现在这些对照片段中，不表示用户不懂，也不证明语义上新增了知识。"
+            },
+            "supplement_eligible": false
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "618675351329eac992b8990b71a1f63adad5c96c573a2b703455e3bba3ac3b6b",
+            "relevance": 0.3958012328837218,
+            "history_overlap": 0.0
+          },
+          {
+            "doc_key": "890fed0e5450d559ba75e8e294acd2782169df7cba4b0ef9fd6420395e834264",
+            "relevance": 0.36344181359768635,
+            "history_overlap": 0.0
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "618675351329eac992b8990b71a1f63adad5c96c573a2b703455e3bba3ac3b6b",
+            "rank": 1,
+            "score": 0.3364310479511635
+          },
+          {
+            "doc_key": "890fed0e5450d559ba75e8e294acd2782169df7cba4b0ef9fd6420395e834264",
+            "rank": 2,
+            "score": 0.27635060899008146
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "618675351329eac992b8990b71a1f63adad5c96c573a2b703455e3bba3ac3b6b",
+            "rank": 1,
+            "score": 0.3958012328837218
+          },
+          {
+            "doc_key": "890fed0e5450d559ba75e8e294acd2782169df7cba4b0ef9fd6420395e834264",
+            "rank": 2,
+            "score": 0.36344181359768635
+          }
+        ],
+        "history_used": 0,
+        "history_unavailable": 0,
+        "history_references": [],
+        "algorithm": "goal-paragraph-coverage-mmr-v3",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 10,
+          "min_relevance": 0.08,
+          "min_query_coverage": 0.5,
+          "history_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "supplement_min_overlap": 0.08,
+          "supplement_max_overlap": 0.7,
+          "supplement_min_additional_terms": 2
+        },
+        "reason": null,
+        "query": {
+          "original": "PostgreSQL transaction rollback",
+          "variants": [
+            "PostgreSQL transaction rollback"
+          ],
+          "status": "native",
+          "processor_id": null,
+          "rules_version": "bilingual-object-query-v1",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "history_relevant_paragraphs": 0
+      }
+    }
+  ],
+  "runtime": {
+    "master": "local[2]",
+    "application_id": "local-1790334688478",
+    "driver_host": "LAPTOP-2JUIFGTU",
+    "driver_pid": 81812,
+    "available": true,
+    "executors": [
+      {
+        "id": "driver",
+        "hostPort": "127.0.0.1:45074",
+        "isActive": true,
+        "totalCores": 2,
+        "totalTasks": 305,
+        "completedTasks": 305,
+        "failedTasks": 0,
+        "totalDuration": 41272,
+        "maxMemory": 133378867,
+        "memoryUsed": 9765794
+      }
+    ]
+  },
+  "seconds": 44.127
+}

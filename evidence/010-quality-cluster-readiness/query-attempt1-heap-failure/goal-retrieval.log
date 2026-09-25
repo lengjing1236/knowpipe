@@ -1,0 +1,224 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:17:50 WARN Utils: Your hostname, LAPTOP-2JUIFGTU, resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/09/25 19:17:50 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 19:17:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 3:>                                                          (0 + 1) / 1]                                                                                [Stage 5:>                                                          (0 + 1) / 1]                                                                                [Stage 11:>                                                         (0 + 1) / 1][Stage 12:>   (0 + 1) / 1][Stage 13:>   (0 + 0) / 1][Stage 14:>   (0 + 0) / 1][Stage 13:>   (0 + 1) / 1][Stage 14:>   (0 + 0) / 1][Stage 15:>   (0 + 0) / 1]                                                                                [Stage 14:>   (0 + 1) / 1][Stage 15:>   (0 + 0) / 1][Stage 16:>   (0 + 0) / 1][Stage 15:>                 (0 + 0) / 1][Stage 16:>                 (0 + 1) / 1]                                                                                [Stage 17:>                                                         (0 + 1) / 1][Stage 17:>                 (0 + 1) / 1][Stage 18:>                 (0 + 0) / 1]                                                                                26/09/25 19:18:23 ERROR Executor: Exception in task 0.0 in stage 24.0 (TID 53)
+java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.nio.HeapByteBuffer.<init>(HeapByteBuffer.java:64)
+	at java.base/java.nio.ByteBuffer.allocate(ByteBuffer.java:363)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$1(BlockManager.scala:1785)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$1$adapted(BlockManager.scala:1785)
+	at org.apache.spark.storage.BlockManager$$Lambda$5094/0x00007f09392e8ed0.apply(Unknown Source)
+	at org.apache.spark.storage.DiskBlockData.$anonfun$toChunkedByteBuffer$2(DiskStore.scala:203)
+	at org.apache.spark.storage.DiskBlockData$$Lambda$5097/0x00007f09392e9818.apply(Unknown Source)
+	at org.apache.spark.util.SparkErrorUtils.tryWithResource(SparkErrorUtils.scala:51)
+	at org.apache.spark.util.SparkErrorUtils.tryWithResource$(SparkErrorUtils.scala:48)
+	at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:97)
+	at org.apache.spark.storage.DiskBlockData.toChunkedByteBuffer(DiskStore.scala:198)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$3(BlockManager.scala:1793)
+	at org.apache.spark.storage.BlockManager$$Lambda$5095/0x00007f09392e9298.apply(Unknown Source)
+	at org.apache.spark.storage.memory.MemoryStore.putBytes(MemoryStore.scala:154)
+	at org.apache.spark.storage.BlockManager.maybeCacheDiskBytesInMemory(BlockManager.scala:1788)
+	at org.apache.spark.storage.BlockManager.getLocalValues(BlockManager.scala:1031)
+	at org.apache.spark.storage.BlockManager.get(BlockManager.scala:1348)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1450)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1416)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:386)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:336)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+26/09/25 19:18:23 ERROR SparkUncaughtExceptionHandler: Uncaught exception in thread Thread[Executor task launch worker for task 0.0 in stage 24.0 (TID 53),5,main]
+java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.nio.HeapByteBuffer.<init>(HeapByteBuffer.java:64)
+	at java.base/java.nio.ByteBuffer.allocate(ByteBuffer.java:363)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$1(BlockManager.scala:1785)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$1$adapted(BlockManager.scala:1785)
+	at org.apache.spark.storage.BlockManager$$Lambda$5094/0x00007f09392e8ed0.apply(Unknown Source)
+	at org.apache.spark.storage.DiskBlockData.$anonfun$toChunkedByteBuffer$2(DiskStore.scala:203)
+	at org.apache.spark.storage.DiskBlockData$$Lambda$5097/0x00007f09392e9818.apply(Unknown Source)
+	at org.apache.spark.util.SparkErrorUtils.tryWithResource(SparkErrorUtils.scala:51)
+	at org.apache.spark.util.SparkErrorUtils.tryWithResource$(SparkErrorUtils.scala:48)
+	at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:97)
+	at org.apache.spark.storage.DiskBlockData.toChunkedByteBuffer(DiskStore.scala:198)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$3(BlockManager.scala:1793)
+	at org.apache.spark.storage.BlockManager$$Lambda$5095/0x00007f09392e9298.apply(Unknown Source)
+	at org.apache.spark.storage.memory.MemoryStore.putBytes(MemoryStore.scala:154)
+	at org.apache.spark.storage.BlockManager.maybeCacheDiskBytesInMemory(BlockManager.scala:1788)
+	at org.apache.spark.storage.BlockManager.getLocalValues(BlockManager.scala:1031)
+	at org.apache.spark.storage.BlockManager.get(BlockManager.scala:1348)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1450)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1416)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:386)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:336)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+26/09/25 19:18:23 WARN TaskSetManager: Lost task 0.0 in stage 24.0 (TID 53) (10.255.255.254 executor driver): java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.nio.HeapByteBuffer.<init>(HeapByteBuffer.java:64)
+	at java.base/java.nio.ByteBuffer.allocate(ByteBuffer.java:363)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$1(BlockManager.scala:1785)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$1$adapted(BlockManager.scala:1785)
+	at org.apache.spark.storage.BlockManager$$Lambda$5094/0x00007f09392e8ed0.apply(Unknown Source)
+	at org.apache.spark.storage.DiskBlockData.$anonfun$toChunkedByteBuffer$2(DiskStore.scala:203)
+	at org.apache.spark.storage.DiskBlockData$$Lambda$5097/0x00007f09392e9818.apply(Unknown Source)
+	at org.apache.spark.util.SparkErrorUtils.tryWithResource(SparkErrorUtils.scala:51)
+	at org.apache.spark.util.SparkErrorUtils.tryWithResource$(SparkErrorUtils.scala:48)
+	at org.apache.spark.util.Utils$.tryWithResource(Utils.scala:97)
+	at org.apache.spark.storage.DiskBlockData.toChunkedByteBuffer(DiskStore.scala:198)
+	at org.apache.spark.storage.BlockManager.$anonfun$maybeCacheDiskBytesInMemory$3(BlockManager.scala:1793)
+	at org.apache.spark.storage.BlockManager$$Lambda$5095/0x00007f09392e9298.apply(Unknown Source)
+	at org.apache.spark.storage.memory.MemoryStore.putBytes(MemoryStore.scala:154)
+	at org.apache.spark.storage.BlockManager.maybeCacheDiskBytesInMemory(BlockManager.scala:1788)
+	at org.apache.spark.storage.BlockManager.getLocalValues(BlockManager.scala:1031)
+	at org.apache.spark.storage.BlockManager.get(BlockManager.scala:1348)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdate(BlockManager.scala:1450)
+	at org.apache.spark.storage.BlockManager.getOrElseUpdateRDDBlock(BlockManager.scala:1416)
+	at org.apache.spark.rdd.RDD.getOrCompute(RDD.scala:386)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:336)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:338)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:57)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:374)
+
+26/09/25 19:18:23 ERROR TaskSetManager: Task 0 in stage 24.0 failed 1 times; aborting job
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 45201)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/socketserver.py", line 316, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python3.10/socketserver.py", line 347, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.10/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.10/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 329, in handle
+    poll(accum_updates)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 293, in poll
+    if self.rfile.fileno() in r and func():
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/accumulators.py", line 300, in accum_updates
+    num_updates = read_int(self.rfile)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/serializers.py", line 575, in read_int
+    raise EOFError
+EOFError
+----------------------------------------
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1038, in send_command
+    response = connection.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 540, in send_command
+    raise Py4JNetworkError(
+py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/classic/dataframe.py", line 503, in collect
+    sock_info = self._jdf.collectToPython()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1361, in __call__
+    answer = self.gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1057, in send_command
+    response = self.send_command(command, retry, binary=binary)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 438, in connect_to_java_server
+    self.socket.connect((self.java_address, self.java_port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/knowpipe/recommendations/engine.py", line 142, in recommend
+    if not chosen_parts.take(1):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/classic/dataframe.py", line 521, in take
+    return self.limit(num).collect()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/classic/dataframe.py", line 502, in collect
+    with SCCallSiteSync(self._sc):
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/traceback_utils.py", line 80, in __exit__
+    self._context._jsc.setCallSite(None)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1361, in __call__
+    answer = self.gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 438, in connect_to_java_server
+    self.socket.connect((self.java_address, self.java_port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_query010.py", line 59, in main
+    result = recommend(spark, index, case[language], [], query_plan=query)
+  File "/home/lengjing1236/knowpipe/knowpipe/recommendations/engine.py", line 240, in recommend
+    frame.unpersist()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/classic/dataframe.py", line 563, in unpersist
+    self._jdf.unpersist(blocking)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1361, in __call__
+    answer = self.gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 438, in connect_to_java_server
+    self.socket.connect((self.java_address, self.java_port))
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_query010.py", line 80, in <module>
+    main()
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_query010.py", line 75, in main
+    if index: index.close()
+  File "/home/lengjing1236/knowpipe/knowpipe/recommendations/index.py", line 246, in close
+    frame.unpersist()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/pyspark/sql/classic/dataframe.py", line 563, in unpersist
+    self._jdf.unpersist(blocking)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1361, in __call__
+    answer = self.gateway_client.send_command(command)
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/java_gateway.py", line 1036, in send_command
+    connection = self._get_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 284, in _get_connection
+    connection = self._create_new_connection()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 291, in _create_new_connection
+    connection.connect_to_java_server()
+  File "/home/lengjing1236/.local/lib/python3.10/site-packages/py4j/clientserver.py", line 438, in connect_to_java_server
+    self.socket.connect((self.java_address, self.java_port))
+ConnectionRefusedError: [Errno 111] Connection refused

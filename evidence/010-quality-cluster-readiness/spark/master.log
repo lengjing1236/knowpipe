@@ -1,0 +1,44 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:29:57 INFO Master: Started daemon with process name: 94483@LAPTOP-2JUIFGTU
+26/09/25 19:29:57 INFO SignalUtils: Registering signal handler for TERM
+26/09/25 19:29:57 INFO SignalUtils: Registering signal handler for HUP
+26/09/25 19:29:57 INFO SignalUtils: Registering signal handler for INT
+26/09/25 19:29:58 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 19:29:58 INFO SecurityManager: Changing view acls to: lengjing1236
+26/09/25 19:29:58 INFO SecurityManager: Changing modify acls to: lengjing1236
+26/09/25 19:29:58 INFO SecurityManager: Changing view acls groups to: lengjing1236
+26/09/25 19:29:58 INFO SecurityManager: Changing modify acls groups to: lengjing1236
+26/09/25 19:29:58 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: lengjing1236 groups with view permissions: EMPTY; users with modify permissions: lengjing1236; groups with modify permissions: EMPTY; RPC SSL disabled
+26/09/25 19:29:58 INFO Utils: Successfully started service 'sparkMaster' on port 48104.
+26/09/25 19:29:58 INFO Master: Starting Spark master at spark://127.0.0.1:48104
+26/09/25 19:29:58 INFO Master: Running Spark version 4.2.0
+26/09/25 19:29:59 INFO JettyUtils: Start Jetty 127.0.0.1:45242 for MasterUI
+26/09/25 19:29:59 INFO Utils: Successfully started service 'MasterUI' on port 45242.
+26/09/25 19:30:00 INFO MasterWebUI: Bound MasterWebUI to 127.0.0.1, and started at http://localhost:45242
+26/09/25 19:30:00 INFO Utils: Successfully started service on port 6066.
+26/09/25 19:30:00 INFO StandaloneRestServer: Started REST server for submitting applications on 127.0.0.1 with port 6066
+26/09/25 19:30:00 INFO Master: 127.0.0.1:46195 got disassociated, removing it.
+26/09/25 19:30:00 INFO Master: I have been elected leader! New state: ALIVE
+26/09/25 19:30:05 INFO Master: Registering worker 127.0.0.1:46550 with 2 cores, 1200.0 MiB RAM
+26/09/25 19:30:16 INFO Master: Registering app knowpipe-feature010-deployment-acceptance
+26/09/25 19:30:16 INFO Master: Registered app knowpipe-feature010-deployment-acceptance with ID app-20260925193016-0000
+26/09/25 19:30:16 INFO Master: Start scheduling for app app-20260925193016-0000 with rpId: 0
+26/09/25 19:30:17 INFO Master: Launching executor app-20260925193016-0000/0 on worker worker-20260925193003-127.0.0.1-46550
+26/09/25 19:30:17 INFO Master: Launching executor app-20260925193016-0000/1 on worker worker-20260925193003-127.0.0.1-46550
+26/09/25 19:30:17 INFO Master: Start scheduling for app app-20260925193016-0000 with rpId: 0
+26/09/25 19:30:17 INFO Master: Start scheduling for app app-20260925193016-0000 with rpId: 0
+26/09/25 19:31:53 INFO Master: Received unregister request from application app-20260925193016-0000
+26/09/25 19:31:53 INFO Master: Removing app app-20260925193016-0000
+26/09/25 19:31:53 INFO Master: 127.0.0.1:44625 got disassociated, removing it.
+26/09/25 19:31:53 INFO Master: 127.0.0.1:44770 got disassociated, removing it.
+26/09/25 19:31:53 WARN Master: Got status update for unknown executor app-20260925193016-0000/0
+26/09/25 19:31:53 WARN Master: Got status update for unknown executor app-20260925193016-0000/1
+26/09/25 19:31:55 WARN Master: Got status update for unknown executor app-20260925193016-0000/0
+26/09/25 19:31:55 WARN Master: Got status update for unknown executor app-20260925193016-0000/1
+26/09/25 19:31:56 INFO Master: 127.0.0.1:45045 got disassociated, removing it.
+26/09/25 19:31:56 INFO Master: 127.0.0.1:46550 got disassociated, removing it.
+26/09/25 19:31:56 INFO Master: Removing worker worker-20260925193003-127.0.0.1-46550 on 127.0.0.1:46550
+26/09/25 19:31:56 INFO Master: Telling app of lost worker: worker-20260925193003-127.0.0.1-46550
+26/09/25 19:31:56 ERROR Master: RECEIVED SIGNAL TERM
