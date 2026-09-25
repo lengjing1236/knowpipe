@@ -176,8 +176,9 @@ def recommend(spark, index, goal, history, query_plan=None, semantic=None):
         result['history_relevant_paragraphs'] = history_parts.count()
         prior = [row.asDict() for row in history_parts.orderBy(F.desc('relevance'), 'doc_key', 'pid').limit(100).collect()]
         try:
-            # Inputs and all collected text are bounded by 100 documents × 3
-            # paragraphs and 100 history paragraphs; never corpus-sized vectors.
+            # At most 100 documents share a total 300-paragraph budget. Each
+            # retains up to three lexical anchors, then receives an adaptive
+            # neighborhood quota; history is bounded to 100 paragraphs.
             features = analyze(semantic, goal, [row.asDict() for row in parts], prior)
         except Exception:
             return _degraded(spark, index, goal, history, query_plan, 'failed', 'semantic_processing_failed', processor_id)

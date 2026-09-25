@@ -33,7 +33,7 @@ def sentences(part, scope=None):
         starts.append(match.end())
     stops.append(len(text))
     result = []
-    for start, end in zip(starts, stops):
+    for position, (start, end) in enumerate(zip(starts, stops)):
         while start < end and text[start].isspace(): start += 1
         while end > start and text[end - 1].isspace(): end -= 1
         excerpt = text[start:end]
@@ -53,7 +53,10 @@ def sentences(part, scope=None):
         # Their hypothesis includes preceding source context; neutral on that
         # composite hypothesis cannot establish which sentence adds content.
         dependent = bool(re.match(r'(?i)^(?:this\b|that\b|these\b|those\b|it\b|such\b|for example\b|therefore\b|however\b|这|该|它|因此|例如)', excerpt))
-        context_start = starts[max(0, starts.index(start) - 1)] if start in starts else 0
+        # Whitespace trimming changes `start`; using the original sentence
+        # position avoids accidentally expanding a later sentence to the whole
+        # paragraph merely because its first character was indented.
+        context_start = starts[max(0, position - 1)]
         context_start = max(0, min(context_start, start))
         row['dependent'] = dependent
         row['hypothesis_context'] = ({**public_evidence(row), 'start': part['start'] + context_start,
@@ -155,7 +158,7 @@ def analyze(provider, query, candidate_parts, history_parts):
                 'semantic_relevance': .7 * similarity + .3 * rank_feature}
     units = [row for unit in units if (row := with_goal_similarity(unit)) is not None]
     history_units = [unit for unit in history_units if unit['model_text'] in vectors]
-    comparisons, pair_inputs = [], []
+    comparisons, pair_inputs, requested_contexts = [], [], {}
     history_context_count = len({(h['context']['source'], h['context']['doc_id'], h['context']['start'],
                                   h['context']['end']) for h in history_units})
     for unit in units:
@@ -163,6 +166,11 @@ def analyze(provider, query, candidate_parts, history_parts):
                          for h in history_units], key=lambda pair: (-pair[0], pair[1]['uid']))
         nearest, seen_contexts = [], set()
         for similarity, history in ordered:
+            # Shared context is required for every relationship, not only a
+            # neutral/supplement outcome. An unrelated premise cannot cover or
+            # contradict a candidate simply because the NLI model says so.
+            if similarity < THRESHOLDS['context_similarity']:
+                continue
             identity = (history['context']['source'], history['context']['doc_id'],
                         history['context']['start'], history['context']['end'])
             if identity not in seen_contexts:
@@ -170,6 +178,7 @@ def analyze(provider, query, candidate_parts, history_parts):
                 seen_contexts.add(identity)
             if len(nearest) == 3:
                 break
+        requested_contexts[unit['uid']] = len(nearest)
         for similarity, history in nearest:
             try:
                 pair = (converter.convert(history['context']['text']),
@@ -206,7 +215,7 @@ def analyze(provider, query, candidate_parts, history_parts):
                 possible = [m for m in matches if m[1] >= THRESHOLDS['context_similarity']
                             and m[2]['neutral'] >= THRESHOLDS['neutral']]
                 if (possible and not unit['dependent'] and max(m[2]['entailment'] for m in matches) < .35
-                        and len(matches) == min(3, history_context_count)):
+                        and len(matches) == requested_contexts.get(unit['uid'], 0)):
                     relation = 'possible_supplement'
                     chosen = max(possible, key=lambda m: (m[1], m[2]['neutral']))
                 else:
@@ -278,6 +287,7 @@ def analyze(provider, query, candidate_parts, history_parts):
                 'comparison_pairs': len(inferences), 'unsupported_units': errors,
                 'history_contexts': history_context_count,
                 'history_selection_method': 'candidate-nearest-context-not-answer-gated',
+                'all_relations_require_comparable_context': True,
                 'oversized_sentences': extraction_scope['oversized_sentences'],
                 'candidate_sentences_outside_budget': max(0, candidate_unit_total - LIMITS['candidate_sentences']),
                 'history_sentences_outside_budget': max(0, len(all_history_units) - LIMITS['history_sentences']),

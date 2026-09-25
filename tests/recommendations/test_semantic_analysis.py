@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from knowpipe.recommendations.engine import _choose, recommend, _context_distance
 from knowpipe.recommendations.semantic_analysis import analyze, sentences, substantive
-from knowpipe.recommendations.semantic import EnglishText
+from knowpipe.recommendations.semantic import EnglishText, UnsupportedSemanticInput
 
 
 HISTORY = 'Database snapshots preserve the committed data so recovery can restore a consistent state after failure.'
@@ -115,6 +115,43 @@ class SemanticAnalysisTests(unittest.TestCase):
         result = analyze(Features(), 'database recovery', [part('candidate', EXTRA)], [part('read', garden)])
         self.assertEqual(result['documents']['candidate']['comparison']['status'], 'uncertain')
         self.assertEqual(result['documents']['candidate']['supplement_score'], 0.)
+
+    def test_unrelated_history_cannot_cover_candidate_even_with_bad_nli_features(self):
+        class OverconfidentFeatures(Features):
+            def infer(self, pairs):
+                self.seen = pairs
+                return [dict(contradiction=.01, entailment=.98, neutral=.01) for _ in pairs]
+
+        features = OverconfidentFeatures()
+        garden = 'The flowers in the garden need regular watering and nutrients to grow healthy leaves and strong roots.'
+        result = analyze(features, 'database recovery', [part('candidate', EXTRA)], [part('read', garden)])
+        self.assertEqual(features.seen, [])
+        self.assertEqual(result['documents']['candidate']['comparison']['status'], 'uncertain')
+        self.assertEqual(result['documents']['candidate']['history_overlap'], 0.)
+
+    def test_unsupported_history_context_does_not_fall_back_to_misleading_isolated_sentence(self):
+        class LimitedContextFeatures(Features):
+            def infer(self, pairs):
+                if any(len(premise) > len(HISTORY) for premise, _ in pairs):
+                    raise UnsupportedSemanticInput('semantic_token_limit_exceeded')
+                return [dict(contradiction=.01, entailment=.01, neutral=.98) for _ in pairs]
+
+        result = analyze(LimitedContextFeatures(), 'database recovery', [part('candidate', EXTRA)],
+                         [part('read', HISTORY + ' ' + COVERED)])
+        self.assertEqual(result['status'], 'partial')
+        self.assertGreater(result['comparison_scope']['unsupported_units'], 0)
+        self.assertEqual(result['documents']['candidate']['comparison']['status'], 'uncertain')
+        self.assertEqual(result['documents']['candidate']['supplement_score'], 0.)
+
+    def test_indented_dependent_sentence_uses_its_actual_preceding_context(self):
+        third = 'This method can then recover the latest records by replaying the saved operation log after a server failure.'
+        body = HISTORY + '\n  ' + EXTRA + '\n  ' + third
+        rows = sentences(part('doc', body, 13))
+        final = rows[-1]
+        context = final['hypothesis_context']
+        self.assertEqual(context['text'], body[context['start'] - 13:context['end'] - 13])
+        self.assertNotIn(HISTORY, context['text'])
+        self.assertIn(EXTRA, context['text'])
 
     def test_unrelated_new_words_rejected_and_absent_history_is_not_novelty(self):
         unrelated = 'Beautiful flowers in the garden grow rapidly with fresh soil and special watering techniques every morning.'

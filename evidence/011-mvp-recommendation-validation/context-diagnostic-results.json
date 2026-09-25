@@ -1,0 +1,30 @@
+{
+  "input_sha256": "4f89458f33f987a9882af44ee4c576a0bd10057ee47a8da90bf7e55541d317b3",
+  "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+  "rules_version": "bounded-comparable-context-onnx-semantic-v5",
+  "is_mvp_acceptance": false,
+  "pair_labels": [
+    "v5-isolated-sentence",
+    "history-context-with-candidate-focus",
+    "v6-used-contexts"
+  ],
+  "inferences": [
+    {
+      "contradiction": 0.11887408792972565,
+      "entailment": 0.06970037519931793,
+      "neutral": 0.811425507068634
+    },
+    {
+      "contradiction": 0.036841295659542084,
+      "entailment": 0.7716745734214783,
+      "neutral": 0.19148410856723785
+    },
+    {
+      "contradiction": 0.005681286100298166,
+      "entailment": 0.062470972537994385,
+      "neutral": 0.9318477511405945
+    }
+  ],
+  "dependent_neutral_is_supplement": false,
+  "scope": "One reviewed development counterexample; not corpus performance or independent quality proof."
+}

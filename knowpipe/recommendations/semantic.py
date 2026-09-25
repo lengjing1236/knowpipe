@@ -16,7 +16,7 @@ from pathlib import Path
 
 from ..learning.providers import TextResult, processor_identity
 
-SEMANTIC_VERSION = 'bounded-native-context-onnx-semantic-v4'
+SEMANTIC_VERSION = 'bounded-comparable-context-onnx-semantic-v5'
 MAX_BATCH_INPUTS = 512
 MAX_TEXT_CHARACTERS = 4000
 MODEL_LIMITS = {'rank': 512, 'embed': 256, 'nli': 512}

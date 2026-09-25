@@ -1,0 +1,38 @@
+{
+  "base_commit": "5eb2c94",
+  "is_mvp_acceptance": false,
+  "selection_version": "goal-native-context-evidence-coverage-mmr-v6",
+  "semantic_rules_version": "bounded-comparable-context-onnx-semantic-v5",
+  "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+  "lightweight": {
+    "count": 19,
+    "status": "passed",
+    "seconds": 0.278,
+    "groups": {
+      "provider_contracts": 5,
+      "comparison_selection_context_boundaries": 14
+    },
+    "command": "python3 -m unittest tests.recommendations.test_semantic tests.recommendations.test_semantic_analysis -v"
+  },
+  "spark": {
+    "count": 2,
+    "status": "passed",
+    "seconds": 58.238,
+    "groups": {
+      "seed_document_nonlexical_expansion": 1,
+      "semantic_spark_selection_and_source_offsets": 1
+    },
+    "command": "python3 -m unittest tests.recommendations.test_engine_semantic -v"
+  },
+  "source_sha256": {
+    "knowpipe/recommendations/engine.py": "b7ae72293e1dc2a60d6392891f3e1a90f9ae7bd016fa3b1aa90fb64de844d21b",
+    "knowpipe/recommendations/semantic.py": "3ba66f332a146c0d3b77e18c7e5dd84a1d2623294d6cfeaed6454b6ff9519770",
+    "knowpipe/recommendations/semantic_analysis.py": "7ae828b6d6385cef6379432e9ce0674038edf2e3cf6d49a9086012d4346de1d9",
+    "tests/recommendations/test_semantic.py": "c496c2b7ee459bc0bfc965d89a324138f31ba5a37126b46e7e764d30092e742b",
+    "tests/recommendations/test_semantic_analysis.py": "a55fc60bc6ea0ee0423319b2ea9d720e19d656c4522edcf67196003790fbc4aa",
+    "tests/recommendations/test_engine_semantic.py": "4a1a6feb981ae8b245e594705884cc80ea01b708c0d5a3eac5337ce41d9e5480",
+    "scripts/diagnose_context011.py": "971c19fc1ebf40a3137138e388c9ec1ea14e6a0b029b1238a2f0a013ae6a4122"
+  },
+  "actual_model_diagnostic": "context-diagnostic-results.json",
+  "scope": "Targeted engineering regression and reviewed development counterexample only. Frozen product evaluation and held-out acceptance remain separate."
+}
