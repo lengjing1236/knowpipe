@@ -1,0 +1,29 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 13:47:11 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/09/25 13:47:15 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+test_empty_fulltext_snapshot_and_reusable_immutable_cache (test_engine.EngineTests) ...
+ok
+test_goal_relevance_and_history_change_have_real_evidence (test_engine.EngineTests) ...
+ok
+test_oov_and_stale_history_do_not_invent_results (test_engine.EngineTests) ...
+ok
+test_index_artifact_is_bound_to_original_version (test_importer.ImporterTests) ... ok
+test_requires_provenance_and_invalidates_changed_translation (test_importer.ImporterTests) ... ok
+test_bounded_retries_and_explicit_retry (test_queue.QueueTests) ... ok
+test_deduplication_and_goal_revision (test_queue.QueueTests) ... ok
+test_history_and_candidate_version_changes_hide_result (test_queue.QueueTests) ... ok
+test_job_lease_never_outlives_worker_lease (test_queue.QueueTests) ... ok
+test_old_profile_or_corpus_cannot_replace_new_pointer (test_queue.QueueTests) ... ok
+test_worker_and_job_expiry_fence_old_attempts (test_queue.QueueTests) ... ok
+test_durable_intent_without_spark_or_worker (test_routes.RecommendationRoutesTests) ... ok
+test_session_csrf_identity_and_shape (test_routes.RecommendationRoutesTests) ... ok
+test_explicit_bilingual_terms_and_boilerplate (test_text.TextTests) ... ok
+test_offsets_point_to_original_even_for_long_text (test_text.TextTests) ... ok
+test_translation_only_for_selected_current_versions_and_cached (test_worker.WorkerTests) ... ok
+test_unconfigured_provider_does_not_claim_translation_success (test_worker.WorkerTests) ... ok
+----------------------------------------------------------------------
+Ran 17 tests in 197.204s
+OK

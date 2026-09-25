@@ -1,0 +1,41 @@
+test_recommendations_with_valid_session_passes_auth (tests.web.test_auth.TestLoginRequired) ... ok
+test_recommendations_without_session_returns_401 (tests.web.test_auth.TestLoginRequired) ... ok
+test_requesting_other_users_data_returns_403 (tests.web.test_auth.TestOwnershipCheck) ... 拒绝越权请求：session user_id=u1 请求了其他 user_id
+ok
+test_verify_password_correct (tests.web.test_auth.TestPasswordHashing) ... ok
+test_verify_password_incorrect (tests.web.test_auth.TestPasswordHashing) ... ok
+test_csrf_required_and_valid_token_allows_register (tests.web.test_public_web.PublicWebTests) ... ok
+test_health_and_stats_do_not_expose_secrets (tests.web.test_public_web.PublicWebTests) ... ok
+test_production_cookie_and_shared_rate_limit (tests.web.test_public_web.PublicWebTests) ... ok
+test_production_rejects_missing_secret_and_insecure_origin (tests.web.test_public_web.PublicWebTests) ... ok
+test_session_bootstrap_no_url_user_id (tests.web.test_public_web.PublicWebTests) ... ok
+test_untrusted_json_and_query_operators_rejected (tests.web.test_public_web.PublicWebTests) ... ok
+test_login_success_sets_session (tests.web.test_routes_api.TestAuthContract) ... ok
+test_login_wrong_password_returns_401 (tests.web.test_routes_api.TestAuthContract) ... ok
+test_register_duplicate_username_returns_409 (tests.web.test_routes_api.TestAuthContract) ... ok
+test_register_missing_fields_returns_400 (tests.web.test_routes_api.TestAuthContract) ... ok
+test_register_success (tests.web.test_routes_api.TestAuthContract) ... ok
+test_confirmed_known_triggers_reclassification (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_invalid_action_returns_400 (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_other_users_id_returns_403 (tests.web.test_routes_api.TestProfileFeedbackContract) ... 拒绝越权请求：session user_id=75f92137bad343fa9b5bb8a3245f632f 请求了其他 user_id
+ok
+test_success_returns_feedback_record (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_unauthenticated_returns_401 (tests.web.test_routes_api.TestProfileFeedbackContract) ... ok
+test_invalid_topic_id_returns_400 (tests.web.test_routes_api.TestProfileTopicsContract) ... ok
+test_other_users_id_returns_403 (tests.web.test_routes_api.TestProfileTopicsContract) ... 拒绝越权请求：session user_id=783b679f3c3a44caa2aeaaeaf85e1593 请求了其他 user_id
+ok
+test_success_returns_updated_known_topics (tests.web.test_routes_api.TestProfileTopicsContract) ... ok
+test_unauthenticated_returns_401 (tests.web.test_routes_api.TestProfileTopicsContract) ... ok
+test_document_detail_found (tests.web.test_routes_api.TestPublicReadContract) ... ok
+test_document_detail_not_found_returns_404 (tests.web.test_routes_api.TestPublicReadContract) ... ok
+test_topics_sorted_by_document_count_desc (tests.web.test_routes_api.TestPublicReadContract) ... ok
+test_baseline_mode_excludes_personalized_fields (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_invalid_limit_returns_400 (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_new_user_without_profile_gets_all_new (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_other_users_id_returns_403 (tests.web.test_routes_api.TestRecommendationsContract) ... 拒绝越权请求：session user_id=7a29b4521e8d48138fd312041321cfc6 请求了其他 user_id
+ok
+test_unauthenticated_returns_401 (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+test_valid_request_returns_items_with_status (tests.web.test_routes_api.TestRecommendationsContract) ... ok
+----------------------------------------------------------------------
+Ran 34 tests in 5.649s
+OK

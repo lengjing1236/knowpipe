@@ -1,0 +1,138 @@
+{
+  "fetched_at": "2026-09-25T05:31:46.951068+00:00",
+  "purpose": "small real-text integration sample",
+  "documents": [
+    {
+      "source": "python_docs",
+      "doc_id": "tutorial/datastructures.html",
+      "title": "5. 数据结构",
+      "source_url": "https://docs.python.org/zh-cn/3/tutorial/datastructures.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 12575,
+      "han_characters": 3639,
+      "text_sha256": "e6505c31efa96a2a211887e515da77664aab0c9bc589e90b5317c803073ca2d7",
+      "html_sha256": "8878d9310028fe2ae3d502a3c00bc7b888dfc6559ec1e1bdb2aaabda140b367c"
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "tutorial/errors.html",
+      "title": "8. 错误和异常",
+      "source_url": "https://docs.python.org/zh-cn/3/tutorial/errors.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 13496,
+      "han_characters": 2940,
+      "text_sha256": "f8dd60dfeb9ea773e01f20cfcbaff6db27491f0998eafd4c3138bee270691a67",
+      "html_sha256": "cc26a57e536f055d94c98268aadf1cec2403e644506af1782e733628cdb5e5d1"
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/sqlite3.html",
+      "title": "sqlite3 --- SQLite 数据库的 DB-API 2.0 接口",
+      "source_url": "https://docs.python.org/zh-cn/3/library/sqlite3.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 43335,
+      "han_characters": 11881,
+      "text_sha256": "53dfddf7e9e2635be9aa263d565f7c3f6f63f5b176bffa74bc33ddf17a721ea7",
+      "html_sha256": "3c2cd84761bd04bb2ecb48d6f17c4ce9eb211a9219475b1ce3c4ab64a4b39df2"
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/asyncio-task.html",
+      "title": "协程与任务",
+      "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-task.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 26183,
+      "han_characters": 7419,
+      "text_sha256": "4c5d96f7c39898aa14836e2dd5af3b8f3cdfe4652670087db4db4c52c702058d",
+      "html_sha256": "872bcc787a225ec572f3a17b8c1a298bbba98dc7b5599628121fe58dea135196"
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/asyncio-sync.html",
+      "title": "同步原语",
+      "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 5632,
+      "han_characters": 1982,
+      "text_sha256": "b41195ca1923e189be3fbdd9127b9905425bdea75557c90d4ff6b7f06ad44d7d",
+      "html_sha256": "52378d0b247fc08afecf4d8730615242443438299fe51ce201eefd803a2adcd3"
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/concurrent.futures.html",
+      "title": "concurrent.futures --- 启动并行任务",
+      "source_url": "https://docs.python.org/zh-cn/3/library/concurrent.futures.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 13623,
+      "han_characters": 4748,
+      "text_sha256": "e2ed1bdf70a834b0d6cddb292554d1ce5bbc6cf471248f554c8e4b4d8bccaa5e",
+      "html_sha256": "bd45f1607cf9d21be04939952e3257055e2b4d729dad7d6f3801c7b813e87619"
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "howto/logging.html",
+      "title": "日志指南",
+      "source_url": "https://docs.python.org/zh-cn/3/howto/logging.html",
+      "license": "PSF-2.0; examples also 0BSD; https://docs.python.org/zh-cn/3/license.html",
+      "characters": 19249,
+      "han_characters": 8632,
+      "text_sha256": "679c0f43980e28b8395c2f1b8d3d6479d90efbc9392e196efc3d8f048a73c441",
+      "html_sha256": "11763a0a374977ffb5805ed90c6a5fda68bf24ab47fdd3ab6fc594fb0a660386"
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/db/transactions",
+      "title": "数据库事务",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/transactions/",
+      "license": "BSD-3-Clause; https://raw.githubusercontent.com/django/django/stable/5.2.x/LICENSE",
+      "characters": 11635,
+      "han_characters": 4831,
+      "text_sha256": "77368e4532c42d135068462ce7ebac503fca3fa09f7bf966040a83607a630b9c",
+      "html_sha256": "301574ab9ca5510303e3da64c4b5500eb5d5a68974c333b268dfe132f36f4e68"
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/db/queries",
+      "title": "执行查询",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/queries/",
+      "license": "BSD-3-Clause; https://raw.githubusercontent.com/django/django/stable/5.2.x/LICENSE",
+      "characters": 34070,
+      "han_characters": 9049,
+      "text_sha256": "eb0027ab89604d68677fc2b3442f6e61a98e2526d1efe3d92dd417a2dd06aabd",
+      "html_sha256": "933934db3d782b0acaa0d467136217ec41829e5302e8ea28a959c59533878086"
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/db/aggregation",
+      "title": "聚合",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/aggregation/",
+      "license": "BSD-3-Clause; https://raw.githubusercontent.com/django/django/stable/5.2.x/LICENSE",
+      "characters": 12981,
+      "han_characters": 3522,
+      "text_sha256": "12e959ca93fb434e62707e4ca053b0ca6f85d1d9e179dc130a97bea7f23a43fa",
+      "html_sha256": "a6d8d4385466db828dd2c5bafbbe5ddc8c3c0b869d686be6d211631161f31830"
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/db/optimization",
+      "title": "数据库访问优化",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/optimization/",
+      "license": "BSD-3-Clause; https://raw.githubusercontent.com/django/django/stable/5.2.x/LICENSE",
+      "characters": 7437,
+      "han_characters": 2785,
+      "text_sha256": "1900a2c763f6e1512140c6123045f9e76ad9a77824dc25bffac305205b8b2fe5",
+      "html_sha256": "419d34b55d3373a80de8d03cdb06959761531acc1859f0ea6f00bd824958b8f8"
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/async",
+      "title": "异步支持",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/async/",
+      "license": "BSD-3-Clause; https://raw.githubusercontent.com/django/django/stable/5.2.x/LICENSE",
+      "characters": 7350,
+      "han_characters": 2793,
+      "text_sha256": "0b65780b14190498d5e09d32bf6ed0bc13fc6348b9bea6e9d70cd2ff49b6055e",
+      "html_sha256": "c15745f1fc91d281d392bf3dc43068923c88b87249297ae2cd3cf5c9fbc9e8fe"
+    }
+  ]
+}

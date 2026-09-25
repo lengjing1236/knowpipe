@@ -1,0 +1,298 @@
+{
+  "scope": "real full-text integration, not recommendation effectiveness or 10k acceptance",
+  "mongo": {
+    "version": "7.0.14",
+    "concurrent_worker_claims": 24,
+    "active_workers": 1
+  },
+  "index": {
+    "corpus_id": "651323f69ecadd095b6769903ba14b4ee622018d206dc73411a88542ec5fe19a",
+    "document_count": 12,
+    "paragraph_count": 2345,
+    "spark_master": "local[2]",
+    "spark_application_id": "local-1790314610031",
+    "sources": {
+      "django_docs": 5,
+      "python_docs": 7
+    },
+    "preparation_seconds": 20.23
+  },
+  "browser": {
+    "page_errors": [],
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "overflow": false,
+    "chinese_fulltext": true,
+    "explicit_read_only": true,
+    "stale_results_hidden": true,
+    "account_isolation": true,
+    "network_failure_after_goal_change_hides_old_cards": true
+  },
+  "experiments": [
+    {
+      "label": "database_no_history",
+      "goal": "数据库事务提交与回滚",
+      "revision": 1,
+      "elapsed_seconds": 38.31,
+      "history_used": 0,
+      "history_unavailable": 0,
+      "items": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/sqlite3.html",
+          "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+          "title": "sqlite3 --- SQLite 数据库的 DB-API 2.0 接口",
+          "relevance": 0.5741809696196494,
+          "history_overlap": 0.0,
+          "rank": 1
+        },
+        {
+          "source": "django_docs",
+          "doc_id": "topics/db/transactions",
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "title": "数据库事务",
+          "relevance": 0.5413040390528473,
+          "history_overlap": 0.0,
+          "rank": 2
+        }
+      ],
+      "baseline": [
+        {
+          "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+          "relevance": 0.5741809696196494,
+          "history_overlap": 0.0
+        },
+        {
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "relevance": 0.5413040390528473,
+          "history_overlap": 0.0
+        }
+      ],
+      "without_history": [
+        {
+          "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+          "rank": 1,
+          "score": 0.48805382417670196
+        },
+        {
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "rank": 2,
+          "score": 0.38975928491503586
+        }
+      ],
+      "without_diversity": [
+        {
+          "doc_key": "8832938c914492e785ad01ab4eeac01908bde9d3f6778436cbe2e34b47a5551b",
+          "rank": 1,
+          "score": 0.5741809696196494
+        },
+        {
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "rank": 2,
+          "score": 0.5413040390528473
+        }
+      ],
+      "reason": null
+    },
+    {
+      "label": "database_with_history",
+      "goal": "数据库事务提交与回滚",
+      "revision": 2,
+      "elapsed_seconds": 14.1,
+      "history_used": 1,
+      "history_unavailable": 0,
+      "items": [
+        {
+          "source": "django_docs",
+          "doc_id": "topics/db/transactions",
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "title": "数据库事务",
+          "relevance": 0.5413040390528473,
+          "history_overlap": 0.42968190256685784,
+          "rank": 1
+        }
+      ],
+      "baseline": [
+        {
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "relevance": 0.5413040390528473,
+          "history_overlap": 0.42968190256685784
+        }
+      ],
+      "without_history": [
+        {
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "rank": 1,
+          "score": 0.4601084331949202
+        }
+      ],
+      "without_diversity": [
+        {
+          "doc_key": "b436735ecf00e3bd088e2cb33cb5540afaf713af3eda4ee368b81f975c14a0e4",
+          "rank": 1,
+          "score": 0.4482686193059064
+        }
+      ],
+      "reason": null
+    },
+    {
+      "label": "async_with_unrelated_history",
+      "goal": "Python 异步任务并发",
+      "revision": 3,
+      "elapsed_seconds": 7.83,
+      "history_used": 1,
+      "history_unavailable": 0,
+      "items": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-task.html",
+          "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+          "title": "协程与任务",
+          "relevance": 0.6653314853691165,
+          "history_overlap": 0.0,
+          "rank": 1
+        },
+        {
+          "source": "python_docs",
+          "doc_id": "library/concurrent.futures.html",
+          "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+          "title": "concurrent.futures --- 启动并行任务",
+          "relevance": 0.33232723567233097,
+          "history_overlap": 0.0,
+          "rank": 2
+        },
+        {
+          "source": "django_docs",
+          "doc_id": "topics/async",
+          "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+          "title": "异步支持",
+          "relevance": 0.25928732975140306,
+          "history_overlap": 0.0,
+          "rank": 3
+        },
+        {
+          "source": "python_docs",
+          "doc_id": "tutorial/errors.html",
+          "doc_key": "3f90efa473718379f9e8e282bf4231d7494b28987f93f83472a742dd2de4f04d",
+          "title": "8. 错误和异常",
+          "relevance": 0.17300680028280374,
+          "history_overlap": 0.0,
+          "rank": 4
+        },
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-sync.html",
+          "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+          "title": "同步原语",
+          "relevance": 0.14953837591256142,
+          "history_overlap": 0.0,
+          "rank": 5
+        }
+      ],
+      "baseline": [
+        {
+          "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+          "relevance": 0.6653314853691165,
+          "history_overlap": 0.0
+        },
+        {
+          "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+          "relevance": 0.33232723567233097,
+          "history_overlap": 0.0
+        },
+        {
+          "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+          "relevance": 0.25928732975140306,
+          "history_overlap": 0.0
+        },
+        {
+          "doc_key": "3f90efa473718379f9e8e282bf4231d7494b28987f93f83472a742dd2de4f04d",
+          "relevance": 0.17300680028280374,
+          "history_overlap": 0.0
+        },
+        {
+          "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+          "relevance": 0.14953837591256142,
+          "history_overlap": 0.0
+        }
+      ],
+      "without_history": [
+        {
+          "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+          "rank": 1,
+          "score": 0.5655317625637489
+        },
+        {
+          "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+          "rank": 2,
+          "score": 0.2445875926531479
+        },
+        {
+          "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+          "rank": 3,
+          "score": 0.18395069732174252
+        },
+        {
+          "doc_key": "3f90efa473718379f9e8e282bf4231d7494b28987f93f83472a742dd2de4f04d",
+          "rank": 4,
+          "score": 0.11795620506808188
+        },
+        {
+          "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+          "rank": 5,
+          "score": 0.11384016699391065
+        }
+      ],
+      "without_diversity": [
+        {
+          "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+          "rank": 1,
+          "score": 0.6653314853691165
+        },
+        {
+          "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+          "rank": 2,
+          "score": 0.33232723567233097
+        },
+        {
+          "doc_key": "e2f6bb27a990a4b238e02bf24060a3f2d6c757f6a48a32b1c34c3ffe282c182b",
+          "rank": 3,
+          "score": 0.25928732975140306
+        },
+        {
+          "doc_key": "3f90efa473718379f9e8e282bf4231d7494b28987f93f83472a742dd2de4f04d",
+          "rank": 4,
+          "score": 0.17300680028280374
+        },
+        {
+          "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+          "rank": 5,
+          "score": 0.14953837591256142
+        }
+      ],
+      "reason": null
+    }
+  ],
+  "parameters": {
+    "candidates": 100,
+    "paragraphs_per_document": 3,
+    "top_k": 10,
+    "min_relevance": 0.08,
+    "min_query_coverage": 0.5,
+    "history_weight": 0.4,
+    "diversity_weight": 0.15,
+    "duplicate_threshold": 0.95
+  },
+  "algorithm": "goal-paragraph-coverage-mmr-v1",
+  "execution": {
+    "spark_master": "local[2]",
+    "spark_application_id": "local-1790315733753",
+    "snapshot_cache_reused": true
+  }
+}

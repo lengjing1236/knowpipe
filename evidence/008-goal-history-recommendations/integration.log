@@ -1,0 +1,11 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 13:55:31 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+index_ready {'corpus_id': '651323f69ecadd095b6769903ba14b4ee622018d206dc73411a88542ec5fe19a', 'document_count': 12, 'paragraph_count': 2345, 'spark_master': 'local[2]', 'spark_application_id': 'local-1790314610031', 'sources': {'django_docs': 5, 'python_docs': 7}, 'preparation_seconds': 20.23}
+experiment_ready database_no_history ['sqlite3 --- SQLite 数据库的 DB-API 2.0 接口', '数据库事务']
+experiment_ready database_with_history ['数据库事务']
+experiment_ready async_with_unrelated_history ['协程与任务', 'concurrent.futures --- 启动并行任务', '异步支持', '8. 错误和异常', '同步原语']
+learning_api_error 503 http://127.0.0.1:44662/api/learning/recommendations
+acceptance_passed

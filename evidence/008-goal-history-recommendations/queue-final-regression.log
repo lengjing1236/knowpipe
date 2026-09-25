@@ -1,0 +1,14 @@
+test_bounded_retries_and_explicit_retry (tests.recommendations.test_queue.QueueTests) ... ok
+test_corpus_limit_failure_is_visible_even_with_previous_result (tests.recommendations.test_queue.QueueTests) ... ok
+test_deduplication_and_goal_revision (tests.recommendations.test_queue.QueueTests) ... ok
+test_history_and_candidate_version_changes_hide_result (tests.recommendations.test_queue.QueueTests) ... ok
+test_job_lease_never_outlives_worker_lease (tests.recommendations.test_queue.QueueTests) ... ok
+test_old_profile_or_corpus_cannot_replace_new_pointer (tests.recommendations.test_queue.QueueTests) ... ok
+test_worker_and_job_expiry_fence_old_attempts (tests.recommendations.test_queue.QueueTests) ... ok
+test_durable_intent_without_spark_or_worker (tests.recommendations.test_routes.RecommendationRoutesTests) ... ok
+test_session_csrf_identity_and_shape (tests.recommendations.test_routes.RecommendationRoutesTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.641s
+
+OK
