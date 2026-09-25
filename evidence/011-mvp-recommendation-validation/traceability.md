@@ -6,12 +6,13 @@
 
 | 标准 | 对应实现 | 已有证据 | 当前判定与剩余验证 |
 | --- | --- | --- | --- |
-| SC-001：四主题/三历史状态、每正例top3有直接帮助、已判定相关率≥80% | `recommendations/engine.py`词汇召回、语义重排和Spark选择；`semantic.py`有界模型；`query.py`对象及原文来源约束 | 旧v4开发小池10例完成，PG三例空；新v5/Argos两个partial首次运行能召回PG重试、Python同步原语，3个返回正文均相关（含1个合成改写）；分别有绑定结果的source-review文件 | **旧基线失败；新实现整体证据不足。** 局部真实资料召回改善，但两主题/有限池不能替代四主题、万条背景和保留场景 |
-| SC-002：转载/同义/无关/错误对象无错误补充，同时真补充不可全拒绝 | `semantic_analysis.py`句级覆盖/蕴含/不确定；`engine.py`补充资格与选择；`podcasts/learning.py`通知门控 | 新v5/Argos的PG主证据23505/23P01有补充，但第二条additional把已读已覆盖的并发选相同主键场景再称补充；Python两项双侧具体对照不足。见`current-dev-partial-argos-review.json`及score | **当前已观察新版本失败。** 1条已确认重复假阳性、3条证据不足；主证据正确不能抵消附加错误。旧镜像被对象门槛排除，亦不能证明去重成功 |
-| SC-003：不同历史合理改变证据/优先项，消融说明作用 | `engine._choose`将覆盖和补充分数纳入Spark选择；保留无历史/无去重排名 | 已冻结相同目标三个覆盖状态；旧Python有有效历史但相关历史段数0，未给出补充 | **证据不足。** 需当前模型的真实材料对照及消融；分数或排序变化不是收益本身 |
-| SC-004：中文目标/全文关键事实、条件、顺序正确，真实全文阅读 | `learning/local_providers.py`实际双向模型及对齐；`providers.py`版本发布；`quality.py`数字/代码/标识符；`content.py`真实对齐输出 | `language-quality.json`真实NLLB对照与WAL全文；目标事务/序列化/协程误译，全文仍遗漏因果/重放含义；`language-worklog.md`保留失败 | **已测试候选失败。** 对齐和完整性保护已实现，但不得称教学可用。后续候选须同样实测，不可人工替换答案 |
-| SC-005：真实Web保存→worker计算→阅读→显式已读重算；新增三类与真实RSS | `worker.py`语义/翻译队列；Web API/页面；`podcasts/learning.py`同一补充资格；`scripts/acceptance_replays011.py`真实worker三分支回放 | `engineering-checks.md`覆盖集成门控、身份/租约/对齐保护的轻测；三分支脚本仅compile/dry-run；009存在历史RSS实际链路 | **当前版本证据不足。** 尚需实际运行三分支及最终算法从真实页面触发的完整链路，不能用注入ready job或旧RSS记录代替。文字稿回放不算真实新音频/ASR |
-| SC-006：万条背景复验、至少两个预冻结保留场景 | `scripts/evaluate_mvp011.py`full背景与small定位分离；独立旧包基线；冻结输入哈希/审核协议 | 四主题17场景在生产编辑前冻结，Docker/Django尚未用于调参；已有009万条语料/索引 | **准备完成，效果证据不足。** 当前011仅完成旧基线小池；新旧完整背景/保留集实际结果待写入 |
+| SC-001：四主题/三历史状态、每正例top3有直接帮助、已判定相关率≥80% | `recommendations/engine.py`、`semantic.py`、`query.py` | `current-v6-full.json` 完成17案；正式 `-review.json` 逐项原文审核，`-score.json` 完成35项判定 | **失败。** 四主题正例均找到至少1篇直接材料；但35项中直接13、部分相关13、无关9。直接率37.1%；即宽松把部分相关也算入仅74.3%，仍低于80%。348处字面原文校验通过不能抵消内容偏题 |
+| SC-002：转载/同义/无关/错误对象无错误补充，同时真补充不可全拒绝 | `semantic_analysis.py`、`engine.py`、`podcasts/learning.py` | 正式full source-review覆盖全部additional；`postgres-full-review-notes.md`/`docker-full-review-notes.md`有第二代理只读事实复核 | **失败。** 11条错误补充，12条双侧解释证据不足；正向部分已读的PG/Docker有真实补充，Python/Django未达到冻结预期。同义改写仍被当新知识。镜像在对象门槛被排除，不能验证语义去重 |
+| SC-003：不同历史合理改变证据/优先项，消融说明作用 | `engine._choose`覆盖/补充/去重；`current-v6-full-ablations.json` | 34个固定候选重排对照仅3个改变：PG冷启动去重使正确材料前移；PG部分已读的历史项反而使正确材料后移；Docker替换后仍无更多直接材料 | **未证实稳定收益。** 已读原文会被排除，也能识别个别新事实，但同义误报和偏题仍存在。消融仅对同一已召回/比较后的候选重排，不能冒充完整无历史管线 |
+| SC-004：中文目标/全文关键事实、条件、顺序正确，真实全文阅读 | `learning/local_providers.py`、`llama_provider.py`、`providers.py`、`quality.py`、`content.py` | 语言专项证据保留Argos/NLLB/Qwen的真实输出与事实复核；最终full固定Qwen段落v1，同一处理身份；真实阅读由根代理验收 | **已测试候选仍有关键事实错误。** 结构对齐/数字标识符保护不是语义正确。某次目标译文改善不能替代完整技术全文通过 |
+| SC-005：真实Web→worker→Spark→阅读→显式已读；新增三类与真实RSS | worker、Web、`podcasts/learning.py`、`scripts/acceptance_replays011.py` | 18项评价/回放程序防误判轻测通过；根代理正在运行最终组合真实Web/RSS | **待根代理实际闭环及三分支回放结果。** 不能以旧009记录、注入ready job或文字稿回放代替真实音频；全禁通知也不能通过正例 |
+| SC-006：万条背景复验、至少两个预冻结保留场景 | `scripts/evaluate_mvp011.py`、冻结SHA、旧包快照 | 最终17案：13案使用同一10,215篇完整背景，4案明确受控；Docker/Django及跨来源7个保留场景首次最终运行后仅审核，未据此调参 | **验证流程已落实，结果有失败。** 一次资源检查点重启保留前三案，以同一签名继续；详见resource-events。旧baseline完整背景对照仍待后续窗口，不将v5开发数据当最终基线 |
+
 
 ## 功能要求追踪
 
@@ -51,3 +52,9 @@
 因此，v6开发阶段SC-002仍失败，SC-001/003/006的最终组合证据仍待完整背景及保留场景；不根据保留集结果继续调参。
 
 待最终运行后，在各行追加实际文件与判定，保留此处已观察失败。若任一必需标准失败或证据不足，不能以工程任务全勾宣布MVP通过。
+
+## 最终组合和资源记录
+
+最终运行固定语义处理身份 `semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de`，Qwen段落v1身份 `llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd`。所有17案用同一生产包快照，输入与门槛未变。5案出现 `semantic_units_unsupported` 的partial状态，只表示部分比较单元未被完整支持；不能将其当成所有资料错误，也不能隐去后称模型完整通过。
+
+Spark `local[1]` 首次driver 1g；可用内存持续降到107MiB且swap满后，在第三案落盘处中断，释放后恢复2942MiB。随后以640m、`spark.memory.fraction=.35`、同签名 `--resume` 完成其余14案，没有重跑前三案。逐案计算合计1837.6秒，含中断/重启与准备的壁钟2197.4秒；这些是本机测量，不能推广为所有硬件的性能。资源事件及原始日志完整保留。

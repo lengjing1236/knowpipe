@@ -1,0 +1,1331 @@
+{
+  "status": "evidence_incomplete",
+  "scope": "source judgments and deterministic counterexamples; Web, language, and ablations require separate evidence",
+  "review_provenance": "agent source review, not independent human labels",
+  "counts": {
+    "top3_total": 35,
+    "top3_judged": 35,
+    "top3_direct": 13,
+    "false_supplement": 11,
+    "supplement_claims_pending": 0,
+    "supplement_claims_uncertain": 12,
+    "incomplete_computation": 5,
+    "top3_unjudged": 0
+  },
+  "judged_top3_direct_rate": 0.37142857142857144,
+  "missing_case_ids": [],
+  "cases": [
+    {
+      "id": "postgres_retry_cold",
+      "judgments": [
+        {
+          "doc_key": "stackexchange:dba-334904",
+          "rank": 1,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实问答比较唯一键冲突的性能与ON CONFLICT策略，与约束错误有关，但未直接回答序列化错误与唯一键错误各何时重试。返回补充配对的历史是sequence不回滚，候选是违反unique后插入记录回滚，比较对象不同，双侧不足以证明目标相关的新增。"
+        },
+        {
+          "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+          "rank": 2,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "官方重试文档直接给出40001和23505/23P01边界；返回23505/23P01条件相对已读40001及隔离机制是可核对的补充。冷启动不作个人补充断言。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/transactions",
+          "rank": 3,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "Django文档确实解释PostgreSQL异常后的事务失效与回滚，提供恢复背景；未直接区分序列化/唯一键冲突的重试条件。配对历史只讲sequence特殊回滚语义，未形成相同问题的覆盖与补充对照。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "postgres_retry_partial",
+      "judgments": [
+        {
+          "doc_key": "stackexchange:dba-334904",
+          "rank": 1,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "数据行回滚和sequence计数不回滚是不同对象的行为；候选事实可能有背景价值，但返回的双侧证据没有说明目标的重试判断新增在哪里，不能用NLI neutral确认补充。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:dba-334904",
+                  "start": 5373,
+                  "end": 5505,
+                  "text": "In PostgreSQL, unique constraints are implemented by inserting the record first, then rolling it back if it violates the constraint."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 3011,
+                  "end": 3367,
+                  "text": "Some PostgreSQL data types and functions have special rules regarding transactional behavior. In particular, changes made to a sequence (and therefore the counter of a column declared using serial) are immediately visible to all other transactions and are not rolled back if the transaction that made the changes aborts. See Section 9.17 and Section 8.1.4."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实问答比较唯一键冲突的性能与ON CONFLICT策略，与约束错误有关，但未直接回答序列化错误与唯一键错误各何时重试。返回补充配对的历史是sequence不回滚，候选是违反unique后插入记录回滚，比较对象不同，双侧不足以证明目标相关的新增。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/transactions",
+          "rank": 2,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "候选IntegrityError之后同事务后续SQL失败，历史sequence改变不回滚；两条都涉及事务但对象和条件不同，无法核对为什么这是针对重试目标的具体个人补充。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/transactions",
+                  "start": 10694,
+                  "end": 10853,
+                  "text": "在事务内部，当对 PostgreSQL 游标的调用引发异常（通常是 IntegrityError）时，同一事务中的所有后续 SQL 都将失败，出现错误消息 \"current transaction is aborted, queries ignored until end of transaction block\"。"
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 3011,
+                  "end": 3367,
+                  "text": "Some PostgreSQL data types and functions have special rules regarding transactional behavior. In particular, changes made to a sequence (and therefore the counter of a column declared using serial) are immediately visible to all other transactions and are not rolled back if the transaction that made the changes aborts. See Section 9.17 and Section 8.1.4."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "Django文档确实解释PostgreSQL异常后的事务失效与回滚，提供恢复背景；未直接区分序列化/唯一键冲突的重试条件。配对历史只讲sequence特殊回滚语义，未形成相同问题的覆盖与补充对照。"
+        },
+        {
+          "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+          "rank": 3,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "supported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "supported",
+              "reason_zh": "已读隔离章未列出23505/23P01的条件性重试，而候选明确补充此边界；双侧均针对序列化及约束错误处理。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 563,
+                  "end": 769,
+                  "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 19275,
+                  "end": 20174,
+                  "text": "Consistent use of Serializable transactions can simplify development. The guarantee that any set of successfully committed concurrent Serializable transactions will have the same effect as if they were run one at a time means that if you can demonstrate that a single transaction, as written, will do the right thing when run by itself, you can have confidence that it will do the right thing in any mix of Serializable transactions, even without any information about what those other transactions might do, or it will not successfully commit. It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "官方重试文档直接给出40001和23505/23P01边界；返回23505/23P01条件相对已读40001及隔离机制是可核对的补充。冷启动不作个人补充断言。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": true,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "postgres_retry_covered",
+      "judgments": [
+        {
+          "doc_key": "stackexchange:dba-334904",
+          "rank": 1,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "数据行回滚和sequence计数不回滚是不同对象的行为；候选事实可能有背景价值，但返回的双侧证据没有说明目标的重试判断新增在哪里，不能用NLI neutral确认补充。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:dba-334904",
+                  "start": 5373,
+                  "end": 5505,
+                  "text": "In PostgreSQL, unique constraints are implemented by inserting the record first, then rolling it back if it violates the constraint."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 3011,
+                  "end": 3367,
+                  "text": "Some PostgreSQL data types and functions have special rules regarding transactional behavior. In particular, changes made to a sequence (and therefore the counter of a column declared using serial) are immediately visible to all other transactions and are not rolled back if the transaction that made the changes aborts. See Section 9.17 and Section 8.1.4."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实问答比较唯一键冲突的性能与ON CONFLICT策略，与约束错误有关，但未直接回答序列化错误与唯一键错误各何时重试。返回补充配对的历史是sequence不回滚，候选是违反unique后插入记录回滚，比较对象不同，双侧不足以证明目标相关的新增。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/transactions",
+          "rank": 2,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "候选IntegrityError之后同事务后续SQL失败，历史sequence改变不回滚；两条都涉及事务但对象和条件不同，无法核对为什么这是针对重试目标的具体个人补充。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/transactions",
+                  "start": 10694,
+                  "end": 10853,
+                  "text": "在事务内部，当对 PostgreSQL 游标的调用引发异常（通常是 IntegrityError）时，同一事务中的所有后续 SQL 都将失败，出现错误消息 \"current transaction is aborted, queries ignored until end of transaction block\"。"
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 3011,
+                  "end": 3367,
+                  "text": "Some PostgreSQL data types and functions have special rules regarding transactional behavior. In particular, changes made to a sequence (and therefore the counter of a column declared using serial) are immediately visible to all other transactions and are not rolled back if the transaction that made the changes aborts. See Section 9.17 and Section 8.1.4."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "Django文档确实解释PostgreSQL异常后的事务失效与回滚，提供恢复背景；未直接区分序列化/唯一键冲突的重试条件。配对历史只讲sequence特殊回滚语义，未形成相同问题的覆盖与补充对照。"
+        },
+        {
+          "doc_key": "stackexchange:stackoverflow-79933630",
+          "rank": 3,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "历史已经给出同键冲突导致唯一约束错误，候选只是其基础定义概括。问答中潜在的新NULL规则没有被选入这条evidence，不能据未返回的新内容为此断言补证。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:stackoverflow-79933630",
+                  "start": 502,
+                  "end": 665,
+                  "text": "In general, a unique constraint is violated if there is more than one row in the table where the values of all of the columns included in the constraint are equal."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 20518,
+                  "end": 21639,
+                  "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "唯一约束NULL配置问答与重试目标只有基础联系；实际返回唯一约束一般定义，已读隔离章及重试章已通过并发同键冲突明确覆盖这个基础概括。NULL新细节未进入补充证据且不回答重试边界。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_cold",
+      "judgments": [
+        {
+          "doc_key": "python_docs:library/asyncio-task.html",
+          "rank": 1,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "协程/Task与to_thread提供背景，但全文不解释Semaphore计数与过度释放；实际返回GIL/CPU函数段落也没有直接回答目标。"
+        },
+        {
+          "doc_key": "python_docs:library/asyncio-sync.html",
+          "rank": 2,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文的Semaphore/BoundedSemaphore章节直接解释计数限流与过度释放，但实际展示goal/补充句取Lock独占；有历史时配对uncancel内部方法，与目标的具体补充对照不成立。"
+        },
+        {
+          "doc_key": "stackexchange:softwareengineering-461168",
+          "rank": 3,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "全文讨论线程池受锁资源限制的通用调度，只有旁及Python，未出现asyncio或Semaphore。返回“3种资源最大并发3”依赖该线程池案例，不能解答asyncio信号量计数及过度释放；属于技术对象/执行模型干扰。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_partial",
+      "judgments": [
+        {
+          "doc_key": "python_docs:library/asyncio-sync.html",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "Lock独占与uncancel内部方法不是同一目标事实的覆盖/补充关系；正文有信号量目标知识不能替代算法实际返回的双侧证据。",
+              "evidence": [
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 337,
+                  "end": 363,
+                  "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 26479,
+                  "end": 26531,
+                  "text": "此方法是供 asyncio 内部使用而不应被最终用户代码所使用。请参阅 uncancel() 了解详情。"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文的Semaphore/BoundedSemaphore章节直接解释计数限流与过度释放，但实际展示goal/补充句取Lock独占；有历史时配对uncancel内部方法，与目标的具体补充对照不成立。"
+        },
+        {
+          "doc_key": "stackexchange:softwareengineering-461168",
+          "rank": 2,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "候选线程池锁调度与历史Task取消/uncancel是不同问题；没有asyncio Semaphore事实，不能作为当前目标的个性化补充。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:softwareengineering-461168",
+                  "start": 11058,
+                  "end": 11147,
+                  "text": "If they lock resources {A, B, C} then max concurrency will be 3, the number of resources."
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 25519,
+                  "end": 25646,
+                  "text": "此方法是供 asyncio 内部使用而不应被最终用户代码所使用。特别地，在一个 Task 成功地保持未取消状态的时候使用，这可以允许结构化的并发元素如 任务组 和 asyncio.timeout() 继续运行，将取消操作隔离在相应的结构化代码块中。例如:"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "全文讨论线程池受锁资源限制的通用调度，只有旁及Python，未出现asyncio或Semaphore。返回“3种资源最大并发3”依赖该线程池案例，不能解答asyncio信号量计数及过度释放；属于技术对象/执行模型干扰。"
+        }
+      ],
+      "items": 2,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_covered",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "docker_tmpfs_cold",
+      "judgments": [
+        {
+          "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "全文直接回答tmpfs计入容器内存、挂载大小不提高内存上限，以及临时数据可能通过swap落盘。partial已给出真实内存计账补充；冷启动只展示“主机内存”概括会遗漏swap例外，全文正确不等于预览完整。"
+        },
+        {
+          "doc_key": "stackexchange:serverfault-1161140",
+          "rank": 2,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "这是Digital Ocean主机卡顿的一般诊断，泛泛提醒CPU/内存资源限制，没有tmpfs计账、挂载大小或swap边界。covered时内存超限风险更已被tmpfs的OOM段明确覆盖，新CPU词不补充当前目标。"
+        },
+        {
+          "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+          "rank": 3,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "资源限制全文直接帮助内存限制与swap子问题：区分硬上限/软reservation并说明换出磁盘，但不能独立代替tmpfs计账说明。新增的软限额性质必须限定memory-reservation。partial选中持久卷生命周期作为历史，对照不充分；covered选中tmpfs硬限额段，能体现不同限额类型。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": false,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "docker_tmpfs_partial",
+      "judgments": [
+        {
+          "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "supported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "临时/非持久已在volumes覆盖，RAM介质为局部新背景；返回混合了已知与新部分，且需swap例外限制，不应当成完整的新边界。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 424,
+                  "end": 529,
+                  "text": "As opposed to volumes and bind mounts, a tmpfs mount is temporary, and only persisted in the host memory."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 301,
+                  "end": 632,
+                  "text": "When you create a volume, it's stored within a directory on the Docker host. When you mount the volume into a container, this directory is what's mounted into the container. This is similar to the way that bind mounts work, except that volumes are managed by Docker and are isolated from the core functionality of the host machine."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 1995,
+                  "end": 2227,
+                  "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer."
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "uncertain",
+              "reason_zh": "swap落盘事实相对完整已读volumes确为新增且直接有用；但返回As such缺上一句tmpfs/Linux指代，历史配对只讲持久卷。确认正文新事实，不确认当前双侧展示已充分说明该差异。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 1363,
+                  "end": 1462,
+                  "text": "As such, the temporary data may be written to a swap file, and thereby persisted to the filesystem."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 655,
+                  "end": 938,
+                  "text": "Volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure and OS of the host machine, volumes are completely managed by Docker. Volumes are a good choice for the following use cases:"
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 1995,
+                  "end": 2227,
+                  "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 1297,
+                  "end": 1462,
+                  "text": "tmpfs mounts in Docker map directly to tmpfs in the Linux kernel. As such, the temporary data may be written to a swap file, and thereby persisted to the filesystem."
+                }
+              ]
+            },
+            {
+              "claim_index": 2,
+              "judgment": "supported",
+              "reason_zh": "候选明确tmpfs计入容器内存限额；已读只将tmpfs用于非持久状态且不讲计账。这条双侧同一tmpfs上下文的补充成立。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 2216,
+                  "end": 2279,
+                  "text": "Data on a tmpfs mount counts toward the container memory limit."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 1995,
+                  "end": 2227,
+                  "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "全文直接回答tmpfs计入容器内存、挂载大小不提高内存上限，以及临时数据可能通过swap落盘。partial已给出真实内存计账补充；冷启动只展示“主机内存”概括会遗漏swap例外，全文正确不等于预览完整。"
+        },
+        {
+          "doc_key": "stackexchange:serverfault-1161140",
+          "rank": 2,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "通用容器限额风险不是当前tmpfs问题的具体新增；covered中已读tmpfs计账/OOM说明还覆盖了这项内存风险，不能凭新增CPU shares词证明有用补充。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:serverfault-1161140",
+                  "start": 1974,
+                  "end": 2100,
+                  "text": "Container Limits: Docker containers have resource limits (CPU shares, memory limits) that might be causing issues if exceeded."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 655,
+                  "end": 938,
+                  "text": "Volumes are the preferred mechanism for persisting data generated by and used by Docker containers. While bind mounts are dependent on the directory structure and OS of the host machine, volumes are completely managed by Docker. Volumes are a good choice for the following use cases:"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "这是Digital Ocean主机卡顿的一般诊断，泛泛提醒CPU/内存资源限制，没有tmpfs计账、挂载大小或swap边界。covered时内存超限风险更已被tmpfs的OOM段明确覆盖，新CPU词不补充当前目标。"
+        },
+        {
+          "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+          "rank": 3,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "正文事实相对已读volumes是新的，也支持内存限制/swap子问题；但实际历史选成持久卷删除或共享生命周期，并未清楚解释这个个人差异。不能以正文存在正确知识代替返回双侧比较。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 3840,
+                  "end": 4006,
+                  "text": "| --memory-reservation | Allows you to specify a soft limit smaller than --memory which is activated when Docker detects contention or low memory on the host machine."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 24311,
+                  "end": 24414,
+                  "text": "A Docker data volume persists after you delete a container. There are two types of volumes to consider:"
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "uncertain",
+              "reason_zh": "正文事实相对已读volumes是新的，也支持内存限制/swap子问题；但实际历史选成持久卷删除或共享生命周期，并未清楚解释这个个人差异。不能以正文存在正确知识代替返回双侧比较。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 4102,
+                  "end": 4195,
+                  "text": "Because it is a soft limit, it doesn't guarantee that the container doesn't exceed the limit."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 2600,
+                  "end": 2845,
+                  "text": "A given volume can be mounted into multiple containers simultaneously. When no running container is using a volume, the volume is still available to Docker and isn't removed automatically. You can remove unused volumes using docker volume prune."
+                }
+              ]
+            },
+            {
+              "claim_index": 2,
+              "judgment": "uncertain",
+              "reason_zh": "正文事实相对已读volumes是新的，也支持内存限制/swap子问题；但实际历史选成持久卷删除或共享生命周期，并未清楚解释这个个人差异。不能以正文存在正确知识代替返回双侧比较。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 4815,
+                  "end": 4959,
+                  "text": "Using swap allows the container to write excess memory requirements to disk when the container has exhausted all the RAM that's available to it."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+                  "start": 24311,
+                  "end": 24414,
+                  "text": "A Docker data volume persists after you delete a container. There are two types of volumes to consider:"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "资源限制全文直接帮助内存限制与swap子问题：区分硬上限/软reservation并说明换出磁盘，但不能独立代替tmpfs计账说明。新增的软限额性质必须限定memory-reservation。partial选中持久卷生命周期作为历史，对照不充分；covered选中tmpfs硬限额段，能体现不同限额类型。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": false,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": true,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "docker_tmpfs_covered",
+      "judgments": [
+        {
+          "doc_key": "stackexchange:serverfault-1161140",
+          "rank": 1,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "通用容器限额风险不是当前tmpfs问题的具体新增；covered中已读tmpfs计账/OOM说明还覆盖了这项内存风险，不能凭新增CPU shares词证明有用补充。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:serverfault-1161140",
+                  "start": 1974,
+                  "end": 2100,
+                  "text": "Container Limits: Docker containers have resource limits (CPU shares, memory limits) that might be causing issues if exceeded."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 2216,
+                  "end": 2326,
+                  "text": "Data on a tmpfs mount counts toward the container memory limit. A large size= value does not raise that limit."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 629,
+                  "end": 991,
+                  "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit). Setting a large tmpfs-size (or host-mounted tmpfs) does not give the container extra RAM outside that limit — filling the mount can still OOM the container. Memory metrics for the container include tmpfs usage; see runtime metrics."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "这是Digital Ocean主机卡顿的一般诊断，泛泛提醒CPU/内存资源限制，没有tmpfs计账、挂载大小或swap边界。covered时内存超限风险更已被tmpfs的OOM段明确覆盖，新CPU词不补充当前目标。"
+        },
+        {
+          "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+          "rank": 2,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "supported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "supported",
+              "reason_zh": "历史只讲--memory/Compose硬限额和tmpfs-size，未覆盖--memory-reservation软限额及可能超过的性质；两条candidate结合完整表项才正确，不能推广成硬上限可任意超过。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 3840,
+                  "end": 4006,
+                  "text": "| --memory-reservation | Allows you to specify a soft limit smaller than --memory which is activated when Docker detects contention or low memory on the host machine."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 629,
+                  "end": 991,
+                  "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit). Setting a large tmpfs-size (or host-mounted tmpfs) does not give the container extra RAM outside that limit — filling the mount can still OOM the container. Memory metrics for the container include tmpfs usage; see runtime metrics."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 3840,
+                  "end": 4195,
+                  "text": "| --memory-reservation | Allows you to specify a soft limit smaller than --memory which is activated when Docker detects contention or low memory on the host machine. If you use --memory-reservation, it must be set lower than --memory for it to take precedence. Because it is a soft limit, it doesn't guarantee that the container doesn't exceed the limit."
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "supported",
+              "reason_zh": "历史只讲--memory/Compose硬限额和tmpfs-size，未覆盖--memory-reservation软限额及可能超过的性质；两条candidate结合完整表项才正确，不能推广成硬上限可任意超过。",
+              "evidence": [
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 4102,
+                  "end": 4195,
+                  "text": "Because it is a soft limit, it doesn't guarantee that the container doesn't exceed the limit."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 629,
+                  "end": 991,
+                  "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit). Setting a large tmpfs-size (or host-mounted tmpfs) does not give the container extra RAM outside that limit — filling the mount can still OOM the container. Memory metrics for the container include tmpfs usage; see runtime metrics."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/containers/resource_constraints",
+                  "start": 3840,
+                  "end": 4195,
+                  "text": "| --memory-reservation | Allows you to specify a soft limit smaller than --memory which is activated when Docker detects contention or low memory on the host machine. If you use --memory-reservation, it must be set lower than --memory for it to take precedence. Because it is a soft limit, it doesn't guarantee that the container doesn't exceed the limit."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "资源限制全文直接帮助内存限制与swap子问题：区分硬上限/软reservation并说明换出磁盘，但不能独立代替tmpfs计账说明。新增的软限额性质必须限定memory-reservation。partial选中持久卷生命周期作为历史，对照不充分；covered选中tmpfs硬限额段，能体现不同限额类型。"
+        },
+        {
+          "doc_key": "stackexchange:serverfault-1190253",
+          "rank": 3,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "候选是特定WSL2普通文件页缓存个案的有无-m观察，不给出tmpfs计账或swap规则；不能据此推出设置-m可避免tmpfs OOM。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:serverfault-1190253",
+                  "start": 1138,
+                  "end": 1306,
+                  "text": "Starting a container with memory limit, like docker run -m 256MB, on local WSL2 Linux, doesn't have the problem - the container stays well below the specified -m limit."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 2216,
+                  "end": 2326,
+                  "text": "Data on a tmpfs mount counts toward the container memory limit. A large size= value does not raise that limit."
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "unsupported",
+              "reason_zh": "候选是特定WSL2普通文件页缓存个案的有无-m观察，不给出tmpfs计账或swap规则；不能据此推出设置-m可避免tmpfs OOM。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:serverfault-1190253",
+                  "start": 1307,
+                  "end": 1377,
+                  "text": "Without -m memory limit, container memory also grows into multiple GB."
+                },
+                {
+                  "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+                  "start": 629,
+                  "end": 991,
+                  "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit). Setting a large tmpfs-size (or host-mounted tmpfs) does not give the container extra RAM outside that limit — filling the mount can still OOM the container. Memory metrics for the container include tmpfs usage; see runtime metrics."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "问题讨论.NET文件复制的page cache/Kubernetes OOM及本机WSL2观测，没有tmpfs条件。不同存储内存问题的新案例不能自动充当tmpfs知识补充。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": false,
+      "real_source_required": true,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": true,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "django_iterator_cold",
+      "judgments": [
+        {
+          "doc_key": "django_docs:topics/db/optimization",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文明确建议大量对象缓存占用内存时使用iterator()，直接回答目标；实际返回的新片段仅说明缓存可能占大量内存以及with标签复用缓存，未给出冻结预期的iterator()补充方法，不能把文档正确等同补充证据到位。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/aggregation",
+          "rank": 2,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "聚合文档讲aggregate/annotate等查询组合，全文没有缓存内存或iterator()处理。当前片段只是CRUD抽象API概述，已在历史查询章开篇明确说明；不能称为当前目标的新补充。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/transactions",
+          "rank": 3,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "文档解释事务原子性/保存点和提交后缓存更新一致性，没有查询大量对象时降低QuerySet缓存内存的方法；返回自动事务一致性与历史级联删除属于不同语义，未回答目标。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "django_iterator_partial",
+      "judgments": [
+        {
+          "doc_key": "django_docs:topics/db/optimization",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "候选指出大量对象的缓存内存问题，历史已解释结果缓存与错误复用；尚未给出降低内存的iterator()方法，返回事实不足以确认冻结预期的补充。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/optimization",
+                  "start": 1568,
+                  "end": 1605,
+                  "text": "当你有很多对象时，QuerySet 的缓存行为可能会导致大量的内存被使用。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 15399,
+                  "end": 15476,
+                  "text": "请记住这种缓存行为，因为如果不正确使用你的 QuerySet，可能会出现问题。例如，以下代码会创建两个 QuerySet，对它们进行评估，然后将它们丢弃："
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "uncertain",
+              "reason_zh": "with标签主要支持复用QuerySet缓存，返回双侧未说明它如何降低大量对象缓存内存；不能把避免重复数据库查询自动当成减少缓存内存。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/optimization",
+                  "start": 1514,
+                  "end": 1551,
+                  "text": "要使用 QuerySet 的缓存行为，你可能需要使用 with 模板标签。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 15399,
+                  "end": 15476,
+                  "text": "请记住这种缓存行为，因为如果不正确使用你的 QuerySet，可能会出现问题。例如，以下代码会创建两个 QuerySet，对它们进行评估，然后将它们丢弃："
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文明确建议大量对象缓存占用内存时使用iterator()，直接回答目标；实际返回的新片段仅说明缓存可能占大量内存以及with标签复用缓存，未给出冻结预期的iterator()补充方法，不能把文档正确等同补充证据到位。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/aggregation",
+          "rank": 2,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "候选CRUD抽象API概述与历史开篇同义，已覆盖；算法配对原生SQL或DRY关系定义片段不能使已读全文中的同义事实变成新知识。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/aggregation",
+                  "start": 4,
+                  "end": 55,
+                  "text": "Django 数据库抽象 API 描述了使用 Django queries 来增删查改单个对象的方法。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 35131,
+                  "end": 35229,
+                  "text": "若你发现需要编写的 SQL 查询语句太过复杂，以至于 Django 的数据库映射无法处理，你可以回归手动编写 SQL。Django 针对编写原生 SQL 有几个选项；参考 执行原生 SQL 查询。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 6,
+                  "end": 59,
+                  "text": "一旦创建 数据模型 后，Django 自动给予你一套数据库抽象 API，允许你创建，检索，更新和删除对象。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 6,
+                  "end": 59,
+                  "text": "一旦创建 数据模型 后，Django 自动给予你一套数据库抽象 API，允许你创建，检索，更新和删除对象。"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "聚合文档讲aggregate/annotate等查询组合，全文没有缓存内存或iterator()处理。当前片段只是CRUD抽象API概述，已在历史查询章开篇明确说明；不能称为当前目标的新补充。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/transactions",
+          "rank": 3,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "事务/保存点保证ORM一致性不是QuerySet结果缓存内存的补充；与历史级联删除的配对只证明都谈数据库对象，不能满足当前目标的相关性前提。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/transactions",
+                  "start": 109,
+                  "end": 175,
+                  "text": "Django 自动使用事务或还原点，以确保需多次查询的 ORM 操作的一致性，特别是 delete() 和 update() 操作。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 26417,
+                  "end": 26497,
+                  "text": "当 Django 删除某个对象时，默认会模仿 SQL 约束 ON DELETE CASCADE 的行为——换而言之，某个对象被删除时，关联对象也会被删除。例子:"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "文档解释事务原子性/保存点和提交后缓存更新一致性，没有查询大量对象时降低QuerySet缓存内存的方法；返回自动事务一致性与历史级联删除属于不同语义，未回答目标。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": false,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "django_iterator_covered",
+      "judgments": [
+        {
+          "doc_key": "django_docs:topics/db/aggregation",
+          "rank": 1,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "候选CRUD抽象API概述与历史开篇同义，已覆盖；算法配对原生SQL或DRY关系定义片段不能使已读全文中的同义事实变成新知识。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/aggregation",
+                  "start": 4,
+                  "end": 55,
+                  "text": "Django 数据库抽象 API 描述了使用 Django queries 来增删查改单个对象的方法。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 34487,
+                  "end": 34568,
+                  "text": "其它对象关联映射实现要求你在两边都定义关联关系。而 Django 开发者坚信这违反了 DRY 原则（不要自我重复），故 Django 仅要求你在一端定义关联关系。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 6,
+                  "end": 59,
+                  "text": "一旦创建 数据模型 后，Django 自动给予你一套数据库抽象 API，允许你创建，检索，更新和删除对象。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 6,
+                  "end": 59,
+                  "text": "一旦创建 数据模型 后，Django 自动给予你一套数据库抽象 API，允许你创建，检索，更新和删除对象。"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "聚合文档讲aggregate/annotate等查询组合，全文没有缓存内存或iterator()处理。当前片段只是CRUD抽象API概述，已在历史查询章开篇明确说明；不能称为当前目标的新补充。"
+        },
+        {
+          "doc_key": "django_docs:topics/db/transactions",
+          "rank": 2,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "事务/保存点保证ORM一致性不是QuerySet结果缓存内存的补充；与历史级联删除的配对只证明都谈数据库对象，不能满足当前目标的相关性前提。",
+              "evidence": [
+                {
+                  "doc_key": "django_docs:topics/db/transactions",
+                  "start": 109,
+                  "end": 175,
+                  "text": "Django 自动使用事务或还原点，以确保需多次查询的 ORM 操作的一致性，特别是 delete() 和 update() 操作。"
+                },
+                {
+                  "doc_key": "django_docs:topics/db/queries",
+                  "start": 26417,
+                  "end": 26497,
+                  "text": "当 Django 删除某个对象时，默认会模仿 SQL 约束 ON DELETE CASCADE 的行为——换而言之，某个对象被删除时，关联对象也会被删除。例子:"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "文档解释事务原子性/保存点和提交后缓存更新一致性，没有查询大量对象时降低QuerySet缓存内存的方法；返回自动事务一致性与历史级联删除属于不同语义，未回答目标。"
+        }
+      ],
+      "items": 2,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "docker_readonly_multisource",
+      "judgments": [
+        {
+          "doc_key": "docker_docs:unversioned/engine/storage/bind-mounts",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "官方全文明确递归只读依赖Linux内核至少5.12、旧内核子挂载默认可写及强制readonly报错，直接回答目标；预览仅选best-effort一句，关键版本条件需读正文。"
+        },
+        {
+          "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+          "rank": 2,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "volume文档展示普通只读挂载/inspect验证，提供挂载背景，但没有解释bind子挂载仍可写的内核条件，不能代替递归只读回答。"
+        },
+        {
+          "doc_key": "stackexchange:stackoverflow-79983630",
+          "rank": 3,
+          "relevance": "irrelevant",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "问答解决psql容器看不到主机SQL文件，bind mount只是传入文件的办法；未讨论只读、递归子挂载或内核5.12，是同词不同问题。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": false,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "no_suitable_limited_pool",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": true,
+      "empty_check": true,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "mirror_not_new",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "paraphrase_not_new",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": false,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "完整已读Semaphore章节已表达限制共享资源并发数量；返回改写是同义概括，虽然匹配错了Condition历史段，事实仍已覆盖。",
+              "evidence": [
+                {
+                  "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+                  "start": 0,
+                  "end": 39,
+                  "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 1777,
+                  "end": 1819,
+                  "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 3100,
+                  "end": 3283,
+                  "text": "信号量会管理一个内部计数器，该计数器会随每次 acquire() 调用递减并随每次 release() 调用递增。 计数器的值永远不会降到零以下；当 acquire() 发现其值为零时，它将保持阻塞直到有某个任务调用了 release()。\n\n可选的 value 参数用来为内部计数器赋初始值 (默认值为 1)。如果给定的值小于 0 则会引发 ValueError."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "明确合成的中文改写内容相关，但已读同步全文已说明Semaphore计数/等待/释放和共享资源示例；当前片段没有新事实。配对Condition片段漏掉Semaphore覆盖，不会让改写变成新增。"
+        }
+      ],
+      "items": 1,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": true,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "new_irrelevant_words",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    }
+  ],
+  "raw_evidence_integrity": {
+    "checked_spans": 348,
+    "invalid_count": 0,
+    "failures": [],
+    "status": "valid_literal_evidence",
+    "scope": "literal source/version integrity only; does not certify relevance or supplement truth"
+  },
+  "evaluator_sha256": "02cfd5e47934bf9cbfb25b9cfede85b36f9764e902adb8dd9ad54a1a40c686de"
+}
