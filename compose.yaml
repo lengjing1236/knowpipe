@@ -38,6 +38,32 @@ services:
     environment:
       <<: *environment
       SPARK_MASTER: local[2]
+      KNOWPIPE_ASR_MODEL_PATH: /var/lib/knowpipe/models/faster-whisper-tiny
+      KNOWPIPE_MODEL_THREADS: '2'
+    volumes:
+      - ./state/feature009/media:/var/lib/knowpipe/models:ro
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks: [backend, edge]
+  recommendation-worker:
+    build:
+      context: .
+      target: worker
+    command: ["python", "-m", "knowpipe.recommendations.worker"]
+    restart: unless-stopped
+    environment:
+      <<: *environment
+      SPARK_MASTER: local[2]
+      LEARNING_INDEX_ROOT: /var/lib/knowpipe/recommendations
+      KNOWPIPE_TRANSLATION_MODEL_PATH: /var/lib/knowpipe/models/translate-en_zh-1_9
+      KNOWPIPE_GOAL_TRANSLATION_MODEL_PATH: /var/lib/knowpipe/goal-model
+      KNOWPIPE_MODEL_THREADS: '2'
+      LEARNING_MAX_PARAGRAPHS: '1000000'
+    volumes:
+      - recommendation_cache:/var/lib/knowpipe/recommendations
+      - ./state/feature009/media:/var/lib/knowpipe/models:ro
+      - ./state/feature010/media/translate-zh_en-1_9:/var/lib/knowpipe/goal-model:ro
     depends_on:
       mongo:
         condition: service_healthy
@@ -57,6 +83,7 @@ services:
     depends_on: [web]
     networks: [edge]
 volumes:
+  recommendation_cache:
   mongo_data:
   caddy_data:
   caddy_config:

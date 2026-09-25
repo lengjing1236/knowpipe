@@ -57,3 +57,4 @@ report*.md
 
 # evidence/ 下的运行日志作为课程证据保留，不受上面的 *.log 规则忽略
 !evidence/**/*.log
+my_think.txt

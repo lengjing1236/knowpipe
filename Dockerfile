@@ -10,8 +10,10 @@ CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "2", "--worker-class", "
 
 FROM web AS worker
 USER root
-RUN apt-get update && apt-get install -y --no-install-recommends openjdk-17-jre-headless && rm -rf /var/lib/apt/lists/* \
-    && pip install --no-cache-dir -r requirements/worker.txt
+RUN apt-get update && apt-get install -y --no-install-recommends openjdk-17-jre-headless ffmpeg && rm -rf /var/lib/apt/lists/* \
+    && pip install --no-cache-dir -r requirements/worker.txt -r requirements/media.txt -r requirements/semantic.txt \
+    && mkdir -p /var/lib/knowpipe/recommendations \
+    && chown -R app:app /var/lib/knowpipe
 ENV SPARK_LOCAL_IP=127.0.0.1 SPARK_MASTER=local[2]
 USER app
 CMD ["python", "-m", "knowpipe.podcasts.worker"]
