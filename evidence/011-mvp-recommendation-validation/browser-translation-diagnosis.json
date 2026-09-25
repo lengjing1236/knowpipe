@@ -1,0 +1,89 @@
+{
+  "scope": "真实浏览器验收期间的只读诊断；没有重新推理或修改MongoDB。源状态见browser-processing-observation.json。",
+  "database": "knowpipe_mvp011_b3b946cbebbd40daa88d20b85113263c",
+  "source": "postgresql_docs",
+  "doc_id": "18/mvcc-serialization-failure-handling.html",
+  "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+  "translation_status": {
+    "status": "failed",
+    "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+    "error_code": "translation_quality_failed"
+  },
+  "translation_quality": {
+    "checks_version": "translation-integrity-v2",
+    "status": "failed",
+    "issues": [
+      "identifier_missing"
+    ],
+    "human_reviewed": false,
+    "semantic_verified": false,
+    "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+    "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+  },
+  "source_identifier_candidates": [
+    {
+      "identifier": "serialization_failure",
+      "required_count": 2,
+      "source_spans": [
+        [
+          428,
+          449
+        ],
+        [
+          1443,
+          1464
+        ]
+      ]
+    },
+    {
+      "identifier": "deadlock_detected",
+      "required_count": 1,
+      "source_spans": [
+        [
+          542,
+          559
+        ]
+      ]
+    },
+    {
+      "identifier": "unique_violation",
+      "required_count": 1,
+      "source_spans": [
+        [
+          662,
+          678
+        ]
+      ]
+    },
+    {
+      "identifier": "exclusion_violation",
+      "required_count": 1,
+      "source_spans": [
+        [
+          748,
+          767
+        ]
+      ]
+    },
+    {
+      "identifier": "PostgreSQL",
+      "required_count": 1,
+      "source_spans": [
+        [
+          1778,
+          1788
+        ]
+      ]
+    }
+  ],
+  "confirmed": "check_translation 判定至少一种语法标识符在输出中的出现次数少于原文；其余数字、代码、未知字符规则没有报告失败。",
+  "cannot_determine": "未保存失败译文或逐项差值，因此不能确定具体丢失/改写的标识符，也不能区分真实技术标识符丢失与规则的严格词形/次数误拒。",
+  "storage_reason": "providers.translate_document 先发布有限quality字段，失败即抛错；仅quality通过后 publish_translation 才存译文和对齐。",
+  "cache_log_review": "LlamaTranslator 无应用层译文缓存且 cache_prompt=false；现有 llama-runtime-validation.log 和 browser-worker.log/browser-driver.log 未记录相关响应正文或标识符差值。",
+  "files": [
+    "knowpipe/learning/providers.py",
+    "knowpipe/learning/quality.py",
+    "knowpipe/learning/llama_provider.py",
+    "knowpipe/learning/content.py"
+  ]
+}

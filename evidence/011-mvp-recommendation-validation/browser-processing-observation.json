@@ -1,0 +1,166 @@
+{
+  "scope": "Read-only Mongo state observation begun during the real browser run; no injected states or model outputs",
+  "database": "knowpipe_mvp011_b3b946cbebbd40daa88d20b85113263c",
+  "events": [
+    {
+      "observed_at": "2026-09-25T14:03:42.534082+00:00",
+      "documents": [
+        {
+          "doc_id": "18/transaction-iso.html",
+          "source": "postgresql_docs",
+          "processing": {
+            "translation": {
+              "status": "running",
+              "source_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af"
+            }
+          }
+        },
+        {
+          "doc_id": "18/mvcc-serialization-failure-handling.html",
+          "source": "postgresql_docs",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        }
+      ]
+    },
+    {
+      "observed_at": "2026-09-25T14:04:10.920317+00:00",
+      "documents": [
+        {
+          "doc_id": "18/transaction-iso.html",
+          "source": "postgresql_docs",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing",
+              "number_added",
+              "number_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "doc_id": "18/mvcc-serialization-failure-handling.html",
+          "source": "postgresql_docs",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "doc_id": "dba-346931",
+          "source": "stackexchange",
+          "processing": {
+            "translation": {
+              "status": "running",
+              "source_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "observed_at": "2026-09-25T14:06:44.297901+00:00",
+      "documents": [
+        {
+          "doc_id": "18/transaction-iso.html",
+          "source": "postgresql_docs",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing",
+              "number_added",
+              "number_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "doc_id": "18/mvcc-serialization-failure-handling.html",
+          "source": "postgresql_docs",
+          "processing": {
+            "translation": {
+              "status": "running",
+              "source_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c"
+            }
+          }
+        },
+        {
+          "doc_id": "dba-346931",
+          "source": "stackexchange",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        }
+      ]
+    }
+  ],
+  "database_cleaned_by_harness": true
+}

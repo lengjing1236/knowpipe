@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_mvp011.py", line 179, in <module>
+    main()
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_mvp011.py", line 128, in main
+    first, item, view = wait_job(require_translation=True)
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_mvp011.py", line 116, in wait_job
+    raise AssertionError('selected_english_translations_failed')
+AssertionError: selected_english_translations_failed

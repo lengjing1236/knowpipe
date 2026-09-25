@@ -1,0 +1,2499 @@
+{
+  "status": "failed",
+  "scope": "Real production worker and browser; small frozen real-source corpus, not full-background quality proof",
+  "ready_job_injection": false,
+  "responses": [
+    {
+      "path": "/api/auth/csrf",
+      "status": 200,
+      "has_user": false,
+      "cookie_present": false
+    },
+    {
+      "path": "/api/auth/login",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/csrf",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/me",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/profile",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/documents",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/auth/csrf",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/goal",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/profile",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/learning/recommendations",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/subscriptions",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/notifications",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    },
+    {
+      "path": "/api/podcasts/episodes",
+      "status": 200,
+      "has_user": true,
+      "cookie_present": true
+    }
+  ],
+  "page_errors": [],
+  "stages": [
+    "goal_saved_in_browser",
+    "production_recommendation_ready"
+  ],
+  "document_count": 16,
+  "first_result": {
+    "items": [
+      {
+        "source": "postgresql_docs",
+        "doc_id": "18/mvcc-serialization-failure-handling.html",
+        "title": "13.5. Serialization Failure Handling #",
+        "source_url": "https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html",
+        "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+        "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+        "rank": 1,
+        "selection_score": 0.540230265542392,
+        "relevance": 0.635565018285167,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "postgresql_docs",
+            "doc_id": "18/mvcc-serialization-failure-handling.html",
+            "title": "13.5. Serialization Failure Handling #",
+            "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "start": 563,
+            "end": 769,
+            "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 8,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 6,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "postgresql_docs",
+          "doc_id": "18/mvcc-serialization-failure-handling.html",
+          "title": "13.5. Serialization Failure Handling #",
+          "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+          "start": 563,
+          "end": 769,
+          "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation).",
+          "matched_terms": []
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "PostgreSQL",
+            "field": "body_text",
+            "start": 1733,
+            "end": 1878,
+            "text": "issue and/or which values to use. Therefore, PostgreSQL does not offer an automatic retry facility, since it cannot do so with any guarantee of c"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "postgresql_docs",
+            "doc_id": "18/mvcc-serialization-failure-handling.html",
+            "title": "13.5. Serialization Failure Handling #",
+            "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "start": 563,
+            "end": 769,
+            "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        }
+      },
+      {
+        "source": "postgresql_docs",
+        "doc_id": "18/transaction-iso.html",
+        "title": "13.2. Transaction Isolation #",
+        "source_url": "https://www.postgresql.org/docs/18/transaction-iso.html",
+        "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+        "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+        "rank": 2,
+        "selection_score": 0.3021152209739932,
+        "relevance": 0.49741062786787776,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "title": "13.2. Transaction Isolation #",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "start": 20518,
+            "end": 20810,
+            "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution."
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 23,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 70,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "postgresql_docs",
+          "doc_id": "18/transaction-iso.html",
+          "title": "13.2. Transaction Isolation #",
+          "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+          "start": 20518,
+          "end": 20810,
+          "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution.",
+          "matched_terms": [
+            "postgresql",
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "PostgreSQL",
+            "field": "body_text",
+            "start": 1596,
+            "end": 1741,
+            "text": "actions one at a time.\n\nThe SQL standard and PostgreSQL-implemented transaction isolation levels are described in Table 13.1.\n\nTable 13.1. Transa"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "title": "13.2. Transaction Isolation #",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "start": 20518,
+            "end": 20810,
+            "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution."
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        }
+      },
+      {
+        "source": "stackexchange",
+        "doc_id": "dba-346931",
+        "title": "Postgres: limiting serialization errors on serializable transactions",
+        "source_url": "https://dba.stackexchange.com/questions/346931/postgres-limiting-serialization-errors-on-serializable-transactions",
+        "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+        "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+        "rank": 3,
+        "selection_score": 0.20690568795976227,
+        "relevance": 0.38880365281136053,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "stackexchange",
+            "doc_id": "dba-346931",
+            "title": "Postgres: limiting serialization errors on serializable transactions",
+            "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+            "start": 80,
+            "end": 351,
+            "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 2,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 8,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "stackexchange",
+          "doc_id": "dba-346931",
+          "title": "Postgres: limiting serialization errors on serializable transactions",
+          "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+          "start": 80,
+          "end": 351,
+          "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows).",
+          "matched_terms": [
+            "transaction"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [
+          {
+            "name": "PostgreSQL",
+            "field": "title",
+            "start": 0,
+            "end": 68,
+            "text": "Postgres: limiting serialization errors on serializable transactions"
+          }
+        ],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "stackexchange",
+            "doc_id": "dba-346931",
+            "title": "Postgres: limiting serialization errors on serializable transactions",
+            "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+            "start": 80,
+            "end": 351,
+            "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        }
+      }
+    ],
+    "baseline": [
+      {
+        "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+        "relevance": 0.3117912128381385
+      },
+      {
+        "doc_key": "c3ff852f82bf1f06d0ffb939e1b8d626e36172ecb69748a4e0baf87306129219",
+        "relevance": 0.19498498062943487
+      },
+      {
+        "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+        "relevance": 0.15249747017442172
+      }
+    ],
+    "without_history": [
+      {
+        "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+        "rank": 1,
+        "score": 0.540230265542392
+      },
+      {
+        "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+        "rank": 2,
+        "score": 0.3021152209739932
+      },
+      {
+        "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+        "rank": 3,
+        "score": 0.20690568795976227
+      }
+    ],
+    "without_diversity": [
+      {
+        "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+        "rank": 1,
+        "score": 0.635565018285167
+      },
+      {
+        "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+        "rank": 2,
+        "score": 0.49741062786787776
+      },
+      {
+        "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+        "rank": 3,
+        "score": 0.38880365281136053
+      }
+    ],
+    "history_used": 0,
+    "history_unavailable": 0,
+    "history_references": [],
+    "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+    "parameters": {
+      "candidates": 100,
+      "paragraphs_per_document": 3,
+      "top_k": 3,
+      "paragraphs_total": 300,
+      "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+      "min_relevance": 0.03,
+      "min_query_coverage": 0.2,
+      "history_weight": 0.6,
+      "supplement_weight": 0.4,
+      "diversity_weight": 0.15,
+      "duplicate_threshold": 0.95,
+      "semantic_thresholds": {
+        "relevance": 0.015,
+        "goal_similarity": 0.35,
+        "entailment": 0.75,
+        "contradiction": 0.65,
+        "neutral": 0.7,
+        "context_similarity": 0.3,
+        "duplicate": 0.95
+      }
+    },
+    "reason": null,
+    "query": {
+      "original": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+      "variants": [
+        "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+        "When should transactions be retried for serialization failure and unique key conflict in PostgreSQL?"
+      ],
+      "status": "translated",
+      "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+      "rules_version": "bilingual-object-query-v2",
+      "entities": [
+        {
+          "name": "PostgreSQL",
+          "aliases": [
+            "postgresql",
+            "postgres"
+          ]
+        }
+      ],
+      "error_code": null
+    },
+    "semantic": {
+      "status": "ready",
+      "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+      "comparison_scope": {
+        "candidate_paragraphs": 137,
+        "candidate_sentences": 33,
+        "history_sentences": 0,
+        "comparison_pairs": 0,
+        "unsupported_units": 0,
+        "history_contexts": 0,
+        "history_selection_method": "candidate-nearest-context-not-answer-gated",
+        "all_relations_require_comparable_context": true,
+        "oversized_sentences": 0,
+        "candidate_sentences_outside_budget": 35,
+        "history_sentences_outside_budget": 0,
+        "limits": {
+          "candidate_paragraphs": 300,
+          "candidate_sentences": 90,
+          "history_sentences": 100,
+          "comparison_pairs": 270
+        },
+        "native_original_wide_recall": true,
+        "recalled_documents": 5,
+        "paragraph_budget_per_document": 60,
+        "nonlexical_context_paragraphs": 124,
+        "history_paragraphs_available": 0,
+        "history_paragraphs_outside_budget": 0
+      },
+      "error_code": null,
+      "language": "multilingual"
+    },
+    "history_relevant_paragraphs": 0
+  },
+  "first_job": "d6b8772605194eb6210f0588708471158a3cfb1ed70320edf69e5db97631d612",
+  "error_type": "AssertionError",
+  "error": "selected_english_translations_failed",
+  "seconds": 1072.7204718270004
+}
