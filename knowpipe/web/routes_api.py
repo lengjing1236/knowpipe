@@ -170,9 +170,10 @@ def update_topics():
         if any(str(t) not in valid_topic_ids for t in known_topics):
             return jsonify({"error": "invalid_known_topics"}), 400
 
-        profile = mongo_sink.get_or_create_profile(db, requested_user_id)
+        mongo_sink.get_or_create_profile(db, requested_user_id)
+        # Reading is a declaration of exposure, not evidence of mastery.
         known_keywords = mongo_sink.derive_known_keywords(
-            db, known_topics, profile.get("read_doc_ids", []))
+            db, known_topics, [])
         result = mongo_sink.save_known_topics(db, requested_user_id, known_topics, known_keywords)
         _reclassify_user(db, requested_user_id)
         return jsonify({"known_topics": result["known_topics"],

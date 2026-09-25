@@ -10,6 +10,7 @@ from bson import ObjectId
 from flask import Blueprint, Response, current_app, jsonify, request
 
 from ..podcasts import store
+from ..podcasts.learning import notification_current
 from ..linking.job import for_episode
 from ..podcasts.network import FetchError, public_target
 from . import auth
@@ -99,11 +100,21 @@ def supply_transcript(episode_id):
     return jsonify(status='queued'), 202
 
 
+@podcast_bp.post('/podcasts/episodes/<episode_id>/retry')
+@login_required
+def retry_episode(episode_id):
+    if store.owned_episode(db(), auth.current_user_id(), episode_id) is None:
+        return jsonify(error='not_found'), 404
+    result = db().podcast_episodes.update_one({'episode_id': episode_id, 'status': 'failed'},
+        {'$set': {'status': 'queued', 'attempts': 0, 'retry_at': store.now(), 'error_code': None}})
+    return (jsonify(status='queued'), 202) if result.matched_count else (jsonify(error='episode_not_editable'), 409)
+
+
 @podcast_bp.get('/notifications')
 @login_required
 def notifications():
-    return jsonify(items=serial(list(db().notifications.find({'user_id': auth.current_user_id()})
-                                    .sort('_id', -1).limit(50))))
+    return jsonify(items=serial([n for n in db().notifications.find({'user_id': auth.current_user_id()})
+                                    .sort('_id', -1).limit(200) if notification_current(db(), n)][:50]))
 
 
 @podcast_bp.post('/notifications/<notification_id>/read')
@@ -138,6 +149,8 @@ def notification_stream():
                 records = list(database.notifications.find(query).sort('_id', -1).limit(50))[::-1]
             for item in records:
                 cursor = item['_id']
+                if not notification_current(database, item):
+                    continue
                 yield f'id: {cursor}\nevent: notification\ndata: {json.dumps(serial(item), ensure_ascii=False)}\n\n'
             yield ': heartbeat\n\n'
             if time.monotonic() >= deadline:

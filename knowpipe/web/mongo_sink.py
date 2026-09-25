@@ -62,7 +62,12 @@ def get_or_create_profile(db: Any, user_id: str) -> dict[str, Any]:
         "feedback_history": [],
         "updated_at": datetime.now(timezone.utc),
     }
-    db.user_profiles.update_one({"user_id": user_id}, {"$setOnInsert": profile}, upsert=True)
+    try:
+        db.user_profiles.update_one({"user_id": user_id}, {"$setOnInsert": profile}, upsert=True)
+    except DuplicateKeyError:
+        # Another request initialized the same profile between our read and upsert.
+        if db.user_profiles.find_one({"user_id": user_id}) is None:
+            raise
     return db.user_profiles.find_one({"user_id": user_id})
 
 

@@ -13,6 +13,9 @@ from . import mongo_sink
 from .routes_api import api_bp
 from .routes_pages import pages_bp
 from .routes_podcasts import podcast_bp
+from .routes_learning import learning_bp
+from ..learning.store import ensure_indexes as ensure_learning_indexes
+from ..recommendations.queue import ensure_indexes as ensure_recommendation_indexes
 from ..podcasts.store import ensure_indexes as ensure_podcast_indexes
 from .security import install_security
 
@@ -51,11 +54,14 @@ def create_app(db=None, secret_key: str | None = None, config: dict | None = Non
         db = client[db_name] if db_name else client.get_default_database('knowpipe_mining')
     mongo_sink.ensure_indexes(db)
     ensure_podcast_indexes(db)
+    ensure_learning_indexes(db)
+    ensure_recommendation_indexes(db)
     app.config['MONGO_DB'] = db
     install_security(app)
     app.register_blueprint(api_bp)
     app.register_blueprint(pages_bp)
     app.register_blueprint(podcast_bp)
+    app.register_blueprint(learning_bp)
 
     @app.get('/health/live')
     def live():

@@ -14,3 +14,8 @@ def login_page():
 @pages_bp.get("/")
 def index_page():
     return render_template("index.html")
+
+
+@pages_bp.get("/learning")
+def learning_page():
+    return render_template("learning.html")
