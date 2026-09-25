@@ -73,7 +73,44 @@ def decision_check(*, expected, job_status, semantic, current_job, eligible, chi
             'passed': completed and behavior_matches and idempotent}
 
 
-def execute_case(client, spark, manifest, documents, replay, run_id, root):
+def translation_phase(item, doc, view, *, now=None):
+    """Read state after a synchronous worker turn; one failure is not exhaustion."""
+    now = now or datetime.now(timezone.utc)
+    attempts = doc.get('translation_attempts') or {}
+    retry_at = attempts.get('retry_at')
+    if isinstance(retry_at, datetime):
+        retry_at = retry_at.replace(tzinfo=timezone.utc) if retry_at.tzinfo is None else retry_at
+    stage = view['processing']['translation']
+    version_matches = view['content_version'] == item['content_version']
+    current_attempt = bool(version_matches and doc.get('translation_expected_processor') and
+                           attempts.get('source_version') == item['content_version'] and
+                           attempts.get('processor_id') == doc['translation_expected_processor'])
+    if not version_matches or view['content_status'] != 'fulltext':
+        phase = 'content_changed_or_missing'
+    elif view['chinese_ready']:
+        phase = 'ready'
+    elif stage['status'] == 'running':
+        phase = 'running'
+    elif stage['status'] == 'unavailable':
+        phase = 'unavailable'
+    elif stage['status'] == 'failed' and current_attempt and attempts.get('count', 0) >= 3:
+        phase = 'exhausted'
+    elif stage['status'] == 'failed' and current_attempt and isinstance(retry_at, datetime) and retry_at > now:
+        phase = 'retry_wait'
+    elif stage['status'] == 'failed':
+        phase = 'retry_pending'
+    else:
+        phase = 'pending'
+    return {'phase': phase, 'status': stage['status'], 'error_code': stage.get('error_code'),
+            'chinese_ready': bool(version_matches and view['chinese_ready']),
+            'attempts': attempts.get('count', 0), 'attempt_limit': 3,
+            'attempt_matches_current': current_attempt,
+            'retry_at': retry_at.isoformat() if isinstance(retry_at, datetime) else None,
+            'processor_id': doc.get('translation_expected_processor'),
+            'quality': view.get('translation_quality')}
+
+
+def execute_case(client, spark, manifest, documents, replay, run_id, root, *, translation_timeout=1800):
     from knowpipe.learning import store as learning
     from knowpipe.learning.content import content_view
     from knowpipe.learning.providers import processor_identity
@@ -136,22 +173,51 @@ def execute_case(client, spark, manifest, documents, replay, run_id, root):
             'evaluation_replay': {'synthetic_transport': True, 'original_material': replay['new_document'],
                                   'original_url': candidate['source_url'], 'original_license': candidate.get('license'),
                                   'body_sha256': transport['transcript_sha256']}}})
+        deadline = time.monotonic() + translation_timeout
         worker.run_once(refresh=True)
-        job = actual_job(db, user_id)
-        result = (job or {}).get('result') or {}
-        row['after_new'] = {'job_id': job['_id'] if job else None, 'job_status': (job or {}).get('status'), 'result': result}
-        selected = [i for i in result.get('items', []) if i['source'] == 'podcast' and i['doc_id'] == episode_id]
-        eligible = bool(selected and selected[0].get('supplement_eligible') and
-                        (selected[0].get('comparison') or {}).get('status') == 'possible_supplement')
-        doc = db.documents.find_one({'source': 'podcast', 'doc_id': episode_id}) or {}
-        view = content_view(doc, include_text=False)
-        notices = list(db.notifications.find({'user_id': user_id, 'episode_id': episode_id}))
+
+        def observe():
+            job = actual_job(db, user_id)
+            result = (job or {}).get('result') or {}
+            selected = [i for i in result.get('items', []) if i['source'] == 'podcast' and i['doc_id'] == episode_id]
+            eligible = bool(selected and selected[0].get('supplement_eligible') and
+                            (selected[0].get('comparison') or {}).get('status') == 'possible_supplement')
+            doc = db.documents.find_one({'source': 'podcast', 'doc_id': episode_id}) or {}
+            view = content_view(doc, include_text=False)
+            notices = list(db.notifications.find({'user_id': user_id, 'episode_id': episode_id}))
+            return job, result, selected, eligible, doc, view, notices
+
+        row['translation_observations'] = []
+        while True:
+            job, result, selected, eligible, doc, view, notices = observe()
+            observation = translation_phase(selected[0], doc, view) if selected else {'phase': 'not_selected'}
+            if not row['translation_observations'] or row['translation_observations'][-1]['state'] != observation:
+                row['translation_observations'].append({'observed_at': datetime.now(timezone.utc).isoformat(),
+                    'state': observation, 'scope': 'after synchronous real worker turn in isolated database'})
+                print(replay['id'], 'translation', observation, flush=True)
+            if not eligible:
+                row['translation_wait_outcome'] = 'not_eligible'
+                break
+            if observation['phase'] in {'ready', 'exhausted', 'unavailable', 'content_changed_or_missing'}:
+                row['translation_wait_outcome'] = observation['phase']
+                break
+            if time.monotonic() >= deadline:
+                row['translation_wait_outcome'] = 'timeout_' + observation['phase']
+                break
+            time.sleep(min(5, max(0, deadline - time.monotonic())))
+            # Real production retry respects its unchanged 3-attempt/5-minute policy.
+            if time.monotonic() < deadline:
+                worker.run_once()
+
+        before_ids = sorted(str(n['_id']) for n in notices)
+        timed_out = row['translation_wait_outcome'].startswith('timeout_')
+        # Retry then re-read all decisions: a pre-retry view cannot describe its result.
+        if not timed_out:
+            worker.run_once()
+        job, result, selected, eligible, doc, view, notices = observe()
+        idempotent = (before_ids == sorted(str(n['_id']) for n in notices)) if not timed_out else None
         current = [n for n in notices if notification_current(db, n)]
-        before_ids = [str(n['_id']) for n in notices]
-        # Actual worker retry path; no direct call to inject a publish decision.
-        worker.run_once()
-        repeated = list(db.notifications.find({'user_id': user_id, 'episode_id': episode_id}))
-        idempotent = before_ids == [str(n['_id']) for n in repeated]
+        row['after_new'] = {'job_id': job['_id'] if job else None, 'job_status': (job or {}).get('status'), 'result': result}
         expected = replay['expected_possible_supplement']
         check = decision_check(expected=expected, job_status=(job or {}).get('status'),
                                semantic=result.get('semantic') or {},
@@ -169,8 +235,10 @@ def execute_case(client, spark, manifest, documents, replay, run_id, root):
         elif not check['behavior_matches']:
             row['failure'] = ('positive_supplement_not_recommended' if expected and not eligible else
                               'positive_translation_or_notification_missing' if expected else 'negative_not_suppressed')
-        if not idempotent:
+        if idempotent is False:
             row['failure'] = 'notification_idempotency_failed'
+        if timed_out:
+            row['failure'] = 'translation_wait_timeout_not_final_exhaustion'
         return row
     except Exception as error:
         row.update(status='failed', failure='execution_error', error_type=type(error).__name__)
@@ -190,8 +258,14 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / 'evidence/011-mvp-recommendation-validation/replays.json')
     parser.add_argument('--index-root', type=Path, default=ROOT / 'state/feature011/replay-index')
     parser.add_argument('--case', action='append')
+    parser.add_argument('--translation-timeout', type=float, default=1800,
+                        help='Per-case wait budget starting before new-material worker turn; in-flight calls finish normally.')
     parser.add_argument('--dry-run', action='store_true')
     args = parser.parse_args()
+    if args.translation_timeout <= 0:
+        parser.error('translation-timeout must be positive')
+    if not args.dry_run and args.output.exists():
+        parser.error('output already exists; use a new evidence path instead of overwriting')
     manifest, documents = load_frozen(args.cases)
     selected = [r for r in manifest['replays'] if not args.case or r['id'] in args.case]
     if not selected or (args.case and set(args.case) != {r['id'] for r in selected}):
@@ -204,6 +278,13 @@ def main():
     from knowpipe.recommendations.runtime import create_spark
     run_id = uuid.uuid4().hex[:12]
     report = {'run_id': run_id, 'manifest_sha256': digest(args.cases), 'status': 'running', 'cases': [],
+              'execution_basis': {'script_sha256': digest(Path(__file__)),
+                                  'production_files': {str(path.relative_to(ROOT)): digest(path)
+                                                       for path in sorted((ROOT / 'knowpipe').rglob('*.py'))},
+                                  'spark_master': os.environ.get('SPARK_MASTER'),
+                                  'pyspark_submit_args': os.environ.get('PYSPARK_SUBMIT_ARGS')},
+              'translation_timeout_seconds': args.translation_timeout,
+              'translation_wait_policy': 'Bounded wait; unchanged production 3 attempts with 5-minute retry delay. In-flight synchronous calls may exceed deadline; record timeout without claiming exhaustion.',
               'scope': 'actual Mongo, RSS parser/publisher, worker, Spark, providers and notification decisions; supplied source texts in a controlled RSS shell',
               'live_podcast_or_asr': False, 'fake_ready_jobs_or_results': False,
               'limitations': ['controlled small pool, not 10k background', 'agent-prepared expected facts, not human learning outcomes',
@@ -215,7 +296,8 @@ def main():
         client.admin.command('ping')
         spark = create_spark('knowpipe-011-rss-three-branch-replay', args.index_root)
         for replay in selected:
-            row = execute_case(client, spark, manifest, documents, replay, run_id, args.index_root)
+            row = execute_case(client, spark, manifest, documents, replay, run_id, args.index_root,
+                               translation_timeout=args.translation_timeout)
             report['cases'].append(row)
             write_json(args.output, report)
             print(row['id'], row['status'], row.get('failure'), row['seconds'], flush=True)

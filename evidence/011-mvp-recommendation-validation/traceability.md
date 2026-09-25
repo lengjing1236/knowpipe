@@ -10,7 +10,7 @@
 | SC-002：转载/同义/无关/错误对象无错误补充，同时真补充不可全拒绝 | `semantic_analysis.py`、`engine.py`、`podcasts/learning.py` | 正式full source-review覆盖全部additional；`postgres-full-review-notes.md`/`docker-full-review-notes.md`有第二代理只读事实复核 | **失败。** 11条错误补充，12条双侧解释证据不足；正向部分已读的PG/Docker有真实补充，Python/Django未达到冻结预期。同义改写仍被当新知识。镜像在对象门槛被排除，不能验证语义去重 |
 | SC-003：不同历史合理改变证据/优先项，消融说明作用 | `engine._choose`覆盖/补充/去重；`current-v6-full-ablations.json` | 34个固定候选重排对照仅3个改变：PG冷启动去重使正确材料前移；PG部分已读的历史项反而使正确材料后移；Docker替换后仍无更多直接材料 | **未证实稳定收益。** 已读原文会被排除，也能识别个别新事实，但同义误报和偏题仍存在。消融仅对同一已召回/比较后的候选重排，不能冒充完整无历史管线 |
 | SC-004：中文目标/全文关键事实、条件、顺序正确，真实全文阅读 | `learning/local_providers.py`、`llama_provider.py`、`providers.py`、`quality.py`、`content.py` | 语言专项证据保留Argos/NLLB/Qwen的真实输出与事实复核；最终full固定Qwen段落v1，同一处理身份；真实阅读由根代理验收 | **已测试候选仍有关键事实错误。** 结构对齐/数字标识符保护不是语义正确。某次目标译文改善不能替代完整技术全文通过 |
-| SC-005：真实Web→worker→Spark→阅读→显式已读；新增三类与真实RSS | worker、Web、`podcasts/learning.py`、`scripts/acceptance_replays011.py` | `browser.json`真实浏览器保存目标→生产worker/Spark推荐就绪，未注入ready job；运行1072.7秒后报`selected_english_translations_failed`，三篇入选英文均未通过翻译质量门禁；观察/诊断文件记录处理状态 | **完整闭环尚无通过证据。** 首次脚本在全部本次失败时提前退出，未区分待重试与最终耗尽；阅读、显式已读及重算未执行到。验收器已修复终态判定，原失败原样保留。真实RSS/ASR与三分支通知回放仍待结果；全禁通知也不能通过正例 |
+| SC-005：真实Web→worker→Spark→阅读→显式已读；新增三类与真实RSS | worker、Web、`podcasts/learning.py`、`scripts/acceptance_replays011.py` | `browser.json`真实浏览器保存目标→生产worker/Spark推荐就绪，未注入ready job；运行1072.7秒后报`selected_english_translations_failed`。`rss-real.json`实际重新下载公开音频、ASR产生2961字符全文并入选，运行2013.8秒后报`selected_podcast_translation_unready`，零通知；质量诊断独立保留 | **完整闭环尚无通过证据。** 首次浏览器/RSS脚本在本次翻译失败时提前退出，未证明最终重试耗尽；浏览器阅读、显式已读及重算未执行到。验收器已修复终态判定，原失败原样保留。RSS首轮翻译因`identifier_missing`未就绪；ASR入库/召回成功不等于中文推荐闭环通过。三分支通知回放仍待实际结果；全禁通知也不能通过正例 |
 | SC-006：万条背景复验、至少两个预冻结保留场景 | `scripts/evaluate_mvp011.py`、冻结SHA、旧包快照 | 最终17案：13案使用同一10,215篇完整背景，4案明确受控；Docker/Django及跨来源7个保留场景首次最终运行后仅审核，未据此调参 | **验证流程已落实，结果有失败。** 一次资源检查点重启保留前三案，以同一签名继续；详见resource-events。旧baseline完整背景对照仍待后续窗口，不将v5开发数据当最终基线 |
 
 
@@ -25,8 +25,8 @@
 | FR-005 比较范围/失败诚实 | `semantic_analysis.py`预算/窗口与scope；worker/API/UI降级；RSS门控 | 超过比较预算必须可见，不能宣称已比较完整历史 |
 | FR-006 实际中文支持 | 多语rank/embed provider，NLI前真实转换；`query.prepare_goal` | 新模型真实中文质量尚待最终输入检验，英文参考仅诊断 |
 | FR-007 自动全文中文及真实对齐 | `TextResult.segments`、`validate_segments`、发布CAS、Web对齐 | 字符区间对齐不保证语义正确；旧无对齐不猜测 |
-| FR-008 处理身份/租约/缓存隔离 | `query.processing_identity`、`queue.py`、worker、翻译CAS | 已有专项工程测试；最终组合仍需回归 |
-| FR-009 新资料与RSS同一决策 | `podcasts/learning.publish_recommendations`要求新语义资格和中文就绪 | 真/假三类实际新资料通知验收未完成 |
+| FR-008 处理身份/租约/缓存隔离 | `query.processing_identity`、`queue.py`、worker、翻译CAS | 已有专项工程测试；`d547d5c`在推荐任务发布后释放可惰性重建的语义会话，降低全文翻译阶段内存占用，21项轻测通过。该补丁未改变模型/算法处理身份，不能视为质量改进证据 |
+| FR-009 新资料与RSS同一决策 | `podcasts/learning.publish_recommendations`要求新语义资格和中文就绪 | 真实RSS已完成音频下载、ASR全文发布和实际入选，但首次中文未就绪、零通知；冷启动入选不是已读差异补充。真/假三类受控新资料通知验收未完成 |
 | FR-010 真Web完整路径 | Web目标/已读接口→队列→worker→Spark→翻译→页面 | 离线结果展示不能替代本项 |
 | FR-011 冻结/事实/失败/基线 | `cases.json`、SHA、61文件旧包清单、`evaluate_mvp011.py`、source-review JSON | 代理编制和代理原文审核，不是独立人工/长期学习收益 |
 | FR-012 资源与输入边界 | `semantic.py`窗口/批次、`semantic_analysis.py`预算、语言分段 | 不能因有上限就视为所有语料可处理；实际超限/失败须保留 |
@@ -37,7 +37,7 @@
 - 审核文件绑定原始运行结果SHA-256，候选及历史原文偏移必须精确匹配；新增内容仍由原文事实复核，不能用算法自己的NLI当独立标签。
 - 没有返回、没有补充不自动通过正例。未知结果单列待复核，不自动计相关或无关。
 - 受控合成镜像/改写明确标注，有限候选池空结果不推广到完整语料库。
-- 18项评价与回放程序测试验证上述边界，含“正确主补充不能掩盖错误附加断言”“合成项不能抵充真实来源正例”“模型失败后无通知不算有效拒绝”；它们不计为算法效果测试。
+- 21项评价与回放程序测试验证上述边界，含“正确主补充不能掩盖错误附加断言”“合成项不能抵充真实来源正例”“模型失败后无通知不算有效拒绝”，以及首轮失败/待重试/当前版本耗尽的区分；它们不计为算法效果测试。
 
 ## v6 / Argos 开发小池复验
 
@@ -60,3 +60,11 @@
 `current-v6-full-groups.json` 单独报告预冻结保留集：7案、20个返回项，其中8个直接帮助、5个部分相关、7个无关；8条错误补充、7条解释证据不足。Docker部分已读有真实内存计账补充，Django部分已读仍缺预期iterator()补充方法。该组首次最终运行后仅审核，没有据此修改实现。全组35项中的11条错误补充包含受控同义反例的1条，不能把所有错误都误称为同一个负例的结果。
 
 Spark `local[1]` 首次driver 1g；可用内存持续降到107MiB且swap满后，在第三案落盘处中断，释放后恢复2942MiB。随后以640m、`spark.memory.fraction=.35`、同签名 `--resume` 完成其余14案，没有重跑前三案。逐案计算合计1837.6秒，含中断/重启与准备的壁钟2197.4秒；这些是本机测量，不能推广为所有硬件的性能。资源事件及原始日志完整保留。
+
+## 真实RSS与后续工程补丁
+
+`rss-real.json`回放一条未改写的真实AWS Morning Brief RSS条目，生产ASR路径重新拉取完整公开音频。ASR阶段38.1秒，产生2961字符英文稿并实际进入推荐第一项；第二次轮询仍是一篇文档、一个批次、一次ASR尝试，没有重复发布。这是已知公开节目的有界验收，不是新发现节目的线上长期测试，也不是三分支补充效果验收。
+
+`rss-quality-diagnosis.json`记录首轮全文翻译质量门禁`identifier_missing`，但失败译文和逐标识符差异没有保存，因此不能指定哪个标识符缺失，也不能仅凭此区分严格形式检查与真实技术事实丢失。观察中tmpfs正文中文已就绪、volumes未就绪；播客中文未就绪导致零通知。此处不是ASR失败，也没有证据证明翻译已用尽最终重试。没有独立逐字ASR金标准，2961字符或与历史输出哈希一致均不证明转写准确率、内容无遗漏或学习效果。
+
+完整质量评价之后的`d547d5c`仅调整worker资源生命周期：推荐任务结束后在`finally`关闭可重新建立的ONNX语义会话，使全文翻译阶段不同时持有这些会话；释放异常只记录，不覆盖原任务结果。算法、模型、阈值及处理身份保持原样。后续浏览器/三分支回放使用该补丁，先前冻结质量结果仍按原版本记录，不能用新工程回放覆盖先前质量失败。
