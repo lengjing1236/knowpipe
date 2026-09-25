@@ -92,3 +92,28 @@ class MVPSourceEvaluationTests(unittest.TestCase):
                                                        'docs:history': {'body_text': '已读原文'}})
         self.assertEqual(checked['checked_spans'], 3)
         self.assertEqual(checked['invalid_count'], 1)
+
+    def test_synthetic_help_cannot_fill_a_real_source_positive(self):
+        item = {'doc_key': 'mvp_fixture:answer', 'supplement_eligible': True}
+        review = {'case_id': 'c', 'doc_key': 'mvp_fixture:answer', 'relevance': 'direct', 'supplement': 'supported'}
+        report = evaluation.score_results(self.case(scope='full_10215_background_required_for_product_verdict'),
+                                          self.output([item]), [review])
+        self.assertFalse(report['cases'][0]['direct_top3_confirmed'])
+        self.assertFalse(report['cases'][0]['positive_supplement_confirmed'])
+
+    def test_known_negative_cannot_be_overridden_by_a_supported_claim_review(self):
+        item = {'doc_key': 'docs:answer', 'supplement_eligible': True,
+                'comparison': {'additional_evidence': [{}]}}
+        review = {'case_id': 'c', 'doc_key': 'docs:answer', 'relevance': 'direct', 'supplement': 'supported',
+                  'claims': [{'claim_index': 0, 'judgment': 'supported'}]}
+        report = evaluation.score_results(self.case(expected={'must_not_claim_supplement': True}),
+                                          self.output([item]), [review])
+        self.assertEqual(report['counts']['false_supplement'], 1)
+
+    def test_semantic_failure_empty_is_not_a_passing_negative(self):
+        raw = self.output([])
+        raw['cases'][0]['result']['semantic'] = {'status': 'unavailable', 'error_code': 'provider_missing'}
+        report = evaluation.score_results(self.case(expected={'empty_required': True}), raw)
+        self.assertFalse(report['cases'][0]['computation_complete'])
+        self.assertFalse(report['cases'][0]['empty_check'])
+        self.assertEqual(report['status'], 'evidence_incomplete')

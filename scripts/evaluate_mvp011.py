@@ -389,6 +389,7 @@ def score_results(manifest, raw, reviews=None):
             if supplement not in {'supported', 'unsupported', 'uncertain', 'unjudged'}:
                 raise ValueError('invalid_review_supplement')
             judgments.append({'doc_key': key, 'rank': item.get('rank'), 'relevance': relevance,
+                              'real_source': not str(key).startswith('mvp_fixture:'),
                               'reference_document_hit': key in case.get('reference_relevant', []),
                               'supplement_eligible': eligible, 'supplement': supplement,
                               'claims': review.get('claims', []),
@@ -400,27 +401,34 @@ def score_results(manifest, raw, reviews=None):
         counts['top3_total'] += len(top)
         counts['top3_judged'] += len(known)
         counts['top3_direct'] += sum(j['relevance'] == 'direct' for j in known)
-        counts['false_supplement'] += sum(
-            sum(c.get('judgment') == 'unsupported' for c in j['claims']) if j['claims'] else
-            int(j['supplement_eligible'] and j['supplement'] == 'unsupported') for j in judgments)
+        counts['false_supplement'] += sum(max(
+            sum(c.get('judgment') == 'unsupported' for c in j['claims']),
+            int(j['supplement_eligible'] and j['supplement'] == 'unsupported')) for j in judgments)
         counts['supplement_claims_pending'] += sum(j['claim_reviews_pending'] for j in judgments)
         counts['supplement_claims_uncertain'] += sum(c.get('judgment') == 'uncertain'
                                                    for j in judgments for c in j['claims'])
         required = case['expected'].get('top3_reference_or_fact_equivalent_required', False)
-        direct = any(j['relevance'] == 'direct' for j in top)
+        real_source_required = case.get('scope', '').startswith('full_')
+        direct = any(j['relevance'] == 'direct' and (j['real_source'] or not real_source_required) for j in top)
+        semantic = row.get('result', {}).get('semantic')
+        computation_complete = (not row.get('result', {}).get('error_code') and
+                                (semantic is None or (semantic.get('status') == 'ready' and not semantic.get('error_code'))))
+        counts['incomplete_computation'] += int(not computation_complete)
         result = {'id': case['id'], 'judgments': judgments, 'items': len(items),
+                  'computation_complete': computation_complete, 'real_source_required': real_source_required,
                   'reference_top3_hit': any(j['reference_document_hit'] for j in top),
                   'direct_top3_required': required, 'direct_top3_confirmed': direct,
                   'source_review_pending': sum(j['relevance'] == 'unjudged' for j in top),
                   'positive_supplement_required': case['expected'].get('personal_supplement_supported', False),
-                  'positive_supplement_confirmed': any(j['supplement_eligible'] and j['supplement'] == 'supported' for j in judgments),
+                  'positive_supplement_confirmed': any(j['supplement_eligible'] and j['supplement'] == 'supported'
+                                                      and (j['real_source'] or not real_source_required) for j in judgments),
                   'empty_required': case['expected'].get('empty_required', False),
-                  'empty_check': not items if case['expected'].get('empty_required') else None,
+                  'empty_check': not items and computation_complete if case['expected'].get('empty_required') else None,
                   'history_exclusion_violation': any(key_for(i) in case['history'] for i in items)}
         scored.append(result)
     counts['top3_unjudged'] = counts['top3_total'] - counts['top3_judged']
     return {'status': 'evidence_incomplete' if counts['top3_unjudged'] or counts['supplement_claims_pending'] or
-            counts['supplement_claims_uncertain'] else 'source_checks_complete_not_full_mvp_verdict',
+            counts['supplement_claims_uncertain'] or counts['incomplete_computation'] else 'source_checks_complete_not_full_mvp_verdict',
             'scope': 'source judgments and deterministic counterexamples; Web, language, and ablations require separate evidence',
             'review_provenance': 'agent source review, not independent human labels', 'counts': dict(counts),
             'judged_top3_direct_rate': counts['top3_direct'] / counts['top3_judged'] if counts['top3_judged'] else None,
