@@ -1,0 +1,345 @@
+{
+  "status": "failed",
+  "scope": "Explicit intact RSS item replay; actual public audio download, ASR and current semantic worker",
+  "learning_quality_verified": false,
+  "notification_success_is_not_learning_effectiveness": true,
+  "source": {
+    "feed_url": "https://feeds.transistor.fm/aws-morning-brief",
+    "item_guid": "20edf1f8-433b-4019-aead-2107d801a653",
+    "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+    "published_at": "Mon, 12 Jan 2026 03:00:00 -0800",
+    "episode_url": "https://share.transistor.fm/s/bca97e83",
+    "audio_url": "https://dts.podtrac.com/redirect.mp3/media.transistor.fm/bca97e83/a89e4b76.mp3",
+    "rss_item_snapshot": "aws-episode-rss-item.xml",
+    "scope": "One unchanged item selected from live feed; channel wrapper reconstructed for bounded acceptance.",
+    "duration_seconds": 200.4752,
+    "retrieved_at": "2026-09-25T09:32:59.116498+00:00",
+    "audio_bytes": 8059405,
+    "audio_sha256": "9901898bb357cd3a334b89e8acac0f99522ef76fc6ea627a042e394b9cb18d69",
+    "rss_snapshot_sha256": "5c8bbc44496e374dfde3e79149de26e8192b5889b2a59424d7316b2166ba0c2a"
+  },
+  "asr_stage": {
+    "database_name": "knowpipe_media_acceptance_a0cd25847913",
+    "kept_for_root_integration": true,
+    "episode_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+    "feed_id": "5f02f512164eb95c219f7c66c08182b3766f013ef96ffa99656b9e7ef2bc621c",
+    "content_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+    "rss_asr_seconds": 38.06203470399487,
+    "audio_fetch": "Production transcribe_url fetched the complete public URL again, no audio test double.",
+    "feed_fetch": "Explicit one-item snapshot from the real publisher feed.",
+    "second_poll": "One document, one batch, one ASR attempt; no duplicate processing.",
+    "scope": "RSS→ASR→fulltext publication only; recommendation and notification require root integration."
+  },
+  "transcript_characters": 2961,
+  "language": "en",
+  "recommendations": {
+    "status": "ready",
+    "items": [
+      {
+        "source": "podcast",
+        "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+        "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+        "source_url": "https://share.transistor.fm/s/bca97e83",
+        "content_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+        "doc_key": "dfbe6a3763d195e5e84267cf36219d0a4840f5b021841020460a0b6cc8280c84",
+        "rank": 1,
+        "selection_score": 0.5523111964039712,
+        "relevance": 0.6497778781223191,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "podcast",
+            "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+            "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+            "content_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "start": 865,
+            "end": 927,
+            "text": "Now support Tmpfs mounts on Fargate and ECS Managed Instances."
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 1,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 0,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "podcast",
+          "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+          "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+          "content_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+          "start": 865,
+          "end": 927,
+          "text": "Now support Tmpfs mounts on Fargate and ECS Managed Instances.",
+          "matched_terms": [
+            "ecs",
+            "fargate",
+            "tmpfs"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "podcast",
+            "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+            "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+            "content_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "start": 865,
+            "end": 927,
+            "text": "Now support Tmpfs mounts on Fargate and ECS Managed Instances."
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        },
+        "chinese_ready": false,
+        "translation_status": "failed"
+      },
+      {
+        "source": "docker_docs",
+        "doc_id": "unversioned/engine/storage/tmpfs",
+        "title": "tmpfs mounts",
+        "source_url": "https://docs.docker.com/engine/storage/tmpfs/",
+        "content_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+        "doc_key": "56302c7c09b8197ce47109426883a7e8de85dcf04f29386577d5263ffae6572f",
+        "rank": 2,
+        "selection_score": 0.3998256004052084,
+        "relevance": 0.5605672577336508,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "docker_docs",
+            "doc_id": "unversioned/engine/storage/tmpfs",
+            "title": "tmpfs mounts",
+            "content_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "start": 629,
+            "end": 759,
+            "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit).",
+            "chinese_context": "因为 tmpfs 会将数据存储在内存中，因此该使用量会计入容器的内存 cgroup 限制 (--memory / Compose mem_limit)。设置一个大的 tmpfs-大小（或主机挂载的 tmpfs）并不会给容器额外的 RAM，超出这个限制。容器的内存指标包括 tmpfs 使用量；请参阅运行时指标。\n",
+            "chinese_context_scope": "aligned_translation_units"
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 7,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 8,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/tmpfs",
+          "title": "tmpfs mounts",
+          "content_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+          "start": 629,
+          "end": 759,
+          "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit).",
+          "matched_terms": [
+            "container",
+            "memory",
+            "tmpfs"
+          ],
+          "chinese_context": "因为 tmpfs 会将数据存储在内存中，因此该使用量会计入容器的内存 cgroup 限制 (--memory / Compose mem_limit)。设置一个大的 tmpfs-大小（或主机挂载的 tmpfs）并不会给容器额外的 RAM，超出这个限制。容器的内存指标包括 tmpfs 使用量；请参阅运行时指标。\n",
+          "chinese_context_scope": "aligned_translation_units"
+        },
+        "history_evidence": null,
+        "entity_evidence": [],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "docker_docs",
+            "doc_id": "unversioned/engine/storage/tmpfs",
+            "title": "tmpfs mounts",
+            "content_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "start": 629,
+            "end": 759,
+            "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit)."
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        },
+        "chinese_ready": true,
+        "translation_status": "ready"
+      },
+      {
+        "source": "docker_docs",
+        "doc_id": "unversioned/engine/storage/volumes",
+        "title": "Volumes",
+        "source_url": "https://docs.docker.com/engine/storage/volumes/",
+        "content_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+        "doc_key": "3a32a9266e13f99f2e286123bb66894a360fcba5c1f3966bd4fc727bf8722844",
+        "rank": 3,
+        "selection_score": 0.29052156230621484,
+        "relevance": 0.4850735579577896,
+        "history_overlap": 0.0,
+        "supplement_score": 0.0,
+        "reason": "goal_only",
+        "comparison": {
+          "status": "goal_only",
+          "candidate": {
+            "source": "docker_docs",
+            "doc_id": "unversioned/engine/storage/volumes",
+            "title": "Volumes",
+            "content_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+            "start": 1995,
+            "end": 2227,
+            "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer."
+          },
+          "history": null,
+          "covered_evidence": [],
+          "additional_evidence": [],
+          "uncertain_evidence": [],
+          "scores": {
+            "coverage": 0.0,
+            "supplement": 0.0
+          },
+          "scope": {
+            "candidate_sentences": 1,
+            "history_sentences": 0,
+            "uncompared_candidate_sentences": 0,
+            "nearest_history_per_sentence": 3
+          },
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+        },
+        "goal_evidence": {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/volumes",
+          "title": "Volumes",
+          "content_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+          "start": 1995,
+          "end": 2227,
+          "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer.",
+          "matched_terms": [
+            "container",
+            "tmpfs"
+          ]
+        },
+        "history_evidence": null,
+        "entity_evidence": [],
+        "supplement_eligible": false,
+        "supplement_evidence": {
+          "status": "goal_only",
+          "method": "goal-native-context-evidence-coverage-mmr-v6",
+          "candidate": {
+            "source": "docker_docs",
+            "doc_id": "unversioned/engine/storage/volumes",
+            "title": "Volumes",
+            "content_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+            "start": 1995,
+            "end": 2227,
+            "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer."
+          },
+          "comparison": null,
+          "additional_terms": [],
+          "shared_context_terms": [],
+          "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+          "compared_history_paragraphs": 0
+        },
+        "chinese_ready": false,
+        "translation_status": "failed"
+      }
+    ],
+    "corpus": {
+      "corpus_id": "ac8c9658cbe629c5eaf55832c8c95b129005850ba44a474f0e1fdf40ef72f8f9",
+      "document_count": 17,
+      "paragraph_count": 1740,
+      "sources": {
+        "django_docs": 3,
+        "docker_docs": 4,
+        "podcast": 1,
+        "postgresql_docs": 3,
+        "python_docs": 3,
+        "stackexchange": 3
+      },
+      "created_at": "2026-09-25 14:08:43.190000"
+    },
+    "input_revision": 1,
+    "reason": null,
+    "history_used": 0,
+    "history_unavailable": 0,
+    "history_relevant_paragraphs": 0,
+    "query": {
+      "original": "学习 ECS Fargate 容器使用 tmpfs 内存文件系统的限制与适用场景",
+      "variants": [
+        "学习 ECS Fargate 容器使用 tmpfs 内存文件系统的限制与适用场景",
+        "Learning about the limitations and applicable scenarios of using tmpfs for container storage in ECS Fargate"
+      ],
+      "status": "translated",
+      "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+      "rules_version": "bilingual-object-query-v2",
+      "entities": [],
+      "error_code": null
+    },
+    "semantic": {
+      "status": "ready",
+      "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+      "comparison_scope": {
+        "candidate_paragraphs": 272,
+        "candidate_sentences": 9,
+        "history_sentences": 0,
+        "comparison_pairs": 0,
+        "unsupported_units": 0,
+        "history_contexts": 0,
+        "history_selection_method": "candidate-nearest-context-not-answer-gated",
+        "all_relations_require_comparable_context": true,
+        "oversized_sentences": 0,
+        "candidate_sentences_outside_budget": 0,
+        "history_sentences_outside_budget": 0,
+        "limits": {
+          "candidate_paragraphs": 300,
+          "candidate_sentences": 90,
+          "history_sentences": 100,
+          "comparison_pairs": 270
+        },
+        "native_original_wide_recall": true,
+        "recalled_documents": 11,
+        "paragraph_budget_per_document": 27,
+        "nonlexical_context_paragraphs": 248,
+        "history_paragraphs_available": 0,
+        "history_paragraphs_outside_budget": 0
+      },
+      "error_code": null,
+      "language": "multilingual"
+    },
+    "completed_at": "2026-09-25 14:15:44.757000"
+  },
+  "decision": "selected_translation_unready",
+  "notifications": [],
+  "error_type": "AssertionError",
+  "error": "selected_podcast_translation_unready",
+  "seconds": 2013.7662861380013
+}

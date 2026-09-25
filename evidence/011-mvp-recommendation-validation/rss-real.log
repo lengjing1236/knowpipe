@@ -1,0 +1,72 @@
+Formatting note: terminal carriage returns normalized to lines; trailing display whitespace removed. Raw SHA256: ec2391a4fd4616d64f75b4da52955a65e6da7683de5e69d45c050445a30cbd5d
+rss_acceptance_database=knowpipe_media_acceptance_a0cd25847913
+[0;93m2026-09-25 22:08:30.503721071 [W:onnxruntime:Default, device_discovery.cc:164 DiscoverDevicesForPlatform] GPU device discovery failed: device_discovery.cc:89 ReadFileContents Failed to open file: "/sys/class/drm/card0/device/vendor"[m
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 22:08:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]
+[Stage 2:>                                                          (0 + 1) / 2]
+[Stage 2:=============================>                             (1 + 1) / 2]
+[Stage 9:>                                                          (0 + 1) / 2]
+[Stage 9:=============================>                             (1 + 1) / 2]
+[Stage 11:=============================>                            (1 + 1) / 2]
+[Stage 21:=============================>                            (2 + 1) / 4]
+[Stage 21:===========================================>              (3 + 1) / 4]
+[Stage 26:>                 (0 + 0) / 4][Stage 27:=========>        (2 + 1) / 4]
+[Stage 40:==============>                                           (1 + 1) / 4]
+[Stage 40:===========================================>              (3 + 1) / 4]
+[Stage 44:>                                                         (0 + 1) / 1]
+[Stage 45:>                                                         (0 + 1) / 1]
+[Stage 46:>                                                         (0 + 1) / 1]
+[Stage 48:>                                                         (0 + 1) / 1]
+[Stage 49:>                                                         (0 + 1) / 1]
+[Stage 50:>                                                         (0 + 1) / 1]
+[Stage 53:>                 (0 + 1) / 1][Stage 54:>                 (0 + 0) / 1]
+[Stage 53:>   (0 + 1) / 1][Stage 54:>   (0 + 0) / 1][Stage 55:>   (0 + 0) / 1]
+[Stage 54:>   (0 + 1) / 1][Stage 55:>   (0 + 0) / 1][Stage 56:>   (0 + 0) / 1]
+[Stage 57:>                                                         (0 + 1) / 1]
+[Stage 57:>   (0 + 1) / 1][Stage 58:>   (0 + 0) / 1][Stage 59:>   (0 + 0) / 1]
+[Stage 58:>                 (0 + 1) / 1][Stage 59:>                 (0 + 0) / 1]
+[Stage 59:>                                                         (0 + 1) / 1]
+[Stage 64:>                                                         (0 + 1) / 1]
+[Stage 66:>                                                         (0 + 1) / 4]
+[Stage 66:=============================>                            (2 + 1) / 4]
+[Stage 66:===========================================>              (3 + 1) / 4]
+[Stage 87:>                                                         (0 + 0) / 4]
+[Stage 87:>                                                         (0 + 1) / 4]
+[Stage 87:==============>                                           (1 + 1) / 4]
+[Stage 88:>                                                         (0 + 1) / 4]
+[Stage 88:=============>    (3 + 1) / 4][Stage 89:>                 (0 + 0) / 4]
+[Stage 89:==============>                                           (1 + 1) / 4]
+[Stage 91:=============================>                            (2 + 1) / 4]
+[Stage 91:=============>    (3 + 1) / 4][Stage 94:>                 (0 + 0) / 4]
+[Stage 94:>                                                         (0 + 1) / 4]
+[Stage 94:==============>                                           (1 + 0) / 4]
+[Stage 94:===========================================>              (3 + 1) / 4]
+[Stage 101:>                (0 + 1) / 1][Stage 103:>                (0 + 0) / 4]
+[Stage 103:============================>                            (2 + 1) / 4]
+[Stage 107:============================>                            (2 + 1) / 4]
+[Stage 107:==========================================>              (3 + 1) / 4]
+[Stage 117:============================>                            (2 + 1) / 4]
+[Stage 117:==========================================>              (3 + 1) / 4]
+[Stage 120:>                                                        (0 + 0) / 1]
+[Stage 120:>                (0 + 1) / 1][Stage 121:>                (0 + 0) / 1]
+[Stage 121:>                                                        (0 + 1) / 1]
+[Stage 123:>                                                        (0 + 1) / 4]
+[Stage 123:==============>                                          (1 + 1) / 4]
+[Stage 123:============================>                            (2 + 1) / 4]
+[Stage 123:==========================================>              (3 + 1) / 4]
+[Stage 128:>                                                        (0 + 1) / 1]
+[Stage 129:>                                                        (0 + 1) / 1]
+[Stage 131:>                                                        (0 + 1) / 4]
+[Stage 131:==============>                                          (1 + 1) / 4]
+[Stage 131:============================>                            (2 + 1) / 4]
+[Stage 131:==========================================>              (3 + 1) / 4]
+Traceback (most recent call last):
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_rss011.py", line 91, in <module>
+    main()
+  File "/home/lengjing1236/knowpipe/scripts/acceptance_rss011.py", line 65, in main
+    assert selected['chinese_ready'], 'selected_podcast_translation_unready'
+AssertionError: selected_podcast_translation_unready

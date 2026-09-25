@@ -1,0 +1,238 @@
+{
+  "scope": "Read-only observation during actual RSS/ASR worker execution; no state changes or model substitutes",
+  "database": "knowpipe_media_acceptance_a0cd25847913",
+  "initial_snapshot": {
+    "scope": "Read-only snapshot during actual RSS/ASR worker execution, not final decision",
+    "database": "knowpipe_media_acceptance_a0cd25847913",
+    "documents": [
+      {
+        "source": "podcast",
+        "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+        "processing": {
+          "translation": {
+            "status": "running",
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341"
+          }
+        },
+        "translation_attempts": {
+          "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+          "count": 1,
+          "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+          "retry_at": "2026-09-25 14:20:45.508000"
+        }
+      }
+    ]
+  },
+  "events": [
+    {
+      "observed_at": "2026-09-25T14:22:39.426617+00:00",
+      "documents": [
+        {
+          "source": "podcast",
+          "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:20:45.508000"
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/tmpfs",
+          "processing": {
+            "translation": {
+              "status": "running",
+              "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:23:42.636000"
+          }
+        }
+      ]
+    },
+    {
+      "observed_at": "2026-09-25T14:23:54.515906+00:00",
+      "documents": [
+        {
+          "source": "podcast",
+          "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:20:45.508000"
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/volumes",
+          "processing": {
+            "translation": {
+              "status": "running",
+              "source_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:28:51.627000"
+          }
+        },
+        {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/tmpfs",
+          "processing": {
+            "translation": {
+              "status": "ready",
+              "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:23:42.636000"
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "checks_passed",
+            "issues": [],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        }
+      ]
+    },
+    {
+      "observed_at": "2026-09-25T14:39:37.973765+00:00",
+      "documents": [
+        {
+          "source": "podcast",
+          "doc_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:20:45.508000"
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/volumes",
+          "processing": {
+            "translation": {
+              "status": "failed",
+              "source_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+              "error_code": "translation_quality_failed"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:28:51.627000"
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "failed",
+            "issues": [
+              "identifier_missing"
+            ],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "cb176f5f997d83c3ebedc0f4ac070bed43c0ba4c4357ed76065971c72c587458",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        },
+        {
+          "source": "docker_docs",
+          "doc_id": "unversioned/engine/storage/tmpfs",
+          "processing": {
+            "translation": {
+              "status": "ready",
+              "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f"
+            }
+          },
+          "translation_attempts": {
+            "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "count": 1,
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+            "retry_at": "2026-09-25 14:23:42.636000"
+          },
+          "translation_quality": {
+            "checks_version": "translation-integrity-v2",
+            "status": "checks_passed",
+            "issues": [],
+            "human_reviewed": false,
+            "semantic_verified": false,
+            "source_version": "d13027a2460e8aa710ed1160b10cfcc4d4794e473c869c15517df446c6d14a7f",
+            "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+          }
+        }
+      ]
+    }
+  ],
+  "database_cleaned_by_harness": true
+}

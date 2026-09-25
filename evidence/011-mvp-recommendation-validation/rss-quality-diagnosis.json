@@ -1,0 +1,125 @@
+{
+  "scope": "RSS 实测只读诊断，无推理、无数据库状态修改",
+  "database": "knowpipe_media_acceptance_a0cd25847913",
+  "episode_id": "c47c00239cc8d7576355d26efde0648c9aeb6fefa10914bb430dfece27e73d3e",
+  "source_url": "https://share.transistor.fm/s/bca97e83",
+  "audio_url": "https://dts.podtrac.com/redirect.mp3/media.transistor.fm/bca97e83/a89e4b76.mp3",
+  "transcript_chars": 2961,
+  "transcript_sha256": "d05fe2e33a44aee4b0d79e23b0cabdb624a4e31977928abd2a5dd97fffc74df3",
+  "equal_to_009_final": true,
+  "equal_to_009_context": true,
+  "equal_to_episode_transcript": true,
+  "asr_model_record": {
+    "repository": "Systran/faster-whisper-tiny",
+    "revision": "d90ca5fe260221311c53c58e660288d3deb8d356",
+    "download_mirror": "https://hf-mirror.com",
+    "files": {
+      "model.bin": {
+        "sha256": "dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1",
+        "bytes": 75538270
+      },
+      "config.json": {
+        "sha256": "a73a28cdfe1c43ccc7202fa333d1f89c202477271407ae9a7f19afa52039cac8",
+        "bytes": 2249
+      },
+      "tokenizer.json": {
+        "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+        "bytes": 2203239
+      },
+      "vocabulary.txt": {
+        "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913",
+        "bytes": 459861
+      }
+    }
+  },
+  "current_model_file_checks": {
+    "model.bin": {
+      "bytes": 75538270,
+      "sha256": "dcb76c6586fc06cbdac6dd21f14cfd129cc4cdd9dce19bf4ffa62e59cbe6e6d1",
+      "matches_009_record": true
+    },
+    "config.json": {
+      "bytes": 2249,
+      "sha256": "a73a28cdfe1c43ccc7202fa333d1f89c202477271407ae9a7f19afa52039cac8",
+      "matches_009_record": true
+    },
+    "tokenizer.json": {
+      "bytes": 2203239,
+      "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+      "matches_009_record": true
+    },
+    "vocabulary.txt": {
+      "bytes": 459861,
+      "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913",
+      "matches_009_record": true
+    }
+  },
+  "asr_runtime_config": {
+    "cpu": true,
+    "compute_type": "int8",
+    "cpu_threads": 2,
+    "beam_size": 3,
+    "temperature": 0,
+    "vad_filter": true,
+    "condition_on_previous_text": false,
+    "hotwords_source": "仅发布方 feed 标题与 episode 标题"
+  },
+  "feed_title": "Last Week in AWS",
+  "audio_source_record": {
+    "feed_url": "https://feeds.transistor.fm/aws-morning-brief",
+    "item_guid": "20edf1f8-433b-4019-aead-2107d801a653",
+    "title": "tmpfs, Cost Cuts, and Other ECS Bedtime Stories",
+    "published_at": "Mon, 12 Jan 2026 03:00:00 -0800",
+    "episode_url": "https://share.transistor.fm/s/bca97e83",
+    "audio_url": "https://dts.podtrac.com/redirect.mp3/media.transistor.fm/bca97e83/a89e4b76.mp3",
+    "rss_item_snapshot": "aws-episode-rss-item.xml",
+    "scope": "One unchanged item selected from live feed; channel wrapper reconstructed for bounded acceptance.",
+    "duration_seconds": 200.4752,
+    "retrieved_at": "2026-09-25T09:32:59.116498+00:00",
+    "audio_bytes": 8059405,
+    "audio_sha256": "9901898bb357cd3a334b89e8acac0f99522ef76fc6ea627a042e394b9cb18d69",
+    "rss_snapshot_sha256": "5c8bbc44496e374dfde3e79149de26e8192b5889b2a59424d7316b2166ba0c2a"
+  },
+  "current_audio_hash_limitation": "当前生产 transcribe_url 会重新下载完整公开音频，临时文件处理后删除；本次下载音频的 hash/时长没有写入文档，旧缓存的音频 hash 不能冒充本次独立测量。",
+  "observed_asr_text_concerns": [
+    {
+      "text": "Great for a firmworld data",
+      "source_start": 1060,
+      "source_end": 1086,
+      "interpretation": "可观察的缺主语/不自然词组/技术名写法；未对照独立逐字金标，不声称已确定应替换成什么"
+    },
+    {
+      "text": "for a Aurora D sequel",
+      "source_start": 2390,
+      "source_end": 2411,
+      "interpretation": "可观察的缺主语/不自然词组/技术名写法；未对照独立逐字金标，不声称已确定应替换成什么"
+    }
+  ],
+  "ending_caveat": "009 审核记录指出结束语遗漏；此次仅确认旧 baseline 有主持人结束语、当前与旧context无该句。旧baseline本身也是ASR，未进行新的音频逐字人工复核，不将其当独立金标。",
+  "quality_boundaries": [
+    "complete=True/全文表示处理完整音频，不代表逐字无遗漏",
+    "相同输出哈希证明再现，不证明准确率改善",
+    "脚本 SOURCE_TEXT 是自编数据库翻译样例，REFERENCE_TRANSCRIPT 是未运行的 JFK 样例；两者都不是该播客参考转写",
+    "没有独立播客逐字标签，因此不给 WER、术语准确率或学习有效性分数"
+  ],
+  "translation_quality": {
+    "checks_version": "translation-integrity-v2",
+    "status": "failed",
+    "issues": [
+      "identifier_missing"
+    ],
+    "human_reviewed": false,
+    "semantic_verified": false,
+    "source_version": "148acc354790617b94364a5c5bfc4b07adae0370c7b20058b0f7404504dd3341",
+    "processor_id": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd"
+  },
+  "translation_provider": "llama-qwen-374fe0c53f97728d9a5ca437eca09f451565ed7a79c103e7d641b00608b0c9bd",
+  "source_identifiers": {
+    "DuckBill": 3,
+    "CloudTrail": 1,
+    "CloudWatch": 2,
+    "PhD": 1
+  },
+  "translation_failure_caveat": "数据库仅有 identifier_missing 类别，没有保存失败译文或逐项差值，不能断言具体丢失术语；这是ASR后的独立翻译阶段失败，不是ASR失败。",
+  "prior_review": "evidence/009-fulltext-podcast-learning/media-quality-review.md"
+}
