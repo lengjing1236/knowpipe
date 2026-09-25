@@ -1,0 +1,39 @@
+{
+  "recorded_at": "2026-09-25T12:27:11.775151+00:00",
+  "model_repository": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+  "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+  "model_url": "https://hf-mirror.com/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/91cad51170dc346986eccefdc2dd33a9da36ead9/qwen2.5-1.5b-instruct-q4_k_m.gguf",
+  "official_model_url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/resolve/91cad51170dc346986eccefdc2dd33a9da36ead9/qwen2.5-1.5b-instruct-q4_k_m.gguf",
+  "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+  "model_bytes": 1117320736,
+  "model_license": "Apache-2.0",
+  "transport_is_mirror": true,
+  "hash_source": "Git-LFS pointer of pinned official repository revision, obtained via the recorded mirror",
+  "llama_url": "https://github.com/ggml-org/llama.cpp/releases/download/b6000/llama-b6000-bin-ubuntu-x64.zip",
+  "llama_download_url": "https://api.github.com/repos/ggml-org/llama.cpp/releases/assets/276767743",
+  "llama_commit": "4762ad7316dcdec20016ab5985fb46a27902204d",
+  "llama_tag": "b6000",
+  "llama_sha256": "66244356dd242ae3a2510929ec4a840db65a3f9e7ad712918dbf02a266badfa5",
+  "llama_bytes": 13113111,
+  "llama_license": "MIT",
+  "llama_hash_source": "Official GitHub release asset digest",
+  "model_path": "/home/lengjing1236/knowpipe/state/feature011/media/qwen2.5-1.5b-instruct-q4_k_m.gguf",
+  "server_path": "/home/lengjing1236/knowpipe/state/feature011/media/llama-b6000/build/bin/llama-server",
+  "inference_performed": true,
+  "compatibility_checked": true,
+  "runtime": {
+    "engine": "b6000-4762ad73",
+    "context_tokens": 4096,
+    "threads": 2,
+    "parallel_slots": 1,
+    "host": "127.0.0.1",
+    "gpu_layers": 0,
+    "no_context_shift": true,
+    "memory": {
+      "VmHWM": "1929716 kB",
+      "VmRSS": "1929716 kB",
+      "Threads": "15"
+    },
+    "server_stopped_after_acceptance": true
+  }
+}

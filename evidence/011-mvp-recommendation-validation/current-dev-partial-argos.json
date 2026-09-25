@@ -1,0 +1,944 @@
+{
+  "status": "completed",
+  "scope": "agent-prepared fixed source-based cases; not independent human learning outcome",
+  "signature": {
+    "manifest_sha256": "9faac4ed5d24d273f14c550d20edc30b9b7512c856e6db1b86b5be274b9d1b8f",
+    "mode": "current",
+    "language": "zh",
+    "pool": "small",
+    "case_ids": [
+      "postgres_retry_partial",
+      "python_semaphore_partial"
+    ],
+    "code": {
+      "__init__.py": "b56c4c1d1ae401c3289ab4baac7fb2e004a5444ec046782cb1446a5e9cee4b49",
+      "corpus/__init__.py": "12a7deafac9f5b5e7f245b3982f8edd62ea506f0b335a37e32d9f1885accd23e",
+      "corpus/verify.py": "32b155a6f7e0c5133b79f5dfda0835cebe4909320dbe9df34b61a0f6ded2e90b",
+      "corpus/html.py": "9bbcb38fed463e33b5918bd58d21b44dba8beef614544bcc3fde92c397357975",
+      "corpus/supplement.py": "a58ced8db4056f2859f6b120650f5ddcf33bb3f9164cf0860a6d7b4ea3b83d21",
+      "corpus/pipeline.py": "6a28033c1be39132e03a91200b271c807792d057b51d1d20494f321837a5fbdf",
+      "corpus/official.py": "48787db86ac9cfdecd54eef55f4af3540e23ccb983e663b813a8afb0ea7c2485",
+      "corpus/network.py": "5471b97f611f7189e92788352f82ec3d3919c4254b9478bd2e42a29adf91807c",
+      "corpus/stackexchange.py": "7cfbdc89e3de5cecf26ca773873aad8d33e45885553131f9ef2291975689c15a",
+      "web/routes_learning.py": "cdbf44faa998211b1cc36c47df55bd00970d41ff827b617dacfa36035b730aa4",
+      "web/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "web/app.py": "d32ca148e1c6cb28a7af753eb9d05c6a7b38158edf4fc04719749f7ec71719b1",
+      "web/routes_pages.py": "c510efc89f97e746504bd0687b1c48a4315649dd3ec6ebe9b5e08e5d4037a0e2",
+      "web/routes_podcasts.py": "45e261aee811e9d71f3cd915b3b44c9371de32ad3f582338819953b5ad9791c8",
+      "web/routes_api.py": "eba44951a8d83f8b20b7e4ef0e0535a95a58dc47aeca6aba02f607ecf24b84cb",
+      "web/baseline.py": "5c0fe1acfba9c3683387d03d22013ee3e74d6d7beafeef21bb95ba7fcaa8d2de",
+      "web/mongo_sink.py": "a7e36f7903d1ec5d573cc1b4250c00ff57a7747ca39b20ab9c66a7a495550628",
+      "web/security.py": "e1c388f4cb4a464ca048fd0431cd750e1a33a45ab17457f4b1ec42a09dc5f6a2",
+      "web/score_job.py": "2fb028d8efbc0b5af68f61cf30bd3daab7a02cf1ce5f035c28a4318441c45734",
+      "web/classify.py": "6eab69f494456535cd2e00d955a114d908eac3625c3484ee6c25d056895804e7",
+      "web/auth.py": "2309a3fe65557bb833c1658e89168085631643d677306acb37ee16ff819b53cc",
+      "recommendations/__init__.py": "d1ad1de9f758663f4be3cccb5ada44e1c12901d2edb1c958ddf2b44ef5e4b8c6",
+      "recommendations/query.py": "005ea73bddf79e061ecab432314d9697de09947043c60bc6bf6344ed8b2f855b",
+      "recommendations/evaluation.py": "daee5dfa19569332470cacbf61d4d9802f2fe2ba65a4cdcff26cf36f57d46c65",
+      "recommendations/worker.py": "68b1fea1f0f0eebda79a18e83c2f6766471aa8967aadd959c75eafa389421d96",
+      "recommendations/engine.py": "8c99098440fbbd664c8a7bd417f8ab8c33b762205d2114f8d28f56d51202d479",
+      "recommendations/importer.py": "b8447bf256846698fc92f7a8c57f843c6c5c36fdf0bfd945343d6a76e29e1c58",
+      "recommendations/semantic_analysis.py": "6dd464eb8e5d51c25b04c98211f2821be842795c8824625ed36123864f765884",
+      "recommendations/presentation.py": "c593e090e6c03a83255572877e79a5480d7cf071ef42d592816d3cc2248e2583",
+      "recommendations/runtime.py": "e9f886f3e6203517701d13bdebfa998196d2f98615608cd9f1f5aec149cc6208",
+      "recommendations/lexical_baseline.py": "53a9415626e63fc03d45d6f437c48ebc58d0341e1dc1700d04b05fed7d598cbf",
+      "recommendations/queue.py": "0006d4dc7bbb914fa8188d5dfed1beaea4cfd4610d189f17cca8cd4d2a6dc38b",
+      "recommendations/semantic.py": "ece0b24b083b105a6f216b23a65184756c72d4cf7839a1f65bbc7bfd95d7786c",
+      "recommendations/index.py": "c8f3a136a9533b356b212ae58541248862f6b857c9f5186b5d6d23efa375ab43",
+      "recommendations/text.py": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6",
+      "evaluation/__init__.py": "c0f542ae05e982fbadd9fd9c91f09822833acce5b5a92a07e982f1c07890f7c2",
+      "evaluation/study.py": "e8db8ddfaff00956fb0b7326168bcca75017f4a0cc1e4403ef34c05f21508222",
+      "evaluation/metrics.py": "2cd6c26a180629a41ea9eea1ca52585de0f4fde3a18a665f309234fcff7e19b7",
+      "mining/dedup.py": "4beacbc777b6e364e2010bc5dd9162ee7633e71096172b8f8b75443b60010532",
+      "mining/__init__.py": "050004bbd65a8d6e92d087254f3bb88d8d9abe474850151f9e63336e16b2d34a",
+      "mining/spark_job.py": "53aafe9718dde4aefcd0ea636f8e6f69b5e7de6aef1b534c36622c86a4541d93",
+      "mining/contract.py": "7352ff60a089c94152bc80fdd60c246db5c60df4407169792acc8b641d11b8c3",
+      "mining/batch.py": "f9f02052e6fd49a4a080a9a472643269c02ba740da9b279da8cad2562d328a76",
+      "mining/scale.py": "0f4fb50b6029eebc8931a34b27dadd7f321947f924d3955bace26848c1dfbcc7",
+      "mining/mongo_sink.py": "7537bcfd5d039489eb7f5dbc6038c0a3411c74aa2248d176e946d79ff6cb3efa",
+      "mining/collectors/arxiv.py": "9c4b3bea2859a6093ce373da31732816f04c5f2c5ed6b023a66dfead4df0317c",
+      "mining/collectors/__init__.py": "9b3eff30cade94e6cab108ba36d6a2a31a42dc3417bf4c9b996c86fad789e13a",
+      "mining/collectors/stackexchange.py": "e0eac62788333449b09bec7cd52b2eff3d270e241d9b9758b77946eed74e5f57",
+      "learning/content.py": "a95ea9f1f180555ed4eaac147b7a8daf91be5accbbf615be5a44cb0f323d6854",
+      "learning/__init__.py": "2253c8d8ce69939b39739a807e5b59dfebf63b91915e03fefa0d52373b78b724",
+      "learning/llama_provider.py": "7887e0fbdec2c7b735d074e606ad5c1738b4b00c4b0715109891d3b1adb98663",
+      "learning/store.py": "f6259ca2f6f76dcef30b90a01513e4411b955fbb4285b077d26fea17019c29c4",
+      "learning/quality.py": "913693724245973a56770a9815d8a48c4cfe0edbad27296aa1b472385f1ed814",
+      "learning/local_providers.py": "a24b4dce6877c8b66e6617e09e52e431bc45cca83bcb46f2b21ba81537b48ce6",
+      "learning/providers.py": "762504e90724b4c6402bdbdcf73dcb3fea57165ae19e8a052eb7084704668aa2",
+      "linking/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "linking/job.py": "fe3b09c8963370df5b8c1da353a881b4a59ea214490ef58052c155448a56d05a",
+      "podcasts/__init__.py": "284a3cec4acb938faf3b2ee7622710b48caeb9971716a2d5b96385e8db0e753d",
+      "podcasts/learning.py": "793fade3dc4db58187ed427ceb389fb3cd114af76bff5b7cd80367925fe80799",
+      "podcasts/feeds.py": "7761000d9bb4d1b488d476b3d58e31fd2f5882163118faba851c3051a4f67f30",
+      "podcasts/audio.py": "17f0983cc7d86ec7e2f9e8bc67a2dd7012fc764a1637851746940084c3c54273",
+      "podcasts/worker.py": "b6d04156803609ab0e94018361be32dd9dbf9c6d8a07e59ab906c75ddbb19558",
+      "podcasts/store.py": "0930291e1f53d9d00a541081df3a05e33f791a726b6ccf758ee522312462f845",
+      "podcasts/network.py": "ffcd6126739e867cd42780c2ac925145ed49691fb14e08e9278e8e8d6e13e3e9",
+      "podcasts/analysis.py": "a4d6d151fbc9a67d82eeea6e8c3677609a135a07b10e2044f0c038464f9e16eb"
+    },
+    "goal_processor": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+    "semantic_processor": "semantic-6c879e6efd34b1bd303481ee8ee1cd59dfbebe0888f0b46b02ecee1d2abcff63"
+  },
+  "runtime_code_snapshot": "/home/lengjing1236/knowpipe/state/feature011/evaluation/current-snapshots/878ab02f728f4be590a8123fa03e9a4ed2db95e32bbccf1572d1b698778eca8c",
+  "cases": [
+    {
+      "id": "postgres_retry_partial",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 101.442,
+      "history": [
+        {
+          "source": "postgresql_docs",
+          "doc_id": "18/transaction-iso.html",
+          "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af"
+        }
+      ],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/mvcc-serialization-failure-handling.html",
+            "title": "13.5. Serialization Failure Handling #",
+            "source_url": "https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html",
+            "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "selection_score": 0.6325568739698989,
+            "relevance": 0.5969818596926776,
+            "history_overlap": 0.0,
+            "supplement_score": 0.36800674479742057,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 563,
+                "end": 769,
+                "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 19820,
+                "end": 20174,
+                "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 563,
+                    "end": 769,
+                    "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 19820,
+                    "end": 20174,
+                    "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                  },
+                  "scores": {
+                    "relevance": 0.5969818596926776,
+                    "context_similarity": 0.6375743517193047,
+                    "cross_encoder_relevance": 0.4802261734935697,
+                    "goal_similarity": 0.6470200109208667,
+                    "supplement": 0.36800674479742057,
+                    "contradiction": 0.0018573494162410498,
+                    "entailment": 0.03128223493695259,
+                    "neutral": 0.9668604731559753
+                  }
+                },
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 770,
+                    "end": 1001,
+                    "text": "For example, if the application selects a new value for a primary key column after inspecting the currently stored keys, it could get a unique-key failure because another application instance selected the same new key concurrently."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 20811,
+                    "end": 21029,
+                    "text": "In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it."
+                  },
+                  "scores": {
+                    "relevance": 0.40291897143598193,
+                    "context_similarity": 0.6359409475758048,
+                    "cross_encoder_relevance": 0.17402556588920623,
+                    "goal_similarity": 0.501016145241743,
+                    "supplement": 0.21190549485663537,
+                    "contradiction": 0.05542156472802162,
+                    "entailment": 0.1175742894411087,
+                    "neutral": 0.8270041942596436
+                  }
+                },
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1002,
+                    "end": 1178,
+                    "text": "This is effectively a serialization failure, but the server will not detect it as such because it cannot “see” the connection between the inserted value and the previous reads."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 15186,
+                    "end": 15431,
+                    "text": "This monitoring does not introduce any blocking beyond that present in repeatable read, but there is some overhead to the monitoring, and detection of the conditions which could cause a serialization anomaly will trigger a serialization failure."
+                  },
+                  "scores": {
+                    "relevance": 0.26389502026232603,
+                    "context_similarity": 0.6890378436639903,
+                    "cross_encoder_relevance": 0.048980596789491945,
+                    "goal_similarity": 0.3560012017506835,
+                    "supplement": 0.15670759620022465,
+                    "contradiction": 0.10985852777957916,
+                    "entailment": 0.028323031961917877,
+                    "neutral": 0.8618184328079224
+                  }
+                }
+              ],
+              "uncertain_evidence": [
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 168,
+                    "end": 299,
+                    "text": "As previously stated, applications using these levels must be prepared to retry transactions that fail due to serialization errors."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 11147,
+                    "end": 11246,
+                    "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+                  },
+                  "scores": {
+                    "relevance": 0.4090844683740418,
+                    "context_similarity": 0.949971783143949,
+                    "cross_encoder_relevance": 0.05014724941292099,
+                    "goal_similarity": 0.562914705071665,
+                    "supplement": 0.0,
+                    "contradiction": 0.0021087585482746363,
+                    "entailment": 0.05382225289940834,
+                    "neutral": 0.944068968296051
+                  }
+                },
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1767,
+                    "end": 1889,
+                    "text": "Therefore, PostgreSQL does not offer an automatic retry facility, since it cannot do so with any guarantee of correctness."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 18103,
+                    "end": 18224,
+                    "text": "Predicate locks in PostgreSQL, like in most other database systems, are based on data actually accessed by a transaction."
+                  },
+                  "scores": {
+                    "relevance": 0.382236236602663,
+                    "context_similarity": 0.44504677215734467,
+                    "cross_encoder_relevance": 0.016310677461794758,
+                    "goal_similarity": 0.5390614762344637,
+                    "supplement": 0.0,
+                    "contradiction": 0.8058463335037231,
+                    "entailment": 0.001395643106661737,
+                    "neutral": 0.19275802373886108
+                  }
+                }
+              ],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.36800674479742057
+              },
+              "scope": {
+                "candidate_sentences": 8,
+                "history_sentences": 20,
+                "uncompared_candidate_sentences": 2,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "postgresql_docs",
+              "doc_id": "18/mvcc-serialization-failure-handling.html",
+              "title": "13.5. Serialization Failure Handling #",
+              "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+              "start": 563,
+              "end": 769,
+              "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation).",
+              "matched_terms": []
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 563,
+                "end": 769,
+                "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 19820,
+                "end": 20174,
+                "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "body_text",
+                "start": 1733,
+                "end": 1878,
+                "text": "issue and/or which values to use. Therefore, PostgreSQL does not offer an automatic retry facility, since it cannot do so with any guarantee of c"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-semantic-evidence-coverage-mmr-v5",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 563,
+                "end": 769,
+                "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+              },
+              "comparison": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 19820,
+                "end": 20174,
+                "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 36
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "c3ff852f82bf1f06d0ffb939e1b8d626e36172ecb69748a4e0baf87306129219",
+            "relevance": 0.19618622586104004
+          },
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "relevance": 0.1766521674206719
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "relevance": 0.07522112421753539
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "score": 0.5074345807387759
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "score": 0.7441845576116458
+          }
+        ],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186"
+          }
+        ],
+        "algorithm": "goal-native-semantic-evidence-coverage-mmr-v5",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+          "variants": [
+            "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+            "Understands the circumstances in which the PostgreSQL serialization failed and the single key conflict should be retested"
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-6c879e6efd34b1bd303481ee8ee1cd59dfbebe0888f0b46b02ecee1d2abcff63",
+          "comparison_scope": {
+            "candidate_paragraphs": 9,
+            "candidate_sentences": 8,
+            "history_sentences": 20,
+            "comparison_pairs": 24,
+            "unsupported_units": 0,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 4,
+            "history_paragraphs_available": 36,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 36
+      }
+    },
+    {
+      "id": "python_semaphore_partial",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 43.814,
+      "history": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-task.html",
+          "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6"
+        }
+      ],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "mvp_fixture",
+            "doc_id": "paraphrase-asyncio-semaphore",
+            "title": "asyncio 并发访问许可与释放次数",
+            "source_url": "fixture://011/paraphrase-asyncio-semaphore",
+            "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "selection_score": 0.8783068097647643,
+            "relevance": 0.8592124108494057,
+            "history_overlap": 0.0,
+            "supplement_score": 0.4352242957140281,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 18783,
+                "end": 18859,
+                "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 18783,
+                    "end": 18859,
+                    "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+                  },
+                  "scores": {
+                    "relevance": 0.8592124108494057,
+                    "context_similarity": 0.5843153238372929,
+                    "cross_encoder_relevance": 0.9519635561040377,
+                    "goal_similarity": 0.8194619200259919,
+                    "supplement": 0.4352242957140281,
+                    "contradiction": 0.061225615441799164,
+                    "entailment": 0.07188177108764648,
+                    "neutral": 0.8668926358222961
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.4352242957140281
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 2,
+                "uncompared_candidate_sentences": 2,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "mvp_fixture",
+              "doc_id": "paraphrase-asyncio-semaphore",
+              "title": "asyncio 并发访问许可与释放次数",
+              "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+              "start": 0,
+              "end": 39,
+              "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。",
+              "matched_terms": [
+                "asyncio",
+                "python",
+                "信号量",
+                "同时",
+                "数量"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 18783,
+                "end": 18859,
+                "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "body_text",
+                "start": 0,
+                "end": 96,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。每次成功取得许可，剩余数量减一；释放时加一。许可耗尽后，后来申请的协程必须等待别的任务释放。初始许可数量不能为负。"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-semantic-evidence-coverage-mmr-v5",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "comparison": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 18783,
+                "end": 18859,
+                "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 21
+            }
+          },
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-sync.html",
+            "title": "同步原语",
+            "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html",
+            "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "selection_score": 0.2384653907493322,
+            "relevance": 0.32327231832659586,
+            "history_overlap": 0.0,
+            "supplement_score": 0.12365179889689723,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 337,
+                "end": 363,
+                "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 5010,
+                "end": 5126,
+                "text": "启用结构化并发的 asyncio 组件，如 asyncio.TaskGroup 和 asyncio.timeout()，在内部是使用撤销操作来实现的因而在协程屏蔽了 asyncio.CancelledError 时可能无法正常工作。"
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 337,
+                    "end": 363,
+                    "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 5010,
+                    "end": 5126,
+                    "text": "启用结构化并发的 asyncio 组件，如 asyncio.TaskGroup 和 asyncio.timeout()，在内部是使用撤销操作来实现的因而在协程屏蔽了 asyncio.CancelledError 时可能无法正常工作。"
+                  },
+                  "scores": {
+                    "relevance": 0.32327231832659586,
+                    "context_similarity": 0.4451419129331171,
+                    "cross_encoder_relevance": 0.034778377651122856,
+                    "goal_similarity": 0.4469125786160843,
+                    "supplement": 0.12365179889689723,
+                    "contradiction": 0.1320582926273346,
+                    "entailment": 0.008664208464324474,
+                    "neutral": 0.8592774868011475
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.12365179889689723
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 2,
+                "uncompared_candidate_sentences": 0,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "python_docs",
+              "doc_id": "library/asyncio-sync.html",
+              "title": "同步原语",
+              "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+              "start": 337,
+              "end": 363,
+              "text": "asyncio 锁可被用来保证对共享资源的独占访问。",
+              "matched_terms": [
+                "asyncio",
+                "访问"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 337,
+                "end": 363,
+                "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 5010,
+                "end": 5126,
+                "text": "启用结构化并发的 asyncio 组件，如 asyncio.TaskGroup 和 asyncio.timeout()，在内部是使用撤销操作来实现的因而在协程屏蔽了 asyncio.CancelledError 时可能无法正常工作。"
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "source_url",
+                "start": 0,
+                "end": 57,
+                "text": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-semantic-evidence-coverage-mmr-v5",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 337,
+                "end": 363,
+                "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+              },
+              "comparison": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 5010,
+                "end": 5126,
+                "text": "启用结构化并发的 asyncio 组件，如 asyncio.TaskGroup 和 asyncio.timeout()，在内部是使用撤销操作来实现的因而在协程屏蔽了 asyncio.CancelledError 时可能无法正常工作。"
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 21
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "relevance": 0.3520320798429769
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "relevance": 0.27681723995246443
+          },
+          {
+            "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+            "relevance": 0.21456285414312415
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 0.7303305492219948
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "score": 0.19642377912438713
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 1.0333021291350168
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "score": 0.3727330378853548
+          }
+        ],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-task.html",
+            "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+            "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176"
+          }
+        ],
+        "algorithm": "goal-native-semantic-evidence-coverage-mmr-v5",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+          "variants": [
+            "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+            "Learn how Python asyncio can limit the number of coordinated access to resources at the same time, and how excessive signal release can be."
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "Python",
+              "aliases": [
+                "python"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-6c879e6efd34b1bd303481ee8ee1cd59dfbebe0888f0b46b02ecee1d2abcff63",
+          "comparison_scope": {
+            "candidate_paragraphs": 17,
+            "candidate_sentences": 2,
+            "history_sentences": 2,
+            "comparison_pairs": 4,
+            "unsupported_units": 0,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 6,
+            "history_paragraphs_available": 21,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 21
+      }
+    }
+  ],
+  "started_at_unix": 1790338905.7194672,
+  "spark_master": "local[1]",
+  "finished_at_unix": 1790339072.1407049
+}

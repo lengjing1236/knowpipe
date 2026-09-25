@@ -1,0 +1,132 @@
+{
+  "input_sha256": "97ecefe5eace7fc79a10ba2840568a77b11ff0a29ac0c6ab4adfa70390614479",
+  "processor_id": "semantic-3111f4b6e8e208612d5e46b290f7caead7721fb54516fa669559631df85b7465",
+  "seconds": 71.1961094770013,
+  "cases": [
+    {
+      "id": "hash-collisions",
+      "zh": "哈希表如何处理不同键的哈希冲突？",
+      "en": "How does a hash table handle collisions between different keys?",
+      "passages": [
+        {
+          "label": "direct",
+          "text": "A hash table can resolve collisions using separate chaining: each bucket stores multiple key-value entries, and lookup compares the original keys inside that bucket.",
+          "native_rank": 0.9934788816367074,
+          "reference_rank": 0.9999121965134674,
+          "native_cosine": 0.525483217202968,
+          "reference_cosine": 0.805705291410706
+        },
+        {
+          "label": "generic_distractor",
+          "text": "A database table contains rows and columns. Primary keys identify rows, while SQL statements can insert and delete records from the table.",
+          "native_rank": 0.004149064079018803,
+          "reference_rank": 0.0015833978091732601,
+          "native_cosine": 0.2739598190011966,
+          "reference_cosine": 0.460224427595589
+        },
+        {
+          "label": "unrelated",
+          "text": "Garden flowers require sunlight, soil, water and suitable temperatures. Gardeners regularly remove weeds and inspect the leaves for insect damage.",
+          "native_rank": 0.0009851335880228934,
+          "reference_rank": 7.318732182329985e-05,
+          "native_cosine": -0.08568558650956894,
+          "reference_cosine": -0.07339737401147658
+        }
+      ]
+    },
+    {
+      "id": "tcp-retransmission",
+      "zh": "TCP如何通过重传处理网络数据丢失？",
+      "en": "How does TCP use retransmission to handle lost network data?",
+      "passages": [
+        {
+          "label": "direct",
+          "text": "TCP keeps transmitted data until it has been acknowledged. When the retransmission timer expires without an acknowledgement, the sender retransmits the outstanding data.",
+          "native_rank": 0.3876815430281596,
+          "reference_rank": 0.9417982264476366,
+          "native_cosine": 0.7431121263539472,
+          "reference_cosine": 0.6942032721259304
+        },
+        {
+          "label": "generic_distractor",
+          "text": "A network administrator can configure interface addresses and routing tables. The routing table selects the next hop used to forward outgoing packets.",
+          "native_rank": 0.0029401261947007602,
+          "reference_rank": 0.0017416774416524742,
+          "native_cosine": 0.4385323974419825,
+          "reference_cosine": 0.44597401427685746
+        },
+        {
+          "label": "unrelated",
+          "text": "Image classification assigns a label to an input picture. A convolutional network learns visual patterns using labelled training images.",
+          "native_rank": 0.00018262779639281138,
+          "reference_rank": 0.0001563388324371297,
+          "native_cosine": 0.08383511084901583,
+          "reference_cosine": 0.11112524991788823
+        }
+      ]
+    },
+    {
+      "id": "binary-search",
+      "zh": "为什么二分查找要求数组预先有序？",
+      "en": "Why does binary search require an array to be sorted first?",
+      "passages": [
+        {
+          "label": "direct",
+          "text": "Binary search compares the target with the middle array element and eliminates one half of the search interval. The array must be sorted so that this comparison identifies the half that can contain the target.",
+          "native_rank": 0.08115911874912363,
+          "reference_rank": 0.99912799854538,
+          "native_cosine": 0.45774454615260485,
+          "reference_cosine": 0.6954844459871451
+        },
+        {
+          "label": "generic_distractor",
+          "text": "An array stores elements at consecutive positions. An index selects a particular element, and some programming languages automatically check whether that index lies inside the array bounds.",
+          "native_rank": 0.008536505808003926,
+          "reference_rank": 0.004055023445149137,
+          "native_cosine": 0.30174114405875135,
+          "reference_cosine": 0.4790698740697075
+        },
+        {
+          "label": "unrelated",
+          "text": "A database transaction groups several changes into a single operation. Applications can commit the transaction or roll it back when an error occurs.",
+          "native_rank": 0.003216777848604694,
+          "reference_rank": 0.0002484067143519673,
+          "native_cosine": 0.25444059190035206,
+          "reference_cosine": 0.2072151716744648
+        }
+      ]
+    },
+    {
+      "id": "deadlock",
+      "zh": "两个事务互相等待对方持有的锁为什么会死锁？",
+      "en": "Why do two transactions deadlock when each waits for a lock held by the other?",
+      "passages": [
+        {
+          "label": "direct",
+          "text": "A deadlock occurs when two transactions each hold a lock needed by the other. Neither transaction can continue, so the database must detect the cycle and abort one transaction to release its locks.",
+          "native_rank": 0.9961043133441113,
+          "reference_rank": 0.9999767865032683,
+          "native_cosine": 0.6737084928541411,
+          "reference_cosine": 0.8049604591332072
+        },
+        {
+          "label": "generic_distractor",
+          "text": "Database transactions can insert customer records and update account balances. A transaction log records committed changes and helps restore data after a server failure.",
+          "native_rank": 0.00012680291578965667,
+          "reference_rank": 0.0005435629171753042,
+          "native_cosine": 0.12122354604991703,
+          "reference_cosine": 0.3016880064912754
+        },
+        {
+          "label": "unrelated",
+          "text": "A hash table can store multiple entries in a bucket. Lookup compares keys in the bucket to locate the entry requested by the caller.",
+          "native_rank": 0.0007857213532198046,
+          "reference_rank": 0.0003248756779886844,
+          "native_cosine": 0.19346299115754528,
+          "reference_cosine": 0.24617301279377216
+        }
+      ]
+    }
+  ],
+  "is_mvp_acceptance": false
+}

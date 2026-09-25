@@ -1,0 +1,28 @@
+{
+  "model": "facebook/nllb-200-distilled-600M",
+  "format": "ctranslate2",
+  "quantization": "int8",
+  "license": "CC-BY-NC-4.0",
+  "source": "https://forum.opennmt.net/t/nllb-200-with-ctranslate2/5090",
+  "model_card": "https://huggingface.co/facebook/nllb-200-distilled-600M",
+  "limitations": "General-domain sentence translation research model; technical document quality requires evaluation.",
+  "recorded_at": "2026-09-25T11:51:35.119721+00:00",
+  "files": [
+    {
+      "name": "nllb-200_600M_int8_ct2.zip",
+      "url": "https://pretrained-nmt-models.s3.us-west-004.backblazeb2.com/CTranslate2/nllb/nllb-200_600M_int8_ct2.zip",
+      "bytes": 578586670,
+      "sha256": "a1dede18a91665b4670fd1e18942317226f3a3a8a1f96fca7099551f065ce224"
+    },
+    {
+      "name": "flores200_sacrebleu_tokenizer_spm.model",
+      "url": "https://pretrained-nmt-models.s3.us-west-004.backblazeb2.com/CTranslate2/nllb/flores200_sacrebleu_tokenizer_spm.model",
+      "bytes": 4852054,
+      "sha256": "14bb8dfb35c0ffdea7bc01e56cea38b9e3d5efcdcb9c251d6b40538e1aab555a"
+    }
+  ],
+  "model_path": "state/feature011/media/nllb-200-distilled-600M-ct2-int8",
+  "expanded_bytes": 630016680,
+  "first_download_hash_is_observation": true,
+  "inference_performed": false
+}

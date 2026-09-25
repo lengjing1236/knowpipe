@@ -1,0 +1,14 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 20:10:59 WARN Utils: Your hostname, LAPTOP-2JUIFGTU, resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/09/25 20:10:59 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 20:11:06 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1][Stage 2:>                                                          (0 + 2) / 2]                                                                                [Stage 9:>                                                          (0 + 2) / 2]                                                                                test_semantic_evidence_controls_spark_selection_and_has_literal_offsets (tests.recommendations.test_engine_semantic.SemanticEngineTests) ... [Stage 46:>                                                         (0 + 2) / 2]                                                                                [Stage 49:>                                                         (0 + 1) / 1]                                                                                [Stage 72:>                                                         (0 + 2) / 2]                                                                                [Stage 80:>                                                         (0 + 2) / 2]                                                                                [Stage 94:=============================>                            (1 + 1) / 2]                                                                                [Stage 96:>                                                         (0 + 2) / 2][Stage 98:>                                                         (0 + 1) / 1]                                                                                [Stage 103:>                                                        (0 + 1) / 1]                                                                                [Stage 106:>                                                        (0 + 1) / 1]                                                                                ok
+
+----------------------------------------------------------------------
+Ran 1 test in 68.355s
+
+OK

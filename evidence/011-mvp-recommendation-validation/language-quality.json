@@ -1,0 +1,272 @@
+{
+  "recorded_at": "2026-09-25T11:56:58.788728+00:00",
+  "purpose": "真实开发A/B；不使用保留场景调参，不是独立人工评价",
+  "model_processor": "nllb-ct2-31c3795ecc9dfdb7179443d12e3f5e3c6e21e2b539e00b9d3b2c00114d6b38ee",
+  "cases": [
+    {
+      "id": "old-db-1",
+      "input": "PostgreSQL 的事务隔离级别",
+      "reference": "PostgreSQL transaction isolation levels",
+      "argos": "PostgreSQL service isolation level",
+      "nllb": "Level of transaction isolation in PostgreSQL",
+      "alignment_valid": true,
+      "seconds": 10.498
+    },
+    {
+      "id": "old-db-2",
+      "input": "PostgreSQL 如何使用索引优化查询",
+      "reference": "PostgreSQL query optimization using indexes",
+      "argos": "PostgreSQL How to Optimise the Query with Index",
+      "nllb": "How to use index-optimized queries in PostgreSQL",
+      "alignment_valid": true,
+      "seconds": 2.028
+    },
+    {
+      "id": "old-lang-1",
+      "input": "Python 的异常处理机制",
+      "reference": "Python exception handling mechanism",
+      "argos": "Python's Aberrant Mechanism",
+      "nllb": "Unusual processing mechanisms in Python",
+      "alignment_valid": true,
+      "seconds": 1.238
+    },
+    {
+      "id": "old-lang-2",
+      "input": "Python 的异步任务与协程",
+      "reference": "Python asynchronous tasks and coroutines",
+      "argos": "Python's Elevated Tasks and Processes",
+      "nllb": "Asynchronous tasks and syntax in Python",
+      "alignment_valid": true,
+      "seconds": 2.719
+    },
+    {
+      "id": "old-web-1",
+      "input": "Django 如何处理数据库事务",
+      "reference": "Django database transaction handling",
+      "argos": "Django how to handle database services",
+      "nllb": "How Django handles database issues",
+      "alignment_valid": true,
+      "seconds": 1.108
+    },
+    {
+      "id": "old-web-2",
+      "input": "Django 如何防止跨站请求伪造",
+      "reference": "Django cross site request forgery protection",
+      "argos": "Django, how to prevent cross-site requests for forgery",
+      "nllb": "How to prevent cross-station requests being forged by Django",
+      "alignment_valid": true,
+      "seconds": 2.514
+    },
+    {
+      "id": "old-ops-1",
+      "input": "Docker 容器如何持久化存储数据",
+      "reference": "Docker container persistent data storage",
+      "argos": "How Docker Containers Enduring Storage Data",
+      "nllb": "How Docker Containers Perpetuate Data Storage",
+      "alignment_valid": true,
+      "seconds": 2.279
+    },
+    {
+      "id": "old-ops-2",
+      "input": "操作系统如何调度进程",
+      "reference": "operating system process scheduling",
+      "argos": "How the operating system is managing the process",
+      "nllb": "How the operating system coordinates the process",
+      "alignment_valid": true,
+      "seconds": 1.477
+    },
+    {
+      "id": "development-postgres_retry_cold",
+      "input": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+      "reference": "Understand when to retry PostgreSQL serialization failures and unique-key failures",
+      "nllb": "Understanding the context in which the PostgreSQL sequencing failures and only key conflicts should be retested",
+      "alignment_valid": true,
+      "seconds": 3.816
+    },
+    {
+      "id": "development-python_semaphore_cold",
+      "input": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "reference": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "nllb": "Learn how Python asyncio can limit the number of resources a sync can access at the same time, and how to over-release signals",
+      "alignment_valid": true,
+      "seconds": 4.452
+    },
+    {
+      "id": "development-no_suitable_limited_pool",
+      "input": "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+      "reference": "Understand when to retry PostgreSQL serialization transaction failures",
+      "nllb": "Understanding when to retest after a failed PostgreSQL sequencing operation",
+      "alignment_valid": true,
+      "seconds": 4.11
+    }
+  ],
+  "semantic_pass": false,
+  "peak_rss_kib": 803336,
+  "fulltext": {
+    "source": {
+      "source": "postgresql_docs",
+      "doc_id": "18/wal-intro.html",
+      "title": "28.3. Write-Ahead Logging (WAL) #",
+      "source_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+      "license": "PostgreSQL License; https://www.postgresql.org/docs/18/legalnotice.html",
+      "provenance": {
+        "fetch_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+        "retrieved_at": "2026-09-25T09:46:08.611299+00:00",
+        "raw_sha256": "13656603502056d4085b64b7c5fb8f8719703f8eb0f511efeaf7cfedff3dbb28",
+        "raw_bytes": 16648,
+        "adapter_version": "supplemental-official-html-v1",
+        "original_provider": "PostgreSQL Global Development Group",
+        "license_artifact": {
+          "fetch_url": "https://www.postgresql.org/docs/18/legalnotice.html",
+          "retrieved_at": "2026-09-25T09:45:21.294547+00:00",
+          "raw_sha256": "5dff39c8d3ebbc522c65b906b321abb2a363e4fab6d5b66f404b37c842a6f12a",
+          "raw_bytes": 12727,
+          "local_filename": "postgresql_docs-LICENSE.html",
+          "stored_sha256": "5dff39c8d3ebbc522c65b906b321abb2a363e4fab6d5b66f404b37c842a6f12a"
+        },
+        "modifications": "Main text extracted from HTML; navigation removed, code retained."
+      }
+    },
+    "original": "28.3. Write-Ahead Logging (WAL) #\n\nWrite-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL's central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after WAL records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the WAL records. (This is roll-forward recovery, also known as REDO.)\n\nTip\n\nBecause WAL restores database file contents after a crash, journaled file systems are not necessary for reliable storage of the data files or WAL files. In fact, journaling overhead can reduce performance, especially if journaling causes file system data to be flushed to disk. Fortunately, data flushing during journaling can often be disabled with a file system mount option, e.g., data=writeback on a Linux ext3 file system. Journaled file systems do improve boot speed after a crash.\n\nUsing WAL results in a significantly reduced number of disk writes, because only the WAL file needs to be flushed to disk to guarantee that a transaction is committed, rather than every data file changed by the transaction. The WAL file is written sequentially, and so the cost of syncing the WAL is much less than the cost of flushing the data pages. This is especially true for servers handling many small transactions touching different parts of the data store. Furthermore, when the server is processing many small concurrent transactions, one fsync of the WAL file may suffice to commit many transactions.\n\nWAL also makes it possible to support on-line backup and point-in-time recovery, as described in Section 25.3. By archiving the WAL data we can support reverting to any time instant covered by the available WAL data: we simply install a prior physical backup of the database, and replay the WAL just as far as the desired time. What's more, the physical backup doesn't have to be an instantaneous snapshot of the database state — if it is made over some period of time, then replaying the WAL for that period will fix any internal inconsistencies.",
+    "argos": "28.3. 将第28.3.节改为第28.3.节。笔前记录( WAL) #\n\n写前日志(WAL)是确保数据完整性的标准方法.详细的描述可以在大多数(如果不是全部)关于交易处理的书籍中找到.简言之,WAL的中心概念是,数据文件的更改(表格和索引所在的地方)必须在这些更改被记录之后,也就是在WAL记录描述这些更改被冲入永久存储之后,才能写出.如果我们遵循这个程序,我们不需要将数据页冲到每次交易承诺的磁盘上,因为我们知道,一旦发生崩溃,我们将能够使用日志恢复数据库:没有应用到数据页的任何更改都可以从WAL记录中被重置出(这是滚动前的恢复,也称为REDO).\n\n提示( T)\n\n因为WAL在崩溃后恢复了数据库文件内容,所以被日记的文件系统对于可靠地存储数据文件或WAL文件并不必要.实际上,分录管理费可以降低性能,特别是分录导致文件系统数据被冲入磁盘时.所幸的是,在分录期间所冲取的数据往往可以用一个文件系统挂载选项被禁用,例如,在Linuxext3文件系统中的数据=writeback.已登出的文件系统在崩溃后确实改善了启动速度 。\n\n使用WAL的结果是磁盘写作数量显著地减少,因为只有WAL文件需要被冲入磁盘来保证某项交易被承诺,而不是交易所改变的每一个数据文件.WAL文件是相继被写入的,因此同步WAL的成本远低于冲出数据页的成本.对于处理涉及数据库不同部分的许多小交易的服务器来说尤其如此。此外,当服务器正在处理许多小的并行交易时,WAL文件的一丝不苟可能足以进行许多交易。\n\n如第25.3节所描述的,WAL还使支持在线备份和即时恢复成为可能。通过将WAL数据归档,我们可以支持恢复到可用WAL数据覆盖的任何时候:我们只是安装了数据库的先前物理备份,并按所期望的时间重放WAL。更有甚者,物理备份不必是数据库状态的即时快照——如果是在一段时间内制作的,那么重放该时期的WAL会解决任何内部不一致.",
+    "nllb": "28.3提前记录 (WAL) #\n\n写前记录 (WAL) 是确保数据完整性的标准方法.详细的描述可以在大多数 (如果不是全部) 关于交易处理的书籍中找到.简而言之,WAL的核心概念是,数据文件的更改 (图表和索引所在的地方) 必须在这些更改被记录后才会被编写,也就是说,描述这些更改的WAL记录被将到永久存储中后.如果我们遵循这个程序,我们不需要在每个交易提交时将数据页面抛到磁盘上,因为我们知道在发生崩 ⁇ 的情况下,我们可以使用日志恢复数据库:任何未对数据页面进行的变化都可以从WAL记录中进行. (这是滚动前进恢复,也称为REDO.)\n\n提示\n\n由于WAL在崩 ⁇ 后恢复数据库文件内容,因此日记文件系统不必要可靠地存储数据文件或WAL文件.事实上,日记总费可能会降低性能,特别是如果日记导致文件系统数据被冲到磁盘上.幸运的是,日记编写过程中的数据冲洗通常可以被禁用文件系统安装选项,例如,在Linux ext3文件系统上的数据=写回.记录文件系统确实在崩 ⁇ 后提升了启动速度.\n\n使用WAL导致显著减少了磁盘写的数量,因为只有WAL文件需要被冲到磁盘上以保证交易的承诺,而不是交易所改变的每个数据文件.因此,同步WAL的成本远低于清理数据页面的成本.这尤其适用于处理数据库的不同部分的许多小交易服务器.此外,当服务器处理许多小的同时交易时,WAL文件的一个fsync可能足以进行许多交易.\n\nWAL还可支持在线备份和实时恢复,如第25.3节所述.通过存储WAL数据,我们可以支持将 WAL 数据覆盖的任何时间即时回归:我们简单地安装了数据库的以前的物理备份,更重要的是,物理备份不必是数据库状态的瞬间快照 ⁇ ,如果它是在某个时间段内完成的,",
+    "integrity": {
+      "checks_version": "translation-integrity-v2",
+      "status": "failed",
+      "issues": [
+        "unknown_symbol"
+      ],
+      "human_reviewed": false,
+      "semantic_verified": false
+    },
+    "segments": [
+      {
+        "source_start": 0,
+        "source_end": 34,
+        "target_start": 0,
+        "target_end": 17,
+        "kind": "text"
+      },
+      {
+        "source_start": 34,
+        "source_end": 35,
+        "target_start": 17,
+        "target_end": 18,
+        "kind": "protected"
+      },
+      {
+        "source_start": 35,
+        "source_end": 795,
+        "target_start": 18,
+        "target_end": 271,
+        "kind": "text"
+      },
+      {
+        "source_start": 795,
+        "source_end": 796,
+        "target_start": 271,
+        "target_end": 272,
+        "kind": "protected"
+      },
+      {
+        "source_start": 796,
+        "source_end": 800,
+        "target_start": 272,
+        "target_end": 275,
+        "kind": "text"
+      },
+      {
+        "source_start": 800,
+        "source_end": 801,
+        "target_start": 275,
+        "target_end": 276,
+        "kind": "protected"
+      },
+      {
+        "source_start": 801,
+        "source_end": 1289,
+        "target_start": 276,
+        "target_end": 444,
+        "kind": "text"
+      },
+      {
+        "source_start": 1289,
+        "source_end": 1290,
+        "target_start": 444,
+        "target_end": 445,
+        "kind": "protected"
+      },
+      {
+        "source_start": 1290,
+        "source_end": 1901,
+        "target_start": 445,
+        "target_end": 600,
+        "kind": "text"
+      },
+      {
+        "source_start": 1901,
+        "source_end": 1902,
+        "target_start": 600,
+        "target_end": 601,
+        "kind": "protected"
+      },
+      {
+        "source_start": 1902,
+        "source_end": 2449,
+        "target_start": 601,
+        "target_end": 726,
+        "kind": "text"
+      }
+    ],
+    "seconds": 53.228,
+    "integrity_before_abbreviation_fix": {
+      "checks_version": "translation-integrity-v2",
+      "status": "failed",
+      "issues": [
+        "identifier_missing",
+        "unknown_symbol"
+      ],
+      "human_reviewed": false,
+      "semantic_verified": false
+    },
+    "integrity_recheck_note": "修复普通e.g.缩写被当作程序标识符的误报后对同一模型原输出重查；语义失败结论不变。"
+  },
+  "review": {
+    "reviewer": "开发代理依据原文核对；不是独立人类标注",
+    "status": "failed",
+    "goal_findings": [
+      {
+        "id": "old-db-1",
+        "finding": "transaction isolation保持事务隔离含义，比Argos service更准确"
+      },
+      {
+        "id": "old-lang-1",
+        "finding": "异常处理被译为Unusual processing，丢失exception handling技术概念"
+      },
+      {
+        "id": "old-lang-2",
+        "finding": "协程被译为syntax，技术对象改变"
+      },
+      {
+        "id": "old-web-1",
+        "finding": "数据库事务被译为database issues，技术对象改变"
+      },
+      {
+        "id": "old-ops-2",
+        "finding": "调度变为coordinates，未保留scheduling技术概念"
+      },
+      {
+        "id": "development-postgres_retry_cold",
+        "finding": "序列化失败/唯一键冲突被译为sequencing failures/only key conflicts，且丢失重试事务"
+      }
+    ],
+    "fulltext_findings": [
+      "崩溃中溃字变为无法表示符号⁇；核查SentencePiece和CT2词表均无此字，并非展示编码问题",
+      "fsync原词保留，比Argos误译为一丝不苟更好，但不代表整体质量通过",
+      "WAL sequentially写入这一原因在译文中被遗漏",
+      "最后一段遗漏重放WAL到所需时间与重放备份期间日志修复不一致的操作关系",
+      "point-in-time recovery被译为实时恢复，技术概念不准确"
+    ],
+    "conclusion": "NLLB600M不能作为默认质量升级；SC-004未通过，词表补丁或数字检查不能消除该结论。"
+  }
+}

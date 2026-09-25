@@ -1,0 +1,201 @@
+{
+  "status": "evidence_incomplete",
+  "scope": "source judgments and deterministic counterexamples; Web, language, and ablations require separate evidence",
+  "review_provenance": "agent source review, not independent human labels",
+  "counts": {
+    "top3_total": 3,
+    "top3_judged": 3,
+    "top3_direct": 3,
+    "false_supplement": 1,
+    "supplement_claims_pending": 0,
+    "supplement_claims_uncertain": 3,
+    "top3_unjudged": 0
+  },
+  "judged_top3_direct_rate": 1.0,
+  "missing_case_ids": [
+    "django_iterator_cold",
+    "django_iterator_covered",
+    "django_iterator_partial",
+    "docker_readonly_multisource",
+    "docker_tmpfs_cold",
+    "docker_tmpfs_covered",
+    "docker_tmpfs_partial",
+    "mirror_not_new",
+    "new_irrelevant_words",
+    "no_suitable_limited_pool",
+    "paraphrase_not_new",
+    "postgres_retry_cold",
+    "postgres_retry_covered",
+    "python_semaphore_cold",
+    "python_semaphore_covered"
+  ],
+  "cases": [
+    {
+      "id": "postgres_retry_partial",
+      "judgments": [
+        {
+          "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+          "rank": 1,
+          "relevance": "direct",
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "supported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "supported",
+              "reason_zh": "候选明确补充23505/23P01条件；已读全文讲40001、隔离与并发唯一约束，但没有这两个错误码的条件处理。判断仅针对提供的完整已读版本。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 563,
+                  "end": 769,
+                  "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 19820,
+                  "end": 20174,
+                  "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "unsupported",
+              "reason_zh": "候选“先读键再选择新主键，另一个实例并发选同键导致唯一错误”在已读全文已覆盖；既有段落还给出先select检查或max(existing key)+1生成键的例子。这不是换个说法后的新知识。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 770,
+                  "end": 1001,
+                  "text": "For example, if the application selects a new value for a primary key column after inspecting the currently stored keys, it could get a unique-key failure because another application instance selected the same new key concurrently."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 20811,
+                  "end": 21029,
+                  "text": "In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 20518,
+                  "end": 21639,
+                  "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                }
+              ]
+            },
+            {
+              "claim_index": 2,
+              "judgment": "uncertain",
+              "reason_zh": "全文上下文说明某些unique violation实质是序列化问题但服务器无法关联读取与插入，可能有补充；返回句以This开头，配对历史只谈通常的监测，脱离前句无法单独核对对象/条件，不能把这条展示证据当已充分证明的补充。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 1002,
+                  "end": 1178,
+                  "text": "This is effectively a serialization failure, but the server will not detect it as such because it cannot “see” the connection between the inserted value and the previous reads."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 15186,
+                  "end": 15431,
+                  "text": "This monitoring does not introduce any blocking beyond that present in repeatable read, but there is some overhead to the monitoring, and detection of the conditions which could cause a serialization anomaly will trigger a serialization failure."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实官方重试文档直接回答目标，主证据新增23505/23P01只在某些情况下适合重试，相对已读40001处理有具体补充；但额外断言中存在已覆盖事实，文档选对不能抵消它。"
+        }
+      ],
+      "items": 1,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": true,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_partial",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "合成改写正文确实讲信号量资源许可；但返回历史是to_thread释放GIL后可用于CPU密集函数，与计数许可机制不构成具体的已覆盖/新增对照。只有主题相近，双侧解释证据不足；且合成材料不算真实来源命中。",
+              "evidence": [
+                {
+                  "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+                  "start": 0,
+                  "end": 39,
+                  "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 18783,
+                  "end": 18859,
+                  "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "合成改写正文确实讲信号量资源许可；但返回历史是to_thread释放GIL后可用于CPU密集函数，与计数许可机制不构成具体的已覆盖/新增对照。只有主题相近，双侧解释证据不足；且合成材料不算真实来源命中。"
+        },
+        {
+          "doc_key": "python_docs:library/asyncio-sync.html",
+          "rank": 2,
+          "relevance": "direct",
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "真实全文包含Semaphore计数和BoundedSemaphore过度释放，资料本身直接有用；返回却选了Lock独占一句，历史选TaskGroup取消语义。未给出冻结目标所要求的信号量计数/过度释放具体补充证据，不能因选对文档就通过解释与补充要求。",
+              "evidence": [
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 337,
+                  "end": 363,
+                  "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 5010,
+                  "end": 5126,
+                  "text": "启用结构化并发的 asyncio 组件，如 asyncio.TaskGroup 和 asyncio.timeout()，在内部是使用撤销操作来实现的因而在协程屏蔽了 asyncio.CancelledError 时可能无法正常工作。"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文包含Semaphore计数和BoundedSemaphore过度释放，资料本身直接有用；返回却选了Lock独占一句，历史选TaskGroup取消语义。未给出冻结目标所要求的信号量计数/过度释放具体补充证据，不能因选对文档就通过解释与补充要求。"
+        }
+      ],
+      "items": 2,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    }
+  ]
+}

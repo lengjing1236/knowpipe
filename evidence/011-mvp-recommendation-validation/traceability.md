@@ -1,0 +1,41 @@
+# 011 Spec → 实现 → 证据追踪
+
+2026-09-25，执行中草稿。当前总判定：**MVP尚未通过**。代码存在、单测通过与产品效果通过分开记录；不得将历史009/010的工程通过覆盖011的新门槛。本文不修改[Spec](../../specs/011-mvp-recommendation-validation/spec.md)或冻结案例。
+
+## 成功标准
+
+| 标准 | 对应实现 | 已有证据 | 当前判定与剩余验证 |
+| --- | --- | --- | --- |
+| SC-001：四主题/三历史状态、每正例top3有直接帮助、已判定相关率≥80% | `recommendations/engine.py`词汇召回、语义重排和Spark选择；`semantic.py`有界模型；`query.py`对象及原文来源约束 | 旧v4开发小池10例完成，PG三例空；新v5/Argos两个partial首次运行能召回PG重试、Python同步原语，3个返回正文均相关（含1个合成改写）；分别有绑定结果的source-review文件 | **旧基线失败；新实现整体证据不足。** 局部真实资料召回改善，但两主题/有限池不能替代四主题、万条背景和保留场景 |
+| SC-002：转载/同义/无关/错误对象无错误补充，同时真补充不可全拒绝 | `semantic_analysis.py`句级覆盖/蕴含/不确定；`engine.py`补充资格与选择；`podcasts/learning.py`通知门控 | 新v5/Argos的PG主证据23505/23P01有补充，但第二条additional把已读已覆盖的并发选相同主键场景再称补充；Python两项双侧具体对照不足。见`current-dev-partial-argos-review.json`及score | **当前已观察新版本失败。** 1条已确认重复假阳性、3条证据不足；主证据正确不能抵消附加错误。旧镜像被对象门槛排除，亦不能证明去重成功 |
+| SC-003：不同历史合理改变证据/优先项，消融说明作用 | `engine._choose`将覆盖和补充分数纳入Spark选择；保留无历史/无去重排名 | 已冻结相同目标三个覆盖状态；旧Python有有效历史但相关历史段数0，未给出补充 | **证据不足。** 需当前模型的真实材料对照及消融；分数或排序变化不是收益本身 |
+| SC-004：中文目标/全文关键事实、条件、顺序正确，真实全文阅读 | `learning/local_providers.py`实际双向模型及对齐；`providers.py`版本发布；`quality.py`数字/代码/标识符；`content.py`真实对齐输出 | `language-quality.json`真实NLLB对照与WAL全文；目标事务/序列化/协程误译，全文仍遗漏因果/重放含义；`language-worklog.md`保留失败 | **已测试候选失败。** 对齐和完整性保护已实现，但不得称教学可用。后续候选须同样实测，不可人工替换答案 |
+| SC-005：真实Web保存→worker计算→阅读→显式已读重算；新增三类与真实RSS | `worker.py`语义/翻译队列；Web API/页面；`podcasts/learning.py`同一补充资格；`scripts/acceptance_replays011.py`真实worker三分支回放 | `engineering-checks.md`覆盖集成门控、身份/租约/对齐保护的轻测；三分支脚本仅compile/dry-run；009存在历史RSS实际链路 | **当前版本证据不足。** 尚需实际运行三分支及最终算法从真实页面触发的完整链路，不能用注入ready job或旧RSS记录代替。文字稿回放不算真实新音频/ASR |
+| SC-006：万条背景复验、至少两个预冻结保留场景 | `scripts/evaluate_mvp011.py`full背景与small定位分离；独立旧包基线；冻结输入哈希/审核协议 | 四主题17场景在生产编辑前冻结，Docker/Django尚未用于调参；已有009万条语料/索引 | **准备完成，效果证据不足。** 当前011仅完成旧基线小池；新旧完整背景/保留集实际结果待写入 |
+
+## 功能要求追踪
+
+| 需求 | 代码责任与验收入口 | 当前边界 |
+| --- | --- | --- |
+| FR-001 多源全文/版本/显式已读/四层 | `learning/content.py`、`learning/store.py`、`recommendations/index.py`、worker、Web；009来源证据、011闭环 | 沿用已实现基础，不等于新推荐有效 |
+| FR-002 相关性先于差异 | `engine.py`、`semantic_analysis.py`；SC-001/002实际原文审核 | 语义模型返回高分不是标签 |
+| FR-003 有界已覆盖/补充/不确定 | `semantic_analysis.py`；同义与部分补充冻结案例 | 不能把NLI neutral直接解释为已证实新增 |
+| FR-004 覆盖/补充/去重参与选择 | `engine._choose`及Spark特征关联；SC-003消融 | 代码和单测能证明被使用；真实选择是否更好另判 |
+| FR-005 比较范围/失败诚实 | `semantic_analysis.py`预算/窗口与scope；worker/API/UI降级；RSS门控 | 超过比较预算必须可见，不能宣称已比较完整历史 |
+| FR-006 实际中文支持 | 多语rank/embed provider，NLI前真实转换；`query.prepare_goal` | 新模型真实中文质量尚待最终输入检验，英文参考仅诊断 |
+| FR-007 自动全文中文及真实对齐 | `TextResult.segments`、`validate_segments`、发布CAS、Web对齐 | 字符区间对齐不保证语义正确；旧无对齐不猜测 |
+| FR-008 处理身份/租约/缓存隔离 | `query.processing_identity`、`queue.py`、worker、翻译CAS | 已有专项工程测试；最终组合仍需回归 |
+| FR-009 新资料与RSS同一决策 | `podcasts/learning.publish_recommendations`要求新语义资格和中文就绪 | 真/假三类实际新资料通知验收未完成 |
+| FR-010 真Web完整路径 | Web目标/已读接口→队列→worker→Spark→翻译→页面 | 离线结果展示不能替代本项 |
+| FR-011 冻结/事实/失败/基线 | `cases.json`、SHA、61文件旧包清单、`evaluate_mvp011.py`、source-review JSON | 代理编制和代理原文审核，不是独立人工/长期学习收益 |
+| FR-012 资源与输入边界 | `semantic.py`窗口/批次、`semantic_analysis.py`预算、语言分段 | 不能因有上限就视为所有语料可处理；实际超限/失败须保留 |
+
+## 评价程序自身的防误判措施
+
+- 参考文档ID命中仅作为诊断，必须审读返回证据与正文后判直接帮助。
+- 审核文件绑定原始运行结果SHA-256，候选及历史原文偏移必须精确匹配；新增内容仍由原文事实复核，不能用算法自己的NLI当独立标签。
+- 没有返回、没有补充不自动通过正例。未知结果单列待复核，不自动计相关或无关。
+- 受控合成镜像/改写明确标注，有限候选池空结果不推广到完整语料库。
+- 八项评价器测试验证上述边界，含“正确主补充不能掩盖错误附加断言”；它们不计为八项算法效果测试。
+
+待最终运行后，在各行追加实际文件与判定，保留此处已观察失败。若任一必需标准失败或证据不足，不能以工程任务全勾宣布MVP通过。

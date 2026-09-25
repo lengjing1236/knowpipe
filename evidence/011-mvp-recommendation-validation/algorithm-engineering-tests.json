@@ -1,0 +1,23 @@
+{
+  "lightweight": {
+    "count": 12,
+    "status": "passed",
+    "command": "python3 -m unittest tests.recommendations.test_semantic tests.recommendations.test_semantic_analysis -q",
+    "groups": {
+      "provider_contracts": 5,
+      "bounded_semantic_comparison_and_selection": 7
+    }
+  },
+  "spark": {
+    "count": 7,
+    "status": "passed",
+    "seconds": 197.777,
+    "command": "python3 -m unittest tests.recommendations.test_engine_semantic tests.recommendations.test_engine tests.recommendations.test_incremental -v",
+    "groups": {
+      "new_semantic_feature_to_spark_selection_wiring": 1,
+      "historical_v4_lexical_regressions": 5,
+      "incremental_index_regression": 1
+    }
+  },
+  "scope": "Engineering wiring and controlled features; real-model MVP quality is evaluated separately. Historical v4 tests explicitly import lexical_baseline."
+}

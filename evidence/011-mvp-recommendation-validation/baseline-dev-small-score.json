@@ -1,0 +1,204 @@
+{
+  "status": "source_checks_complete_not_full_mvp_verdict",
+  "scope": "source judgments and deterministic counterexamples; Web, language, and ablations require separate evidence",
+  "review_provenance": "agent source review, not independent human labels",
+  "counts": {
+    "top3_total": 4,
+    "top3_judged": 4,
+    "top3_direct": 4,
+    "false_supplement": 0,
+    "top3_unjudged": 0
+  },
+  "judged_top3_direct_rate": 1.0,
+  "missing_case_ids": [
+    "django_iterator_cold",
+    "django_iterator_covered",
+    "django_iterator_partial",
+    "docker_readonly_multisource",
+    "docker_tmpfs_cold",
+    "docker_tmpfs_covered",
+    "docker_tmpfs_partial"
+  ],
+  "cases": [
+    {
+      "id": "postgres_retry_cold",
+      "judgments": [],
+      "items": 0,
+      "reference_top3_hit": false,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "postgres_retry_partial",
+      "judgments": [],
+      "items": 0,
+      "reference_top3_hit": false,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "postgres_retry_covered",
+      "judgments": [],
+      "items": 0,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_cold",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "uncertain",
+          "review_reason_zh": "这是明确标注的合成改写，正文说明许可计数、计数为零等待及BoundedSemaphore过度释放条件，直接帮助该目标；仅用于小池回归，不算真实来源命中。没有历史，只能判断目标相关。"
+        }
+      ],
+      "items": 1,
+      "reference_top3_hit": false,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_partial",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "supported",
+          "review_reason_zh": "这是明确标注的合成改写，正文说明许可计数、计数为零等待及BoundedSemaphore过度释放条件，直接帮助该目标；仅用于小池回归，不算真实来源命中。与完整已读协程任务文档相比，该计数许可机制可补充任务创建；但算法没有发出补充结论，正向补充要求仍失败。"
+        }
+      ],
+      "items": 1,
+      "reference_top3_hit": false,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_covered",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unsupported",
+          "review_reason_zh": "这是明确标注的合成改写，正文说明许可计数、计数为零等待及BoundedSemaphore过度释放条件，直接帮助该目标；仅用于小池回归，不算真实来源命中。这些事实已在标记已读的同步原语全文中，不能作为新增；算法本次也未声称补充。"
+        }
+      ],
+      "items": 1,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "no_suitable_limited_pool",
+      "judgments": [],
+      "items": 0,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": true,
+      "empty_check": true,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "mirror_not_new",
+      "judgments": [],
+      "items": 0,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "paraphrase_not_new",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unsupported",
+          "review_reason_zh": "这是明确标注的合成改写，正文说明许可计数、计数为零等待及BoundedSemaphore过度释放条件，直接帮助该目标；仅用于小池回归，不算真实来源命中。这些事实已在标记已读的同步原语全文中，不能作为新增；算法本次也未声称补充。"
+        }
+      ],
+      "items": 1,
+      "reference_top3_hit": true,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "new_irrelevant_words",
+      "judgments": [],
+      "items": 0,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    }
+  ]
+}

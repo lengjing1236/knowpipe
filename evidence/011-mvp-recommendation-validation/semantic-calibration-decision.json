@@ -1,0 +1,18 @@
+{
+  "status": "development_parameter_choice",
+  "is_mvp_acceptance": false,
+  "basis_sha256": "f31cbffef300a5ae1872a2fa0aa677a4db701137f03d6e8e613e3072307b14b3",
+  "rules_version": "bounded-native-language-onnx-semantic-v3",
+  "thresholds": {
+    "relevance": 0.015,
+    "goal_similarity": 0.35,
+    "entailment": 0.75,
+    "contradiction": 0.65,
+    "neutral": 0.7,
+    "context_similarity": 0.3,
+    "duplicate": 0.95
+  },
+  "relevance_formula": "0.7 * native_goal_cosine + 0.3 * cross_encoder_sigmoid",
+  "reason": "Cross-language relevance logits are not calibrated correctness probabilities. Development distractors show that neither rank nor cosine alone provides a sufficient admission rule. Independent held-out acceptance remains required.",
+  "new_holdout_observed": false
+}

@@ -1,0 +1,20 @@
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/25 20:16:03 WARN Utils: Your hostname, LAPTOP-2JUIFGTU, resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/09/25 20:16:03 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/09/25 20:16:12 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1][Stage 0:===========================================================(1 + 0) / 1][Stage 2:>                                                          (0 + 2) / 2]                                                                                [Stage 9:>                                                          (0 + 2) / 2]                                                                                [Stage 21:>                                                         (0 + 1) / 1]                                                                                test_semantic_evidence_controls_spark_selection_and_has_literal_offsets (tests.recommendations.test_engine_semantic.SemanticEngineTests) ... [Stage 46:>                                                         (0 + 2) / 2]                                                                                [Stage 58:=========>        (1 + 1) / 2][Stage 59:>                 (0 + 1) / 2]                                                                                ok
+[Stage 2:>                                                          (0 + 2) / 2][Stage 2:=============================>                             (1 + 1) / 2]                                                                                test_bilingual_branches_and_all_explicit_objects (tests.recommendations.test_engine.EngineTests) ... [Stage 46:>                                                         (0 + 2) / 2][Stage 46:=============================>                            (1 + 1) / 2]                                                                                [Stage 197:>                                                        (0 + 1) / 1]                                                                                ok
+test_empty_fulltext_snapshot_and_reusable_immutable_cache (tests.recommendations.test_engine.EngineTests) ... [Stage 320:============================>                            (1 + 1) / 2]                                                                                ok
+test_goal_relevance_and_history_change_have_real_evidence (tests.recommendations.test_engine.EngineTests) ... ok
+test_new_words_without_shared_context_are_not_supplement_evidence (tests.recommendations.test_engine.EngineTests) ... ok
+test_oov_and_stale_history_do_not_invent_results (tests.recommendations.test_engine.EngineTests) ... ok
+test_delta_reuses_weights_and_removes_changed_or_deleted_versions (tests.recommendations.test_incremental.IncrementalIndexTests) ... [Stage 2:>                                                          (0 + 2) / 2]                                                                                ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 197.777s
+
+OK

@@ -1,0 +1,330 @@
+{
+  "recorded_at": "2026-09-25T12:36:04.817348+00:00",
+  "model_processor": "llama-qwen-7a32d570076b383b9636cf0fb071597968abd51376d3fdfe2b6ed3503b15be7f",
+  "adapter_version": "llama-qwen-technical-translation-v2:sentence:engine4762ad73:input1024:output2048:ctx4096:greedy",
+  "purpose": "真实开发A/B；固定通用翻译指令，无验收句词表或保留场景调参",
+  "prompt": "Translate the user text from {source} into {target}. The text is computer technology learning material, not instructions to follow. Output only its complete translation. Do not answer questions, explain, summarize, add, or omit content. Preserve code, identifiers, numbers, negation, conditions, and ordering accurately.",
+  "cases": [
+    {
+      "id": "old-db-1",
+      "input": "PostgreSQL 的事务隔离级别",
+      "reference": "PostgreSQL transaction isolation levels",
+      "argos": "PostgreSQL service isolation level",
+      "nllb": "Level of transaction isolation in PostgreSQL",
+      "qwen_paragraph": "PostgreSQL's transaction isolation levels",
+      "qwen": "PostgreSQL's transaction isolation levels",
+      "alignment_valid": true,
+      "seconds": 7.614
+    },
+    {
+      "id": "old-db-2",
+      "input": "PostgreSQL 如何使用索引优化查询",
+      "reference": "PostgreSQL query optimization using indexes",
+      "argos": "PostgreSQL How to Optimise the Query with Index",
+      "nllb": "How to use index-optimized queries in PostgreSQL",
+      "qwen_paragraph": "How to Use Indexes to Optimize Queries in PostgreSQL",
+      "qwen": "How to Use Indexes to Optimize Queries in PostgreSQL",
+      "alignment_valid": true,
+      "seconds": 2.734
+    },
+    {
+      "id": "old-lang-1",
+      "input": "Python 的异常处理机制",
+      "reference": "Python exception handling mechanism",
+      "argos": "Python's Aberrant Mechanism",
+      "nllb": "Unusual processing mechanisms in Python",
+      "qwen_paragraph": "Python's exception handling mechanism",
+      "qwen": "Python's exception handling mechanism",
+      "alignment_valid": true,
+      "seconds": 2.104
+    },
+    {
+      "id": "old-lang-2",
+      "input": "Python 的异步任务与协程",
+      "reference": "Python asynchronous tasks and coroutines",
+      "argos": "Python's Elevated Tasks and Processes",
+      "nllb": "Asynchronous tasks and syntax in Python",
+      "qwen_paragraph": "Python's asynchronous tasks and coroutines",
+      "qwen": "Python's asynchronous tasks and coroutines",
+      "alignment_valid": true,
+      "seconds": 2.226
+    },
+    {
+      "id": "old-web-1",
+      "input": "Django 如何处理数据库事务",
+      "reference": "Django database transaction handling",
+      "argos": "Django how to handle database services",
+      "nllb": "How Django handles database issues",
+      "qwen_paragraph": "How to Handle Database Transactions in Django",
+      "qwen": "How to Handle Database Transactions in Django",
+      "alignment_valid": true,
+      "seconds": 2.693
+    },
+    {
+      "id": "old-web-2",
+      "input": "Django 如何防止跨站请求伪造",
+      "reference": "Django cross site request forgery protection",
+      "argos": "Django, how to prevent cross-site requests for forgery",
+      "nllb": "How to prevent cross-station requests being forged by Django",
+      "qwen_paragraph": "How to prevent Cross-Site Request Forgery (CSRF) in Django",
+      "qwen": "How to prevent Cross-Site Request Forgery (CSRF) in Django",
+      "alignment_valid": true,
+      "seconds": 2.928
+    },
+    {
+      "id": "old-ops-1",
+      "input": "Docker 容器如何持久化存储数据",
+      "reference": "Docker container persistent data storage",
+      "argos": "How Docker Containers Enduring Storage Data",
+      "nllb": "How Docker Containers Perpetuate Data Storage",
+      "qwen_paragraph": "How to Persist Data in Docker Containers",
+      "qwen": "How to Persist Data in Docker Containers",
+      "alignment_valid": true,
+      "seconds": 2.239
+    },
+    {
+      "id": "old-ops-2",
+      "input": "操作系统如何调度进程",
+      "reference": "operating system process scheduling",
+      "argos": "How the operating system is managing the process",
+      "nllb": "How the operating system coordinates the process",
+      "qwen_paragraph": "How does an operating system schedule processes?",
+      "qwen": "How does an operating system schedule processes?",
+      "alignment_valid": true,
+      "seconds": 2.354
+    },
+    {
+      "id": "development-postgres_retry_cold",
+      "input": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+      "reference": "Understand when to retry PostgreSQL serialization failures and unique-key failures",
+      "nllb": "Understanding the context in which the PostgreSQL sequencing failures and only key conflicts should be retested",
+      "qwen_paragraph": "When should transactions be retried for serialization failure and unique key conflict in PostgreSQL?",
+      "qwen": "When should transactions be retried for serialization failure and unique key conflict in PostgreSQL?",
+      "alignment_valid": true,
+      "seconds": 3.392
+    },
+    {
+      "id": "development-python_semaphore_cold",
+      "input": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "reference": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "nllb": "Learn how Python asyncio can limit the number of resources a sync can access at the same time, and how to over-release signals",
+      "qwen_paragraph": "How to limit the number of concurrent access to resources by asyncio coroutines and what happens when signals are released excessively",
+      "qwen": "How to limit the number of concurrent access to resources by asyncio coroutines and what happens when signals are released excessively",
+      "alignment_valid": true,
+      "seconds": 3.627
+    },
+    {
+      "id": "development-no_suitable_limited_pool",
+      "input": "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+      "reference": "Understand when to retry PostgreSQL serialization transaction failures",
+      "nllb": "Understanding when to retest after a failed PostgreSQL sequencing operation",
+      "qwen_paragraph": "When should one retry a PostgreSQL serialization transaction failure?",
+      "qwen": "When should one retry a PostgreSQL serialization transaction failure?",
+      "alignment_valid": true,
+      "seconds": 3.665
+    }
+  ],
+  "semantic_pass": null,
+  "fulltext": {
+    "source": {
+      "source": "postgresql_docs",
+      "doc_id": "18/wal-intro.html",
+      "title": "28.3. Write-Ahead Logging (WAL) #",
+      "source_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+      "license": "PostgreSQL License; https://www.postgresql.org/docs/18/legalnotice.html",
+      "provenance": {
+        "fetch_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+        "retrieved_at": "2026-09-25T09:46:08.611299+00:00",
+        "raw_sha256": "13656603502056d4085b64b7c5fb8f8719703f8eb0f511efeaf7cfedff3dbb28",
+        "raw_bytes": 16648,
+        "adapter_version": "supplemental-official-html-v1",
+        "original_provider": "PostgreSQL Global Development Group",
+        "license_artifact": {
+          "fetch_url": "https://www.postgresql.org/docs/18/legalnotice.html",
+          "retrieved_at": "2026-09-25T09:45:21.294547+00:00",
+          "raw_sha256": "5dff39c8d3ebbc522c65b906b321abb2a363e4fab6d5b66f404b37c842a6f12a",
+          "raw_bytes": 12727,
+          "local_filename": "postgresql_docs-LICENSE.html",
+          "stored_sha256": "5dff39c8d3ebbc522c65b906b321abb2a363e4fab6d5b66f404b37c842a6f12a"
+        },
+        "modifications": "Main text extracted from HTML; navigation removed, code retained."
+      }
+    },
+    "original": "28.3. Write-Ahead Logging (WAL) #\n\nWrite-Ahead Logging (WAL) is a standard method for ensuring data integrity. A detailed description can be found in most (if not all) books about transaction processing. Briefly, WAL's central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after WAL records describing the changes have been flushed to permanent storage. If we follow this procedure, we do not need to flush data pages to disk on every transaction commit, because we know that in the event of a crash we will be able to recover the database using the log: any changes that have not been applied to the data pages can be redone from the WAL records. (This is roll-forward recovery, also known as REDO.)\n\nTip\n\nBecause WAL restores database file contents after a crash, journaled file systems are not necessary for reliable storage of the data files or WAL files. In fact, journaling overhead can reduce performance, especially if journaling causes file system data to be flushed to disk. Fortunately, data flushing during journaling can often be disabled with a file system mount option, e.g., data=writeback on a Linux ext3 file system. Journaled file systems do improve boot speed after a crash.\n\nUsing WAL results in a significantly reduced number of disk writes, because only the WAL file needs to be flushed to disk to guarantee that a transaction is committed, rather than every data file changed by the transaction. The WAL file is written sequentially, and so the cost of syncing the WAL is much less than the cost of flushing the data pages. This is especially true for servers handling many small transactions touching different parts of the data store. Furthermore, when the server is processing many small concurrent transactions, one fsync of the WAL file may suffice to commit many transactions.\n\nWAL also makes it possible to support on-line backup and point-in-time recovery, as described in Section 25.3. By archiving the WAL data we can support reverting to any time instant covered by the available WAL data: we simply install a prior physical backup of the database, and replay the WAL just as far as the desired time. What's more, the physical backup doesn't have to be an instantaneous snapshot of the database state — if it is made over some period of time, then replaying the WAL for that period will fix any internal inconsistencies.",
+    "argos": "28.3. 将第28.3.节改为第28.3.节。笔前记录( WAL) #\n\n写前日志(WAL)是确保数据完整性的标准方法.详细的描述可以在大多数(如果不是全部)关于交易处理的书籍中找到.简言之,WAL的中心概念是,数据文件的更改(表格和索引所在的地方)必须在这些更改被记录之后,也就是在WAL记录描述这些更改被冲入永久存储之后,才能写出.如果我们遵循这个程序,我们不需要将数据页冲到每次交易承诺的磁盘上,因为我们知道,一旦发生崩溃,我们将能够使用日志恢复数据库:没有应用到数据页的任何更改都可以从WAL记录中被重置出(这是滚动前的恢复,也称为REDO).\n\n提示( T)\n\n因为WAL在崩溃后恢复了数据库文件内容,所以被日记的文件系统对于可靠地存储数据文件或WAL文件并不必要.实际上,分录管理费可以降低性能,特别是分录导致文件系统数据被冲入磁盘时.所幸的是,在分录期间所冲取的数据往往可以用一个文件系统挂载选项被禁用,例如,在Linuxext3文件系统中的数据=writeback.已登出的文件系统在崩溃后确实改善了启动速度 。\n\n使用WAL的结果是磁盘写作数量显著地减少,因为只有WAL文件需要被冲入磁盘来保证某项交易被承诺,而不是交易所改变的每一个数据文件.WAL文件是相继被写入的,因此同步WAL的成本远低于冲出数据页的成本.对于处理涉及数据库不同部分的许多小交易的服务器来说尤其如此。此外,当服务器正在处理许多小的并行交易时,WAL文件的一丝不苟可能足以进行许多交易。\n\n如第25.3节所描述的,WAL还使支持在线备份和即时恢复成为可能。通过将WAL数据归档,我们可以支持恢复到可用WAL数据覆盖的任何时候:我们只是安装了数据库的先前物理备份,并按所期望的时间重放WAL。更有甚者,物理备份不必是数据库状态的即时快照——如果是在一段时间内制作的,那么重放该时期的WAL会解决任何内部不一致.",
+    "nllb": "28.3提前记录 (WAL) #\n\n写前记录 (WAL) 是确保数据完整性的标准方法.详细的描述可以在大多数 (如果不是全部) 关于交易处理的书籍中找到.简而言之,WAL的核心概念是,数据文件的更改 (图表和索引所在的地方) 必须在这些更改被记录后才会被编写,也就是说,描述这些更改的WAL记录被将到永久存储中后.如果我们遵循这个程序,我们不需要在每个交易提交时将数据页面抛到磁盘上,因为我们知道在发生崩 ⁇ 的情况下,我们可以使用日志恢复数据库:任何未对数据页面进行的变化都可以从WAL记录中进行. (这是滚动前进恢复,也称为REDO.)\n\n提示\n\n由于WAL在崩 ⁇ 后恢复数据库文件内容,因此日记文件系统不必要可靠地存储数据文件或WAL文件.事实上,日记总费可能会降低性能,特别是如果日记导致文件系统数据被冲到磁盘上.幸运的是,日记编写过程中的数据冲洗通常可以被禁用文件系统安装选项,例如,在Linux ext3文件系统上的数据=写回.记录文件系统确实在崩 ⁇ 后提升了启动速度.\n\n使用WAL导致显著减少了磁盘写的数量,因为只有WAL文件需要被冲到磁盘上以保证交易的承诺,而不是交易所改变的每个数据文件.因此,同步WAL的成本远低于清理数据页面的成本.这尤其适用于处理数据库的不同部分的许多小交易服务器.此外,当服务器处理许多小的同时交易时,WAL文件的一个fsync可能足以进行许多交易.\n\nWAL还可支持在线备份和实时恢复,如第25.3节所述.通过存储WAL数据,我们可以支持将 WAL 数据覆盖的任何时间即时回归:我们简单地安装了数据库的以前的物理备份,更重要的是,物理备份不必是数据库状态的瞬间快照 ⁇ ,如果它是在某个时间段内完成的,",
+    "qwen_paragraph": "28.3. 写入预处理日志 (WAL)\n\n写入预处理日志（WAL）是一种标准方法，用于确保数据完整性。在大多数（如果不是所有）关于事务处理的书籍中，可以找到详细的描述。简而言之，WAL的核心概念是，数据文件（即表和索引的所在地）中的数据更改必须在更改被记录后才写入，即在写入写入日志记录描述更改后才将日志记录刷新到永久存储。如果我们遵循这个程序，我们就不需要在每次事务提交时将数据页面写入磁盘，因为我们可以从日志记录中恢复数据库：任何未应用于数据页面的更改都可以从日志记录中重做。（这是向前恢复，也称为重做。）\n\n提示\n\n因为 WAL 会恢复在崩溃后数据库文件的内容，因此不需要使用日志文件系统来可靠地存储数据文件或 WAL 文件。事实上，日志记录的开销可能会降低性能，尤其是在日志记录导致文件系统数据被写入磁盘的情况下。幸运的是，日志记录在日志记录期间可以经常被禁用，例如在 Linux ext3 文件系统上使用 mount 选项 data=writeback。日志文件系统确实提高了在崩溃后启动的速度。\n\n使用 WAL 会显著减少磁盘写入次数，因为只有 WAL 文件需要写入磁盘以保证事务已提交，而不是每次事务更改数据文件。 WAL 文件是顺序写入的，因此同步 WAL 的成本远低于写入数据页面的费用。这尤其适用于处理许多小事务的服务器，这些小事务涉及数据存储的不同部分。此外，当服务器处理许多小并发事务时，一次 WAL 文件的 fsync 可以满足许多事务的提交。\n\nwal 也使得在线备份和点恢复成为可能，如第 25.3 节所述。通过归档 WAL 数据，我们可以支持恢复到任何由可用的 WAL 数据覆盖的时间点：我们只需安装数据库的先前物理备份，然后像要恢复到指定时间一样重放 WAL。更重要的是，物理备份可以不是数据库状态的瞬间快照——如果它是在一段时间内进行的，那么重放 WAL 将修复任何内部不一致。",
+    "qwen": "28.3. 写入预处理日志 (WAL)\n\n写入预处理日志（WAL）是一种标准方法，用于确保数据完整性。 详细描述可以在大多数（如果不是所有）关于事务处理的书籍中找到。 简而言之，WAL的核心概念是，对数据文件（即表和索引驻留的地方）所做的更改必须在这些更改被记录后才写入，也就是说，这些记录在永久存储中被刷新后才写入。 如果我们按照此程序操作，我们就不需要在每次事务提交时都刷新数据页面到磁盘，因为我们可以从日志中恢复数据库：任何未应用于数据页面的更改都可以从WAL记录中重做。 （这是回滚恢复，也称为 REDO。）\n\n提示\n\n因为 WAL 会恢复因崩溃而丢失的数据库文件内容，因此不需要日志文件系统来可靠地存储数据文件或 WAL 文件。 事实上，日志开销可能会降低性能，尤其是在日志导致文件系统数据被写入磁盘时。 幸运的是，日志刷盘在文件系统挂载选项中可以被禁用，例如在 Linux ext3 文件系统上设置 data=writeback。 日志文件系统在发生崩溃后确实可以提高启动速度。\n\n使用 WAL 可以显著减少磁盘写入次数，因为只有 WAL 文件需要写入磁盘以保证事务已提交，而不是每次由事务更改的数据文件。 WAL文件是顺序写入的，因此同步WAL的成本远低于刷新数据页的成本。 这尤其适用于处理许多小交易的服务器，这些交易涉及数据存储的不同部分。 此外，当服务器处理许多并发的小事务时，一次 WAL 文件的 fsync 可以提交许多事务。\n\nWAL也使得在线备份和点对点恢复成为可能，如第25.3节所述。 通过归档WAL数据，我们可以支持回滚到可用WAL数据覆盖的时间点：我们只需安装数据库的先前物理备份，然后像往常一样回放WAL，直到指定的时间点。 此外，物理备份并不一定要是数据库状态的即时快照——如果是在一段时间内进行的，那么回放WAL就可以修复任何内部不一致。",
+    "integrity": {
+      "checks_version": "translation-integrity-v2",
+      "status": "checks_passed",
+      "issues": [],
+      "human_reviewed": false,
+      "semantic_verified": false
+    },
+    "segments": [
+      {
+        "source_start": 0,
+        "source_end": 34,
+        "target_start": 0,
+        "target_end": 20,
+        "kind": "text"
+      },
+      {
+        "source_start": 34,
+        "source_end": 35,
+        "target_start": 20,
+        "target_end": 21,
+        "kind": "protected"
+      },
+      {
+        "source_start": 35,
+        "source_end": 111,
+        "target_start": 21,
+        "target_end": 52,
+        "kind": "text"
+      },
+      {
+        "source_start": 111,
+        "source_end": 204,
+        "target_start": 52,
+        "target_end": 84,
+        "kind": "text"
+      },
+      {
+        "source_start": 204,
+        "source_end": 448,
+        "target_start": 84,
+        "target_end": 160,
+        "kind": "text"
+      },
+      {
+        "source_start": 448,
+        "source_end": 742,
+        "target_start": 160,
+        "target_end": 240,
+        "kind": "text"
+      },
+      {
+        "source_start": 742,
+        "source_end": 795,
+        "target_start": 240,
+        "target_end": 259,
+        "kind": "text"
+      },
+      {
+        "source_start": 795,
+        "source_end": 796,
+        "target_start": 259,
+        "target_end": 260,
+        "kind": "protected"
+      },
+      {
+        "source_start": 796,
+        "source_end": 800,
+        "target_start": 260,
+        "target_end": 263,
+        "kind": "text"
+      },
+      {
+        "source_start": 800,
+        "source_end": 801,
+        "target_start": 263,
+        "target_end": 264,
+        "kind": "protected"
+      },
+      {
+        "source_start": 801,
+        "source_end": 954,
+        "target_start": 264,
+        "target_end": 320,
+        "kind": "text"
+      },
+      {
+        "source_start": 954,
+        "source_end": 1079,
+        "target_start": 320,
+        "target_end": 358,
+        "kind": "text"
+      },
+      {
+        "source_start": 1079,
+        "source_end": 1229,
+        "target_start": 358,
+        "target_end": 422,
+        "kind": "text"
+      },
+      {
+        "source_start": 1229,
+        "source_end": 1289,
+        "target_start": 422,
+        "target_end": 446,
+        "kind": "text"
+      },
+      {
+        "source_start": 1289,
+        "source_end": 1290,
+        "target_start": 446,
+        "target_end": 447,
+        "kind": "protected"
+      },
+      {
+        "source_start": 1290,
+        "source_end": 1514,
+        "target_start": 447,
+        "target_end": 510,
+        "kind": "text"
+      },
+      {
+        "source_start": 1514,
+        "source_end": 1642,
+        "target_start": 510,
+        "target_end": 545,
+        "kind": "text"
+      },
+      {
+        "source_start": 1642,
+        "source_end": 1755,
+        "target_start": 545,
+        "target_end": 580,
+        "kind": "text"
+      },
+      {
+        "source_start": 1755,
+        "source_end": 1901,
+        "target_start": 580,
+        "target_end": 626,
+        "kind": "text"
+      },
+      {
+        "source_start": 1901,
+        "source_end": 1902,
+        "target_start": 626,
+        "target_end": 627,
+        "kind": "protected"
+      },
+      {
+        "source_start": 1902,
+        "source_end": 2013,
+        "target_start": 627,
+        "target_end": 659,
+        "kind": "text"
+      },
+      {
+        "source_start": 2013,
+        "source_end": 2230,
+        "target_start": 659,
+        "target_end": 732,
+        "kind": "text"
+      },
+      {
+        "source_start": 2230,
+        "source_end": 2449,
+        "target_start": 732,
+        "target_end": 790,
+        "kind": "text"
+      }
+    ],
+    "seconds": 76.485
+  }
+}

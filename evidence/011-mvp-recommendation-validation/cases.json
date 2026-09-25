@@ -1,0 +1,895 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_011_algorithm_edit",
+  "prepared_by": "agent_source_review_not_independent_human_labels",
+  "algorithm_results_seen_for_this_suite": false,
+  "background": {
+    "path": "state/feature009/corpus-expanded/documents.jsonl",
+    "sha256": "ecf155020ecb4c0813632f7b523608be5b08a9b073cb7b7aa64861e2ed24a37e",
+    "documents": 10215
+  },
+  "documents": [
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/transaction-iso.html",
+      "doc_key": "postgresql_docs:18/transaction-iso.html",
+      "title": "13.2. Transaction Isolation #",
+      "source_url": "https://www.postgresql.org/docs/18/transaction-iso.html",
+      "language": "en",
+      "body_sha256": "23abad6866bd408ec274ec5cb9d527859b0a83c02af0b0849eaee945e439f9bd",
+      "body_chars": 23623
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/mvcc-serialization-failure-handling.html",
+      "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+      "title": "13.5. Serialization Failure Handling #",
+      "source_url": "https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html",
+      "language": "en",
+      "body_sha256": "75927d47f01fbbccabeb1e8f997ff45fab3cbe83b613e2a9fdc10c5e62e2de7e",
+      "body_chars": 2260
+    },
+    {
+      "source": "postgresql_docs",
+      "doc_id": "18/wal-intro.html",
+      "doc_key": "postgresql_docs:18/wal-intro.html",
+      "title": "28.3. Write-Ahead Logging (WAL) #",
+      "source_url": "https://www.postgresql.org/docs/18/wal-intro.html",
+      "language": "en",
+      "body_sha256": "fc8905d17c9e21be1a678d66fc7b1c15f1ace3c6cd8167ce0bff45708e169359",
+      "body_chars": 2449
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "dba-346931",
+      "doc_key": "stackexchange:dba-346931",
+      "title": "Postgres: limiting serialization errors on serializable transactions",
+      "source_url": "https://dba.stackexchange.com/questions/346931/postgres-limiting-serialization-errors-on-serializable-transactions",
+      "language": "en",
+      "body_sha256": "627d67d5273b9ffdb6f11ef3b994655d3c4b3a1e785c6a82b9dcbdc58c0b67ba",
+      "body_chars": 5618
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "stackoverflow-79965834",
+      "doc_key": "stackexchange:stackoverflow-79965834",
+      "title": "Can't rollback a spring transaction",
+      "source_url": "https://stackoverflow.com/questions/79965834/cant-rollback-a-spring-transaction",
+      "language": "en",
+      "body_sha256": "a60587697f1f895b58bd3b107d4363554007e6688247c1658d4335c21b1689fe",
+      "body_chars": 3025
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/asyncio-task.html",
+      "doc_key": "python_docs:library/asyncio-task.html",
+      "title": "协程与任务",
+      "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-task.html",
+      "language": "zh",
+      "body_sha256": "93e3477de17ed0d94605ac1d0266cfdd1300a93b3c5ac717a94e3fbbf4ab2263",
+      "body_chars": 26555
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/asyncio-sync.html",
+      "doc_key": "python_docs:library/asyncio-sync.html",
+      "title": "同步原语",
+      "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html",
+      "language": "zh",
+      "body_sha256": "4fd3f9119355e078af6c302b51f2ba8e9fa4ddd63e1990c41eaa7890c8fa8049",
+      "body_chars": 5742
+    },
+    {
+      "source": "python_docs",
+      "doc_id": "library/concurrent.futures.html",
+      "doc_key": "python_docs:library/concurrent.futures.html",
+      "title": "concurrent.futures --- 启动并行任务",
+      "source_url": "https://docs.python.org/zh-cn/3/library/concurrent.futures.html",
+      "language": "zh",
+      "body_sha256": "57a7e2549d167bc4b52251060e0681021005c784dffa7c04eb74fa535293b744",
+      "body_chars": 13690
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/db/queries",
+      "doc_key": "django_docs:topics/db/queries",
+      "title": "执行查询",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/queries/",
+      "language": "zh",
+      "body_sha256": "8af4acc8d4175cf7aa64ccbe451367932447c3d4597410347fea99717b285334",
+      "body_chars": 35319
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/db/optimization",
+      "doc_key": "django_docs:topics/db/optimization",
+      "title": "数据库访问优化",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/db/optimization/",
+      "language": "zh",
+      "body_sha256": "a2ae4c85f54a53b92817622be7357b62d96f19477a1c1694ca053783cb0a13d2",
+      "body_chars": 7666
+    },
+    {
+      "source": "django_docs",
+      "doc_id": "topics/async",
+      "doc_key": "django_docs:topics/async",
+      "title": "异步支持",
+      "source_url": "https://docs.djangoproject.com/zh-hans/5.2/topics/async/",
+      "language": "zh",
+      "body_sha256": "18ed4d69440743f433d2dd2b873c3a166700c91d3aa39a1660caa9d7aaa31b76",
+      "body_chars": 7477
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/storage/volumes",
+      "doc_key": "docker_docs:unversioned/engine/storage/volumes",
+      "title": "Volumes",
+      "source_url": "https://docs.docker.com/engine/storage/volumes/",
+      "language": "en",
+      "body_sha256": "2fba052a0ff9b114c57f52c6e39ae6029d40892921eb3bce5fedf21bdeac607c",
+      "body_chars": 25550
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/storage/bind-mounts",
+      "doc_key": "docker_docs:unversioned/engine/storage/bind-mounts",
+      "title": "Bind mounts",
+      "source_url": "https://docs.docker.com/engine/storage/bind-mounts/",
+      "language": "en",
+      "body_sha256": "310892fe64799fce1c3b9e523e17b4c2c0218bd33742ee3a07e53703bcc82ebb",
+      "body_chars": 16196
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/storage/tmpfs",
+      "doc_key": "docker_docs:unversioned/engine/storage/tmpfs",
+      "title": "tmpfs mounts",
+      "source_url": "https://docs.docker.com/engine/storage/tmpfs/",
+      "language": "en",
+      "body_sha256": "e362528d7739f3296532c74f4504b3832b6c6647eeda240536e05e9d8e9bbd55",
+      "body_chars": 7549
+    },
+    {
+      "source": "docker_docs",
+      "doc_id": "unversioned/engine/network",
+      "doc_key": "docker_docs:unversioned/engine/network",
+      "title": "Networking overview",
+      "source_url": "https://docs.docker.com/engine/network/",
+      "language": "en",
+      "body_sha256": "a3061184c8c4275868579f1407d5440d667620aee96c3a1d87682b9924d4ae47",
+      "body_chars": 12509
+    },
+    {
+      "source": "stackexchange",
+      "doc_id": "serverfault-1168843",
+      "doc_key": "stackexchange:serverfault-1168843",
+      "title": "Docker volume mounted as :ro is still writeable",
+      "source_url": "https://serverfault.com/questions/1168843/docker-volume-mounted-as-ro-is-still-writeable",
+      "language": "en",
+      "body_sha256": "26099df77d82588f414cab59aa6b397da3d8063bb29f0b38f10f029bc95aa2f1",
+      "body_chars": 2819
+    },
+    {
+      "source": "mvp_fixture",
+      "doc_id": "mirror-asyncio-sync",
+      "doc_key": "mvp_fixture:mirror-asyncio-sync",
+      "title": "同步原语",
+      "source_url": "fixture://011/mirror-asyncio-sync",
+      "language": "zh",
+      "body_sha256": "4fd3f9119355e078af6c302b51f2ba8e9fa4ddd63e1990c41eaa7890c8fa8049",
+      "body_chars": 5742,
+      "synthetic": true,
+      "derivation": {
+        "synthetic": true,
+        "kind": "exact_mirror",
+        "derived_from": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html"
+      }
+    },
+    {
+      "source": "mvp_fixture",
+      "doc_id": "paraphrase-asyncio-semaphore",
+      "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+      "title": "asyncio 并发访问许可与释放次数",
+      "source_url": "fixture://011/paraphrase-asyncio-semaphore",
+      "language": "zh",
+      "body_sha256": "6c3a4b9cc94e7dd568b631a8798d24539008cb8c7adeb8cf40732aeb57c5389c",
+      "body_chars": 214,
+      "synthetic": true,
+      "derivation": {
+        "synthetic": true,
+        "kind": "agent_authored_paraphrase",
+        "derived_from": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html",
+        "fact_ids": [
+          "python_semaphore",
+          "python_bounded",
+          "python_thread_safety"
+        ]
+      }
+    }
+  ],
+  "facts": [
+    {
+      "id": "pg_retry_existing",
+      "document": "postgresql_docs:18/transaction-iso.html",
+      "start": 11147,
+      "end": 11246,
+      "text": "Applications using this level must be prepared to retry transactions due to serialization failures.",
+      "claim_zh": "已读隔离说明已经要求应用准备重试，不能把“需要重试”本身当新增知识。",
+      "role": "already_covered"
+    },
+    {
+      "id": "pg_retry_boundary",
+      "document": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+      "start": 563,
+      "end": 1634,
+      "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation). For example, if the application selects a new value for a primary key column after inspecting the currently stored keys, it could get a unique-key failure because another application instance selected the same new key concurrently. This is effectively a serialization failure, but the server will not detect it as such because it cannot “see” the connection between the inserted value and the previous reads. There are also some corner cases in which the server will issue a unique-key or exclusion constraint error even though in principle it has enough information to determine that a serialization problem is the underlying cause. While it's recommendable to just retry serialization_failure errors unconditionally, more care is needed when retrying these other error codes, since they might represent persistent error conditions rather than transient failures.",
+      "claim_zh": "23505和23P01只在部分情况下适合重试，也可能表示持久错误；不能把所有唯一键错误无条件重试。",
+      "role": "reference"
+    },
+    {
+      "id": "pg_complete_retry",
+      "document": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+      "start": 1636,
+      "end": 1889,
+      "text": "It is important to retry the complete transaction, including all logic that decides which SQL to issue and/or which values to use. Therefore, PostgreSQL does not offer an automatic retry facility, since it cannot do so with any guarantee of correctness.",
+      "claim_zh": "需要重新执行整个事务和决定SQL/值的逻辑；PostgreSQL不自动保证正确重试。",
+      "role": "reference"
+    },
+    {
+      "id": "python_task_existing",
+      "document": "python_docs:library/asyncio-task.html",
+      "start": 1452,
+      "end": 1498,
+      "text": "asyncio.TaskGroup 类提供了 create_task() 的更现代化的替代。",
+      "claim_zh": "已读材料覆盖任务创建和组合，不等于已经覆盖Semaphore的资源计数。",
+      "role": "already_covered"
+    },
+    {
+      "id": "python_semaphore",
+      "document": "python_docs:library/asyncio-sync.html",
+      "start": 3100,
+      "end": 3283,
+      "text": "信号量会管理一个内部计数器，该计数器会随每次 acquire() 调用递减并随每次 release() 调用递增。 计数器的值永远不会降到零以下；当 acquire() 发现其值为零时，它将保持阻塞直到有某个任务调用了 release()。\n\n可选的 value 参数用来为内部计数器赋初始值 (默认值为 1)。如果给定的值小于 0 则会引发 ValueError.",
+      "claim_zh": "Semaphore取得时递减、释放时递增；计数为零就等待，可限制协程同时占用资源的数量。",
+      "role": "reference"
+    },
+    {
+      "id": "python_bounded",
+      "document": "python_docs:library/asyncio-sync.html",
+      "start": 3886,
+      "end": 3973,
+      "text": "BoundedSemaphore 是特殊版本的 Semaphore，如果在 release() 中内部计数器值增加到初始 value 以上它将引发一个 ValueError。",
+      "claim_zh": "BoundedSemaphore在释放后计数超过初始值时抛出ValueError；不是达到初始值就报错。",
+      "role": "reference"
+    },
+    {
+      "id": "python_thread_safety",
+      "document": "python_docs:library/asyncio-sync.html",
+      "start": 80,
+      "end": 196,
+      "text": "asyncio 原语不是线程安全的，因此它们不应被用于 OS 线程同步 (而应当使用 threading)；\n\n这些同步原语的方法不接受 timeout 参数；请使用 asyncio.wait_for() 函数来执行带有超时的操作。",
+      "claim_zh": "asyncio同步原语不用于OS线程同步；超时需wait_for，而非直接timeout参数。",
+      "role": "reference"
+    },
+    {
+      "id": "docker_existing",
+      "document": "docker_docs:unversioned/engine/storage/volumes",
+      "start": 1995,
+      "end": 2227,
+      "text": "If your container generates non-persistent state data, consider using a tmpfs mount to avoid storing the data anywhere permanently, and to increase the container's performance by avoiding writing into the container's writable layer.",
+      "claim_zh": "已读Volumes已提出临时状态可用tmpfs；仅重复此建议不构成补充。",
+      "role": "already_covered"
+    },
+    {
+      "id": "docker_memory",
+      "document": "docker_docs:unversioned/engine/storage/tmpfs",
+      "start": 629,
+      "end": 991,
+      "text": "Because tmpfs stores data in memory, that usage counts against the container's memory cgroup limit (--memory / Compose mem_limit). Setting a large tmpfs-size (or host-mounted tmpfs) does not give the container extra RAM outside that limit — filling the mount can still OOM the container. Memory metrics for the container include tmpfs usage; see runtime metrics.",
+      "claim_zh": "tmpfs占用计入容器memory限制；设置很大的tmpfs-size不会获得额外内存，仍可能OOM。",
+      "role": "reference"
+    },
+    {
+      "id": "docker_swap",
+      "document": "docker_docs:unversioned/engine/storage/tmpfs",
+      "start": 1297,
+      "end": 1462,
+      "text": "tmpfs mounts in Docker map directly to tmpfs in the Linux kernel. As such, the temporary data may be written to a swap file, and thereby persisted to the filesystem.",
+      "claim_zh": "tmpfs临时数据可能被写入swap而落盘；不能说绝不会写磁盘。",
+      "role": "reference"
+    },
+    {
+      "id": "docker_stops",
+      "document": "docker_docs:unversioned/engine/storage/tmpfs",
+      "start": 424,
+      "end": 627,
+      "text": "As opposed to volumes and bind mounts, a tmpfs mount is temporary, and only persisted in the host memory. When the container stops, the tmpfs mount is removed, and files written there won't be persisted.",
+      "claim_zh": "容器停止会移除tmpfs，写入文件不保留。",
+      "role": "reference"
+    },
+    {
+      "id": "django_existing",
+      "document": "django_docs:topics/db/queries",
+      "start": 15199,
+      "end": 15397,
+      "text": "每个 QuerySet 都带有缓存，尽量减少数据库访问。理解它是如何工作的能让你编写更高效的代码。\n\n新创建的 QuerySet 缓存是空的。一旦要计算 QuerySet 的值，就会执行数据查询，随后，Django 就会将查询结果保存在 QuerySet 的缓存中，并返回这些显式请求的缓存（例如，下一个元素，若 QuerySet 正在被迭代）。后续针对 QuerySet 的计算会复用缓存结果。",
+      "claim_zh": "已读执行查询文档解释QuerySet计算和复用缓存。",
+      "role": "already_covered"
+    },
+    {
+      "id": "django_iterator",
+      "document": "django_docs:topics/db/optimization",
+      "start": 1553,
+      "end": 1630,
+      "text": "使用 iterator()\n\n当你有很多对象时，QuerySet 的缓存行为可能会导致大量的内存被使用。在这种情况下，iterator() 可能会有帮助。",
+      "claim_zh": "大量对象时缓存可能占用大量内存，iterator()可能有帮助；不等于所有情况更快。",
+      "role": "reference"
+    },
+    {
+      "id": "docker_recursive",
+      "document": "docker_docs:unversioned/engine/storage/bind-mounts",
+      "start": 10966,
+      "end": 11459,
+      "text": "If the bind mount is read-only, the Docker Engine makes a best-effort attempt at making the submounts read-only as well. This is referred to as recursive read-only mounts. Recursive read-only mounts require Linux kernel version 5.12 or later. If you're running an older kernel version, submounts are automatically mounted as read-write by default. Attempting to set submounts to be read-only on a kernel version earlier than 5.12, using the bind-recursive=readonly option, results in an error.",
+      "claim_zh": "递归只读子挂载依赖Linux内核至少5.12；旧内核子挂载默认可写，强制readonly会失败。",
+      "role": "reference"
+    },
+    {
+      "id": "docker_recursive_case",
+      "document": "stackexchange:serverfault-1168843",
+      "start": 1429,
+      "end": 1547,
+      "text": "You need a 5.12 or greater kernel version and docker version 25 or greater to support recursive read-only bind mounts.",
+      "claim_zh": "真实问答补充复现和版本环境；内核至少5.12且回答要求Docker至少25。社区说法不能取代官方核实。",
+      "role": "reference"
+    },
+    {
+      "id": "spring_wrong_object",
+      "document": "stackexchange:stackoverflow-79965834",
+      "start": 0,
+      "end": 425,
+      "text": "Can't rollback a spring transaction\n\nQuestion\n\nIn a project I need to import a CSV file into database, and the operation must be rollbacked in the case of any problem.\n\nA service calls a helper to read data from file and put them in a List, then it calls a repository extending CrudRepository to persist data with saveAll(). I added @Transactional annotations above the repository's saveAll() and the service's import method.",
+      "claim_zh": "这是Spring注解事务与CSV导入，不能当作PostgreSQL序列化失败SQLSTATE处理依据。",
+      "role": "distractor"
+    }
+  ],
+  "cases": [
+    {
+      "id": "postgres_retry_cold",
+      "topic": "postgres_retry",
+      "split": "development",
+      "goal_zh": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+      "goal_en": "Understand when to retry PostgreSQL serialization failures and unique-key failures",
+      "history": [],
+      "reference_relevant": [
+        "postgresql_docs:18/mvcc-serialization-failure-handling.html"
+      ],
+      "explicit_distractors": [
+        "stackexchange:stackoverflow-79965834",
+        "postgresql_docs:18/wal-intro.html"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": true,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "postgres_retry_partial",
+      "topic": "postgres_retry",
+      "split": "development",
+      "goal_zh": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+      "goal_en": "Understand when to retry PostgreSQL serialization failures and unique-key failures",
+      "history": [
+        "postgresql_docs:18/transaction-iso.html"
+      ],
+      "reference_relevant": [
+        "postgresql_docs:18/mvcc-serialization-failure-handling.html"
+      ],
+      "explicit_distractors": [
+        "stackexchange:stackoverflow-79965834",
+        "postgresql_docs:18/wal-intro.html"
+      ],
+      "expected_new_fact_ids": [
+        "pg_retry_boundary"
+      ],
+      "history_fact_ids": [
+        "pg_retry_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": true,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "postgres_retry_covered",
+      "topic": "postgres_retry",
+      "split": "development",
+      "goal_zh": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+      "goal_en": "Understand when to retry PostgreSQL serialization failures and unique-key failures",
+      "history": [
+        "postgresql_docs:18/transaction-iso.html",
+        "postgresql_docs:18/mvcc-serialization-failure-handling.html"
+      ],
+      "reference_relevant": [
+        "postgresql_docs:18/mvcc-serialization-failure-handling.html"
+      ],
+      "explicit_distractors": [
+        "stackexchange:stackoverflow-79965834",
+        "postgresql_docs:18/wal-intro.html"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [
+        "pg_retry_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": false,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": true,
+        "known_covered_facts_must_not_be_claimed_new": true,
+        "other_fact_claims": "requires_full_history_source_review"
+      },
+      "scope": "full_10215_background_required_for_product_verdict",
+      "forbidden_new_fact_ids": [
+        "pg_retry_boundary",
+        "pg_retry_existing"
+      ]
+    },
+    {
+      "id": "python_semaphore_cold",
+      "topic": "python_semaphore",
+      "split": "development",
+      "goal_zh": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "goal_en": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "history": [],
+      "reference_relevant": [
+        "python_docs:library/asyncio-sync.html"
+      ],
+      "explicit_distractors": [
+        "python_docs:library/concurrent.futures.html",
+        "django_docs:topics/async"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": true,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "python_semaphore_partial",
+      "topic": "python_semaphore",
+      "split": "development",
+      "goal_zh": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "goal_en": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "history": [
+        "python_docs:library/asyncio-task.html"
+      ],
+      "reference_relevant": [
+        "python_docs:library/asyncio-sync.html"
+      ],
+      "explicit_distractors": [
+        "python_docs:library/concurrent.futures.html",
+        "django_docs:topics/async"
+      ],
+      "expected_new_fact_ids": [
+        "python_semaphore",
+        "python_bounded"
+      ],
+      "history_fact_ids": [
+        "python_task_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": true,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "python_semaphore_covered",
+      "topic": "python_semaphore",
+      "split": "development",
+      "goal_zh": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "goal_en": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "history": [
+        "python_docs:library/asyncio-task.html",
+        "python_docs:library/asyncio-sync.html"
+      ],
+      "reference_relevant": [
+        "python_docs:library/asyncio-sync.html"
+      ],
+      "explicit_distractors": [
+        "python_docs:library/concurrent.futures.html",
+        "django_docs:topics/async"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [
+        "python_task_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": false,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": true,
+        "known_covered_facts_must_not_be_claimed_new": true,
+        "other_fact_claims": "requires_full_history_source_review"
+      },
+      "scope": "full_10215_background_required_for_product_verdict",
+      "forbidden_new_fact_ids": [
+        "python_semaphore",
+        "python_bounded",
+        "python_task_existing"
+      ]
+    },
+    {
+      "id": "docker_tmpfs_cold",
+      "topic": "docker_tmpfs",
+      "split": "reserved_validation",
+      "goal_zh": "理解 Docker tmpfs 临时文件的内存限制，以及是否一定不会写入磁盘",
+      "goal_en": "Understand Docker tmpfs memory limits and whether temporary data can ever be written to disk",
+      "history": [],
+      "reference_relevant": [
+        "docker_docs:unversioned/engine/storage/tmpfs"
+      ],
+      "explicit_distractors": [
+        "docker_docs:unversioned/engine/network"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": true,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "docker_tmpfs_partial",
+      "topic": "docker_tmpfs",
+      "split": "reserved_validation",
+      "goal_zh": "理解 Docker tmpfs 临时文件的内存限制，以及是否一定不会写入磁盘",
+      "goal_en": "Understand Docker tmpfs memory limits and whether temporary data can ever be written to disk",
+      "history": [
+        "docker_docs:unversioned/engine/storage/volumes"
+      ],
+      "reference_relevant": [
+        "docker_docs:unversioned/engine/storage/tmpfs"
+      ],
+      "explicit_distractors": [
+        "docker_docs:unversioned/engine/network"
+      ],
+      "expected_new_fact_ids": [
+        "docker_memory",
+        "docker_swap"
+      ],
+      "history_fact_ids": [
+        "docker_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": true,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "docker_tmpfs_covered",
+      "topic": "docker_tmpfs",
+      "split": "reserved_validation",
+      "goal_zh": "理解 Docker tmpfs 临时文件的内存限制，以及是否一定不会写入磁盘",
+      "goal_en": "Understand Docker tmpfs memory limits and whether temporary data can ever be written to disk",
+      "history": [
+        "docker_docs:unversioned/engine/storage/volumes",
+        "docker_docs:unversioned/engine/storage/tmpfs"
+      ],
+      "reference_relevant": [
+        "docker_docs:unversioned/engine/storage/tmpfs"
+      ],
+      "explicit_distractors": [
+        "docker_docs:unversioned/engine/network"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [
+        "docker_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": false,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": true,
+        "known_covered_facts_must_not_be_claimed_new": true,
+        "other_fact_claims": "requires_full_history_source_review"
+      },
+      "scope": "full_10215_background_required_for_product_verdict",
+      "forbidden_new_fact_ids": [
+        "docker_memory",
+        "docker_swap",
+        "docker_existing"
+      ]
+    },
+    {
+      "id": "django_iterator_cold",
+      "topic": "django_iterator",
+      "split": "reserved_validation",
+      "goal_zh": "学习 Django QuerySet 查询大量对象时如何减少缓存的内存占用",
+      "goal_en": "Learn how to reduce Django QuerySet cache memory usage when querying many objects",
+      "history": [],
+      "reference_relevant": [
+        "django_docs:topics/db/optimization"
+      ],
+      "explicit_distractors": [
+        "django_docs:topics/async",
+        "python_docs:library/asyncio-task.html"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": true,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "django_iterator_partial",
+      "topic": "django_iterator",
+      "split": "reserved_validation",
+      "goal_zh": "学习 Django QuerySet 查询大量对象时如何减少缓存的内存占用",
+      "goal_en": "Learn how to reduce Django QuerySet cache memory usage when querying many objects",
+      "history": [
+        "django_docs:topics/db/queries"
+      ],
+      "reference_relevant": [
+        "django_docs:topics/db/optimization"
+      ],
+      "explicit_distractors": [
+        "django_docs:topics/async",
+        "python_docs:library/asyncio-task.html"
+      ],
+      "expected_new_fact_ids": [
+        "django_iterator"
+      ],
+      "history_fact_ids": [
+        "django_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "personal_supplement_supported": true,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": false
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "django_iterator_covered",
+      "topic": "django_iterator",
+      "split": "reserved_validation",
+      "goal_zh": "学习 Django QuerySet 查询大量对象时如何减少缓存的内存占用",
+      "goal_en": "Learn how to reduce Django QuerySet cache memory usage when querying many objects",
+      "history": [
+        "django_docs:topics/db/queries",
+        "django_docs:topics/db/optimization"
+      ],
+      "reference_relevant": [
+        "django_docs:topics/db/optimization"
+      ],
+      "explicit_distractors": [
+        "django_docs:topics/async",
+        "python_docs:library/asyncio-task.html"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [
+        "django_existing"
+      ],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": false,
+        "personal_supplement_supported": false,
+        "must_not_claim_supplement": false,
+        "covered_reference_must_be_excluded": true,
+        "known_covered_facts_must_not_be_claimed_new": true,
+        "other_fact_claims": "requires_full_history_source_review"
+      },
+      "scope": "full_10215_background_required_for_product_verdict",
+      "forbidden_new_fact_ids": [
+        "django_iterator",
+        "django_existing"
+      ]
+    },
+    {
+      "id": "docker_readonly_multisource",
+      "topic": "docker_readonly",
+      "split": "reserved_validation",
+      "goal_zh": "理解 Docker 只读 bind mount 为什么子挂载仍可能可写，需要什么内核条件",
+      "goal_en": "Understand why Docker read-only bind mounts may leave submounts writable and which kernel condition matters",
+      "history": [],
+      "reference_relevant": [
+        "docker_docs:unversioned/engine/storage/bind-mounts",
+        "stackexchange:serverfault-1168843"
+      ],
+      "explicit_distractors": [
+        "docker_docs:unversioned/engine/network"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [],
+      "expected": {
+        "top3_reference_or_fact_equivalent_required": true,
+        "must_not_claim_supplement": true
+      },
+      "scope": "full_10215_background_required_for_product_verdict"
+    },
+    {
+      "id": "no_suitable_limited_pool",
+      "topic": "negative",
+      "split": "development",
+      "goal_zh": "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+      "goal_en": "Understand when to retry PostgreSQL serialization transaction failures",
+      "history": [],
+      "candidate_pool": [
+        "stackexchange:stackoverflow-79965834",
+        "docker_docs:unversioned/engine/network",
+        "python_docs:library/concurrent.futures.html"
+      ],
+      "reference_relevant": [],
+      "explicit_distractors": [
+        "stackexchange:stackoverflow-79965834",
+        "docker_docs:unversioned/engine/network",
+        "python_docs:library/concurrent.futures.html"
+      ],
+      "expected_new_fact_ids": [],
+      "history_fact_ids": [],
+      "expected": {
+        "empty_required": true,
+        "must_not_claim_supplement": true
+      },
+      "scope": "controlled_pool_only_not_claim_about_entire_corpus"
+    },
+    {
+      "id": "mirror_not_new",
+      "topic": "python_semaphore",
+      "split": "development",
+      "goal_zh": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "goal_en": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "history": [
+        "python_docs:library/asyncio-sync.html"
+      ],
+      "candidate_pool": [
+        "python_docs:library/asyncio-sync.html",
+        "mvp_fixture:mirror-asyncio-sync"
+      ],
+      "reference_relevant": [
+        "mvp_fixture:mirror-asyncio-sync"
+      ],
+      "explicit_distractors": [],
+      "forbidden_new_fact_ids": [
+        "python_semaphore",
+        "python_bounded",
+        "python_thread_safety"
+      ],
+      "expected_new_fact_ids": [],
+      "expected": {
+        "must_not_claim_supplement": true,
+        "new_candidate": "mvp_fixture:mirror-asyncio-sync",
+        "new_supplement_notification": false
+      },
+      "scope": "controlled_synthetic_counterexample_not_real_new_source"
+    },
+    {
+      "id": "paraphrase_not_new",
+      "topic": "python_semaphore",
+      "split": "development",
+      "goal_zh": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+      "goal_en": "Learn how Python asyncio limits concurrent resource access and what happens when a semaphore is over-released",
+      "history": [
+        "python_docs:library/asyncio-sync.html"
+      ],
+      "candidate_pool": [
+        "python_docs:library/asyncio-sync.html",
+        "mvp_fixture:paraphrase-asyncio-semaphore"
+      ],
+      "reference_relevant": [
+        "mvp_fixture:paraphrase-asyncio-semaphore"
+      ],
+      "explicit_distractors": [],
+      "forbidden_new_fact_ids": [
+        "python_semaphore",
+        "python_bounded",
+        "python_thread_safety"
+      ],
+      "expected_new_fact_ids": [],
+      "expected": {
+        "must_not_claim_supplement": true,
+        "new_candidate": "mvp_fixture:paraphrase-asyncio-semaphore",
+        "new_supplement_notification": false
+      },
+      "scope": "controlled_synthetic_counterexample_not_real_new_source"
+    },
+    {
+      "id": "new_irrelevant_words",
+      "topic": "postgres_retry",
+      "split": "development",
+      "goal_zh": "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+      "goal_en": "Understand when to retry PostgreSQL serialization transaction failures",
+      "history": [
+        "postgresql_docs:18/transaction-iso.html"
+      ],
+      "candidate_pool": [
+        "postgresql_docs:18/transaction-iso.html",
+        "stackexchange:stackoverflow-79965834"
+      ],
+      "reference_relevant": [],
+      "explicit_distractors": [
+        "stackexchange:stackoverflow-79965834"
+      ],
+      "expected_new_fact_ids": [],
+      "expected": {
+        "must_not_claim_supplement": true,
+        "new_candidate": "stackexchange:stackoverflow-79965834",
+        "new_supplement_notification": false
+      },
+      "scope": "controlled_wrong_object_new_document"
+    }
+  ],
+  "pending": [
+    "run archived 010 baseline",
+    "run new algorithm and ablations",
+    "review unjudged output bodies without changing frozen inputs",
+    "actual web RSS lifecycle acceptance remains root responsibility"
+  ],
+  "replays": [
+    {
+      "id": "new_related_supplement",
+      "base_case": "postgres_retry_partial",
+      "new_document": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+      "expected_possible_supplement": true,
+      "fact_ids": [
+        "pg_retry_boundary"
+      ]
+    },
+    {
+      "id": "new_restatement",
+      "base_case": "paraphrase_not_new",
+      "new_document": "mvp_fixture:paraphrase-asyncio-semaphore",
+      "expected_possible_supplement": false
+    },
+    {
+      "id": "new_irrelevant",
+      "base_case": "new_irrelevant_words",
+      "new_document": "stackexchange:stackoverflow-79965834",
+      "expected_possible_supplement": false
+    }
+  ],
+  "frozen_at": "2026-09-25T11:53:40.297036+00:00",
+  "thresholds": {
+    "spec": "specs/011-mvp-recommendation-validation/spec.md",
+    "SC001": {
+      "topk": 3,
+      "each_positive_has_direct_answer": true,
+      "judged_top3_relevance_min": 0.8,
+      "unjudged": "evidence_insufficient_pending_source_review"
+    },
+    "SC002": {
+      "known_false_supplement_max": 0,
+      "each_positive_supplement_case_requires_evidence": true
+    },
+    "SC003": "same_goal_history_and_partial_overlap_comparisons_and_ablations",
+    "SC004": "critical_technical_facts_conditions_order_preserved_and_one_fulltext",
+    "SC005": "actual_web_and_three_new_document_branches_including_real_rss",
+    "SC006": "10215_background_and_at_least_two_reserved_cases"
+  }
+}

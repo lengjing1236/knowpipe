@@ -1,0 +1,59 @@
+{
+  "processor_id": "semantic-3111f4b6e8e208612d5e46b290f7caead7721fb54516fa669559631df85b7465",
+  "language": "multilingual",
+  "query": "信号量如何限制并发任务数量？",
+  "passages": [
+    "A semaphore manages a counter and blocks additional tasks when the limit of concurrent resource users is reached.",
+    "A flower garden needs regular watering and suitable soil to grow healthy plants."
+  ],
+  "relevance": [
+    0.036414133455226094,
+    0.00012314408915828628
+  ],
+  "embedding_sentences": [
+    "信号量限制并发访问数量。",
+    "A semaphore limits the number of concurrent users.",
+    "Flowers need water and sunlight."
+  ],
+  "embedding_similarity": [
+    [
+      0.9999998780044662,
+      0.5500307870707671,
+      0.06030402934138633
+    ],
+    [
+      0.5500307870707671,
+      1.0000000977216212,
+      -0.0471797773799793
+    ],
+    [
+      0.06030402934138633,
+      -0.0471797773799793,
+      0.9999999594323035
+    ]
+  ],
+  "inference_pairs": [
+    [
+      "A semaphore limits concurrent access to a resource.",
+      "A semaphore restricts simultaneous resource users."
+    ],
+    [
+      "A semaphore limits concurrent access to a resource.",
+      "A semaphore never restricts concurrent access."
+    ]
+  ],
+  "inference": [
+    {
+      "contradiction": 0.0026301254983991385,
+      "entailment": 0.9890810251235962,
+      "neutral": 0.008288746699690819
+    },
+    {
+      "contradiction": 0.9980809688568115,
+      "entailment": 0.0003340432303957641,
+      "neutral": 0.001584937097504735
+    }
+  ],
+  "seconds": 57.17604302499967,
+  "maxrss_kib": 1008296
+}
