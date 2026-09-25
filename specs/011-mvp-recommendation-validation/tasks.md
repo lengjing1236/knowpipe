@@ -16,14 +16,14 @@
 
 - [X] T005 [P] [US1] 先测试正文相关性／标题／错误对象／模型缺失，再实现有界语义 provider 与召回重排，写 knowpipe/recommendations/semantic.py、engine.py 及对应 tests/recommendations/。
 - [X] T006 [US2] 测试改写、部分补充、不可比较，令句级覆盖与补充实际参与 Spark 选择，保留消融与双侧跨度，写 knowpipe/recommendations/engine.py、semantic.py。
-- [ ] T007 [P] [US3] 测试全文对齐、数字与标识符损坏、版本隔离，再实现真实双向候选翻译及段落对齐，写 knowpipe/learning/providers.py、local_providers.py、quality.py、content.py。
+- [X] T007 [P] [US3] 测试全文对齐、数字与标识符损坏、版本隔离，再实现真实双向候选翻译及段落对齐，写 knowpipe/learning/providers.py、local_providers.py、quality.py、content.py。
 - [X] T008 [P] [US1] 建立不依赖实现分数的真实案例评价程序与旧基线记录，写 scripts/evaluate_mvp011.py 和 evidence/011-mvp-recommendation-validation/。
 - [X] T009 [US4] 集成处理身份、worker 调用及 RSS 安全降级，写 knowpipe/recommendations/query.py、worker.py、queue.py、knowpipe/podcasts/learning.py 和对应回归测试。
-- [ ] T010 [US3] Web 展示真实比较范围、双侧中文／原文与段落对齐、失败状态，写 knowpipe/web/static/learning.js 和必要样式。
+- [X] T010 [US3] Web 展示真实比较范围、双侧中文／原文与段落对齐、失败状态，写 knowpipe/web/static/learning.js 和必要样式。
 
 ## Phase 4：M4 串行真实验证
 
-- [ ] T011 [US3] 实际候选模型与 Argos A/B，逐条核对冻结技术事实、完整英文全文，写 evidence/011-mvp-recommendation-validation/language-quality.json。
+- [X] T011 [US3] 实际候选模型与 Argos A/B，逐条核对冻结技术事实、完整英文全文，写 evidence/011-mvp-recommendation-validation/language-quality.json。NLLB／Qwen 两种切分均留失败证据，SC-004 未通过；勾选仅表示实验及审核已执行。
 - [ ] T012 [US1] 小真实集和万条背景运行基线／新算法／消融／保留集，按 SC 记录正确、错误、待判定，写 evidence/011-mvp-recommendation-validation/evaluation.json。
 - [ ] T013 [US4] 编写并执行真实浏览器→worker→Spark→翻译→已读重算闭环与新增三分支，写 scripts/acceptance_mvp011.py 和 evidence/011-mvp-recommendation-validation/browser.json。
 - [ ] T014 运行针对性回归，复核 spec→code→evidence，更新 evidence/011-mvp-recommendation-validation/acceptance.md、根 plan.md、README.md、quickstart.md。

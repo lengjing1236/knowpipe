@@ -1,0 +1,559 @@
+{
+  "status": "evidence_incomplete",
+  "scope": "source judgments and deterministic counterexamples; Web, language, and ablations require separate evidence",
+  "review_provenance": "agent source review, not independent human labels",
+  "counts": {
+    "top3_total": 13,
+    "top3_judged": 13,
+    "top3_direct": 9,
+    "false_supplement": 3,
+    "supplement_claims_pending": 0,
+    "supplement_claims_uncertain": 2,
+    "incomplete_computation": 0,
+    "top3_unjudged": 0
+  },
+  "judged_top3_direct_rate": 0.6923076923076923,
+  "missing_case_ids": [
+    "django_iterator_cold",
+    "django_iterator_covered",
+    "django_iterator_partial",
+    "docker_readonly_multisource",
+    "docker_tmpfs_cold",
+    "docker_tmpfs_covered",
+    "docker_tmpfs_partial"
+  ],
+  "cases": [
+    {
+      "id": "postgres_retry_cold",
+      "judgments": [
+        {
+          "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "官方全文直接说明40001与23505/23P01重试边界，以及持续性错误不能盲目重试；资料直接帮助目标。"
+        },
+        {
+          "doc_key": "postgresql_docs:18/transaction-iso.html",
+          "rank": 2,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "已读候选章直接说明Serializable失败需要重试、40001及重试整个事务，也说明并发唯一键冲突条件，直接帮助目标。"
+        },
+        {
+          "doc_key": "stackexchange:dba-346931",
+          "rank": 3,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实问答主要讨论谓词锁/扫描导致的序列化失败和如何减少误报。与目标有背景联系，但未直接讲清唯一键错误与40001各何时应重试，按冻结的直接帮助标准只判部分相关。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "postgres_retry_partial",
+      "judgments": [
+        {
+          "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "supported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "supported",
+              "reason_zh": "已读隔离章阐述40001和并发唯一冲突，但未给出23505/23P01的有条件重试；返回双方是同一错误处理语境，这条补充成立。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 563,
+                  "end": 769,
+                  "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 19275,
+                  "end": 20174,
+                  "text": "Consistent use of Serializable transactions can simplify development. The guarantee that any set of successfully committed concurrent Serializable transactions will have the same effect as if they were run one at a time means that if you can demonstrate that a single transaction, as written, will do the right thing when run by itself, you can have confidence that it will do the right thing in any mix of Serializable transactions, even without any information about what those other transactions might do, or it will not successfully commit. It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "supported",
+              "reason_zh": "候选进一步指出服务器原则上已有足够信息仍可能给出唯一/排他约束错误；已读只描述并发唯一约束冲突及协议，没有这项服务器分类边界。仅认可此有限事实，不把所有唯一约束错误都解释成瞬态。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 1179,
+                  "end": 1403,
+                  "text": "There are also some corner cases in which the server will issue a unique-key or exclusion constraint error even though in principle it has enough information to determine that a serialization problem is the underlying cause."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 20518,
+                  "end": 21639,
+                  "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                }
+              ]
+            },
+            {
+              "claim_index": 2,
+              "judgment": "supported",
+              "reason_zh": "候选明确区分可直接重试的serialization_failure和可能持续的其它错误码；结合同一结果中上一条23505/23P01原文，所指错误码可核对。已读仅要求为序列化失败准备重试，未说明持续性错误的边界。",
+              "evidence": [
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 1404,
+                  "end": 1634,
+                  "text": "While it's recommendable to just retry serialization_failure errors unconditionally, more care is needed when retrying these other error codes, since they might represent persistent error conditions rather than transient failures."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 11147,
+                  "end": 11246,
+                  "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/mvcc-serialization-failure-handling.html",
+                  "start": 563,
+                  "end": 769,
+                  "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "官方全文直接说明40001与23505/23P01重试边界，以及持续性错误不能盲目重试；资料直接帮助目标。相对已读隔离章，新增错误码与持续/暂态失败处理有实质补充；v5误报的并发选键示例在本次已改为uncertain。"
+        },
+        {
+          "doc_key": "stackexchange:dba-346931",
+          "rank": 2,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "已读全文已解释并发事务通过监测冲突维护串行一致性且不额外阻塞；候选以optimistic locking概括这件事，没有补充何种唯一键错误应重试。相近主题和新增术语不能证实个性化补充。",
+              "evidence": [
+                {
+                  "doc_key": "stackexchange:dba-346931",
+                  "start": 80,
+                  "end": 351,
+                  "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 20518,
+                  "end": 21639,
+                  "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                },
+                {
+                  "doc_key": "postgresql_docs:18/transaction-iso.html",
+                  "start": 14887,
+                  "end": 15431,
+                  "text": "In fact, this isolation level works exactly the same as Repeatable Read except that it also monitors for conditions which could make execution of a concurrent set of serializable transactions behave in a manner inconsistent with all possible serial (one at a time) executions of those transactions. This monitoring does not introduce any blocking beyond that present in repeatable read, but there is some overhead to the monitoring, and detection of the conditions which could cause a serialization anomaly will trigger a serialization failure."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实问答主要讨论谓词锁/扫描导致的序列化失败和如何减少误报。与目标有背景联系，但未直接讲清唯一键错误与40001各何时应重试，按冻结的直接帮助标准只判部分相关。返回的新内容只是提问者对无干扰并发/乐观检查的概括；完整已读隔离章已说明并发执行及仅检测可能的非串行结果，换了术语不足以证明目标相关的新事实。"
+        }
+      ],
+      "items": 2,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": true,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "postgres_retry_covered",
+      "judgments": [
+        {
+          "doc_key": "stackexchange:dba-346931",
+          "rank": 1,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实问答主要讨论谓词锁/扫描导致的序列化失败和如何减少误报。与目标有背景联系，但未直接讲清唯一键错误与40001各何时应重试，按冻结的直接帮助标准只判部分相关。"
+        }
+      ],
+      "items": 1,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_cold",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": false,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "明确合成的中文同义改写讲信号量限制并发数与过度释放；内容直接相关，但不得充当真实来源正例。"
+        },
+        {
+          "doc_key": "python_docs:library/asyncio-sync.html",
+          "rank": 2,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文包含Semaphore计数、等待/释放与BoundedSemaphore过度释放异常，文档直接有用；返回goal证据却是Condition，不等于证据选取满足目标。"
+        },
+        {
+          "doc_key": "python_docs:library/asyncio-task.html",
+          "rank": 3,
+          "relevance": "partial",
+          "real_source": true,
+          "reference_document_hit": false,
+          "supplement_eligible": false,
+          "supplement": "unjudged",
+          "claims": [],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "全文介绍协程调度、Task并发和to_thread，提供背景，但没有解释信号量计数或过度释放边界；返回to_thread/GIL与目标不直接对应。"
+        }
+      ],
+      "items": 3,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_partial",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": false,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "supported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "supported",
+              "reason_zh": "已读create_task只讲并发调度，候选补充共享资源同时占用数量可以用信号量限制，双方语境明确；但这是人为合成反例材料，不能替代真实官方候选应提供的补充。",
+              "evidence": [
+                {
+                  "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+                  "start": 0,
+                  "end": 39,
+                  "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 946,
+                  "end": 996,
+                  "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "明确合成的中文同义改写讲信号量限制并发数与过度释放；内容直接相关，但不得充当真实来源正例。"
+        },
+        {
+          "doc_key": "python_docs:library/asyncio-sync.html",
+          "rank": 2,
+          "relevance": "direct",
+          "real_source": true,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "uncertain",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "uncertain",
+              "reason_zh": "候选Lock或Condition独占与返回历史uncancel内部方法/async-await语法没有形成目标要求的Semaphore限流及过度释放具体对照。全文有目标事实，但实际展示证据未证明该补充。",
+              "evidence": [
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 337,
+                  "end": 363,
+                  "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 26479,
+                  "end": 26531,
+                  "text": "此方法是供 asyncio 内部使用而不应被最终用户代码所使用。请参阅 uncancel() 了解详情。"
+                }
+              ]
+            },
+            {
+              "claim_index": 1,
+              "judgment": "uncertain",
+              "reason_zh": "候选Lock或Condition独占与返回历史uncancel内部方法/async-await语法没有形成目标要求的Semaphore限流及过度释放具体对照。全文有目标事实，但实际展示证据未证明该补充。",
+              "evidence": [
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 1777,
+                  "end": 1819,
+                  "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 65,
+                  "end": 148,
+                  "text": "通过 async/await 语法来声明 协程 是编写 asyncio 应用的推荐方式。例如，以下代码段会打印 \"hello\"，等待 1 秒，再打印 \"world\":"
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "真实全文包含Semaphore计数、等待/释放与BoundedSemaphore过度释放异常，文档直接有用；返回goal证据却是Condition，不等于证据选取满足目标。补充断言双方在不同技术点，不能因选对文档自动判支持。"
+        }
+      ],
+      "items": 2,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": true,
+      "direct_top3_required": true,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": true,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "python_semaphore_covered",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": false,
+          "reference_document_hit": false,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "完整已读同步原语章节已用Semaphore计数器及共享资源示例表达该事实。换为中文概括不产生新知识；返回历史选择错片段不能改变已覆盖事实。",
+              "evidence": [
+                {
+                  "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+                  "start": 0,
+                  "end": 39,
+                  "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-task.html",
+                  "start": 946,
+                  "end": 996,
+                  "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 3100,
+                  "end": 3283,
+                  "text": "信号量会管理一个内部计数器，该计数器会随每次 acquire() 调用递减并随每次 release() 调用递增。 计数器的值永远不会降到零以下；当 acquire() 发现其值为零时，它将保持阻塞直到有某个任务调用了 release()。\n\n可选的 value 参数用来为内部计数器赋初始值 (默认值为 1)。如果给定的值小于 0 则会引发 ValueError."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "明确合成的中文同义改写讲信号量限制并发数与过度释放；内容直接相关，但不得充当真实来源正例。已读同步全文已给出acquire计数递减、零时等待、release递增及资源示例，当前句只是改写。算法只找到create_task或Condition历史段，漏掉真正已有覆盖，不能宣称新增。"
+        }
+      ],
+      "items": 1,
+      "computation_complete": true,
+      "real_source_required": true,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "no_suitable_limited_pool",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": true,
+      "empty_check": true,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "mirror_not_new",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "paraphrase_not_new",
+      "judgments": [
+        {
+          "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+          "rank": 1,
+          "relevance": "direct",
+          "real_source": false,
+          "reference_document_hit": true,
+          "supplement_eligible": true,
+          "supplement": "unsupported",
+          "claims": [
+            {
+              "claim_index": 0,
+              "judgment": "unsupported",
+              "reason_zh": "完整已读同步原语章节已用Semaphore计数器及共享资源示例表达该事实。换为中文概括不产生新知识；返回历史选择错片段不能改变已覆盖事实。",
+              "evidence": [
+                {
+                  "doc_key": "mvp_fixture:paraphrase-asyncio-semaphore",
+                  "start": 0,
+                  "end": 39,
+                  "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 1777,
+                  "end": 1819,
+                  "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                },
+                {
+                  "doc_key": "python_docs:library/asyncio-sync.html",
+                  "start": 3100,
+                  "end": 3283,
+                  "text": "信号量会管理一个内部计数器，该计数器会随每次 acquire() 调用递减并随每次 release() 调用递增。 计数器的值永远不会降到零以下；当 acquire() 发现其值为零时，它将保持阻塞直到有某个任务调用了 release()。\n\n可选的 value 参数用来为内部计数器赋初始值 (默认值为 1)。如果给定的值小于 0 则会引发 ValueError."
+                }
+              ]
+            }
+          ],
+          "claim_reviews_pending": 0,
+          "review_reason_zh": "明确合成的中文同义改写讲信号量限制并发数与过度释放；内容直接相关，但不得充当真实来源正例。已读同步全文已给出acquire计数递减、零时等待、release递增及资源示例，当前句只是改写。算法只找到create_task或Condition历史段，漏掉真正已有覆盖，不能宣称新增。"
+        }
+      ],
+      "items": 1,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": true,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": true,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    },
+    {
+      "id": "new_irrelevant_words",
+      "judgments": [],
+      "items": 0,
+      "computation_complete": true,
+      "real_source_required": false,
+      "reference_top3_hit": false,
+      "direct_top3_required": false,
+      "direct_top3_confirmed": false,
+      "source_review_pending": 0,
+      "positive_supplement_required": false,
+      "positive_supplement_confirmed": false,
+      "empty_required": false,
+      "empty_check": null,
+      "history_exclusion_violation": false
+    }
+  ],
+  "raw_evidence_integrity": {
+    "checked_spans": 140,
+    "invalid_count": 0,
+    "failures": [],
+    "status": "valid_literal_evidence",
+    "scope": "literal source/version integrity only; does not certify relevance or supplement truth"
+  },
+  "evaluator_sha256": "02cfd5e47934bf9cbfb25b9cfede85b36f9764e902adb8dd9ad54a1a40c686de"
+}

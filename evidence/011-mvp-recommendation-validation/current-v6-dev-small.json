@@ -1,0 +1,3492 @@
+{
+  "status": "completed",
+  "scope": "agent-prepared fixed source-based cases; not independent human learning outcome",
+  "signature": {
+    "manifest_sha256": "9faac4ed5d24d273f14c550d20edc30b9b7512c856e6db1b86b5be274b9d1b8f",
+    "mode": "current",
+    "evaluator_sha256": "0817d15bba76af11a7d6e6e551c4f7831f4ff97a1a546174106f9e1ef09af0d0",
+    "language": "zh",
+    "pool": "small",
+    "case_ids": [
+      "postgres_retry_cold",
+      "postgres_retry_partial",
+      "postgres_retry_covered",
+      "python_semaphore_cold",
+      "python_semaphore_partial",
+      "python_semaphore_covered",
+      "no_suitable_limited_pool",
+      "mirror_not_new",
+      "paraphrase_not_new",
+      "new_irrelevant_words"
+    ],
+    "code": {
+      "__init__.py": "b56c4c1d1ae401c3289ab4baac7fb2e004a5444ec046782cb1446a5e9cee4b49",
+      "corpus/__init__.py": "12a7deafac9f5b5e7f245b3982f8edd62ea506f0b335a37e32d9f1885accd23e",
+      "corpus/verify.py": "32b155a6f7e0c5133b79f5dfda0835cebe4909320dbe9df34b61a0f6ded2e90b",
+      "corpus/html.py": "9bbcb38fed463e33b5918bd58d21b44dba8beef614544bcc3fde92c397357975",
+      "corpus/supplement.py": "a58ced8db4056f2859f6b120650f5ddcf33bb3f9164cf0860a6d7b4ea3b83d21",
+      "corpus/pipeline.py": "6a28033c1be39132e03a91200b271c807792d057b51d1d20494f321837a5fbdf",
+      "corpus/official.py": "48787db86ac9cfdecd54eef55f4af3540e23ccb983e663b813a8afb0ea7c2485",
+      "corpus/network.py": "5471b97f611f7189e92788352f82ec3d3919c4254b9478bd2e42a29adf91807c",
+      "corpus/stackexchange.py": "7cfbdc89e3de5cecf26ca773873aad8d33e45885553131f9ef2291975689c15a",
+      "web/routes_learning.py": "cdbf44faa998211b1cc36c47df55bd00970d41ff827b617dacfa36035b730aa4",
+      "web/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "web/app.py": "d32ca148e1c6cb28a7af753eb9d05c6a7b38158edf4fc04719749f7ec71719b1",
+      "web/routes_pages.py": "c510efc89f97e746504bd0687b1c48a4315649dd3ec6ebe9b5e08e5d4037a0e2",
+      "web/routes_podcasts.py": "45e261aee811e9d71f3cd915b3b44c9371de32ad3f582338819953b5ad9791c8",
+      "web/routes_api.py": "eba44951a8d83f8b20b7e4ef0e0535a95a58dc47aeca6aba02f607ecf24b84cb",
+      "web/baseline.py": "5c0fe1acfba9c3683387d03d22013ee3e74d6d7beafeef21bb95ba7fcaa8d2de",
+      "web/mongo_sink.py": "a7e36f7903d1ec5d573cc1b4250c00ff57a7747ca39b20ab9c66a7a495550628",
+      "web/security.py": "e1c388f4cb4a464ca048fd0431cd750e1a33a45ab17457f4b1ec42a09dc5f6a2",
+      "web/score_job.py": "2fb028d8efbc0b5af68f61cf30bd3daab7a02cf1ce5f035c28a4318441c45734",
+      "web/classify.py": "6eab69f494456535cd2e00d955a114d908eac3625c3484ee6c25d056895804e7",
+      "web/auth.py": "2309a3fe65557bb833c1658e89168085631643d677306acb37ee16ff819b53cc",
+      "recommendations/__init__.py": "d1ad1de9f758663f4be3cccb5ada44e1c12901d2edb1c958ddf2b44ef5e4b8c6",
+      "recommendations/query.py": "005ea73bddf79e061ecab432314d9697de09947043c60bc6bf6344ed8b2f855b",
+      "recommendations/evaluation.py": "daee5dfa19569332470cacbf61d4d9802f2fe2ba65a4cdcff26cf36f57d46c65",
+      "recommendations/worker.py": "68b1fea1f0f0eebda79a18e83c2f6766471aa8967aadd959c75eafa389421d96",
+      "recommendations/engine.py": "d1d716a2e20af948983d06b1715d73541a3ffc8256c4651ac0faa55bb45ac8bf",
+      "recommendations/importer.py": "b8447bf256846698fc92f7a8c57f843c6c5c36fdf0bfd945343d6a76e29e1c58",
+      "recommendations/semantic_analysis.py": "7ae828b6d6385cef6379432e9ce0674038edf2e3cf6d49a9086012d4346de1d9",
+      "recommendations/presentation.py": "c593e090e6c03a83255572877e79a5480d7cf071ef42d592816d3cc2248e2583",
+      "recommendations/runtime.py": "e9f886f3e6203517701d13bdebfa998196d2f98615608cd9f1f5aec149cc6208",
+      "recommendations/lexical_baseline.py": "53a9415626e63fc03d45d6f437c48ebc58d0341e1dc1700d04b05fed7d598cbf",
+      "recommendations/queue.py": "0006d4dc7bbb914fa8188d5dfed1beaea4cfd4610d189f17cca8cd4d2a6dc38b",
+      "recommendations/semantic.py": "3ba66f332a146c0d3b77e18c7e5dd84a1d2623294d6cfeaed6454b6ff9519770",
+      "recommendations/index.py": "c8f3a136a9533b356b212ae58541248862f6b857c9f5186b5d6d23efa375ab43",
+      "recommendations/text.py": "ee279d6bf24e4ee0856d23cb41ca8280ddf9eb0ca8f4c0b9409dedfceb53d4e6",
+      "evaluation/__init__.py": "c0f542ae05e982fbadd9fd9c91f09822833acce5b5a92a07e982f1c07890f7c2",
+      "evaluation/study.py": "e8db8ddfaff00956fb0b7326168bcca75017f4a0cc1e4403ef34c05f21508222",
+      "evaluation/metrics.py": "2cd6c26a180629a41ea9eea1ca52585de0f4fde3a18a665f309234fcff7e19b7",
+      "mining/dedup.py": "4beacbc777b6e364e2010bc5dd9162ee7633e71096172b8f8b75443b60010532",
+      "mining/__init__.py": "050004bbd65a8d6e92d087254f3bb88d8d9abe474850151f9e63336e16b2d34a",
+      "mining/spark_job.py": "53aafe9718dde4aefcd0ea636f8e6f69b5e7de6aef1b534c36622c86a4541d93",
+      "mining/contract.py": "7352ff60a089c94152bc80fdd60c246db5c60df4407169792acc8b641d11b8c3",
+      "mining/batch.py": "f9f02052e6fd49a4a080a9a472643269c02ba740da9b279da8cad2562d328a76",
+      "mining/scale.py": "0f4fb50b6029eebc8931a34b27dadd7f321947f924d3955bace26848c1dfbcc7",
+      "mining/mongo_sink.py": "7537bcfd5d039489eb7f5dbc6038c0a3411c74aa2248d176e946d79ff6cb3efa",
+      "mining/collectors/arxiv.py": "9c4b3bea2859a6093ce373da31732816f04c5f2c5ed6b023a66dfead4df0317c",
+      "mining/collectors/__init__.py": "9b3eff30cade94e6cab108ba36d6a2a31a42dc3417bf4c9b996c86fad789e13a",
+      "mining/collectors/stackexchange.py": "e0eac62788333449b09bec7cd52b2eff3d270e241d9b9758b77946eed74e5f57",
+      "learning/content.py": "a95ea9f1f180555ed4eaac147b7a8daf91be5accbbf615be5a44cb0f323d6854",
+      "learning/__init__.py": "2253c8d8ce69939b39739a807e5b59dfebf63b91915e03fefa0d52373b78b724",
+      "learning/llama_provider.py": "2562216550d1f347468e6c2242c9ffec7aae1c5523f7ddc490552330922f676b",
+      "learning/store.py": "f6259ca2f6f76dcef30b90a01513e4411b955fbb4285b077d26fea17019c29c4",
+      "learning/quality.py": "913693724245973a56770a9815d8a48c4cfe0edbad27296aa1b472385f1ed814",
+      "learning/local_providers.py": "a24b4dce6877c8b66e6617e09e52e431bc45cca83bcb46f2b21ba81537b48ce6",
+      "learning/providers.py": "762504e90724b4c6402bdbdcf73dcb3fea57165ae19e8a052eb7084704668aa2",
+      "linking/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "linking/job.py": "fe3b09c8963370df5b8c1da353a881b4a59ea214490ef58052c155448a56d05a",
+      "podcasts/__init__.py": "284a3cec4acb938faf3b2ee7622710b48caeb9971716a2d5b96385e8db0e753d",
+      "podcasts/learning.py": "793fade3dc4db58187ed427ceb389fb3cd114af76bff5b7cd80367925fe80799",
+      "podcasts/feeds.py": "7761000d9bb4d1b488d476b3d58e31fd2f5882163118faba851c3051a4f67f30",
+      "podcasts/audio.py": "17f0983cc7d86ec7e2f9e8bc67a2dd7012fc764a1637851746940084c3c54273",
+      "podcasts/worker.py": "b6d04156803609ab0e94018361be32dd9dbf9c6d8a07e59ab906c75ddbb19558",
+      "podcasts/store.py": "0930291e1f53d9d00a541081df3a05e33f791a726b6ccf758ee522312462f845",
+      "podcasts/network.py": "ffcd6126739e867cd42780c2ac925145ed49691fb14e08e9278e8e8d6e13e3e9",
+      "podcasts/analysis.py": "a4d6d151fbc9a67d82eeea6e8c3677609a135a07b10e2044f0c038464f9e16eb"
+    },
+    "goal_processor": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+    "semantic_processor": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de"
+  },
+  "runtime_code_snapshot": "/home/lengjing1236/knowpipe/state/feature011/evaluation/current-snapshots/5099454624faa79c3f006f504e41e6adc1735a13d410d88b7a59fa55ae096fd5",
+  "cases": [
+    {
+      "id": "postgres_retry_cold",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 128.339,
+      "history": [],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/mvcc-serialization-failure-handling.html",
+            "title": "13.5. Serialization Failure Handling #",
+            "source_url": "https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html",
+            "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "selection_score": 0.5333902520979278,
+            "relevance": 0.627517943644621,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "goal_only",
+            "comparison": {
+              "status": "goal_only",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 563,
+                "end": 769,
+                "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+              },
+              "history": null,
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 9,
+                "history_sentences": 0,
+                "uncompared_candidate_sentences": 5,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "postgresql_docs",
+              "doc_id": "18/mvcc-serialization-failure-handling.html",
+              "title": "13.5. Serialization Failure Handling #",
+              "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+              "start": 563,
+              "end": 769,
+              "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation).",
+              "matched_terms": []
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "body_text",
+                "start": 1733,
+                "end": 1878,
+                "text": "issue and/or which values to use. Therefore, PostgreSQL does not offer an automatic retry facility, since it cannot do so with any guarantee of c"
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "goal_only",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 563,
+                "end": 769,
+                "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+              },
+              "comparison": null,
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 0
+            }
+          },
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "title": "13.2. Transaction Isolation #",
+            "source_url": "https://www.postgresql.org/docs/18/transaction-iso.html",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+            "rank": 2,
+            "selection_score": 0.2948682531275203,
+            "relevance": 0.49323293448915495,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "goal_only",
+            "comparison": {
+              "status": "goal_only",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 20518,
+                "end": 20810,
+                "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution."
+              },
+              "history": null,
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 24,
+                "history_sentences": 0,
+                "uncompared_candidate_sentences": 64,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "postgresql_docs",
+              "doc_id": "18/transaction-iso.html",
+              "title": "13.2. Transaction Isolation #",
+              "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+              "start": 20518,
+              "end": 20810,
+              "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution.",
+              "matched_terms": [
+                "postgresql",
+                "transaction"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "body_text",
+                "start": 1596,
+                "end": 1741,
+                "text": "actions one at a time.\n\nThe SQL standard and PostgreSQL-implemented transaction isolation levels are described in Table 13.1.\n\nTable 13.1. Transa"
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "goal_only",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 20518,
+                "end": 20810,
+                "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution."
+              },
+              "comparison": null,
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 0
+            }
+          },
+          {
+            "source": "stackexchange",
+            "doc_id": "dba-346931",
+            "title": "Postgres: limiting serialization errors on serializable transactions",
+            "source_url": "https://dba.stackexchange.com/questions/346931/postgres-limiting-serialization-errors-on-serializable-transactions",
+            "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 3,
+            "selection_score": 0.20493130757231304,
+            "relevance": 0.38797691267203316,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "goal_only",
+            "comparison": {
+              "status": "goal_only",
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "history": null,
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 2,
+                "history_sentences": 0,
+                "uncompared_candidate_sentences": 8,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "stackexchange",
+              "doc_id": "dba-346931",
+              "title": "Postgres: limiting serialization errors on serializable transactions",
+              "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+              "start": 80,
+              "end": 351,
+              "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows).",
+              "matched_terms": [
+                "transaction"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "title",
+                "start": 0,
+                "end": 68,
+                "text": "Postgres: limiting serialization errors on serializable transactions"
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "goal_only",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "comparison": null,
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 0
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "c3ff852f82bf1f06d0ffb939e1b8d626e36172ecb69748a4e0baf87306129219",
+            "relevance": 0.19618622586104004
+          },
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "relevance": 0.1766521674206719
+          },
+          {
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+            "relevance": 0.13541943389984343
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "score": 0.5333902520979278
+          },
+          {
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+            "rank": 2,
+            "score": 0.2948682531275203
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 3,
+            "score": 0.20493130757231304
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "score": 0.627517943644621
+          },
+          {
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186",
+            "rank": 2,
+            "score": 0.49323293448915495
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 3,
+            "score": 0.38797691267203316
+          }
+        ],
+        "history_used": 0,
+        "history_unavailable": 0,
+        "history_references": [],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+          "variants": [
+            "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+            "Understands the circumstances in which the PostgreSQL serialization failed and the single key conflict should be retested"
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 137,
+            "candidate_sentences": 35,
+            "history_sentences": 0,
+            "comparison_pairs": 0,
+            "unsupported_units": 0,
+            "history_contexts": 0,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 22,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 5,
+            "paragraph_budget_per_document": 60,
+            "nonlexical_context_paragraphs": 125,
+            "history_paragraphs_available": 0,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 0
+      }
+    },
+    {
+      "id": "postgres_retry_partial",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 45.404,
+      "history": [
+        {
+          "source": "postgresql_docs",
+          "doc_id": "18/transaction-iso.html",
+          "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af"
+        }
+      ],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/mvcc-serialization-failure-handling.html",
+            "title": "13.5. Serialization Failure Handling #",
+            "source_url": "https://www.postgresql.org/docs/18/mvcc-serialization-failure-handling.html",
+            "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "selection_score": 0.6278153767187398,
+            "relevance": 0.5761126143913391,
+            "history_overlap": 0.0,
+            "supplement_score": 0.4062342779002985,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 168,
+                "end": 299,
+                "text": "As previously stated, applications using these levels must be prepared to retry transactions that fail due to serialization errors."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 11147,
+                "end": 11246,
+                "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 563,
+                    "end": 769,
+                    "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 19275,
+                    "end": 20174,
+                    "text": "Consistent use of Serializable transactions can simplify development. The guarantee that any set of successfully committed concurrent Serializable transactions will have the same effect as if they were run one at a time means that if you can demonstrate that a single transaction, as written, will do the right thing when run by itself, you can have confidence that it will do the right thing in any mix of Serializable transactions, even without any information about what those other transactions might do, or it will not successfully commit. It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                  },
+                  "focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 563,
+                    "end": 769,
+                    "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation)."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 19820,
+                    "end": 20174,
+                    "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.5761126143913391,
+                    "context_similarity": 0.6322534380686828,
+                    "cross_encoder_relevance": 0.35704140268455714,
+                    "goal_similarity": 0.6700002765513886,
+                    "supplement": 0.35718426660667507,
+                    "contradiction": 0.003274224465712905,
+                    "entailment": 0.01612160913646221,
+                    "neutral": 0.9806041717529297
+                  }
+                },
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1179,
+                    "end": 1403,
+                    "text": "There are also some corner cases in which the server will issue a unique-key or exclusion constraint error even though in principle it has enough information to determine that a serialization problem is the underlying cause."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 20518,
+                    "end": 21639,
+                    "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                  },
+                  "focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1179,
+                    "end": 1403,
+                    "text": "There are also some corner cases in which the server will issue a unique-key or exclusion constraint error even though in principle it has enough information to determine that a serialization problem is the underlying cause."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 21405,
+                    "end": 21639,
+                    "text": "If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.39589813041257055,
+                    "context_similarity": 0.7183915728744072,
+                    "cross_encoder_relevance": 0.041937736267111725,
+                    "goal_similarity": 0.5475954421891958,
+                    "supplement": 0.2495215932557821,
+                    "contradiction": 0.005741467233747244,
+                    "entailment": 0.11692751944065094,
+                    "neutral": 0.8773309588432312
+                  }
+                },
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1404,
+                    "end": 1634,
+                    "text": "While it's recommendable to just retry serialization_failure errors unconditionally, more care is needed when retrying these other error codes, since they might represent persistent error conditions rather than transient failures."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 11147,
+                    "end": 11246,
+                    "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+                  },
+                  "focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1404,
+                    "end": 1634,
+                    "text": "While it's recommendable to just retry serialization_failure errors unconditionally, more care is needed when retrying these other error codes, since they might represent persistent error conditions rather than transient failures."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 11147,
+                    "end": 11246,
+                    "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.43694775769578387,
+                    "context_similarity": 0.687505584510216,
+                    "cross_encoder_relevance": 0.18338457092134314,
+                    "goal_similarity": 0.5456176948848299,
+                    "supplement": 0.29505196961091246,
+                    "contradiction": 0.014756394550204277,
+                    "entailment": 0.003059784881770611,
+                    "neutral": 0.9821838140487671
+                  }
+                }
+              ],
+              "uncertain_evidence": [
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 563,
+                    "end": 1001,
+                    "text": "In some cases it is also appropriate to retry unique-key failures, which have SQLSTATE code 23505 (unique_violation), and exclusion constraint failures, which have SQLSTATE code 23P01 (exclusion_violation). For example, if the application selects a new value for a primary key column after inspecting the currently stored keys, it could get a unique-key failure because another application instance selected the same new key concurrently."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 20518,
+                    "end": 21639,
+                    "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                  },
+                  "focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 770,
+                    "end": 1001,
+                    "text": "For example, if the application selects a new value for a primary key column after inspecting the currently stored keys, it could get a unique-key failure because another application instance selected the same new key concurrently."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 21183,
+                    "end": 21404,
+                    "text": "For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one."
+                  },
+                  "context_dependent": true,
+                  "scores": {
+                    "relevance": 0.4293519113247464,
+                    "context_similarity": 0.8026094768362972,
+                    "cross_encoder_relevance": 0.1893573729746701,
+                    "goal_similarity": 0.5322067134747792,
+                    "supplement": 0.0,
+                    "contradiction": 0.0061650024726986885,
+                    "entailment": 0.14444372057914734,
+                    "neutral": 0.8493912816047668
+                  }
+                },
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 770,
+                    "end": 1178,
+                    "text": "For example, if the application selects a new value for a primary key column after inspecting the currently stored keys, it could get a unique-key failure because another application instance selected the same new key concurrently. This is effectively a serialization failure, but the server will not detect it as such because it cannot “see” the connection between the inserted value and the previous reads."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 14494,
+                    "end": 15431,
+                    "text": "The Serializable isolation level provides the strictest transaction isolation. This level emulates serial transaction execution for all committed transactions; as if transactions had been executed one after another, serially, rather than concurrently. However, like the Repeatable Read level, applications using this level must be prepared to retry transactions due to serialization failures. In fact, this isolation level works exactly the same as Repeatable Read except that it also monitors for conditions which could make execution of a concurrent set of serializable transactions behave in a manner inconsistent with all possible serial (one at a time) executions of those transactions. This monitoring does not introduce any blocking beyond that present in repeatable read, but there is some overhead to the monitoring, and detection of the conditions which could cause a serialization anomaly will trigger a serialization failure."
+                  },
+                  "focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 1002,
+                    "end": 1178,
+                    "text": "This is effectively a serialization failure, but the server will not detect it as such because it cannot “see” the connection between the inserted value and the previous reads."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 15186,
+                    "end": 15431,
+                    "text": "This monitoring does not introduce any blocking beyond that present in repeatable read, but there is some overhead to the monitoring, and detection of the conditions which could cause a serialization anomaly will trigger a serialization failure."
+                  },
+                  "context_dependent": true,
+                  "scores": {
+                    "relevance": 0.2979988429458246,
+                    "context_similarity": 0.6789472463592597,
+                    "cross_encoder_relevance": 0.053189203298128145,
+                    "goal_similarity": 0.4029172599376946,
+                    "supplement": 0.0,
+                    "contradiction": 0.09930726885795593,
+                    "entailment": 0.013513547368347645,
+                    "neutral": 0.8871791362762451
+                  }
+                },
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 168,
+                    "end": 451,
+                    "text": "As previously stated, applications using these levels must be prepared to retry transactions that fail due to serialization errors. Such an error's message text will vary according to the precise circumstances, but it will always have the SQLSTATE code 40001 (serialization_failure)."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 19275,
+                    "end": 20174,
+                    "text": "Consistent use of Serializable transactions can simplify development. The guarantee that any set of successfully committed concurrent Serializable transactions will have the same effect as if they were run one at a time means that if you can demonstrate that a single transaction, as written, will do the right thing when run by itself, you can have confidence that it will do the right thing in any mix of Serializable transactions, even without any information about what those other transactions might do, or it will not successfully commit. It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                  },
+                  "focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/mvcc-serialization-failure-handling.html",
+                    "title": "13.5. Serialization Failure Handling #",
+                    "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                    "start": 300,
+                    "end": 451,
+                    "text": "Such an error's message text will vary according to the precise circumstances, but it will always have the SQLSTATE code 40001 (serialization_failure)."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 19820,
+                    "end": 20174,
+                    "text": "It is important that an environment which uses this technique have a generalized way of handling serialization failures (which always return with an SQLSTATE value of '40001'), because it will be very hard to predict exactly which transactions might contribute to the read/write dependencies and need to be rolled back to prevent serialization anomalies."
+                  },
+                  "context_dependent": true,
+                  "scores": {
+                    "relevance": 0.4082874444374475,
+                    "context_similarity": 0.6483168185112307,
+                    "cross_encoder_relevance": 0.02023199759780792,
+                    "goal_similarity": 0.574596921654436,
+                    "supplement": 0.0,
+                    "contradiction": 0.0347791351377964,
+                    "entailment": 0.09222952276468277,
+                    "neutral": 0.8729913830757141
+                  }
+                }
+              ],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.4062342779002985
+              },
+              "scope": {
+                "candidate_sentences": 8,
+                "history_sentences": 83,
+                "uncompared_candidate_sentences": 6,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "postgresql_docs",
+              "doc_id": "18/mvcc-serialization-failure-handling.html",
+              "title": "13.5. Serialization Failure Handling #",
+              "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+              "start": 168,
+              "end": 299,
+              "text": "As previously stated, applications using these levels must be prepared to retry transactions that fail due to serialization errors.",
+              "matched_terms": [
+                "serialization",
+                "transaction"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 168,
+                "end": 299,
+                "text": "As previously stated, applications using these levels must be prepared to retry transactions that fail due to serialization errors."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 11147,
+                "end": 11246,
+                "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "body_text",
+                "start": 1733,
+                "end": 1878,
+                "text": "issue and/or which values to use. Therefore, PostgreSQL does not offer an automatic retry facility, since it cannot do so with any guarantee of c"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "postgresql_docs",
+                "doc_id": "18/mvcc-serialization-failure-handling.html",
+                "title": "13.5. Serialization Failure Handling #",
+                "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+                "start": 168,
+                "end": 299,
+                "text": "As previously stated, applications using these levels must be prepared to retry transactions that fail due to serialization errors."
+              },
+              "comparison": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 11147,
+                "end": 11246,
+                "text": "Applications using this level must be prepared to retry transactions due to serialization failures."
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 36
+            }
+          },
+          {
+            "source": "stackexchange",
+            "doc_id": "dba-346931",
+            "title": "Postgres: limiting serialization errors on serializable transactions",
+            "source_url": "https://dba.stackexchange.com/questions/346931/postgres-limiting-serialization-errors-on-serializable-transactions",
+            "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 2,
+            "selection_score": 0.27608258211351866,
+            "relevance": 0.37447758709831047,
+            "history_overlap": 0.1,
+            "supplement_score": 0.21649666831404119,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 20518,
+                "end": 21639,
+                "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+              },
+              "covered_evidence": [
+                {
+                  "status": "covered",
+                  "candidate": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 578,
+                    "end": 874,
+                    "text": "This increases chances of getting serialization error. For example, when I try to update two different rows concurrently, and it turns out that those two rows are stored on the same page and that both transactions acquired page-level lock, the one that commits later will get serialization error."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 22485,
+                    "end": 22841,
+                    "text": "When the system is forced to combine multiple page-level predicate locks into a single relation-level predicate lock because the predicate lock table is short of memory, an increase in the rate of serialization failures may occur. You can avoid this by increasing max_pred_locks_per_transaction, max_pred_locks_per_relation, and/or max_pred_locks_per_page."
+                  },
+                  "focus": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 633,
+                    "end": 874,
+                    "text": "For example, when I try to update two different rows concurrently, and it turns out that those two rows are stored on the same page and that both transactions acquired page-level lock, the one that commits later will get serialization error."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 22485,
+                    "end": 22715,
+                    "text": "When the system is forced to combine multiple page-level predicate locks into a single relation-level predicate lock because the predicate lock table is short of memory, an increase in the rate of serialization failures may occur."
+                  },
+                  "context_dependent": true,
+                  "scores": {
+                    "relevance": 0.3628726830760103,
+                    "context_similarity": 0.6075365524324131,
+                    "cross_encoder_relevance": 0.02612191073702922,
+                    "goal_similarity": 0.5071944426498594,
+                    "supplement": 0.0,
+                    "contradiction": 0.03871692717075348,
+                    "entailment": 0.8404145836830139,
+                    "neutral": 0.12086860835552216
+                  }
+                }
+              ],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 80,
+                    "end": 351,
+                    "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 20518,
+                    "end": 21639,
+                    "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+                  },
+                  "focus": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 80,
+                    "end": 351,
+                    "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 20518,
+                    "end": 20810,
+                    "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution."
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.37447758709831047,
+                    "context_similarity": 0.7090192254323147,
+                    "cross_encoder_relevance": 0.017167470275473846,
+                    "goal_similarity": 0.5276104943080976,
+                    "supplement": 0.21649666831404119,
+                    "contradiction": 0.17875704169273376,
+                    "entailment": 0.005849248729646206,
+                    "neutral": 0.8153937458992004
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.1,
+                "supplement": 0.21649666831404119
+              },
+              "scope": {
+                "candidate_sentences": 2,
+                "history_sentences": 83,
+                "uncompared_candidate_sentences": 8,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "stackexchange",
+              "doc_id": "dba-346931",
+              "title": "Postgres: limiting serialization errors on serializable transactions",
+              "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+              "start": 80,
+              "end": 351,
+              "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows).",
+              "matched_terms": [
+                "transaction"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 20518,
+                "end": 21639,
+                "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+              },
+              "overlap": 0.1
+            },
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "title",
+                "start": 0,
+                "end": 68,
+                "text": "Postgres: limiting serialization errors on serializable transactions"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "comparison": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 20518,
+                "end": 21639,
+                "text": "While PostgreSQL's Serializable transaction isolation level only allows concurrent transactions to commit if it can prove there is a serial order of execution that would produce the same effect, it doesn't always prevent errors from being raised that would not occur in true serial execution. In particular, it is possible to see unique constraint violations caused by conflicts with overlapping Serializable transactions even after explicitly checking that the key isn't present before attempting to insert it. This can be avoided by making sure that all Serializable transactions that insert potentially conflicting keys explicitly check if they can do so first. For example, imagine an application that asks the user for a new key and then checks that it doesn't exist already by trying to select it first, or generates a new key by selecting the maximum existing key and adding one. If some Serializable transactions insert new keys directly without following this protocol, unique constraints violations might be reported even in cases where they could not occur in a serial execution of the concurrent transactions."
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 36
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "c3ff852f82bf1f06d0ffb939e1b8d626e36172ecb69748a4e0baf87306129219",
+            "relevance": 0.19618622586104004
+          },
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "relevance": 0.1766521674206719
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "relevance": 0.07522112421753539
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "score": 0.48969572223263824
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 2,
+            "score": 0.22157207182875846
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a",
+            "rank": 1,
+            "score": 0.7386063255514586
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 2,
+            "score": 0.43860759919802833
+          }
+        ],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+          "variants": [
+            "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+            "Understands the circumstances in which the PostgreSQL serialization failed and the single key conflict should be retested"
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 101,
+            "candidate_sentences": 10,
+            "history_sentences": 83,
+            "comparison_pairs": 30,
+            "unsupported_units": 0,
+            "history_contexts": 36,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 4,
+            "paragraph_budget_per_document": 75,
+            "nonlexical_context_paragraphs": 92,
+            "history_paragraphs_available": 36,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 36
+      }
+    },
+    {
+      "id": "postgres_retry_covered",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 32.068,
+      "history": [
+        {
+          "source": "postgresql_docs",
+          "doc_id": "18/transaction-iso.html",
+          "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af"
+        },
+        {
+          "source": "postgresql_docs",
+          "doc_id": "18/mvcc-serialization-failure-handling.html",
+          "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c"
+        }
+      ],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "stackexchange",
+            "doc_id": "dba-346931",
+            "title": "Postgres: limiting serialization errors on serializable transactions",
+            "source_url": "https://dba.stackexchange.com/questions/346931/postgres-limiting-serialization-errors-on-serializable-transactions",
+            "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 1,
+            "selection_score": 0.32052450216300526,
+            "relevance": 0.37708764960353564,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "uncertain",
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 17257,
+                "end": 18101,
+                "text": "To guarantee true serializability PostgreSQL uses predicate locking, which means that it keeps locks which allow it to determine when a write would have had an impact on the result of a previous read from a concurrent transaction, had it run first. In PostgreSQL these locks do not cause any blocking and therefore can not play any part in causing a deadlock. They are used to identify and flag dependencies among concurrent Serializable transactions which in certain combinations can lead to serialization anomalies. In contrast, a Read Committed or Repeatable Read transaction which wants to ensure data consistency may need to take out a lock on an entire table, which could block other users attempting to use that table, or it may use SELECT FOR UPDATE or SELECT FOR SHARE which not only can block other transactions but cause disk access."
+              },
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 80,
+                    "end": 351,
+                    "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 17257,
+                    "end": 18101,
+                    "text": "To guarantee true serializability PostgreSQL uses predicate locking, which means that it keeps locks which allow it to determine when a write would have had an impact on the result of a previous read from a concurrent transaction, had it run first. In PostgreSQL these locks do not cause any blocking and therefore can not play any part in causing a deadlock. They are used to identify and flag dependencies among concurrent Serializable transactions which in certain combinations can lead to serialization anomalies. In contrast, a Read Committed or Repeatable Read transaction which wants to ensure data consistency may need to take out a lock on an entire table, which could block other users attempting to use that table, or it may use SELECT FOR UPDATE or SELECT FOR SHARE which not only can block other transactions but cause disk access."
+                  },
+                  "focus": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 80,
+                    "end": 351,
+                    "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 17257,
+                    "end": 17505,
+                    "text": "To guarantee true serializability PostgreSQL uses predicate locking, which means that it keeps locks which allow it to determine when a write would have had an impact on the result of a previous read from a concurrent transaction, had it run first."
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.37708764960353564,
+                    "context_similarity": 0.6970925617082335,
+                    "cross_encoder_relevance": 0.02200514591888141,
+                    "goal_similarity": 0.5292658654683875,
+                    "supplement": 0.0,
+                    "contradiction": 0.7700592279434204,
+                    "entailment": 0.004001130349934101,
+                    "neutral": 0.22593966126441956
+                  }
+                },
+                {
+                  "status": "uncertain",
+                  "candidate": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 578,
+                    "end": 874,
+                    "text": "This increases chances of getting serialization error. For example, when I try to update two different rows concurrently, and it turns out that those two rows are stored on the same page and that both transactions acquired page-level lock, the one that commits later will get serialization error."
+                  },
+                  "history": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 11248,
+                    "end": 12074,
+                    "text": "UPDATE, DELETE, MERGE, SELECT FOR UPDATE, and SELECT FOR SHARE commands behave the same as SELECT in terms of searching for target rows: they will only find target rows that were committed as of the transaction start time. However, such a target row might have already been updated (or deleted or locked) by another concurrent transaction by the time it is found. In this case, the repeatable read transaction will wait for the first updating transaction to commit or roll back (if it is still in progress). If the first updater rolls back, then its effects are negated and the repeatable read transaction can proceed with updating the originally found row. But if the first updater commits (and actually updated or deleted the row, not just locked it) then the repeatable read transaction will be rolled back with the message"
+                  },
+                  "focus": {
+                    "source": "stackexchange",
+                    "doc_id": "dba-346931",
+                    "title": "Postgres: limiting serialization errors on serializable transactions",
+                    "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                    "start": 633,
+                    "end": 874,
+                    "text": "For example, when I try to update two different rows concurrently, and it turns out that those two rows are stored on the same page and that both transactions acquired page-level lock, the one that commits later will get serialization error."
+                  },
+                  "history_focus": {
+                    "source": "postgresql_docs",
+                    "doc_id": "18/transaction-iso.html",
+                    "title": "13.2. Transaction Isolation #",
+                    "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                    "start": 11471,
+                    "end": 11611,
+                    "text": "However, such a target row might have already been updated (or deleted or locked) by another concurrent transaction by the time it is found."
+                  },
+                  "context_dependent": true,
+                  "scores": {
+                    "relevance": 0.3517659501455416,
+                    "context_similarity": 0.6103774981164413,
+                    "cross_encoder_relevance": 0.02583121764619755,
+                    "goal_similarity": 0.4914522640738319,
+                    "supplement": 0.0,
+                    "contradiction": 0.038060855120420456,
+                    "entailment": 0.015224171802401543,
+                    "neutral": 0.9467149376869202
+                  }
+                }
+              ],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 2,
+                "history_sentences": 96,
+                "uncompared_candidate_sentences": 8,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "stackexchange",
+              "doc_id": "dba-346931",
+              "title": "Postgres: limiting serialization errors on serializable transactions",
+              "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+              "start": 80,
+              "end": 351,
+              "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows).",
+              "matched_terms": [
+                "transaction"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "history": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 17257,
+                "end": 18101,
+                "text": "To guarantee true serializability PostgreSQL uses predicate locking, which means that it keeps locks which allow it to determine when a write would have had an impact on the result of a previous read from a concurrent transaction, had it run first. In PostgreSQL these locks do not cause any blocking and therefore can not play any part in causing a deadlock. They are used to identify and flag dependencies among concurrent Serializable transactions which in certain combinations can lead to serialization anomalies. In contrast, a Read Committed or Repeatable Read transaction which wants to ensure data consistency may need to take out a lock on an entire table, which could block other users attempting to use that table, or it may use SELECT FOR UPDATE or SELECT FOR SHARE which not only can block other transactions but cause disk access."
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "PostgreSQL",
+                "field": "title",
+                "start": 0,
+                "end": 68,
+                "text": "Postgres: limiting serialization errors on serializable transactions"
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "uncertain",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "stackexchange",
+                "doc_id": "dba-346931",
+                "title": "Postgres: limiting serialization errors on serializable transactions",
+                "content_version": "615ada5818d8ff79bd563716ff9f4a579cad0849cbd83b39c9e3958466d41294",
+                "start": 80,
+                "end": 351,
+                "text": "Recently I learnt that serializable isolation level in Postgres is based on optimistic locking, hence theoretically can be performed fully concurrently as long as transactions do not interfere with each other (e.g., not doing read-then-write operations on the same rows)."
+              },
+              "comparison": {
+                "source": "postgresql_docs",
+                "doc_id": "18/transaction-iso.html",
+                "title": "13.2. Transaction Isolation #",
+                "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+                "start": 17257,
+                "end": 18101,
+                "text": "To guarantee true serializability PostgreSQL uses predicate locking, which means that it keeps locks which allow it to determine when a write would have had an impact on the result of a previous read from a concurrent transaction, had it run first. In PostgreSQL these locks do not cause any blocking and therefore can not play any part in causing a deadlock. They are used to identify and flag dependencies among concurrent Serializable transactions which in certain combinations can lead to serialization anomalies. In contrast, a Read Committed or Repeatable Read transaction which wants to ensure data consistency may need to take out a lock on an entire table, which could block other users attempting to use that table, or it may use SELECT FOR UPDATE or SELECT FOR SHARE which not only can block other transactions but cause disk access."
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 40
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "c3ff852f82bf1f06d0ffb939e1b8d626e36172ecb69748a4e0baf87306129219",
+            "relevance": 0.19618622586104004
+          },
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "relevance": 0.07522112421753539
+          },
+          {
+            "doc_key": "4fff6db304df22e5235105772aa7795eb6bd34fa70d6e95630773c024092a50c",
+            "relevance": 0.04717644182646044
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 1,
+            "score": 0.32052450216300526
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "2e4cb508fa5b310eb557ce9422ae0717c9acab668c1c3fd4b2777c1ec8be6667",
+            "rank": 1,
+            "score": 0.37708764960353564
+          }
+        ],
+        "history_used": 2,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/mvcc-serialization-failure-handling.html",
+            "content_version": "2bd25ec106c95468540013c128a809303777950292de29d66e7cdff452da654c",
+            "doc_key": "013995f0037a6d31ae147406917508ad3c858ee98ea295b1c17a4f8fcae9a99a"
+          },
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+          "variants": [
+            "理解 PostgreSQL 序列化失败和唯一键冲突分别在什么情况下应该重试事务",
+            "Understands the circumstances in which the PostgreSQL serialization failed and the single key conflict should be retested"
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 121,
+            "candidate_sentences": 2,
+            "history_sentences": 96,
+            "comparison_pairs": 6,
+            "unsupported_units": 0,
+            "history_contexts": 40,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 3,
+            "paragraph_budget_per_document": 100,
+            "nonlexical_context_paragraphs": 115,
+            "history_paragraphs_available": 40,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 40
+      }
+    },
+    {
+      "id": "python_semaphore_cold",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 23.515,
+      "history": [],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "mvp_fixture",
+            "doc_id": "paraphrase-asyncio-semaphore",
+            "title": "asyncio 并发访问许可与释放次数",
+            "source_url": "fixture://011/paraphrase-asyncio-semaphore",
+            "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "selection_score": 0.7261385329241241,
+            "relevance": 0.8542806269695578,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "goal_only",
+            "comparison": {
+              "status": "goal_only",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": null,
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 0,
+                "uncompared_candidate_sentences": 2,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "mvp_fixture",
+              "doc_id": "paraphrase-asyncio-semaphore",
+              "title": "asyncio 并发访问许可与释放次数",
+              "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+              "start": 0,
+              "end": 39,
+              "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。",
+              "matched_terms": [
+                "asyncio",
+                "python",
+                "信号量",
+                "同时",
+                "数量"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "body_text",
+                "start": 0,
+                "end": 96,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。每次成功取得许可，剩余数量减一；释放时加一。许可耗尽后，后来申请的协程必须等待别的任务释放。初始许可数量不能为负。"
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "goal_only",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "comparison": null,
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 0
+            }
+          },
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-sync.html",
+            "title": "同步原语",
+            "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html",
+            "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "selection_score": 0.23777714056807353,
+            "relevance": 0.39497019614980755,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "goal_only",
+            "comparison": {
+              "status": "goal_only",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "history": null,
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 2,
+                "history_sentences": 0,
+                "uncompared_candidate_sentences": 0,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "python_docs",
+              "doc_id": "library/asyncio-sync.html",
+              "title": "同步原语",
+              "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+              "start": 1777,
+              "end": 1819,
+              "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。",
+              "matched_terms": [
+                "asyncio",
+                "访问"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "source_url",
+                "start": 0,
+                "end": 57,
+                "text": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html"
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "goal_only",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "comparison": null,
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 0
+            }
+          },
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-task.html",
+            "title": "协程与任务",
+            "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-task.html",
+            "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+            "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+            "rank": 3,
+            "selection_score": 0.2359257719799726,
+            "relevance": 0.3813322161990127,
+            "history_overlap": 0.0,
+            "supplement_score": 0.0,
+            "reason": "goal_only",
+            "comparison": {
+              "status": "goal_only",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 18783,
+                "end": 18859,
+                "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+              },
+              "history": null,
+              "covered_evidence": [],
+              "additional_evidence": [],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.0
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 0,
+                "uncompared_candidate_sentences": 3,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "python_docs",
+              "doc_id": "library/asyncio-task.html",
+              "title": "协程与任务",
+              "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+              "start": 18783,
+              "end": 18859,
+              "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。",
+              "matched_terms": [
+                "python",
+                "释放",
+                "限制"
+              ]
+            },
+            "history_evidence": null,
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "body_text",
+                "start": 1983,
+                "end": 2124,
+                "text": "受可等待对象。\n\n可等待 对象有三种主要类型：协程, 任务 和 Future.\n\n协程\n\nPython 协程属于 可等待 对象，因此可以在其他协程中被等待:\n\n```\nimport asyncio\n\nasync def nested():\n    return 42\n\nasync "
+              }
+            ],
+            "supplement_eligible": false,
+            "supplement_evidence": {
+              "status": "goal_only",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 18783,
+                "end": 18859,
+                "text": "但是，对于会释放 GIL 的扩展模块或无此限制的替代性 Python 实现来说，asyncio.to_thread() 也可被用于 CPU 密集型函数。"
+              },
+              "comparison": null,
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 0
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "relevance": 0.3520320798429769
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "relevance": 0.27681723995246443
+          },
+          {
+            "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+            "relevance": 0.21456285414312415
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 0.7261385329241241
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "score": 0.23777714056807353
+          },
+          {
+            "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+            "rank": 3,
+            "score": 0.2359257719799726
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 0.8542806269695578
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "score": 0.39497019614980755
+          },
+          {
+            "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176",
+            "rank": 3,
+            "score": 0.3813322161990127
+          }
+        ],
+        "history_used": 0,
+        "history_unavailable": 0,
+        "history_references": [],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+          "variants": [
+            "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+            "Learn how Python asyncio can limit the number of coordinated access to resources at the same time, and how excessive signal release can be."
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "Python",
+              "aliases": [
+                "python"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 254,
+            "candidate_sentences": 4,
+            "history_sentences": 0,
+            "comparison_pairs": 0,
+            "unsupported_units": 0,
+            "history_contexts": 0,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 7,
+            "paragraph_budget_per_document": 42,
+            "nonlexical_context_paragraphs": 234,
+            "history_paragraphs_available": 0,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 0
+      }
+    },
+    {
+      "id": "python_semaphore_partial",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 23.814,
+      "history": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-task.html",
+          "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6"
+        }
+      ],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "mvp_fixture",
+            "doc_id": "paraphrase-asyncio-semaphore",
+            "title": "asyncio 并发访问许可与释放次数",
+            "source_url": "fixture://011/paraphrase-asyncio-semaphore",
+            "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "selection_score": 0.9072364598402979,
+            "relevance": 0.849411206384992,
+            "history_overlap": 0.0,
+            "supplement_score": 0.5448145129795726,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 946,
+                "end": 996,
+                "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 946,
+                    "end": 996,
+                    "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+                  },
+                  "focus": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history_focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 946,
+                    "end": 996,
+                    "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.849411206384992,
+                    "context_similarity": 0.6793578657501054,
+                    "cross_encoder_relevance": 0.9504871622014744,
+                    "goal_similarity": 0.8060929396064996,
+                    "supplement": 0.5448145129795726,
+                    "contradiction": 0.017885971814393997,
+                    "entailment": 0.03798338398337364,
+                    "neutral": 0.9441305994987488
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.5448145129795726
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 33,
+                "uncompared_candidate_sentences": 2,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "mvp_fixture",
+              "doc_id": "paraphrase-asyncio-semaphore",
+              "title": "asyncio 并发访问许可与释放次数",
+              "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+              "start": 0,
+              "end": 39,
+              "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。",
+              "matched_terms": [
+                "asyncio",
+                "python",
+                "信号量",
+                "同时",
+                "数量"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 946,
+                "end": 996,
+                "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "body_text",
+                "start": 0,
+                "end": 96,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。每次成功取得许可，剩余数量减一；释放时加一。许可耗尽后，后来申请的协程必须等待别的任务释放。初始许可数量不能为负。"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "comparison": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 946,
+                "end": 996,
+                "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 21
+            }
+          },
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-sync.html",
+            "title": "同步原语",
+            "source_url": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html",
+            "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "selection_score": 0.32375180652909025,
+            "relevance": 0.39939912218129414,
+            "history_overlap": 0.0,
+            "supplement_score": 0.24427117051951558,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 65,
+                "end": 148,
+                "text": "通过 async/await 语法来声明 协程 是编写 asyncio 应用的推荐方式。例如，以下代码段会打印 \"hello\"，等待 1 秒，再打印 \"world\":"
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 337,
+                    "end": 363,
+                    "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 26479,
+                    "end": 26531,
+                    "text": "此方法是供 asyncio 内部使用而不应被最终用户代码所使用。请参阅 uncancel() 了解详情。"
+                  },
+                  "focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 337,
+                    "end": 363,
+                    "text": "asyncio 锁可被用来保证对共享资源的独占访问。"
+                  },
+                  "history_focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 26479,
+                    "end": 26511,
+                    "text": "此方法是供 asyncio 内部使用而不应被最终用户代码所使用。"
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.3364598868623017,
+                    "context_similarity": 0.5744979784619108,
+                    "cross_encoder_relevance": 0.017723908942745344,
+                    "goal_similarity": 0.47306102025639735,
+                    "supplement": 0.16658796206640356,
+                    "contradiction": 0.1278739720582962,
+                    "entailment": 0.010295667685568333,
+                    "neutral": 0.8618304133415222
+                  }
+                },
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 1777,
+                    "end": 1819,
+                    "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 65,
+                    "end": 148,
+                    "text": "通过 async/await 语法来声明 协程 是编写 asyncio 应用的推荐方式。例如，以下代码段会打印 \"hello\"，等待 1 秒，再打印 \"world\":"
+                  },
+                  "focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 1777,
+                    "end": 1819,
+                    "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                  },
+                  "history_focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 65,
+                    "end": 109,
+                    "text": "通过 async/await 语法来声明 协程 是编写 asyncio 应用的推荐方式。"
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.39939912218129414,
+                    "context_similarity": 0.700707156286509,
+                    "cross_encoder_relevance": 0.02448315017831413,
+                    "goal_similarity": 0.560077395896857,
+                    "supplement": 0.24427117051951558,
+                    "contradiction": 0.08271302282810211,
+                    "entailment": 0.04445916414260864,
+                    "neutral": 0.8728277683258057
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.24427117051951558
+              },
+              "scope": {
+                "candidate_sentences": 2,
+                "history_sentences": 33,
+                "uncompared_candidate_sentences": 0,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "python_docs",
+              "doc_id": "library/asyncio-sync.html",
+              "title": "同步原语",
+              "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+              "start": 1777,
+              "end": 1819,
+              "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。",
+              "matched_terms": [
+                "asyncio",
+                "访问"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 65,
+                "end": 148,
+                "text": "通过 async/await 语法来声明 协程 是编写 asyncio 应用的推荐方式。例如，以下代码段会打印 \"hello\"，等待 1 秒，再打印 \"world\":"
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "source_url",
+                "start": 0,
+                "end": 57,
+                "text": "https://docs.python.org/zh-cn/3/library/asyncio-sync.html"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "comparison": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 65,
+                "end": 148,
+                "text": "通过 async/await 语法来声明 协程 是编写 asyncio 应用的推荐方式。例如，以下代码段会打印 \"hello\"，等待 1 秒，再打印 \"world\":"
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 21
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "relevance": 0.3520320798429769
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "relevance": 0.27681723995246443
+          },
+          {
+            "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+            "relevance": 0.21456285414312415
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 0.7219995254272432
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "score": 0.24069960855245498
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 1.067337011576821
+          },
+          {
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf",
+            "rank": 2,
+            "score": 0.49710759038910035
+          }
+        ],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-task.html",
+            "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+            "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+          "variants": [
+            "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+            "Learn how Python asyncio can limit the number of coordinated access to resources at the same time, and how excessive signal release can be."
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "Python",
+              "aliases": [
+                "python"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 252,
+            "candidate_sentences": 3,
+            "history_sentences": 33,
+            "comparison_pairs": 9,
+            "unsupported_units": 0,
+            "history_contexts": 20,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 6,
+            "paragraph_budget_per_document": 50,
+            "nonlexical_context_paragraphs": 235,
+            "history_paragraphs_available": 21,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 21
+      }
+    },
+    {
+      "id": "python_semaphore_covered",
+      "split": "development",
+      "scope": "full_10215_background_required_for_product_verdict",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 22.981,
+      "history": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-task.html",
+          "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6"
+        },
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-sync.html",
+          "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d"
+        }
+      ],
+      "candidate_pool": null,
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "mvp_fixture",
+            "doc_id": "paraphrase-asyncio-semaphore",
+            "title": "asyncio 并发访问许可与释放次数",
+            "source_url": "fixture://011/paraphrase-asyncio-semaphore",
+            "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "selection_score": 0.9016087043829953,
+            "relevance": 0.844314370525299,
+            "history_overlap": 0.0,
+            "supplement_score": 0.5410043806955626,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 946,
+                "end": 996,
+                "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 946,
+                    "end": 996,
+                    "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+                  },
+                  "focus": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history_focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-task.html",
+                    "title": "协程与任务",
+                    "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                    "start": 946,
+                    "end": 996,
+                    "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.844314370525299,
+                    "context_similarity": 0.6979506031864005,
+                    "cross_encoder_relevance": 0.9112822869320211,
+                    "goal_similarity": 0.8156138349224181,
+                    "supplement": 0.5410043806955626,
+                    "contradiction": 0.014342396520078182,
+                    "entailment": 0.06759574264287949,
+                    "neutral": 0.9180617928504944
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.5410043806955626
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 58,
+                "uncompared_candidate_sentences": 2,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "mvp_fixture",
+              "doc_id": "paraphrase-asyncio-semaphore",
+              "title": "asyncio 并发访问许可与释放次数",
+              "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+              "start": 0,
+              "end": 39,
+              "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。",
+              "matched_terms": [
+                "asyncio",
+                "python",
+                "信号量",
+                "同时",
+                "数量"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 946,
+                "end": 996,
+                "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "body_text",
+                "start": 0,
+                "end": 96,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。每次成功取得许可，剩余数量减一；释放时加一。许可耗尽后，后来申请的协程必须等待别的任务释放。初始许可数量不能为负。"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "comparison": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-task.html",
+                "title": "协程与任务",
+                "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+                "start": 946,
+                "end": 996,
+                "text": "asyncio.create_task() 函数用来并发运行作为 asyncio 任务 的多个协程。"
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 37
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "relevance": 0.3520320798429769
+          },
+          {
+            "doc_key": "137afd510c3f00c3ab4620999e0fa26138532a4bb81a9b140c0742ff49d8b200",
+            "relevance": 0.21456285414312415
+          },
+          {
+            "doc_key": "c3ff852f82bf1f06d0ffb939e1b8d626e36172ecb69748a4e0baf87306129219",
+            "relevance": 0.15115346362309243
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 0.7176672149465041
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 1.060716122803524
+          }
+        ],
+        "history_used": 2,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-task.html",
+            "content_version": "d5bec12661388ba2aeed88ef42efc39bdb28e387adeaf4e0ad5a9255cfa0b9b6",
+            "doc_key": "6e67ba02468a732728c56397a9c541609fa1cebb3cbaf551e89cd82fcc4ff176"
+          },
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-sync.html",
+            "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+          "variants": [
+            "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+            "Learn how Python asyncio can limit the number of coordinated access to resources at the same time, and how excessive signal release can be."
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "Python",
+              "aliases": [
+                "python"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 233,
+            "candidate_sentences": 1,
+            "history_sentences": 58,
+            "comparison_pairs": 3,
+            "unsupported_units": 0,
+            "history_contexts": 36,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 5,
+            "paragraph_budget_per_document": 60,
+            "nonlexical_context_paragraphs": 219,
+            "history_paragraphs_available": 37,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 37
+      }
+    },
+    {
+      "id": "no_suitable_limited_pool",
+      "split": "development",
+      "scope": "controlled_pool_only_not_claim_about_entire_corpus",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 1.653,
+      "history": [],
+      "candidate_pool": [
+        "stackexchange:stackoverflow-79965834",
+        "docker_docs:unversioned/engine/network",
+        "python_docs:library/concurrent.futures.html"
+      ],
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [],
+        "baseline": [],
+        "without_history": [],
+        "without_diversity": [],
+        "history_used": 0,
+        "history_unavailable": 0,
+        "history_references": [],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": "no_object_candidates",
+        "query": {
+          "original": "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+          "variants": [
+            "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+            "Understand when to try again after the PostgreSQL serialization failed"
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {},
+          "error_code": null
+        }
+      }
+    },
+    {
+      "id": "mirror_not_new",
+      "split": "development",
+      "scope": "controlled_synthetic_counterexample_not_real_new_source",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 3.357,
+      "history": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-sync.html",
+          "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d"
+        }
+      ],
+      "candidate_pool": [
+        "python_docs:library/asyncio-sync.html",
+        "mvp_fixture:mirror-asyncio-sync"
+      ],
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [],
+        "baseline": [],
+        "without_history": [],
+        "without_diversity": [],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-sync.html",
+            "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": "no_object_candidates",
+        "query": {
+          "original": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+          "variants": [
+            "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+            "Learn how Python asyncio can limit the number of coordinated access to resources at the same time, and how excessive signal release can be."
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "Python",
+              "aliases": [
+                "python"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {},
+          "error_code": null
+        }
+      }
+    },
+    {
+      "id": "paraphrase_not_new",
+      "split": "development",
+      "scope": "controlled_synthetic_counterexample_not_real_new_source",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 7.085,
+      "history": [
+        {
+          "source": "python_docs",
+          "doc_id": "library/asyncio-sync.html",
+          "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d"
+        }
+      ],
+      "candidate_pool": [
+        "python_docs:library/asyncio-sync.html",
+        "mvp_fixture:paraphrase-asyncio-semaphore"
+      ],
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [
+          {
+            "source": "mvp_fixture",
+            "doc_id": "paraphrase-asyncio-semaphore",
+            "title": "asyncio 并发访问许可与释放次数",
+            "source_url": "fixture://011/paraphrase-asyncio-semaphore",
+            "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "selection_score": 0.9037752569773716,
+            "relevance": 0.8519836737377535,
+            "history_overlap": 0.0,
+            "supplement_score": 0.5282033361772973,
+            "reason": "history_comparison",
+            "comparison": {
+              "status": "possible_supplement",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "covered_evidence": [],
+              "additional_evidence": [
+                {
+                  "status": "possible_supplement",
+                  "candidate": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 1777,
+                    "end": 1819,
+                    "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                  },
+                  "focus": {
+                    "source": "mvp_fixture",
+                    "doc_id": "paraphrase-asyncio-semaphore",
+                    "title": "asyncio 并发访问许可与释放次数",
+                    "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                    "start": 0,
+                    "end": 39,
+                    "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+                  },
+                  "history_focus": {
+                    "source": "python_docs",
+                    "doc_id": "library/asyncio-sync.html",
+                    "title": "同步原语",
+                    "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                    "start": 1777,
+                    "end": 1819,
+                    "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+                  },
+                  "context_dependent": false,
+                  "scores": {
+                    "relevance": 0.8519836737377535,
+                    "context_similarity": 0.6747856141059138,
+                    "cross_encoder_relevance": 0.9554367881501078,
+                    "goal_similarity": 0.8076466247038874,
+                    "supplement": 0.5282033361772973,
+                    "contradiction": 0.06651964783668518,
+                    "entailment": 0.01471619587391615,
+                    "neutral": 0.9187641739845276
+                  }
+                }
+              ],
+              "uncertain_evidence": [],
+              "scores": {
+                "coverage": 0.0,
+                "supplement": 0.5282033361772973
+              },
+              "scope": {
+                "candidate_sentences": 1,
+                "history_sentences": 25,
+                "uncompared_candidate_sentences": 2,
+                "nearest_history_per_sentence": 3
+              },
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。"
+            },
+            "goal_evidence": {
+              "source": "mvp_fixture",
+              "doc_id": "paraphrase-asyncio-semaphore",
+              "title": "asyncio 并发访问许可与释放次数",
+              "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+              "start": 0,
+              "end": 39,
+              "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。",
+              "matched_terms": [
+                "asyncio",
+                "python",
+                "信号量",
+                "同时",
+                "数量"
+              ]
+            },
+            "history_evidence": {
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "history": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "overlap": 0.0
+            },
+            "entity_evidence": [
+              {
+                "name": "Python",
+                "field": "body_text",
+                "start": 0,
+                "end": 96,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。每次成功取得许可，剩余数量减一；释放时加一。许可耗尽后，后来申请的协程必须等待别的任务释放。初始许可数量不能为负。"
+              }
+            ],
+            "supplement_eligible": true,
+            "supplement_evidence": {
+              "status": "possible_supplement",
+              "method": "goal-native-context-evidence-coverage-mmr-v6",
+              "candidate": {
+                "source": "mvp_fixture",
+                "doc_id": "paraphrase-asyncio-semaphore",
+                "title": "asyncio 并发访问许可与释放次数",
+                "content_version": "616fe19382312dd456b006af79961caacaf7ad49f8cf2fc1cefe76ed56284cab",
+                "start": 0,
+                "end": 39,
+                "text": "Python asyncio 中，可以用信号量控制同时占用共享资源的任务数量。"
+              },
+              "comparison": {
+                "source": "python_docs",
+                "doc_id": "library/asyncio-sync.html",
+                "title": "同步原语",
+                "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+                "start": 1777,
+                "end": 1819,
+                "text": "asyncio 条件原语可被任务用于等待某个事件发生，然后获取对共享资源的独占访问。"
+              },
+              "additional_terms": [],
+              "shared_context_terms": [],
+              "limitation": "仅对本次与目标相关、版本一致的已读片段作有限比较。模型判断可能有误；候选补充不代表用户从未学过，也不证明学习收益。",
+              "compared_history_paragraphs": 16
+            }
+          }
+        ],
+        "baseline": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "relevance": 0.35203207984297696
+          }
+        ],
+        "without_history": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 0.7241861226770905
+          }
+        ],
+        "without_diversity": [
+          {
+            "doc_key": "ed81bf98535fd706d4dde062ca540166a6b89d439b04248f66de776751b05c3c",
+            "rank": 1,
+            "score": 1.0632650082086725
+          }
+        ],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "python_docs",
+            "doc_id": "library/asyncio-sync.html",
+            "content_version": "9a9e009e4f90da71f32213a9c6d731dea9fd60d7dfa66c6d0939b73173c70c5d",
+            "doc_key": "b3d1985d0ea9a7101334ab11460172456cdf6f4f8e81559ef32aae71738557bf"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": null,
+        "query": {
+          "original": "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+          "variants": [
+            "学习 Python asyncio 如何限制协程同时访问资源的数量，以及过度释放信号量会怎样",
+            "Learn how Python asyncio can limit the number of coordinated access to resources at the same time, and how excessive signal release can be."
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "Python",
+              "aliases": [
+                "python"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {
+            "candidate_paragraphs": 2,
+            "candidate_sentences": 1,
+            "history_sentences": 25,
+            "comparison_pairs": 3,
+            "unsupported_units": 0,
+            "history_contexts": 16,
+            "history_selection_method": "candidate-nearest-context-not-answer-gated",
+            "all_relations_require_comparable_context": true,
+            "oversized_sentences": 0,
+            "candidate_sentences_outside_budget": 0,
+            "history_sentences_outside_budget": 0,
+            "limits": {
+              "candidate_paragraphs": 300,
+              "candidate_sentences": 90,
+              "history_sentences": 100,
+              "comparison_pairs": 270
+            },
+            "native_original_wide_recall": true,
+            "recalled_documents": 1,
+            "paragraph_budget_per_document": 300,
+            "nonlexical_context_paragraphs": 0,
+            "history_paragraphs_available": 16,
+            "history_paragraphs_outside_budget": 0
+          },
+          "error_code": null,
+          "language": "multilingual"
+        },
+        "history_relevant_paragraphs": 16
+      }
+    },
+    {
+      "id": "new_irrelevant_words",
+      "split": "development",
+      "scope": "controlled_wrong_object_new_document",
+      "language": "zh",
+      "actual_pool": "controlled",
+      "product_background_requirement_met": false,
+      "seconds": 6.233,
+      "history": [
+        {
+          "source": "postgresql_docs",
+          "doc_id": "18/transaction-iso.html",
+          "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af"
+        }
+      ],
+      "candidate_pool": [
+        "postgresql_docs:18/transaction-iso.html",
+        "stackexchange:stackoverflow-79965834"
+      ],
+      "corpus": {
+        "corpus_id": "514cbdbd48a3b4bc195546b159fea965797c298f4a0270ab68d09a90682ad242",
+        "feature_id": "08cb5ca0d92594171ceb388e1deaa0650b1e2070d32c82ed000949af0ba7885a",
+        "document_count": 18,
+        "paragraph_count": 1807
+      },
+      "result": {
+        "items": [],
+        "baseline": [],
+        "without_history": [],
+        "without_diversity": [],
+        "history_used": 1,
+        "history_unavailable": 0,
+        "history_references": [
+          {
+            "source": "postgresql_docs",
+            "doc_id": "18/transaction-iso.html",
+            "content_version": "f9acf0c8eca4549c764158ea7a1de39f50e6a2b3c3291b0be604950e164953af",
+            "doc_key": "b4fcd9990ef3800115020c7b193ae81e5f5c457e6888d37a83893e9f24393186"
+          }
+        ],
+        "algorithm": "goal-native-context-evidence-coverage-mmr-v6",
+        "parameters": {
+          "candidates": 100,
+          "paragraphs_per_document": 3,
+          "top_k": 3,
+          "paragraphs_total": 300,
+          "paragraph_allocation": "adaptive-seed-neighborhood-v1",
+          "min_relevance": 0.03,
+          "min_query_coverage": 0.2,
+          "history_weight": 0.6,
+          "supplement_weight": 0.4,
+          "diversity_weight": 0.15,
+          "duplicate_threshold": 0.95,
+          "semantic_thresholds": {
+            "relevance": 0.015,
+            "goal_similarity": 0.35,
+            "entailment": 0.75,
+            "contradiction": 0.65,
+            "neutral": 0.7,
+            "context_similarity": 0.3,
+            "duplicate": 0.95
+          }
+        },
+        "reason": "no_object_candidates",
+        "query": {
+          "original": "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+          "variants": [
+            "理解 PostgreSQL 序列化事务失败后什么时候应该重试",
+            "Understand when to try again after the PostgreSQL serialization failed"
+          ],
+          "status": "translated",
+          "processor_id": "argos-zh-en-7cd37a7cbf80646f5f0d7b67fe5c8ae274fd9e0a92b985ff5fc1b8feda560aa1",
+          "rules_version": "bilingual-object-query-v2",
+          "entities": [
+            {
+              "name": "PostgreSQL",
+              "aliases": [
+                "postgresql",
+                "postgres"
+              ]
+            }
+          ],
+          "error_code": null
+        },
+        "semantic": {
+          "status": "ready",
+          "processor_id": "semantic-c16d373f08c04fda5d6b947a167b6bd63ea93f22cc48c49077be89ef39a555de",
+          "comparison_scope": {},
+          "error_code": null
+        }
+      }
+    }
+  ],
+  "started_at_unix": 1790341300.8269525,
+  "spark_master": "local[1]",
+  "finished_at_unix": 1790341592.8208835
+}
