@@ -1,0 +1,29 @@
+{
+  "scope": "acceptance harness audit only, no new algorithm/model run",
+  "frozen_case_sha256": "9faac4ed5d24d273f14c550d20edc30b9b7512c856e6db1b86b5be274b9d1b8f",
+  "old_results_unchanged": true,
+  "checks": [
+    {
+      "result": "baseline-dev-small.json",
+      "result_sha256": "2edf61febeabefb7940e60f20743d5aad32209b465acc8020491f2e06d73334d",
+      "integrity": {
+        "checked_spans": 12,
+        "invalid_count": 0,
+        "failures": [],
+        "status": "valid_literal_evidence",
+        "scope": "literal source/version integrity only; does not certify relevance or supplement truth"
+      }
+    },
+    {
+      "result": "current-dev-partial-argos.json",
+      "result_sha256": "1a6a49a226ce81813a4dbdcb87d993e01d22b3ae1eee723c2631462bd75e5dad",
+      "integrity": {
+        "checked_spans": 38,
+        "invalid_count": 0,
+        "failures": [],
+        "status": "valid_literal_evidence",
+        "scope": "literal source/version integrity only; does not certify relevance or supplement truth"
+      }
+    }
+  ]
+}

@@ -75,3 +75,20 @@ class MVPSourceEvaluationTests(unittest.TestCase):
         report = evaluation.score_results(self.case(), self.output([item]), [review])
         self.assertEqual(report['counts']['supplement_claims_pending'], 1)
         self.assertEqual(report['status'], 'evidence_incomplete')
+
+    def test_valid_reviewer_quote_cannot_replace_invalid_returned_span(self):
+        raw = self.output([{'doc_key': 'docs:answer',
+                            'goal_evidence': {'start': 0, 'end': 4, 'text': '伪造原文'}}])
+        checked = evaluation.inspect_raw_evidence(raw, {'docs:answer': {'body_text': '真实原文'}})
+        self.assertEqual(checked['invalid_count'], 1)
+        self.assertEqual(checked['failures'][0]['code'], 'returned_span_mismatch')
+
+    def test_all_nested_additional_and_history_spans_are_checked(self):
+        raw = self.output([{'doc_key': 'docs:answer', 'goal_evidence': {'start': 0, 'end': 4, 'text': '真实原文'},
+                            'comparison': {'additional_evidence': [{
+                                'candidate': {'start': 0, 'end': 4, 'text': '真实原文'},
+                                'history': {'doc_key': 'docs:history', 'start': 0, 'end': 4, 'text': '错误历史'}}]}}])
+        checked = evaluation.inspect_raw_evidence(raw, {'docs:answer': {'body_text': '真实原文'},
+                                                       'docs:history': {'body_text': '已读原文'}})
+        self.assertEqual(checked['checked_spans'], 3)
+        self.assertEqual(checked['invalid_count'], 1)

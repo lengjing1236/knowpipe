@@ -62,6 +62,17 @@ def actual_job(db, user_id):
     return db.recommendation_jobs.find_one({'_id': profile.get('desired_recommendation_job')})
 
 
+def decision_check(*, expected, job_status, semantic, current_job, eligible, chinese_ready,
+                   notice_count, current_notice_count, idempotent):
+    """A failed/partial computation with no notifications cannot pass a negative."""
+    completed = bool(job_status in {'ready', 'empty'} and current_job and
+                     semantic.get('status') == 'ready' and not semantic.get('error_code'))
+    behavior_matches = bool((eligible and chinese_ready and current_notice_count == 1 and notice_count == 1)
+                            if expected else (not eligible and notice_count == 0))
+    return {'computation_complete': completed, 'behavior_matches': behavior_matches,
+            'passed': completed and behavior_matches and idempotent}
+
+
 def execute_case(client, spark, manifest, documents, replay, run_id, root):
     from knowpipe.learning import store as learning
     from knowpipe.learning.content import content_view
@@ -104,6 +115,9 @@ def execute_case(client, spark, manifest, documents, replay, run_id, root):
                              'job_status': before.get('status') if before else None,
                              'result': before.get('result') if before else None,
                              'notification_count': db.notifications.count_documents({'user_id': user_id})}
+        if not before or before.get('status') not in {'ready', 'empty'}:
+            row.update(status='failed', failure='before_new_computation_not_complete')
+            return row
         fetch, requests, transport = replay_transport(feed_url, candidate, replay['id'])
         rss_once(db, fetch=fetch)
         row['transport'] = {**transport, 'requested_urls': requests}
@@ -139,15 +153,20 @@ def execute_case(client, spark, manifest, documents, replay, run_id, root):
         repeated = list(db.notifications.find({'user_id': user_id, 'episode_id': episode_id}))
         idempotent = before_ids == [str(n['_id']) for n in repeated]
         expected = replay['expected_possible_supplement']
-        correct = bool((eligible and len(current) == 1 and view['chinese_ready']) if expected
-                       else (not eligible and not notices))
+        check = decision_check(expected=expected, job_status=(job or {}).get('status'),
+                               semantic=result.get('semantic') or {},
+                               current_job=bool(job and queue.is_current(db, job, worker.index.snapshot['corpus_id'])),
+                               eligible=eligible, chinese_ready=view['chinese_ready'], notice_count=len(notices),
+                               current_notice_count=len(current), idempotent=idempotent)
         row['decision'] = {'selected': bool(selected), 'supplement_eligible': eligible,
                            'chinese_ready': view['chinese_ready'], 'processing': view['processing'],
                            'notification_count': len(notices), 'current_notification_count': len(current),
-                           'notification_idempotent': idempotent, 'expected_decision_met': correct}
+                           'notification_idempotent': idempotent, 'expected_decision_met': check['passed'], **check}
         row['index'] = {k: worker.index.snapshot.get(k) for k in ('corpus_id', 'document_count', 'paragraph_count', 'strategy')}
-        row['status'] = 'passed_behavior_check_pending_source_review' if correct and idempotent else 'failed'
-        if not correct:
+        row['status'] = 'passed_behavior_check_pending_source_review' if check['passed'] else 'failed'
+        if not check['computation_complete']:
+            row['failure'] = 'new_material_computation_not_complete'
+        elif not check['behavior_matches']:
             row['failure'] = ('positive_supplement_not_recommended' if expected and not eligible else
                               'positive_translation_or_notification_missing' if expected else 'negative_not_suppressed')
         if not idempotent:
@@ -189,6 +208,7 @@ def main():
               'live_podcast_or_asr': False, 'fake_ready_jobs_or_results': False,
               'limitations': ['controlled small pool, not 10k background', 'agent-prepared expected facts, not human learning outcomes',
                               'positive supplement assertions still need source review even if notification behavior matches']}
+    write_json(args.output, report)
     client = spark = None
     try:
         client = MongoClient(args.mongo_uri, serverSelectionTimeoutMS=5000)

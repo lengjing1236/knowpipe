@@ -179,6 +179,7 @@ def run(args, manifest, documents):
         if semantic is not None:
             semantic.text = EnglishText(translator, db.semantic_translations)
     signature = {'manifest_sha256': digest(args.cases), 'mode': args.mode,
+                 'evaluator_sha256': digest(Path(__file__)),
                  'language': args.language, 'pool': args.pool, 'case_ids': [c['id'] for c in selected],
                  'code': source_code_hashes(package_parent / 'knowpipe'),
                  'goal_processor': processor_identity(translator),
@@ -263,22 +264,66 @@ def valid_span(span, body):
             and 0 <= span['start'] < span['end'] <= len(body) and body[span['start']:span['end']] == span.get('text'))
 
 
+def result_documents(manifest, raw):
+    wanted = {key_for(i) for row in raw.get('cases', []) for i in row.get('result', {}).get('items', [])}
+    wanted.update(key for case in manifest['cases'] for key in case['history'])
+    documents = {}
+    for path in (ROOT / manifest['background']['path'], STATE / 'controlled-documents.jsonl'):
+        with path.open() as stream:
+            for line in stream:
+                doc = json.loads(line)
+                if key_for(doc) in wanted:
+                    documents[key_for(doc)] = doc
+    return documents
+
+
+def inspect_raw_evidence(raw, documents):
+    """Audit every returned span before accepting a reviewer's own correct quote."""
+    failures = []
+    spans = 0
+
+    def visit(value, path, default_key):
+        nonlocal spans
+        if isinstance(value, list):
+            for index, item in enumerate(value):
+                visit(item, path + '[' + str(index) + ']', default_key)
+        elif isinstance(value, dict):
+            key = key_for(value) or default_key
+            doc = documents.get(key)
+            if 'content_version' in value and doc:
+                payload = json.dumps([doc.get('language') or 'und', doc['body_text']],
+                                     ensure_ascii=False, separators=(',', ':'))
+                if value['content_version'] != hashlib.sha256(payload.encode()).hexdigest():
+                    failures.append({'path': path, 'doc_key': key, 'code': 'source_version_mismatch'})
+            if {'start', 'end', 'text'}.issubset(value):
+                spans += 1
+                field = value.get('field', 'body_text')
+                if field not in {'body_text', 'title', 'source_url'} or not doc or not valid_span(value, doc.get(field) or ''):
+                    failures.append({'path': path, 'doc_key': key, 'code': 'returned_span_mismatch'})
+            for name, child in value.items():
+                if isinstance(child, (dict, list)):
+                    visit(child, path + '.' + name, key)
+
+    for row in raw.get('cases', []):
+        for index, item in enumerate(row.get('result', {}).get('items', [])):
+            key = key_for(item)
+            if key not in documents:
+                failures.append({'path': row['id'], 'doc_key': key, 'code': 'returned_document_missing'})
+            if not item.get('goal_evidence'):
+                failures.append({'path': row['id'], 'doc_key': key, 'code': 'goal_evidence_missing'})
+            visit(item, row['id'] + '.items[' + str(index) + ']', key)
+    return {'checked_spans': spans, 'invalid_count': len(failures), 'failures': failures,
+            'status': 'valid_literal_evidence' if not failures else 'invalid_literal_evidence',
+            'scope': 'literal source/version integrity only; does not certify relevance or supplement truth'}
+
+
 def validate_reviews(manifest, raw, review_document, result_path):
     """Require review provenance and literal evidence, not an unbound yes/no file."""
     if review_document.get('result_sha256') != digest(result_path):
         raise ValueError('source_review_not_bound_to_results')
     if review_document.get('reviewer_type') not in {'agent_source_review', 'human_source_review'}:
         raise ValueError('source_review_provenance_required')
-    wanted = {key_for(i) for row in raw.get('cases', []) for i in row.get('result', {}).get('items', [])}
-    wanted.update(key for case in manifest['cases'] for key in case['history'])
-    bodies = {}
-    for path in (ROOT / manifest['background']['path'], STATE / 'controlled-documents.jsonl'):
-        with path.open() as stream:
-            for line in stream:
-                doc = json.loads(line)
-                key = key_for(doc)
-                if key in wanted:
-                    bodies[key] = doc['body_text']
+    bodies = {key: doc['body_text'] for key, doc in result_documents(manifest, raw).items()}
     cases = {c['id']: c for c in manifest['cases']}
     returned = {(r['id'], key_for(i)) for r in raw.get('cases', []) for i in r.get('result', {}).get('items', [])}
     seen = set()
@@ -446,7 +491,12 @@ def main():
             write_json(args.output, review_template(manifest, raw, args.results))
         else:
             reviews = validate_reviews(manifest, raw, read_json(args.reviews), args.results) if args.reviews else []
-            write_json(args.output, score_results(manifest, raw, reviews))
+            report = score_results(manifest, raw, reviews)
+            report['raw_evidence_integrity'] = inspect_raw_evidence(raw, result_documents(manifest, raw))
+            report['evaluator_sha256'] = digest(Path(__file__))
+            if report['raw_evidence_integrity']['invalid_count']:
+                report['status'] = 'invalid_returned_evidence'
+            write_json(args.output, report)
 
 
 if __name__ == '__main__':
