@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学习工作台 · Knowpipe</title><link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="learning-page">
+<header class="topbar">
+  <a class="brand" href="/">K<span>Knowpipe</span></a>
+  <nav aria-label="主要导航"><a href="/learning" aria-current="page">学习工作台</a><a href="#learning-podcasts">播客订阅</a></nav>
+  <div class="account"><span id="learning-user"></span><button id="learning-logout" class="quiet">退出</button></div>
+</header>
+<main id="workspace">
+  <div class="page-heading"><div><p class="eyebrow">围绕目标，持续学习</p><h1>从想弄懂的问题开始。</h1><p class="muted">记录学习目标，阅读技术资料，留下自己的学习足迹。</p></div></div>
+  <p id="learning-message" role="status" aria-live="polite"></p>
+  <div class="workspace-grid">
+    <aside>
+      <section class="panel">
+        <h2>当前学习目标</h2>
+        <form id="goal-form">
+          <label for="learning-goal">这段时间，你想弄懂什么？</label>
+          <textarea id="learning-goal" rows="5" maxlength="1000" required placeholder="例如：理解 Redis 的 RDB、AOF 和故障恢复机制"></textarea>
+          <button type="submit">保存目标</button>
+        </form>
+        <p id="saved-goal" class="muted">正在读取目标…</p>
+      </section>
+      <section class="panel">
+        <h2>我的阅读记录</h2><p><strong id="read-count">0</strong> 篇已标记已读</p>
+        <p class="muted">只有主动标记的资料才进入记录。打开资料不会自动标记；已读也不表示已经掌握。</p>
+        <button id="show-history" class="secondary">查看已读资料</button>
+      </section>
+    </aside>
+    <div class="main-column">
+      <section class="panel" aria-labelledby="recommendation-heading">
+        <div class="section-heading"><h2 id="recommendation-heading">适合下一步阅读的资料</h2><button id="recommendation-refresh" class="quiet">刷新推荐</button></div>
+        <p id="recommendation-status" role="status" aria-live="polite">正在读取推荐状态…</p>
+        <p id="recommendation-context" class="muted"></p>
+        <div id="recommendation-items" class="card-list"></div>
+      </section>
+      <section class="panel" id="learning-podcasts" aria-labelledby="podcast-heading">
+        <div class="section-heading"><h2 id="podcast-heading">播客与持续学习</h2><button id="podcast-refresh" class="quiet">刷新</button></div>
+        <p class="muted">订阅后自动获取新节目。文字稿优先，没有文字稿时转写音频；与你的目标相关并准备好中文全文后，才会收到个人推荐。</p>
+        <form id="podcast-subscribe-form" class="learning-search">
+          <label for="podcast-feed-url">RSS 订阅地址<input id="podcast-feed-url" type="url" required placeholder="https://example.com/feed.xml"></label>
+          <button type="submit">添加订阅</button>
+        </form>
+        <p id="podcast-status" role="status" aria-live="polite"></p>
+        <div id="learning-subscriptions" class="card-list"></div>
+        <h3>给我的新节目推荐</h3><div id="learning-notifications" class="card-list"></div>
+        <details><summary>查看全部订阅更新与处理状态</summary><div id="learning-episodes" class="card-list"></div></details>
+      </section>
+      <section class="panel">
+        <div class="section-heading"><h2 id="library-heading">资料库</h2><button id="library-refresh" class="quiet">刷新</button></div>
+        <div class="actions learning-tabs" aria-label="资料范围">
+          <button id="show-library" aria-pressed="true">全部资料</button><button id="history-tab" class="secondary" aria-pressed="false">我的已读</button>
+        </div>
+        <form id="library-search" class="learning-search">
+          <label for="library-query">按标题查找<input id="library-query" maxlength="100" placeholder="输入技术名称或资料标题"></label>
+          <label for="library-source">资料来源<select id="library-source"><option value="">全部来源</option></select></label>
+          <button type="submit">查找</button>
+        </form>
+        <p id="library-total" class="muted" aria-live="polite"></p>
+        <div id="library-items" class="card-list" aria-live="polite"><p class="empty">正在加载资料…</p></div>
+        <div class="actions learning-pagination"><button id="previous-page" class="quiet">上一页</button><span id="page-label"></span><button id="next-page" class="quiet">下一页</button></div>
+      </section>
+    </div>
+  </div>
+</main>
+<dialog id="reading-dialog" aria-labelledby="reading-title">
+  <div class="section-heading"><h2 id="reading-title">阅读资料</h2><button id="reading-close" class="quiet">关闭</button></div>
+  <p id="reading-message" role="status" aria-live="polite"></p>
+  <div id="reading-content"></div>
+</dialog>
+<footer>Knowpipe · 计算机技术资料与个人阅读记录</footer>
+<script src="/static/learning.js" defer></script>
+</body>
+</html>
