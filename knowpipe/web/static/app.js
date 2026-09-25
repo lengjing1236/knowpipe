@@ -131,7 +131,7 @@ async function loadPodcasts() {
   const list = document.getElementById('episodes-list'); list.replaceChildren();
   episodes.items.forEach(episode => {
     const card = el('article', undefined, 'card'); const meta = el('div', undefined, 'card-meta');
-    meta.append(el('span', stateLabels[episode.status] || episode.status, `pill ${episode.status}`), el('span', dateText(episode.published_at)));
+    meta.append(el('span', episode.document_id ? '全文已入库' : (stateLabels[episode.status] || episode.status), `pill ${episode.status}`), el('span', dateText(episode.published_at)));
     card.append(meta, el('h3', episode.title));
     if (episode.status === 'awaiting_transcript') card.append(el('p', '发布者尚未提供可读取的文字稿。可补充文字稿后继续分析。', 'muted'));
     if (episode.error_code) card.append(el('p', `处理未完成：${episode.error_code}`, 'muted'));
@@ -141,6 +141,10 @@ async function loadPodcasts() {
 }
 async function showEpisode(id) {
   const episode = await api(`/api/podcasts/episodes/${id}`);
+  if (episode.document_id) {
+    window.location.assign('/learning?' + new URLSearchParams({source: 'podcast', doc_id: episode.document_id}));
+    return;
+  }
   const body = dialog(episode.title);
   body.append(el('p', stateLabels[episode.status] || episode.status, 'pill'), safeLink(episode.source_url, ' 查看节目来源'));
   if (['awaiting_transcript', 'failed'].includes(episode.status)) {
@@ -192,7 +196,7 @@ async function showEpisode(id) {
 function renderNotifications() {
   const list = document.getElementById('notifications-list'); list.replaceChildren();
   [...notificationItems.values()].sort((a, b) => b.id.localeCompare(a.id)).slice(0, 50).forEach(item => {
-    const li = el('li'); li.append(el('small', item.read ? '已读' : '新文字稿分析完成'));
+    const li = el('li'); li.append(el('small', item.read ? '已读' : (item.kind === 'learning_recommendation' ? '新的个人学习推荐' : '文字稿处理完成')));
     li.append(action(item.title, async () => {
       await showEpisode(item.episode_id);
       await api(`/api/notifications/${item.id}/read`, {method: 'POST', body: '{}'});
