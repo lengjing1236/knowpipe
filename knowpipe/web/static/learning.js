@@ -274,7 +274,7 @@
         empty_goal_terms: '请在目标中写明想学习的技术或问题。',
         no_relevant_candidates: '没有找到符合目标的未读资料。',
         no_object_candidates: '没有找到同时符合目标词语与指定技术对象的未读资料。可以查看下方查找解释，或等待资料补充。',
-        redundant_candidates: '候选资料与已读内容高度重复，暂不重复推荐。'};
+        redundant_candidates: '本次比较的候选片段与已读内容重合，暂未选出合适资料。'};
       const failures = {history_limit_exceeded: '已读记录超过当前可分析的 2,000 篇上限，本次未计算。',
         history_paragraph_limit_exceeded: '相关已读内容超过当前 5,000 个段落上限，本次未计算。',
         goal_term_limit_exceeded: '目标包含的不同词语过多，请聚焦到一个具体问题再试。',

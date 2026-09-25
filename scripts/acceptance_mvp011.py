@@ -122,6 +122,7 @@ def main():
             first = wait_job()
             report['first_result'] = first['result']
             report['first_job'] = first['_id']
+            assert first['result'].get('semantic', {}).get('status') in {'ready', 'partial'}, 'semantic_algorithm_not_executed'
             report['stages'].append('production_recommendation_ready')
             assert first['result'].get('items'), 'no_results_to_read'
             first, item, view = wait_job(require_translation=True)
@@ -148,13 +149,15 @@ def main():
             expect(page.locator('#read-count')).to_have_text('1', timeout=30000)
             page.locator('#reading-close').click()
             second = wait_job(previous_id=first['_id'])
+            assert second['result'].get('semantic', {}).get('status') in {'ready', 'partial'}, 'read_recomputation_degraded'
             assert not any((x['source'], x['doc_id']) == (item['source'], item['doc_id']) for x in second['result'].get('items', []))
             report['second_job'] = second['_id']; report['second_result'] = second['result']
             report['stages'].append('explicit_read_triggered_recomputation')
             assert not report['page_errors'], report['page_errors']
             assert not [r for r in report['responses'] if r['status'] in (401, 403)], 'unexpected_auth_failure'
             report.update(status='passed', opening_did_not_mark_read=True, no_stale_read_document=True,
-                          no_mobile_overflow=True, no_auth_failure=True)
+                          no_mobile_overflow=True, no_auth_failure=True,
+                          semantic_algorithm_executed=True, learning_quality_verified=False)
             browser.close()
     except Exception as error:
         report.update(status='failed', error_type=type(error).__name__, error=str(error)[:300])

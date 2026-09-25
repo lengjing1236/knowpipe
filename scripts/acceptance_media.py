@@ -177,6 +177,7 @@ def run_rss_stage(cache, mongo_uri, keep_db):
     database_name = 'knowpipe_media_acceptance_' + uuid.uuid4().hex[:12]
     client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
     database = client[database_name]
+    transferred_database = False
     try:
         client.admin.command('ping')
         print('rss_acceptance_database=' + database_name, flush=True)
@@ -205,6 +206,7 @@ def run_rss_stage(cache, mongo_uri, keep_db):
         assert repeated['status'] == 'ready' and repeated['attempts'] == 1
         assert database.documents.count_documents({'source': 'podcast'}) == 1
         assert database.batches.count_documents({}) == 1
+        transferred_database = keep_db
         return TextResult(doc['body_text'], doc['language']), {
             'database_name': database_name, 'kept_for_root_integration': keep_db,
             'episode_id': episode['episode_id'], 'feed_id': feed_id,
@@ -214,7 +216,7 @@ def run_rss_stage(cache, mongo_uri, keep_db):
             'second_poll': 'One document, one batch, one ASR attempt; no duplicate processing.',
             'scope': 'RSS→ASR→fulltext publication only; recommendation and notification require root integration.'}
     finally:
-        if not keep_db:
+        if not transferred_database:
             client.drop_database(database_name)
         client.close()
 

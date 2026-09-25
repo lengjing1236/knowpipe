@@ -6,6 +6,7 @@ complete audio and performs ASR. This is not long-running live-feed validation.
 """
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -36,6 +37,10 @@ def main():
     worker = None
     database_name = None
     try:
+        os.environ.setdefault('KNOWPIPE_SEMANTIC_MODEL_PATH', 'state/feature011/semantic-multilingual')
+        if not any(os.environ.get(name) for name in ('KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH',
+                'KNOWPIPE_NLLB_MODEL_PATH', 'KNOWPIPE_TRANSLATION_MODEL_PATH')):
+            raise RuntimeError('explicit_translation_provider_required')
         source, _ = prepare_technical_audio(cache)
         transcript, stage = run_rss_stage(cache, args.mongo_uri, True)
         database_name = stage['database_name']; db = client[database_name]
@@ -50,20 +55,24 @@ def main():
         view = queue.view(db, uid)
         report['recommendations'] = view
         assert view['status'] in ('ready', 'empty'), view['status']
+        assert (view.get('semantic') or {}).get('status') in {'ready', 'partial'}, 'semantic_algorithm_not_executed'
         selected = next((x for x in view['items'] if x['source'] == 'podcast' and x['doc_id'] == stage['episode_id']), None)
         notices = list(db.notifications.find({'user_id': uid, 'episode_id': stage['episode_id']}, {'_id': 0}))
         report['decision'] = ('not_selected' if selected is None else
                               'selected_chinese_ready' if selected['chinese_ready'] else 'selected_translation_unready')
         report['notifications'] = notices
-        if notices:
-            assert selected and selected['chinese_ready']
+        if selected:
+            assert selected['chinese_ready'], 'selected_podcast_translation_unready'
             assert len(notices) == 1 and notification_current(db, notices[0])
             assert notices[0]['recommendation_mode'] == 'goal_only'
             worker.run_once()
             assert db.notifications.count_documents({'user_id': uid, 'episode_id': stage['episode_id']}) == 1
+        else:
+            assert not notices, 'unselected_podcast_notified'
         doc = db.documents.find_one({'source': 'podcast', 'doc_id': stage['episode_id']})
         assert content_view(doc)['content_status'] == 'fulltext'
-        report.update(status='pipeline_completed', fulltext_version=doc['content']['version'],
+        report.update(status='workflow_completed' if selected else 'pipeline_completed_without_recommendation',
+                      workflow_verified=bool(selected), fulltext_version=doc['content']['version'],
                       history_scope='cold start; no claim of personal supplement',
                       index={k: worker.index.snapshot.get(k) for k in ('corpus_id', 'document_count', 'strategy')})
     except Exception as error:
