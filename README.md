@@ -7,11 +7,13 @@
 
 [已验证：当前实现] Feature 007/008/009 已实现目标和已读记录、版本化完整正文、Spark 推荐与原文对照、本地英中翻译、RSS 音频转写、增量索引及条件式个人通知。真实全文语料为 **10,215 篇、5 个原始提供方**，问答包含回答；旧 arXiv 摘要不算全文。
 
-当前入口是 **`/learning`**。见 [MVP验证计划](plan.md)、[最近工程阶段的 SpecKit 任务](specs/010-quality-cluster-readiness/tasks.md)、[运行步骤](specs/010-quality-cluster-readiness/quickstart.md) 和 [来源核验](evidence/009-fulltext-podcast-learning/sources-expanded.md)。009工程成果保留；010新增中文目标转换与双语召回、明确技术对象过滤、译文版本/有限质量门禁和Spark部署准备，见[010验收](evidence/010-quality-cluster-readiness/acceptance.md)。
+当前入口是 **`/learning`**。见 [MVP验证计划](plan.md)、[011 SpecKit 任务](specs/011-mvp-recommendation-validation/tasks.md)、[011 验证步骤](specs/011-mvp-recommendation-validation/quickstart.md) 和 [来源核验](evidence/009-fulltext-podcast-learning/sources-expanded.md)。009工程成果保留；010新增中文目标转换与双语召回、明确技术对象过滤、译文版本/有限质量门禁和Spark部署准备，见[010验收](evidence/010-quality-cluster-readiness/acceptance.md)。
 
 [当前重点] MVP尚未通过产品验收。先验证目标相关性、已读对照、具体补充及中文理解是否符合需求；对应[Spec与实现差距复核](docs/mvp-spec-implementation-gap-2026-09-25.md)。规模扩展在MVP功能正确后再决定，不以历史工程任务完成替代MVP通过。
 
-[已验证：能力边界] 当前核心仍是词汇相关性、历史重合与去重复算法；不能据此判断掌握程度或语义上的未知知识。中文目标使用实际模型转换并保留原文分支，但仍有误译和错配，见[固定场景结果](evidence/010-quality-cluster-readiness/query-review.md)。免费翻译/ASR尚未达到可靠教学质量，数字和代码完整性通过不能证明语义正确。已实测本地Spark及同机Standalone两个独立executor；只有一台物理电脑，真实跨主机验收仍未完成。
+[实施中：011] 在 Spark 词汇召回后增加有界多语语义重排、候选与已读原文上下文对照，让覆盖程度和可能的补充参与选择。Web 展示实际比较范围和中英对照；语义处理失败时降级为目标推荐，不发送“补充”通知。具体进度与失败证据见 [Spec→实现→证据追踪](evidence/011-mvp-recommendation-validation/traceability.md)。
+
+[已验证：能力边界] 语义模型仍可能误判补充，本地翻译也仍有改变技术含义的错误；模型分数、数字和代码完整性通过均不能证明知识正确。系统不能判断用户掌握程度或脑中未知的知识。历史已实测本地Spark及同机Standalone两个独立executor；当前仅一台物理电脑，跨主机扩展不在本轮MVP范围。
 
 以下 Feature 004/006 的说明和证据记录历史路线，不代表当前学习工作台使用摘要或要求用户手工标注。
 
