@@ -14,6 +14,7 @@ def now():
 
 
 def ensure_indexes(db):
+    db.documents.create_index([('source', 1), ('doc_id', 1)], unique=True)
     db.podcast_feeds.create_index('feed_id', unique=True)
     db.podcast_subscriptions.create_index([('user_id', 1), ('feed_id', 1)], unique=True)
     db.podcast_subscriptions.create_index('feed_id')
@@ -53,25 +54,22 @@ def feed_ids(db, user_id):
 
 def list_episodes(db, user_id):
     projection = {'_id': 0, 'transcript': 0, 'analysis': 0}
-    return list(db.podcast_episodes.find({'feed_id': {'$in': feed_ids(db, user_id)}}, projection)
-                .sort([('published_at', -1), ('episode_id', 1)]).limit(50))
+    items = list(db.podcast_episodes.find({'feed_id': {'$in': feed_ids(db, user_id)}}, projection)
+                 .sort([('published_at', -1), ('episode_id', 1)]).limit(50))
+    from ..learning.content import content_view
+    for episode in items:
+        if episode.get('document_id'):
+            doc = db.documents.find_one({'source': 'podcast', 'doc_id': episode['document_id']})
+            if doc:
+                episode['learning_content'] = content_view(doc, include_text=False)
+        for internal in ('attempt_token', 'claimed_at'):
+            episode.pop(internal, None)
+    return items
 
 
 def owned_episode(db, user_id, episode_id):
     return db.podcast_episodes.find_one({'episode_id': episode_id,
         'feed_id': {'$in': feed_ids(db, user_id)}}, {'_id': 0})
-
-
-def publish_notifications(db, episode):
-    for subscriber in db.podcast_subscriptions.find({'feed_id': episode['feed_id']}):
-        # New subscribers do not receive the entire historical archive.
-        created = subscriber['created_at']
-        ready = episode['ready_at']
-        if created.replace(tzinfo=timezone.utc) > ready.replace(tzinfo=timezone.utc):
-            continue
-        key = {'user_id': subscriber['user_id'], 'episode_id': episode['episode_id']}
-        db.notifications.update_one(key, {'$setOnInsert': {
-            **key, 'title': episode['title'], 'created_at': now(), 'read': False}}, upsert=True)
 
 
 def acquire_lease(db, owner, seconds=90):

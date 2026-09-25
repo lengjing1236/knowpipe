@@ -92,6 +92,7 @@ def parse_feed(data: bytes, url: str, max_items: int = 3):
             'audio_url': urljoin(url, audio_url) if audio_url else None,
             'transcript_url': transcript_url, 'transcript_type': transcript_type,
             'published_at': published,
+            'language': (channel.findtext('language') or '').strip() or None,
         })
     floor = datetime.min.replace(tzinfo=timezone.utc)
     items.sort(key=lambda item: item['published_at'] or floor, reverse=True)
