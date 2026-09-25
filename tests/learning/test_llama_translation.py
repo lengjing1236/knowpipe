@@ -1,6 +1,8 @@
 import tempfile
 import time
 import unittest
+import subprocess
+import sys
 from pathlib import Path
 from unittest.mock import Mock
 
@@ -11,8 +13,8 @@ from knowpipe.learning.quality import validate_segments
 
 
 class LlamaTranslationTests(unittest.TestCase):
-    def provider(self, completion=None):
-        provider = LlamaTranslator('/unused/model.gguf', 'http://127.0.0.1:8089')
+    def provider(self, completion=None, *, segmentation='paragraph'):
+        provider = LlamaTranslator('/unused/model.gguf', 'http://127.0.0.1:8089', segmentation=segmentation)
         provider._preflight = Mock()
 
         def request(path, payload, deadline):
@@ -42,12 +44,36 @@ class LlamaTranslationTests(unittest.TestCase):
         self.assertEqual(spans[2:], ['中文第一句。', '第二句！'])
 
     def test_complete_sentences_are_separate_calls_and_alignment_is_real(self):
-        provider = self.provider()
+        provider = self.provider(segmentation='sentence')
         original = 'Write the log first. Only then write the data.'
         output = provider.translate(original, 'en', 'zh')
         validate_segments(original, output.text, output.segments)
         prompts = [call.args[1]['prompt'] for call in provider._request.call_args_list if call.args[0] == '/completion']
         self.assertEqual(prompts, ['Write the log first.', 'Only then write the data.'])
+
+    def test_default_candidate_keeps_paragraph_context_with_distinct_cache_identity(self):
+        provider = self.provider()
+        original = 'Write the log first. Only then write the data.'
+        output = provider.translate(original, 'en', 'zh')
+        validate_segments(original, output.text, output.segments)
+        prompts = [call.args[1]['prompt'] for call in provider._request.call_args_list if call.args[0] == '/completion']
+        self.assertEqual(prompts, [original])
+        self.assertEqual(provider.segmentation, 'paragraph')
+        self.assertNotEqual(provider.processor_id, self.provider(segmentation='sentence').processor_id)
+        with self.assertRaisesRegex(ValueError, 'translation_segmentation_not_supported'):
+            self.provider(segmentation='unknown')
+
+    def test_evaluation_cli_rejects_existing_evidence_before_loading_model(self):
+        script = Path(__file__).resolve().parents[2] / 'scripts/acceptance_qwen011.py'
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / 'evidence/011-mvp-recommendation-validation/qwen-quality.json'
+            output.parent.mkdir(parents=True)
+            output.write_text('preserved evidence')
+            result = subprocess.run([sys.executable, str(script)], cwd=directory,
+                                    capture_output=True, text=True, timeout=10)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn('evidence already exists', result.stderr)
+            self.assertEqual(output.read_text(), 'preserved evidence')
 
     def test_real_token_budget_splits_before_call_and_preserves_all_source_offsets(self):
         provider = self.provider()

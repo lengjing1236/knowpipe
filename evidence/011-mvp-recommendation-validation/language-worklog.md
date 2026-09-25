@@ -36,4 +36,49 @@ NLLB 峰值约 785 MiB RSS，WAL 全文处理 53.2 秒，首次冷加载加第�
 
 模型服务实际使用 2 推理线程、4096 上下文、1 槽、0 GPU；默认 batch 下峰值 RSS 1,929,716 KiB，已记录并在本轮 A/B 后停止服务释放资源。运行时占用高于 GGUF 文件大小，后续与 Spark 同时运行前需保留这一实际约束。
 
-回归：`python3 -m unittest discover -s tests/learning -p 'test_*.py'`，75 项通过。测试证明接口、版本保护和已知损坏拒绝，不证明翻译语义质量。
+## 最后一次有界修复：自然句对齐
+
+保留同一个模型和通用翻译 prompt，仅把 Llama 适配器升级为 `v2:sentence`：按自然句保存原始标点/空白跨度，对特别长的句子仍先用实际 tokenizer 检查上限并分段。每个实际输入片段各自记录源/目标偏移。模型、prompt、切分/解码规则和固定引擎版本共同参与处理身份。
+
+同 11 个目标和完整 WAL 的新输出及旧段级输出并列保存在 `qwen-sentence-quality.json`，没有覆盖先前失败记录。目标输出没有因为切分改变，8 个旧目标的主要概念正确，Python 开发目标的“信号量→signals”仍未修复。
+
+全文先日志落盘再写数据文件的表述更清楚，顺序写入和 fsync 的主要关系保留；但出现明确错误：`roll-forward recovery` 被译成“回滚恢复”，`point-in-time recovery` 被译成“点对点恢复”，`data flushing during journaling` 的操作对象仍变成“日志刷盘”。JSON 审核记录包含这些判断对应的双方原文及实际偏移。数字/代码等完整性检查仍通过，进一步说明其不能证明语义正确。
+
+本轮使用 batch 128、ubatch 64、4096 上下文，全文 76.485 秒，峰值 RSS 1,896,336 KiB（约 1.81 GiB）。内存只比旧配置略降，不能以 GGUF 文件大小推断运行占用。确认服务所有 slot 空闲且 8089 没有已建立连接后，已停止本轮独占 PID 109160 并释放资源。
+
+结论：**SC-004 仍未通过**。本轮不再换更大模型或无限修改提示词；保留可替换接口、真实对齐与失败证据，不把当前 Qwen 配置作为已经通过质量验证的默认升级。
+
+## 固定本轮待验候选与复现方式
+
+最终选择 **Qwen 段落 v1**。句切 v2 改善一处先后关系，却新增“向前恢复→回滚恢复”和“时间点恢复→点对点恢复”两个明确的技术含义错误；不能因切分更细就认为质量更高。段落 v1 的错误仍包括信号量→signals、数据刷新被换成日志记录、WAL 写入顺序表述混乱，所以该选择只固定后续评价和 Web 使用的候选，**不代表 SC-004 已达标**。
+
+`LlamaTranslator` 默认 `segmentation='paragraph'`，恢复原 v1 处理身份与相同通用 prompt；显式 `segmentation='sentence'` 可重现 v2 实验，两个模式的缓存身份不同。原始两份失败输出均保留，没有重新跑模型或补写成功结果。
+
+复现时从仓库根目录，在一个终端启动本地服务：
+
+```bash
+state/feature011/media/llama-b6000/build/bin/llama-server \
+  --model /home/lengjing1236/knowpipe/state/feature011/media/qwen2.5-1.5b-instruct-q4_k_m.gguf \
+  --host 127.0.0.1 --port 8089 --ctx-size 4096 \
+  --threads 2 --threads-batch 2 --batch-size 128 --ubatch-size 64 \
+  --parallel 1 --n-gpu-layers 0 --no-context-shift --no-warmup \
+  --alias knowpipe-translation-qwen25-15b
+```
+
+在另一个终端运行正式检查 CLI。`--output` 必须使用未存在的文件名；脚本拒绝覆盖原失败记录，仅读取 `language-quality.json` 中的 8 个旧目标、3 个开发目标及 WAL 原文，不读取保留场景：
+
+```bash
+python3 scripts/acceptance_qwen011.py \
+  --segmentation paragraph --output qwen-paragraph-recheck-01.json
+```
+
+若复现句切失败，将 `--segmentation` 改为 `sentence`，并指定另一个未存在的输出文件。`--smoke` 只运行三个旧目标，不能作为全文通过证据。完成后在服务终端按 Ctrl-C 停止服务。
+
+Web/worker 进程使用下列配置共享该双向提供器；不会自行下载模型或启动服务：
+
+```bash
+export KNOWPIPE_LLAMA_TRANSLATION_MODEL_PATH=/home/lengjing1236/knowpipe/state/feature011/media/qwen2.5-1.5b-instruct-q4_k_m.gguf
+export KNOWPIPE_LLAMA_TRANSLATION_URL=http://127.0.0.1:8089
+```
+
+最终轻量回归：`python3 -m unittest discover -s tests/learning -p 'test_*.py'`，79 项全部通过（16.177 秒）；适配器与检查 CLI 的 `py_compile`、`git diff --check` 通过。新增检查确认段落默认上下文、模式间缓存隔离，以及 CLI 在加载模型前拒绝覆盖已有证据。这些测试验证接口和保护逻辑，不替代上述真实模型语义失败结论。

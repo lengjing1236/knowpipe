@@ -124,7 +124,7 @@
       "seconds": 3.665
     }
   ],
-  "semantic_pass": null,
+  "semantic_pass": false,
   "fulltext": {
     "source": {
       "source": "postgresql_docs",
@@ -326,5 +326,91 @@
       }
     ],
     "seconds": 76.485
+  },
+  "review": {
+    "reviewed_at": "2026-09-25T12:56:59.244660+00:00",
+    "reviewer": "开发代理依据原文事实逐项复核；不是独立人类标注或模型自评",
+    "status": "failed",
+    "scope": "同11个开发/旧目标和完整WAL；未运行保留场景来调参",
+    "goal_findings": [
+      "8个旧目标与段级Qwen输出一致并保留关键技术概念。",
+      "Python开发目标仍将信号量译为signals，省略Python字面名；不能将目标转换宣称全通过。"
+    ],
+    "fulltext_checks": [
+      {
+        "status": "fail",
+        "source_start": 742,
+        "source_end": 795,
+        "source_text": "(This is roll-forward recovery, also known as REDO.)\n",
+        "target_start": 240,
+        "target_end": 259,
+        "target_text": "（这是回滚恢复，也称为 REDO。）\n",
+        "finding_zh": "REDO 是向前恢复，输出回滚恢复改变恢复方向。"
+      },
+      {
+        "status": "fail",
+        "source_start": 1902,
+        "source_end": 2013,
+        "source_text": "WAL also makes it possible to support on-line backup and point-in-time recovery, as described in Section 25.3. ",
+        "target_start": 627,
+        "target_end": 659,
+        "target_text": "WAL也使得在线备份和点对点恢复成为可能，如第25.3节所述。 ",
+        "finding_zh": "指时间点恢复，输出点对点恢复改变技术概念。"
+      },
+      {
+        "status": "fail",
+        "source_start": 1079,
+        "source_end": 1229,
+        "source_text": "Fortunately, data flushing during journaling can often be disabled with a file system mount option, e.g., data=writeback on a Linux ext3 file system. ",
+        "target_start": 358,
+        "target_end": 422,
+        "target_text": "幸运的是，日志刷盘在文件系统挂载选项中可以被禁用，例如在 Linux ext3 文件系统上设置 data=writeback。 ",
+        "finding_zh": "可禁用的是日志型文件系统在 journaling 期间的数据刷新，输出变成日志刷盘，改变操作对象。"
+      },
+      {
+        "status": "improved",
+        "source_start": 204,
+        "source_end": 448,
+        "source_text": "Briefly, WAL's central concept is that changes to data files (where tables and indexes reside) must be written only after those changes have been logged, that is, after WAL records describing the changes have been flushed to permanent storage. ",
+        "target_start": 84,
+        "target_end": 160,
+        "target_text": "简而言之，WAL的核心概念是，对数据文件（即表和索引驻留的地方）所做的更改必须在这些更改被记录后才写入，也就是说，这些记录在永久存储中被刷新后才写入。 ",
+        "finding_zh": "本轮表述包含先将日志刷新到永久存储再写数据文件，比段级输出清楚；不能抵消其他错误。"
+      },
+      {
+        "status": "pass",
+        "source_start": 1755,
+        "source_end": 1901,
+        "source_text": "Furthermore, when the server is processing many small concurrent transactions, one fsync of the WAL file may suffice to commit many transactions.\n",
+        "target_start": 580,
+        "target_end": 626,
+        "target_text": "此外，当服务器处理许多并发的小事务时，一次 WAL 文件的 fsync 可以提交许多事务。\n",
+        "finding_zh": "在许多小并发事务的条件下一次 WAL fsync 可提交多个事务，主要关系保留。"
+      },
+      {
+        "status": "pass",
+        "source_start": 2013,
+        "source_end": 2230,
+        "source_text": "By archiving the WAL data we can support reverting to any time instant covered by the available WAL data: we simply install a prior physical backup of the database, and replay the WAL just as far as the desired time. ",
+        "target_start": 659,
+        "target_end": 732,
+        "target_text": "通过归档WAL数据，我们可以支持回滚到可用WAL数据覆盖的时间点：我们只需安装数据库的先前物理备份，然后像往常一样回放WAL，直到指定的时间点。 ",
+        "finding_zh": "重放直到指定时间点的边界保留。"
+      }
+    ],
+    "conclusion": "自然句对齐更细且部分顺序表达改善，但引入/保留关键术语和恢复方向错误；完整性检查通过不代表语义正确。SC-004仍未通过；停止本轮模型/提示词实验。"
+  },
+  "runtime": {
+    "engine": "b6000-4762ad73",
+    "cpu_threads": 2,
+    "context_tokens": 4096,
+    "batch_size": 128,
+    "ubatch_size": 64,
+    "gpu_layers": 0,
+    "peak_rss_kib": 1896336,
+    "fulltext_seconds": 76.485,
+    "owned_server_pid": 109160,
+    "server_idle_before_stop": true,
+    "server_stopped": true
   }
 }

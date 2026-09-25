@@ -17,20 +17,28 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model', default='state/feature011/media/qwen2.5-1.5b-instruct-q4_k_m.gguf')
     parser.add_argument('--endpoint', default='http://127.0.0.1:8089')
+    parser.add_argument('--segmentation', choices=('paragraph', 'sentence'), default='paragraph',
+                        help='Fixed paragraph candidate by default; sentence reproduces the failed v2 experiment.')
     parser.add_argument('--smoke', action='store_true', help='Three previously failed technical goals only; no full-text quality claim.')
-    parser.add_argument('--output', help='Evidence filename; use a separate file for each changed adapter.')
+    parser.add_argument('--output', help='New evidence filename. Existing files are never overwritten.')
     args = parser.parse_args()
     root = Path('evidence/011-mvp-recommendation-validation')
+    output = root / (args.output or ('qwen-smoke.json' if args.smoke else 'qwen-quality.json'))
+    if output.exists():
+        parser.error('evidence already exists; choose a new --output filename: ' + str(output))
     baseline = json.loads((root / 'language-quality.json').read_text())
-    provider = LlamaTranslator(args.model, args.endpoint)
+    provider = LlamaTranslator(args.model, args.endpoint, segmentation=args.segmentation)
     result = {'recorded_at': datetime.now(timezone.utc).isoformat(), 'model_processor': processor_identity(provider),
               'adapter_version': provider.ADAPTER_VERSION,
+              'segmentation': provider.segmentation,
               'purpose': '真实开发A/B；固定通用翻译指令，无验收句词表或保留场景调参',
               'prompt': provider.SYSTEM, 'cases': [], 'semantic_pass': None}
-    output = root / (args.output or ('qwen-smoke.json' if args.smoke else 'qwen-quality.json'))
     prior_path = root / 'qwen-quality.json'
     prior = json.loads(prior_path.read_text()) if prior_path.exists() and output != prior_path else {}
     prior_cases = {item['id']: item for item in prior.get('cases', [])}
+    # Reserve this run's filename exclusively before saving partial progress.
+    with output.open('x') as stream:
+        stream.write(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
 
     def save():
         output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')

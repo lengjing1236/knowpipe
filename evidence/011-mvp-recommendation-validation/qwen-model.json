@@ -35,5 +35,26 @@
       "Threads": "15"
     },
     "server_stopped_after_acceptance": true
+  },
+  "fixed_candidate": {
+    "segmentation": "paragraph",
+    "adapter_version": "llama-qwen-technical-translation-v1:engine4762ad73:input1024:output2048:ctx4096:greedy",
+    "semantic_pass": false,
+    "selection_basis": "段落 v1 保留向前恢复方向；句子 v2 虽改善 WAL 写入顺序表述，却新增 roll-forward→回滚、point-in-time→点对点两项实质错误。本轮选择已测事实错误较少的段落方式，仍不满足 SC-004。",
+    "evidence": ["qwen-quality.json", "qwen-sentence-quality.json"],
+    "remaining_failures": ["信号量译成 signals", "数据刷新误变成日志记录可禁用", "WAL 先日志落盘再更新数据文件的约束表述混乱"]
+  },
+  "sentence_experiment_runtime": {
+    "engine": "b6000-4762ad73",
+    "cpu_threads": 2,
+    "context_tokens": 4096,
+    "batch_size": 128,
+    "ubatch_size": 64,
+    "gpu_layers": 0,
+    "peak_rss_kib": 1896336,
+    "fulltext_seconds": 76.485,
+    "owned_server_pid": 109160,
+    "server_idle_before_stop": true,
+    "server_stopped": true
   }
 }
